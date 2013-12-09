@@ -110,17 +110,22 @@ public class Empleado extends Usuario{
     @Override
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
+        return errors;
+    }
+    
+    public ActionErrors validateAgregar(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
         
         errors = this.validateVacio(mapping, request);
         
         if (errors.size() <= 0) {
-            errors = this.validateAgregar(mapping, request);
+            errors = this.validateCamposAgregar(mapping, request);
         }
         
         return errors;
     }
     
-    public ActionErrors validateAgregar(ActionMapping mapping, HttpServletRequest request) {
+    public ActionErrors validateCamposAgregar(ActionMapping mapping, HttpServletRequest request) {
         
         ActionErrors errors = new ActionErrors();
                 

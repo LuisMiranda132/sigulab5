@@ -49,7 +49,7 @@ public class premodificar extends org.apache.struts.action.Action {
         session.removeAttribute("lologre");
         
         ActionErrors error=null;
-        
+                
         if(u.getUsbid()==""){
             return mapping.findForward(FAILURE);
         }

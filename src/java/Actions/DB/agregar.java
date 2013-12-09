@@ -48,7 +48,7 @@ public class agregar extends org.apache.struts.action.Action {
         ActionErrors error = null;
         HttpSession session = request.getSession(true);
         
-        error = u.validate(mapping, request);
+        error = u.validateAgregar(mapping, request);
                 
 //        boolean huboError = false;
         

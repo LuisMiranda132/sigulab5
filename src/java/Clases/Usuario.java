@@ -251,10 +251,10 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     public ActionErrors validateVacio(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         
-        if(this.getTipo().contentEquals("")
+        if(this.getTipo() == null
                 ||this.getUsbid()==null
                 ||this.getApellidos().contentEquals("")
-                ||this.getCedula()==null
+                ||this.getCedula().contentEquals("")
                 ||this.getNombres().contentEquals("")
                 ||this.getUsbid().contentEquals("")){
             errors.add("error", new ActionMessage("error.usuario.vacio"));
