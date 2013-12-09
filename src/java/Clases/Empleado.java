@@ -164,6 +164,12 @@ public class Empleado extends Usuario{
             errors.add("error", new ActionMessage("error.empleado.antiguedad"));
         }
         
+        if(!this.getCorreo().contentEquals("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$ ")){
+            this.setErrorCorreo("error");
+            errors.add("error",new ActionMessage("error.empleado.correo"));
+            
+        }
+        
         return errors;
     } 
 
