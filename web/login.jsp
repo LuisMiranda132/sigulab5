@@ -77,7 +77,7 @@
             <table border="0">
                 <tbody>
                     <tr align="center" style="color:red">
-                        <center style="color:yellowgreen">
+                        <center style="color:red">
                             <html:errors/>    
                         </center>
                     </tr>
