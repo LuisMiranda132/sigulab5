@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Actions;
+package Actions.DB;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;

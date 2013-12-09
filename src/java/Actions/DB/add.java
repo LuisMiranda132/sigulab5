@@ -4,28 +4,26 @@
  * and open the template in the editor.
  */
 
-package Actions;
+package Actions.DB;
 
-import Clases.LoginForm;
 import Clases.Empleado;
 import DBMS.DBMS;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author luismiranda
+ * @author michelle
  */
-public class premodificar extends org.apache.struts.action.Action {
+public class add extends org.apache.struts.action.Action {
+
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
-    
+
     /**
      * This is the action called from the Struts framework.
      *
@@ -40,49 +38,17 @@ public class premodificar extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        LoginForm l = (LoginForm) form;
-        Empleado u = new Empleado();
-        u.setUsbid(l.getUsbid());
         
-        HttpSession session = request.getSession(true);
-        session.removeAttribute("lologre");
+        Empleado emp = (Empleado) form; 
         
-        ActionErrors error=null;
+        DBMS db = DBMS.getInstance();
         
-        if(u.getUsbid()==""){
+        boolean agrego = db.agregarEmpleado(emp);
+        
+        if (!agrego) {
             return mapping.findForward(FAILURE);
         }
         
-        error = u.validate(mapping, request);
-        
-        if(error == null){
-            return mapping.findForward(FAILURE);
-        }
-        
-        boolean huboError = false;
-        
-        if (error.size() != 0) {
-            huboError = true;
-        }
-        
-                if (huboError) {
-            saveErrors(request, error);
-            return mapping.findForward(FAILURE);
-            
-        } else {
-
-            Empleado user = DBMS.getInstance().obtenerEmpleado(u);
-            
-            if (user == null) {
-                u.limpiar();
-                return mapping.findForward(FAILURE);
-            }
-            
-            session.setAttribute("Empleado", user);
-            return mapping.findForward(SUCCESS);
-        }
-        
-    }        
-    
+        return mapping.findForward(SUCCESS);
+    }
 }

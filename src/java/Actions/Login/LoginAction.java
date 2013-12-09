@@ -1,4 +1,4 @@
-package Actions;
+package Actions.Login;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -66,7 +66,7 @@ public class LoginAction extends org.apache.struts.action.Action {
 //            errors.add("credenciales", new ActionMessage("error.credenciales"));
             return mapping.findForward(FAILURE);
         }
-        
+                
         if (user.getTipoE().contentEquals("jefe")){
             return mapping.findForward(JEFE);
         }else if(user.getTipoE().contentEquals("tecnico")){

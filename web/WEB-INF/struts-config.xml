@@ -25,53 +25,53 @@
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
 
         <action input="/login.jsp" path="/login" name="LoginForm"
-                scope="session" type="Actions.LoginAction">
+                scope="session" type="Actions.Login.LoginAction">
             <forward name="success" path="/Menu.jsp"/>
             <forward name="failure" path="/login.jsp"/>
             <forward name="jefe" path="/Menu.jsp"/>
             <forward name="tecnico" path="/MenuEmp.jsp"/>
         </action>        
                 
-        <action path="/back" type="Actions.backHome" validate="false">
+        <action path="/back" type="Actions.Navegacion.backHome" validate="false">
             <forward name="success" path="/inicio.jsp"/>
         </action>
         
-        <action path="/logout" name="LoginForm" type="Actions.logout" validate="false">
+        <action path="/logout" name="LoginForm" type="Actions.Navegacion.logout" validate="false">
             <forward name="success" path="/login.jsp"/>
         </action>
         
-        <action path="/agregarL" name="Empleado"  type="Actions.agregarL" validate="false">
+        <action path="/agregarL" name="Empleado"  type="Actions.DB.agregarL" validate="false">
             <forward name="success" path="/agregar.jsp"/>
         </action>
         
-        <action path="/eliminarL"  type="Actions.eliminarL" validate="false">
+        <action path="/eliminarL"  type="Actions.DB.eliminarL" validate="false">
             <forward name="success" path="/eliminar.jsp"/>
         </action>
         
-        <action path="/consultarL"  type="Actions.consultarL" validate="false">
+        <action path="/consultarL"  type="Actions.DB.consultarL" validate="false">
             <forward name="success" path="/consultar.jsp"/>
         </action>
         
-        <action path="/modificarL" name="LoginForm"  type="Actions.premodificar" validate="false">
+        <action path="/modificarL" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
         </action>
         
-        <action path="/premodificar" name="LoginForm"  type="Actions.premodificar" validate="false">
+        <action path="/premodificar" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
             <forward name="failure" path="/premodificar.jsp"/>
         </action>
         
-        <action path="/agregar" name="Empleado" type="Actions.agregar" validate="false">
+        <action path="/agregar" name="Empleado" type="Actions.DB.agregar" validate="false">
             <forward name="success" path="/agregar.jsp"/>
             <forward name="failure" path="/agregar.jsp"/>
         </action>
         
-        <action path="/modificar" name="Empleado" type="Actions.modificar" validate="false">
+        <action path="/modificar" name="Empleado" type="Actions.DB.modificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
             <forward name="failure" path="/modificar.jsp"/>
         </action>
         
-        <action path="/eliminar" name="Usuario" type="Actions.eliminar" validate="false">
+        <action path="/eliminar" name="Usuario" type="Actions.DB.eliminar" validate="false">
             <forward name="success" path="/eliminar.jsp"/>
             <forward name="failure" path="/eliminar.jsp"/>
         </action>
@@ -79,11 +79,6 @@
         <action path="/personal" type="Actions.personal" validate="false">
             <forward name="success" path="/Menu.jsp"/>
         </action>
-
-"
-<!--        <action path="/salir" type="Actions.salir" validate="false">
-            <forward name="success" path="/login.jsp"/>
-        </action>-->
         
     </action-mappings>
     

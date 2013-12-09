@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 
-package Actions;
+package Actions.DB;
 
 import Clases.Usuario;
 import Clases.Empleado;
@@ -23,7 +23,7 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author luismiranda
  */
-public class agregar extends org.apache.struts.action.Action {
+public class modificar extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -44,20 +44,12 @@ public class agregar extends org.apache.struts.action.Action {
             throws Exception {
         
         Empleado u = (Empleado) form;
-                
-        ActionErrors error=null;
         HttpSession session = request.getSession(true);
         
-        error = u.validateVacio(mapping, request);
+        ActionErrors error = null;
+        
+        error = u.validateTodoE(mapping, request);
         boolean huboError = false;
-        
-        if (error.size() != 0) {
-            saveErrors(request, error);
-             session.removeAttribute("lologreA");
-            return mapping.findForward(FAILURE);
-        }
-        
-        error = u.validateCampos(mapping, request);
         
         if (error.size() != 0) {
             huboError = true;
@@ -65,25 +57,17 @@ public class agregar extends org.apache.struts.action.Action {
         
         if (huboError) {
             saveErrors(request, error);
-            session.removeAttribute("lologreA");
+            session.removeAttribute("lologre");
             return mapping.findForward(FAILURE);
             
         } else {
             
-            boolean agrego = DBMS.getInstance().agregarUsuario(u);
+            boolean agrego = DBMS.getInstance().modificarUsuario(u);
             
+
             if (agrego) {
-                agrego = DBMS.getInstance().agregarEmpleado(u);
-                
-                if (agrego){
-                    u.limpiarE();
-                    session.setAttribute("lologreA","conga!");
-                    return mapping.findForward(SUCCESS);
-                
-                } else {
-                    session.removeAttribute("lologreA");
-                    return mapping.findForward(FAILURE);
-                }
+                session.setAttribute("lologre","conga!");
+                return mapping.findForward(SUCCESS);
             } else {
                 session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);

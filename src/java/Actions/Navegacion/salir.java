@@ -4,10 +4,8 @@
  * and open the template in the editor.
  */
 
-package Actions;
+package Actions.Navegacion;
 
-
-import Clases.LoginForm;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import org.apache.struts.action.ActionForm;
@@ -16,9 +14,10 @@ import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author luismiranda
+ * @author michelle
  */
-public class logout extends org.apache.struts.action.Action {
+public class salir extends org.apache.struts.action.Action {
+
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
 
@@ -36,11 +35,6 @@ public class logout extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        
-        LoginForm u = (LoginForm) form;
-        
-        u.setUsbid("");
-        u.setPassword("");
         
         return mapping.findForward(SUCCESS);
     }
