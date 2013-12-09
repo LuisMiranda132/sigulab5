@@ -220,19 +220,20 @@ public class Empleado extends Usuario{
         
         }
         
-        if (!(this.getNombres().equals("Michelle"))) {
-            errors.add("error", new ActionMessage("error.usuario.nombre"));
-        }
-        
-        if(!getErrorAntiguedad().matches("\\d*")){
-            this.setErrorAntiguedad("error");
-            errors.add("error", new ActionMessage("error.empleado.antiguedad"));
-        }
-        
-        if(!this.getCorreo().contentEquals("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$ ")){
+        if(!this.getCorreo().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
             this.setErrorCorreo("error");
             errors.add("error",new ActionMessage("error.empleado.correo"));
             
+        }
+        
+        if(!this.getTelefono_casa().matches("02\\d{9}")){
+            this.setErrorTelefono_casa("error");
+            errors.add("error",new ActionMessage("error.empleado.telefonoFijo"));
+        }
+        
+        if(!this.getTelefono_celular().matches("04\\d{9}")){
+            this.setErrorTelefono_celular("error");
+            errors.add("error",new ActionMessage("error.empleado.telefonoCelular"));
         }
         
         return errors;

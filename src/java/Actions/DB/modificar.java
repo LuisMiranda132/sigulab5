@@ -56,6 +56,7 @@ public class modificar extends org.apache.struts.action.Action {
         }
         
         if (huboError) {
+            
             saveErrors(request, error);
             session.removeAttribute("lologre");
             return mapping.findForward(FAILURE);
