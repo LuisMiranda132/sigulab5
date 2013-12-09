@@ -45,30 +45,33 @@ public class agregar extends org.apache.struts.action.Action {
         
         Empleado u = (Empleado) form;
                 
-        ActionErrors error=null;
+        ActionErrors error = null;
         HttpSession session = request.getSession(true);
         
-        error = u.validateVacio(mapping, request);
-        boolean huboError = false;
+        error = u.validate(mapping, request);
+                
+//        boolean huboError = false;
+        
+        System.out.println(error.size());
         
         if (error.size() != 0) {
-            saveErrors(request, error);
-             session.removeAttribute("lologreA");
-            return mapping.findForward(FAILURE);
-        }
-        
-        error = u.validateCampos(mapping, request);
-        
-        if (error.size() != 0) {
-            huboError = true;
-        }
-        
-        if (huboError) {
             saveErrors(request, error);
             session.removeAttribute("lologreA");
             return mapping.findForward(FAILURE);
-            
         } else {
+        
+//        error = u.validateCampos(mapping, request);
+//        
+//        if (error.size() != 0) {
+//            huboError = true;
+//        }
+//        
+//        if (huboError) {
+//            saveErrors(request, error);
+//            session.removeAttribute("lologreA");
+//            return mapping.findForward(FAILURE);
+//            
+//        } else {
             
             boolean agrego = DBMS.getInstance().agregarUsuario(u);
             

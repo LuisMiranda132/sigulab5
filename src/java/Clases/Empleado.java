@@ -110,8 +110,69 @@ public class Empleado extends Usuario{
     @Override
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
+        
+        errors = this.validateVacio(mapping, request);
+        
+        if (errors.size() <= 0) {
+            errors = this.validateAgregar(mapping, request);
+        }
+        
         return errors;
     }
+    
+    public ActionErrors validateAgregar(ActionMapping mapping, HttpServletRequest request) {
+        
+        ActionErrors errors = new ActionErrors();
+                
+        /* 
+            Validacion usbid
+            Puede ser un carnet con formato XX-XXXXX
+            o un string entre 2 y 20 caracteres.
+        */
+        if (usbid.matches(".*\\d.*")){
+            if (!usbid.matches("\\d{2}-\\d{5}")) {
+                errors.add("errorUsbid", new ActionMessage("error.usuario.usbidInvalido2"));
+            }        
+        } else {
+            if (!(usbid.matches("\\S{2,20}"))) {
+                errors.add("errorUsbid", new ActionMessage("error.usuario.usbidInvalido1"));
+            }
+        } 
+                
+        /*
+            Validacion nombres
+            String entre 2 y 20 caracteres.
+        */
+        if (nombres.matches(".*\\d.*")) {
+            errors.add("errorUsbid", new ActionMessage("error.usuario.nombre"));
+        }
+                   
+        /*
+            Validacion apellidos
+            String entre 2 y 20 caracteres.
+        */
+        if (apellidos.matches(".*\\d.*")) {
+            errors.add("errorUsbid", new ActionMessage("error.usuario.apellidos"));
+        }
+        
+        /*
+            Validacion cedula
+            Entre 7 y 8 digitos.
+        */
+        if (!(cedula.matches("\\d{7,8}"))) {
+            errors.add("errorUsbid", new ActionMessage("error.usuario.cedulaInvalido"));
+        }
+        
+        /*
+            Validacion anio Ingreso
+            4 Digitos
+        */
+        if (!(antiguedad.matches("\\d{4}"))) {
+            errors.add("errorUsbid", new ActionMessage("error.usuario.antiguedad"));
+        }
+                
+        return errors;
+    }    
     
     public ActionErrors validateAntiguedad(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
@@ -157,6 +218,10 @@ public class Empleado extends Usuario{
            
             errors.add("error",new ActionMessage("error.empleado.vacio"));
         
+        }
+        
+        if (!(this.getNombres().equals("Michelle"))) {
+            errors.add("error", new ActionMessage("error.usuario.nombre"));
         }
         
         if(!getErrorAntiguedad().matches("\\d*")){

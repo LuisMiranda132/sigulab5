@@ -54,7 +54,6 @@
                             <html:text name="Empleado" property="usbid"/>
                         </td>
                     </tr>
-                    <tr>
                         <td> Nombres </td>
                         <td>
                             <html:text name="Empleado" property="nombres"/>
@@ -92,7 +91,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Antiguedad </td>
+                        <td> Año de Ingreso </td>
                         <td>
                             <html:text name="Empleado" property="antiguedad"/>
                         </td>

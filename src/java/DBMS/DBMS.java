@@ -59,7 +59,7 @@ public class DBMS {
             psAgregar.setString(1, u.getUsbid());
             psAgregar.setString(2, u.getNombres());
             psAgregar.setString(3, u.getApellidos());
-            psAgregar.setInt(4, u.getCedula());
+            psAgregar.setString(4, u.getCedula());
             psAgregar.setString(5, "");
             psAgregar.setString(6, "");
             psAgregar.setString(7, "");
@@ -87,7 +87,7 @@ public class DBMS {
             
             psAgregar.setString(1, u.getNombres());
             psAgregar.setString(2, u.getApellidos());
-            psAgregar.setInt(3, u.getCedula());
+            psAgregar.setString(3, u.getCedula());
             psAgregar.setString(4, u.getCorreo());
             psAgregar.setString(5, u.getDireccion());
             psAgregar.setString(6, u.getTelefono_casa());
@@ -139,7 +139,7 @@ public class DBMS {
                 u.setUsbid(rs.getString("usbid"));
                 u.setNombres(rs.getString("nombres"));
                 u.setApellidos(rs.getString("apellidos"));
-                u.setCedula(rs.getInt("cedula"));
+                u.setCedula(rs.getString("cedula"));
                 u.setCorreo(rs.getString("correo"));
                 u.setDireccion(rs.getString("direccion"));
                 u.setTelefono_casa(rs.getString("telefono_casa"));
@@ -171,7 +171,7 @@ public class DBMS {
                 e.setUsbid(rs.getString("usbid"));
                 e.setNombres(rs.getString("nombres"));
                 e.setApellidos(rs.getString("apellidos"));
-                e.setCedula(rs.getInt("cedula"));
+                e.setCedula(rs.getString("cedula"));
                 e.setCorreo(rs.getString("correo"));
                 e.setDireccion(rs.getString("direccion"));
                 e.setTelefono_casa(rs.getString("telefono_casa"));
@@ -203,7 +203,7 @@ public class DBMS {
                 u.setUsbid(rs.getString("usbid"));
                 u.setNombres(rs.getString("nombres"));
                 u.setApellidos(rs.getString("apellidos"));
-                u.setCedula(rs.getInt("cedula"));
+                u.setCedula(rs.getString("cedula"));
                 u.setCorreo(rs.getString("correo"));
                 u.setDireccion(rs.getString("direccion"));
                 u.setTelefono_casa(rs.getString("telefono_casa"));
@@ -277,7 +277,7 @@ public class DBMS {
             emp.setUsbid(usbid);
             emp.setNombres(rs.getString("nombres"));
             emp.setApellidos(rs.getString("apellidos"));
-            emp.setCedula(rs.getInt("cedula"));
+            emp.setCedula(rs.getString("cedula"));
             emp.setCorreo(rs.getString("correo"));
             emp.setDireccion(rs.getString("direccion"));
             emp.setTelefono_casa(rs.getString("telefono_casa"));
