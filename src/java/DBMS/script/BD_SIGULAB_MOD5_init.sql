@@ -25,14 +25,14 @@ CREATE TABLE EMPLEADO (
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade
 
 
-CREATE TABLE SERVICIO (
+--CREATE TABLE SERVICIO (
 
-        id              varcar(15)      PRIMARY KEY;
-        tipo            varchar(50)     NOT NULL;
-        nombre          varchar(50)     NOT NULL;
-        disponibilidad  varchar(50)     NOT NULL;
+  --      id              varcar(15)      PRIMARY KEY;
+    --    tipo            varchar(50)     NOT NULL;
+      --  nombre          varchar(50)     NOT NULL;
+       -- disponibilidad  varchar(50)     NOT NULL;
  
-);
+--);
 
 
 -- CREATE TABLE ESTUDIANTE (
