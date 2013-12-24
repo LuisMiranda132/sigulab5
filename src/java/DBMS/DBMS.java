@@ -6,6 +6,7 @@
 
 package DBMS;
 
+import Clases.Laboratorio;
 import Clases.Usuario;
 import Clases.Empleado;
 import Clases.LoginForm;
@@ -294,7 +295,107 @@ public class DBMS {
         return emp;
         
     }
+
+    public boolean agregarLaboratorio(Laboratorio l) {
+        
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?);");
+            
+            psAgregar.setString(1, l.getCodigo());
+            psAgregar.setString(2, l.getNombre());
+            psAgregar.setString(3, l.getSede());
+            psAgregar.setString(4, l.getUbicacion());
+            psAgregar.setString(5, l.getCorreo());
+            psAgregar.setString(6, l.getPagweb());
+            psAgregar.setString(7, l.getJefe());
+                    
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+
+    }
+
+    public boolean modificarLaboratorio(Laboratorio l){
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE laboratorio SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , jefe=? where codigo=?;"
+                            + "nombres=? , apellidos=? , cedula=? , correo=? , direccion=? , telefono_casa=? , telefono_celular=? , tipo=? WHERE usbid=?;"
+            );
+            
+            psAgregar.setString(1, l.getNombre());
+            psAgregar.setString(2, l.getSede());
+            psAgregar.setString(3, l.getUbicacion());
+            psAgregar.setString(4, l.getCorreo());
+            psAgregar.setString(5, l.getPagweb());
+            psAgregar.setString(6, l.getJefe());
+            psAgregar.setString(7, l.getCodigo());
+
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+        
+    }
     
+    public boolean eliminarLaboratorio(Laboratorio l){
+        
+        PreparedStatement psEliminar = null;
+        try {
+
+            psEliminar = conexion.prepareStatement(
+                    "DELETE FROM laboratorio WHERE codigo=(?);");
+            
+            psEliminar.setString(1, l.getCodigo());
+
+            Integer i = psEliminar.executeUpdate();
+
+            return i > 0;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+    
+    public ArrayList<Laboratorio> listarLaboratorio(){
+        
+        ArrayList<Laboratorio> Laboratorios = new ArrayList<Laboratorio>();
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM laboratorio;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Laboratorio l = new Laboratorio();
+
+                l.setCodigo(rs.getString("codigo"));
+                l.setNombre(rs.getString("nombre"));
+                l.setSede(rs.getString("sede"));
+                l.setUbicacion(rs.getString("ubicacion"));
+                l.setCorreo(rs.getString("correo"));
+                l.setPagweb(rs.getString("pagweb"));
+                l.setJefe(rs.getString("jefe"));
+                
+                Laboratorios.add(l);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Laboratorios;
+    }
     // Main para pruebas sobre la base de datos.
     public static void main(String args[]) {
         
