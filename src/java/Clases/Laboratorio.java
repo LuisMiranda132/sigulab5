@@ -6,10 +6,15 @@
 
 package Clases;
 
+import java.util.ArrayList;
+import Clases.Empleado;
+import java.util.Collection;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.util.LabelValueBean;
 
 /**
  *
@@ -25,6 +30,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     private String correo;
     private String pagweb;
     private String jefe;
+    private List jefes = new ArrayList();
     
     /**
      *
@@ -43,7 +49,13 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
      *
      */
     public void limpiarE(){
-
+        this.codigo="";
+        this.nombre="";
+        this.sede="";
+        this.ubicacion="";
+        this.correo="";
+        this.pagweb="";
+        this.jefe="";
     }
     
     /**
@@ -66,8 +78,19 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     public ActionErrors validateTodo(ActionMapping mapping, HttpServletRequest request) {
         ActionErrors errors = new ActionErrors();
         
-        if(!this.getCorreo().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
-            errors.add("error",new ActionMessage("error.laboratorio.correo"));
+        if(this.getCodigo().contentEquals("")||
+                this.getCorreo().contentEquals("")||
+                this.getJefe().contentEquals("")||
+                this.getNombre().contentEquals("")||
+                this.getPagweb().contentEquals("")||
+                this.getSede().contentEquals("")||
+                this.getUbicacion().contentEquals("")){
+            errors.add("error",new ActionMessage("error.laboratorio.vacio"));
+        }
+        else{
+            if(!this.getCorreo().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
+                errors.add("error",new ActionMessage("error.laboratorio.correo"));
+            }
         }
 
         /*
@@ -175,6 +198,25 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
      */
     public void setJefe(String jefe) {
         this.jefe = jefe;
+    }
+
+    /**
+     * @return the jefes
+     */
+    public Collection getJefes() {
+        return jefes;
+    }
+
+    /**
+     * @param jefes the jefes to set
+     */
+    public void setJefes(List<Empleado> jefes) {
+        this.jefes=new ArrayList();
+        for (Empleado e:jefes){
+            this.jefes.add(
+                    new LabelValueBean(e.getNombres()+' '+e.getApellidos(),e.getUsbid())
+            );
+        }
     }
     
 }

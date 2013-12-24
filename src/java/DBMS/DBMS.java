@@ -436,5 +436,40 @@ public class DBMS {
 //        }
 
     }   
+    
+    public ArrayList<Empleado> listarEmpleadosJefe(){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.tipo_empleado='jefe';");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado u = new Empleado();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCedula(rs.getString("cedula"));
+                u.setCorreo(rs.getString("correo"));
+                u.setDireccion(rs.getString("direccion"));
+                u.setTelefono_casa(rs.getString("telefono_casa"));
+                u.setTelefono_celular(rs.getString("telefono_celular"));
+                u.setTipo(rs.getString("tipo"));
+                u.setAntiguedad(rs.getString("antiguedad"));
+                u.setCargo(rs.getString("cargo"));
+                u.setTipoE(rs.getString("tipo_empleado")); 
+                
+                Empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
+    
 
+    
 }
