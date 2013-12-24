@@ -7,7 +7,7 @@ CREATE TABLE USUARIO (
     usbid            varchar(15)     PRIMARY KEY,
     nombres          varchar(20)     NOT NULL,
     apellidos        varchar(20)     NOT NULL,
-    cedula           integer         NOT NULL,
+    cedula           varchar(8)         NOT NULL,
     correo           varchar(30)     NOT NULL,
     direccion        varchar(50)     NOT NULL,
     telefono_casa    varchar(12)     NOT NULL,
@@ -38,14 +38,15 @@ CREATE TABLE laboratorio
   CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe)
       REFERENCES usuario (usbid) MATCH SIMPLE
       ON UPDATE NO ACTION ON DELETE NO ACTION
+
 );
 
 --CREATE TABLE SERVICIO (
 
-  --      id              varcar(15)      PRIMARY KEY;
-    --    tipo            varchar(50)     NOT NULL;
-      --  nombre          varchar(50)     NOT NULL;
-       -- disponibilidad  varchar(50)     NOT NULL;
+--        id              varchar(15)      PRIMARY KEY;
+--        tipo            varchar(50)     NOT NULL;
+--        nombre          varchar(50)     NOT NULL;
+--        disponibilidad  varchar(50)     NOT NULL
  
 --);
 

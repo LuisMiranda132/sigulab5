@@ -113,6 +113,48 @@ public class Empleado extends Usuario{
         return errors;
     }
     
+    public ActionErrors validateAgregar(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        errors = this.validateVacio(mapping, request);
+        
+        if (errors.size() <= 0) {
+            errors = this.validateCamposAgregar(mapping, request);
+        }
+        
+        return errors;
+    }
+    
+    public ActionErrors validateCamposAgregar(ActionMapping mapping, HttpServletRequest request) {
+        
+        ActionErrors errors = new ActionErrors();
+                
+        /* 
+            Validacion usbid
+            Puede ser un carnet con formato XX-XXXXX
+            o un string entre 2 y 20 caracteres.
+        */
+        if (usbid.matches(".*\\d.*")){
+            if (!usbid.matches("\\d{2}-\\d{5}")) {
+                errors.add("errorUsbid", new ActionMessage("error.usuario.usbidInvalido2"));
+            }        
+        } else {
+            if (!(usbid.matches("\\S{2,20}"))) {
+                errors.add("errorUsbid", new ActionMessage("error.usuario.usbidInvalido1"));
+            }
+        } 
+                        
+        /*
+            Validacion anio Ingreso
+            4 Digitos
+        */
+        if (!(antiguedad.matches("\\d{4}"))) {
+            errors.add("errorUsbid", new ActionMessage("error.usuario.antiguedad"));
+        }
+                
+        return errors;
+    }    
+    
     public ActionErrors validateAntiguedad(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         
@@ -158,8 +200,6 @@ public class Empleado extends Usuario{
             errors.add("error",new ActionMessage("error.empleado.vacio"));
         
         }
-        
-        
         
         if(!this.getCorreo().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
             this.setErrorCorreo("error");

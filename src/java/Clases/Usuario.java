@@ -21,7 +21,7 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     protected String usbid;
     protected String nombres;
     protected String apellidos;
-    protected int cedula;
+    protected String cedula;
     protected String correo;
     protected String direccion;
     protected String telefono_casa;
@@ -86,14 +86,14 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     /**
      * @return the cedula
      */
-    public int getCedula() {
+    public String getCedula() {
         return cedula;
     }
 
     /**
      * @param cedula the cedula to set
      */
-    public void setCedula(int cedula) {
+    public void setCedula(String cedula) {
         this.cedula = cedula;
     }
 
@@ -227,7 +227,7 @@ public class Usuario extends org.apache.struts.action.ActionForm {
         this.usbid = null;
         this.nombres = null;
         this.apellidos = null;
-        this.cedula = 0;
+        this.cedula = null;
         this.correo = null;
         this.direccion = null;
         this.telefono_casa = null;
@@ -247,7 +247,7 @@ public class Usuario extends org.apache.struts.action.ActionForm {
         ActionErrors errors = new ActionErrors();
         return errors;
     }
-    
+        
     public ActionErrors validateVacio(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         

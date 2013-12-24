@@ -1,4 +1,13 @@
 /*
+=======
+--******************************************************************************
+--********************************* INSERT *************************************
+--******************************************************************************
+
+INSERT INTO USUARIO VALUES ('09-10279', 'Michelle', 'Fernandez', '19505244', 'micafe.go@gmail.com', 'La Castellana', '02122639194', '04120247075', 'Empleado');
+INSERT INTO EMPLEADO VALUES ('Jefe', '2000', 'jefe', '09-10279');
+
+
 insert into usuario values ('pperez','Pedro','Perez',235456,'ppedro@usb.ve','Caracas','02123244422','04142334565','empleado');
 insert into usuario values ('robertor','Roberto','Rodriguez',543643,'roberto@gmail.com','Valencia','02544344565','04142355467 ','empleado');
 insert into usuario values ('mmartinez','Marta','Martinez',357195,'marta@hotmal.com','Caracas','0212434453','041278655690','empleado');

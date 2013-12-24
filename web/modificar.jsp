@@ -109,7 +109,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Antiguedad </td>
+                        <td> Año de Ingreso </td>
                         <td>
                             <bean:write name="Empleado" property="antiguedad"/>
                         </td>

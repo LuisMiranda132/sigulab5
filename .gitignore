@@ -10,3 +10,4 @@ nbproject/
 # Package Files #
 *.jar
 *.ear
+/sigulab5/build/
