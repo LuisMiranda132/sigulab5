@@ -252,10 +252,6 @@ public class Usuario extends org.apache.struts.action.ActionForm {
         ActionErrors errors = new ActionErrors();
         
         if(this.getTipo().contentEquals("")
-                ||this.getUsbid()==null
-                ||this.getApellidos().contentEquals("")
-                ||this.getCedula()==0
-                ||this.getNombres().contentEquals("")
                 ||this.getUsbid().contentEquals("")){
             errors.add("error", new ActionMessage("error.usuario.vacio"));
         }

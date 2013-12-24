@@ -55,24 +55,6 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Nombres </td>
-                        <td>
-                            <html:text name="Empleado" property="nombres"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Apellidos </td>
-                        <td>
-                            <html:text name="Empleado" property="apellidos"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Cedula </td>
-                        <td>
-                            <html:text name="Empleado" property="cedula"/>
-                        </td>
-                    </tr>
-                    <tr>
                         <td> Tipo Usuario</td>
                         <td>
                             <html:select name="Empleado" property="tipo">
@@ -92,7 +74,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Antiguedad </td>
+                        <td> Año de Ingreso </td>
                         <td>
                             <html:text name="Empleado" property="antiguedad"/>
                         </td>

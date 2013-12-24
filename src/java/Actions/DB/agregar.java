@@ -70,7 +70,7 @@ public class agregar extends org.apache.struts.action.Action {
             
         } else {
             
-            boolean agrego = DBMS.getInstance().agregarUsuario(u);
+            boolean agrego = DBMS.getInstance().obtenerUsuario(u) != null;
             
             if (agrego) {
                 agrego = DBMS.getInstance().agregarEmpleado(u);
