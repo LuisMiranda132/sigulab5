@@ -62,6 +62,7 @@ public class LoginAction extends org.apache.struts.action.Action {
         Empleado user = db.obtenerEmpleado(dummy);
                 
         if (user == null) {
+            System.out.println("No USER");
             bean.reset();
 //            errors.add("credenciales", new ActionMessage("error.credenciales"));
             return mapping.findForward(FAILURE);

@@ -41,7 +41,7 @@ public class DBMS {
             Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sigulab",
                     "postgres",
-                    "qwerty");
+                    "12345");
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
@@ -166,7 +166,12 @@ public class DBMS {
             ps.setString(1, e.getUsbid());
             ResultSet rs = ps.executeQuery();
             
-            while (rs.next()){
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {
                                
                 e.setUsbid(rs.getString("usbid"));
                 e.setNombres(rs.getString("nombres"));
@@ -182,10 +187,12 @@ public class DBMS {
                 e.setTipoE(rs.getString("tipo_empleado")); 
                 
             }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
+            return null;
         }
-        
+                
         return e;
     }
     

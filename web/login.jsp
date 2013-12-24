@@ -78,17 +78,28 @@
                 <tbody>
                     <tr align="center" style="color:red">
                         <center style="color:red">
-                            <html:errors/>    
+                            <html:errors/>
                         </center>
-                    </tr>
+                    </tr>                    
                     <tr>
                         <td align="right">USBID</td>
                         <td><html:text property="usbid" /></td>
                     </tr>
+                    <!--<tr align="right" style="color:red">-->
+                        <!--<center style="color:red">-->
+                            <%--<html:errors property="usbid"/>--%> 
+                        <!--</center>-->
+                    <!--</tr>-->
                     <tr>
                         <td align="right">Password</td>
                         <td><html:password property="password" /></td>
+
                     </tr>
+                    <!--<tr align="right" style="color:red">-->
+                        <!--<center style="color:red">-->
+                            <%--<html:errors property="password"/>--%>
+                        <!--</center>-->
+                    <!--</tr>-->
                     <tr>
                         <td></td>
                         <td><html:submit value="Entrar" /></td>
