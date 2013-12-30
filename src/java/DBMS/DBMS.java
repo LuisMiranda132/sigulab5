@@ -42,7 +42,7 @@ public class DBMS {
             Class.forName("org.postgresql.Driver");
             conexion = DriverManager.getConnection("jdbc:postgresql://localhost:5432/sigulab",
                     "postgres",
-                    "12345");
+                    "qwerty");
             return true;
         } catch (Exception e) {
             System.out.println(e.getMessage());
