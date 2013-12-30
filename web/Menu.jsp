@@ -108,7 +108,11 @@
                                 <p>Consultar </p>
                             </html:link>
                         </li>
-                        
+                         <li >
+                            <html:link action="agregarLaboratorioL" target="centro" >
+                                <p>Agregar Laboratorio </p>
+                            </html:link>
+                        </li>
                     </ul>
                 </div>
                 <!-- Parte de la Derecha -->

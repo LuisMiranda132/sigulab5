@@ -1,8 +1,9 @@
 <%-- 
-    Document   : inicio
-    Created on : Nov 25, 2013, 1:35:17 AM
+    Document   : agregarLaboratorio
+    Created on : Dec 23, 2013, 11:27:44 PM
     Author     : luismiranda
 --%>
+
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
@@ -11,7 +12,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
+        <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css" media="all">
             @import "CSS/system.base.css";
@@ -33,10 +34,10 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
-        <title>Catalogo</title>
-    </head>
+        <title>Agregar Laboratorio</title>
     <body>
-        <h1>Agregar</h1>
+    <body>
+        <h1>Agregar Laboratorio</h1>
     <center style="color:red;background-color:lightcoral" align="center">
         <html:errors/>    
     </center>
@@ -45,55 +46,59 @@
             Se agrego exitosamente    
         </center>
             </logic:present>
-        <html:form action="agregar" >
+        <html:form action="agregarLaboratorio" >
             <table border="0">
                 <tbody>
                     <tr>
-                        <td> UsbId </td>
+                        <td> Codigo </td>
                         <td>
-                            <html:text name="Empleado" property="usbid"/>
+                            <html:text name="Laboratorio" property="codigo"/>
                         </td>
                     </tr>
                     <tr>
-                        <td> Tipo Usuario</td>
+                        <td> Nombre </td>
                         <td>
-                            <html:select name="Empleado" property="tipo">
-                                <html:option value=""></html:option>
-                                <%--
-                                <html:option value="estudiante">Estudiante</html:option>
-                                <html:option value="profesor">Profesor</html:option>
-                                --%>
-                                <html:option value="empleado">Empleado</html:option>
+                            <html:text name="Laboratorio" property="nombre"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Sede </td>
+                        <td>
+                            <html:select name="Laboratorio" property="sede">
+                                <html:option value="sartenejas">Sartenejas</html:option>
+                                <html:option value="litoral">Litoral</html:option>
                             </html:select>
                         </td>
-                    </tr>   
+                    </tr>
                     <tr>
-                        <td> Cargo </td>
+                        <td> Ubicacion </td>
                         <td>
-                            <html:text name="Empleado" property="cargo"/>
+                            <html:text name="Laboratorio" property="ubicacion"/>
                         </td>
                     </tr>
                     <tr>
-                        <td> Año de Ingreso </td>
+                        <td> Correo </td>
                         <td>
-                            <html:text name="Empleado" property="antiguedad"/>
+                            <html:text name="Laboratorio" property="correo"/>
                         </td>
                     </tr>
                     <tr>
-                        <td> Tipo Empleado</td>
+                        <td> Pagina Web </td>
                         <td>
-                            <html:select name="Empleado" property="tipoE">
-                                <html:option value=""></html:option>
-                                <html:option value="personal admin">Personal Admin</html:option>
-                                <html:option value="tecnico">Tecnico</html:option>
-                                <html:option value="jefe">Jefe</html:option>
-                            </html:select>
+                            <html:text name="Laboratorio" property="pagweb"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Jefe </td>
+                        <td>
+                             <html:select name="Laboratorio" property="jefe" >
+                                 <html:optionsCollection name="Laboratorio" property="jefes" />
+                             </html:select>
                         </td>
                     </tr>
                 </tbody>
             </table>
             <p>
-
                 <html:submit value="agregar"/>
                 <html:reset value="limpiar"/>
             </p>
@@ -104,5 +109,6 @@
                 Volver
             </h2>
         </html:link>
+
     </body>
 </html>

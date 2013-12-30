@@ -6,8 +6,7 @@
 
 package Actions.DB;
 
-import Clases.Usuario;
-import Clases.Empleado;
+import Clases.Laboratorio;
 import DBMS.DBMS;
 
 import javax.servlet.http.HttpServletRequest;
@@ -23,7 +22,7 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author luismiranda
  */
-public class agregar extends org.apache.struts.action.Action {
+public class agregarLaboratorio extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -43,12 +42,12 @@ public class agregar extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        Empleado u = (Empleado) form;
+        Laboratorio u = (Laboratorio) form;
                 
         ActionErrors error = null;
         HttpSession session = request.getSession(true);
         
-        error = u.validateAgregar(mapping, request);
+        error = u.validateTodo(mapping, request);
                 
 //        boolean huboError = false;
         
@@ -59,38 +58,19 @@ public class agregar extends org.apache.struts.action.Action {
             session.removeAttribute("lologreA");
             return mapping.findForward(FAILURE);
         } else {
-        
-//        error = u.validateCampos(mapping, request);
-//        
-//        if (error.size() != 0) {
-//            huboError = true;
-//        }
-//        
-//        if (huboError) {
-//            saveErrors(request, error);
-//            session.removeAttribute("lologreA");
-//            return mapping.findForward(FAILURE);
-//            
-//        } else {
-            
-            boolean agrego = DBMS.getInstance().obtenerUsuario(u) != null;
-            
-            if (agrego) {
-                agrego = DBMS.getInstance().agregarEmpleado(u);
+                        
+            boolean agrego = DBMS.getInstance().agregarLaboratorio(u);
                 
-                if (agrego){
-                    u.limpiarE();
-                    session.setAttribute("lologreA","conga!");
-                    return mapping.findForward(SUCCESS);
+            if (agrego){
+                u.limpiarE();
+                session.setAttribute("lologreA","conga!");
+                return mapping.findForward(SUCCESS);
                 
-                } else {
-                    session.removeAttribute("lologreA");
-                    return mapping.findForward(FAILURE);
-                }
             } else {
-                session.removeAttribute("lologre");
+                session.removeAttribute("lologreA");
                 return mapping.findForward(FAILURE);
             }
+                
         }
         
 //        Recuerden que esto es una plantilla trabajada con condicionales

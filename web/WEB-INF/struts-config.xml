@@ -10,6 +10,7 @@
         <form-bean name="LoginForm" type="Clases.LoginForm"/>
         <form-bean name="Usuario" type="Clases.Usuario"/>
         <form-bean name="Empleado" type="Clases.Empleado"/>
+        <form-bean name="Laboratorio" type="Clases.Laboratorio"/>
     
     </form-beans>
     
@@ -52,6 +53,10 @@
             <forward name="success" path="/consultar.jsp"/>
         </action>
         
+        <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
+            <forward name="success" path="/agregarLaboratorio.jsp"/>
+        </action>
+        
         <action path="/modificarL" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
         </action>
@@ -64,6 +69,11 @@
         <action path="/agregar" name="Empleado" type="Actions.DB.agregar" validate="false">
             <forward name="success" path="/agregar.jsp"/>
             <forward name="failure" path="/agregar.jsp"/>
+        </action>
+        
+        <action path="/agregarLaboratorio" name="Laboratorio" type="Actions.DB.agregarLaboratorio" validate="false">
+            <forward name="success" path="/agregarLaboratorio.jsp"/>
+            <forward name="failure" path="/agregarLaboratorio.jsp"/>
         </action>
         
         <action path="/modificar" name="Empleado" type="Actions.DB.modificar" validate="false">
