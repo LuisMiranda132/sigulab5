@@ -1,3 +1,5 @@
+/*
+=======
 --******************************************************************************
 --********************************* INSERT *************************************
 --******************************************************************************
@@ -53,3 +55,27 @@ INSERT INTO LABORATORIO VALUES ('LAB-G','Laboratorios de la Sede del Litoral','L
 
 
 
+<<<<<<< HEAD
+=======
+
+insert into usuario values ('pperez','Pedro','Perez',235456,'ppedro@usb.ve','Caracas','02123244422','04142334565','empleado');
+insert into usuario values ('robertor','Roberto','Rodriguez',543643,'roberto@gmail.com','Valencia','02544344565','04142355467 ','empleado');
+insert into usuario values ('mmartinez','Marta','Martinez',357195,'marta@hotmal.com','Caracas','0212434453','041278655690','empleado');
+insert into usuario values ('jjimenez','Jesus','Jimenez',902334,'jj214@hotmail.com','Caracar','02123223555','04142348797','empleado');
+insert into usuario values ('luisl','Luis','Lopez',913285,'luisl@usb.ve','Caracas','0212533546','04142348888','empleado');
+*/
+
+insert into usuario values ('pperez','Pedro','Perez',235456,'','','','','');
+insert into usuario values ('robertor','Roberto','Rodriguez',543643,'','','','','');
+insert into usuario values ('mmartinez','Marta','Martinez',357195,'','','','','');
+insert into usuario values ('jjimenez','Jesus','Jimenez',902334,'','','','','');
+insert into usuario values ('luisl','Luis','Lopez',913285,'','','','','');
+
+/*
+insert into empleado values('Tecnico en Materiales','2005','tecnico','pperez');
+insert into empleado values('Tecnico en Quimicos Explosivos','2010','tecnico','robertor');
+insert into empleado values('Jefe Laboratorio A','2009','jefe','mmartinez');
+insert into empleado values('Jefe Laboratorio Z','2002','jefe','jjimenez');
+insert into empleado values('Asistente','2005','personal admin','luisl');
+*/
+>>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452

@@ -61,6 +61,10 @@
             <forward name="success" path="/agregarLaboratorio.jsp"/>
         </action>
         
+        <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
+            <forward name="success" path="/agregarLaboratorio.jsp"/>
+        </action>
+        
         <action path="/modificarL" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
         </action>

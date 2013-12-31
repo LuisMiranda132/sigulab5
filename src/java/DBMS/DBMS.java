@@ -382,15 +382,27 @@ public class DBMS {
         PreparedStatement ps = null;
         try{
             ps = conexion.prepareStatement(
+<<<<<<< HEAD
                     "SELECT codigo, nombre, correo, pagweb FROM laboratorio;");
+=======
+                    "SELECT * FROM laboratorio;");
+>>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Laboratorio l = new Laboratorio();
 
                 l.setCodigo(rs.getString("codigo"));
                 l.setNombre(rs.getString("nombre"));
+<<<<<<< HEAD
                 l.setCorreo(rs.getString("correo"));
                 l.setPagweb(rs.getString("pagweb"));
+=======
+                l.setSede(rs.getString("sede"));
+                l.setUbicacion(rs.getString("ubicacion"));
+                l.setCorreo(rs.getString("correo"));
+                l.setPagweb(rs.getString("pagweb"));
+                l.setJefe(rs.getString("jefe"));
+>>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
                 
                 Laboratorios.add(l);
             }
