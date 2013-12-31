@@ -4,12 +4,15 @@
  * and open the template in the editor.
  */
 
-package Actions.Navegacion;
+package Actions.DB;
 
-
-import Clases.LoginForm;
+import Clases.Empleado;
+import Clases.Laboratorio;
+import DBMS.DBMS;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -18,7 +21,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class logout extends org.apache.struts.action.Action {
+public class agregarLaboratorioL extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
 
@@ -36,12 +39,17 @@ public class logout extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+
+        HttpSession session = request.getSession(true);
+        session.removeAttribute("lologreA");
         
-        LoginForm u = (LoginForm) form;
-        
-        u.setUsbid("");
-        u.setPassword("");
+        Laboratorio l = (Laboratorio) form;
+        l.limpiarE();
+        l.setJefes(DBMS.getInstance().listarEmpleadosJefe());
         
         return mapping.findForward(SUCCESS);
+        
     }
+        
+    
 }

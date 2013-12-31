@@ -32,6 +32,18 @@
         <style type="text/css" media="print">
             @import "CSS/print.css";
         </style>
+        
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        
+        <script>
+            $(function() {
+                $("#accordion").accordion({
+                    collapsible: true
+                });
+            });
+        </script>
+        
         <title>SIGULAB - Modulo de Gestion Administrativa</title>
     </head>
     <body class="html front not-logged-in two-sidebars page-node">
@@ -74,18 +86,9 @@
 
                 <!-- PANEL IZQUIERDO -->
                 <div id="sidebar-first" class="sidebar grid-3 pull-10">
-                    <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
-                    <script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-                    <script>
-                        $(function() {
-                            $("#accordion").accordion({
-                                collapsible: true
-                            });
-                        });
-                    </script>
                     <!-- MENU ACORDEON -->
                     <div id="accordion">
-                        <h5> Gestionar Catalogo de Personal</h5>
+                        <h5 style="cursor: pointer;"> Gestionar Catalogo de Personal</h5>
                         <div>
                             <ul class="menu">
                                 <li class="first leaf">
@@ -110,7 +113,7 @@
                                 </li>
                             </ul></br>
                         </div>
-                        <h5>Gestionar Laboratorios</h5>
+                        <h5 style="cursor: pointer;">Gestionar Laboratorios</h5>
                         <div>
                             <ul class="menu">
                                 <li class="first leaf">
@@ -119,7 +122,7 @@
                                     </html:link>
                                 </li>
                                 <li class="leaf">
-                                    <html:link action="" target="centro">
+                                    <html:link action="consultarLaboratorioL" target="centro">
                                         <p>Consultar Laboratorio</p>
                                     </html:link>
                                 </li>

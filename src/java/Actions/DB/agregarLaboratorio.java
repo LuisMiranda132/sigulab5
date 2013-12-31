@@ -6,9 +6,9 @@
 
 package Actions.DB;
 
-import Clases.LoginForm;
-import Clases.Empleado;
+import Clases.Laboratorio;
 import DBMS.DBMS;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -16,13 +16,14 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 /**
  *
  * @author luismiranda
  */
-public class premodificar extends org.apache.struts.action.Action {
-    /* forward name="success" path="" */
+public class agregarLaboratorio extends org.apache.struts.action.Action {
+    
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
     
@@ -40,49 +41,42 @@ public class premodificar extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        LoginForm l = (LoginForm) form;
-        Empleado u = new Empleado();
-        u.setUsbid(l.getUsbid());
         
-        HttpSession session = request.getSession(true);
-        session.removeAttribute("lologre");
-        
-        ActionErrors error=null;
+        Laboratorio u = (Laboratorio) form;
                 
-        if(u.getUsbid()==""){
-            return mapping.findForward(FAILURE);
-        }
+        ActionErrors error = null;
+        HttpSession session = request.getSession(true);
         
-        error = u.validate(mapping, request);
+        error = u.validateTodo(mapping, request);
+                
+//        boolean huboError = false;
         
-        if(error == null){
-            return mapping.findForward(FAILURE);
-        }
-        
-        boolean huboError = false;
+        System.out.println(error.size());
         
         if (error.size() != 0) {
-            huboError = true;
-        }
-        
-                if (huboError) {
             saveErrors(request, error);
+            session.removeAttribute("lologreA");
             return mapping.findForward(FAILURE);
-            
         } else {
-
-            Empleado user = DBMS.getInstance().obtenerEmpleado(u);
-            
-            if (user == null) {
-                u.limpiar();
+                        
+            boolean agrego = DBMS.getInstance().agregarLaboratorio(u);
+                
+            if (agrego){
+                u.limpiarE();
+                session.setAttribute("lologreA","conga!");
+                return mapping.findForward(SUCCESS);
+                
+            } else {
+                session.removeAttribute("lologreA");
                 return mapping.findForward(FAILURE);
             }
-            
-            session.setAttribute("Empleado", user);
-            return mapping.findForward(SUCCESS);
+                
         }
         
-    }        
+//        Recuerden que esto es una plantilla trabajada con condicionales
+//        dentro de su sistema ustedes deben modelar tal cual si fuera un programa
+//        comun y corriente, es decir, pueden usar IF, ELSE, WHILE, entre otras
+//        herramientas que provea java para realizar su flujo en el sistema.
+    }
     
 }

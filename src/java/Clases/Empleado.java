@@ -143,31 +143,7 @@ public class Empleado extends Usuario{
                 errors.add("errorUsbid", new ActionMessage("error.usuario.usbidInvalido1"));
             }
         } 
-                
-        /*
-            Validacion nombres
-            String entre 2 y 20 caracteres.
-        */
-        if (nombres.matches(".*\\d.*")) {
-            errors.add("errorUsbid", new ActionMessage("error.usuario.nombre"));
-        }
-                   
-        /*
-            Validacion apellidos
-            String entre 2 y 20 caracteres.
-        */
-        if (apellidos.matches(".*\\d.*")) {
-            errors.add("errorUsbid", new ActionMessage("error.usuario.apellidos"));
-        }
-        
-        /*
-            Validacion cedula
-            Entre 7 y 8 digitos.
-        */
-        if (!(cedula.matches("\\d{7,8}"))) {
-            errors.add("errorUsbid", new ActionMessage("error.usuario.cedulaInvalido"));
-        }
-        
+                        
         /*
             Validacion anio Ingreso
             4 Digitos
