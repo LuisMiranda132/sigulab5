@@ -132,7 +132,7 @@ public class DBMS {
         PreparedStatement ps = null;
         try{
             ps = conexion.prepareStatement(
-                    "SELECT * FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID;");
+                    "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID;");
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Empleado u = new Empleado();
@@ -140,15 +140,8 @@ public class DBMS {
                 u.setUsbid(rs.getString("usbid"));
                 u.setNombres(rs.getString("nombres"));
                 u.setApellidos(rs.getString("apellidos"));
-                u.setCedula(rs.getString("cedula"));
                 u.setCorreo(rs.getString("correo"));
-                u.setDireccion(rs.getString("direccion"));
-                u.setTelefono_casa(rs.getString("telefono_casa"));
-                u.setTelefono_celular(rs.getString("telefono_celular"));
-                u.setTipo(rs.getString("tipo"));
-                u.setAntiguedad(rs.getString("antiguedad"));
                 u.setCargo(rs.getString("cargo"));
-                u.setTipoE(rs.getString("tipo_empleado")); 
                 
                 Empleados.add(u);
             }
@@ -381,28 +374,16 @@ public class DBMS {
         ArrayList<Laboratorio> Laboratorios = new ArrayList<Laboratorio>();
         PreparedStatement ps = null;
         try{
-            ps = conexion.prepareStatement(
-<<<<<<< HEAD
-                    "SELECT codigo, nombre, correo, pagweb FROM laboratorio;");
-=======
-                    "SELECT * FROM laboratorio;");
->>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
+            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio;");
             ResultSet rs = ps.executeQuery();
+
             while (rs.next()){
                 Laboratorio l = new Laboratorio();
 
                 l.setCodigo(rs.getString("codigo"));
                 l.setNombre(rs.getString("nombre"));
-<<<<<<< HEAD
                 l.setCorreo(rs.getString("correo"));
                 l.setPagweb(rs.getString("pagweb"));
-=======
-                l.setSede(rs.getString("sede"));
-                l.setUbicacion(rs.getString("ubicacion"));
-                l.setCorreo(rs.getString("correo"));
-                l.setPagweb(rs.getString("pagweb"));
-                l.setJefe(rs.getString("jefe"));
->>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
                 
                 Laboratorios.add(l);
             }

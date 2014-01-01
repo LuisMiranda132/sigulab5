@@ -22,10 +22,6 @@ import org.apache.struts.util.LabelValueBean;
  */
 public class Laboratorio extends org.apache.struts.action.ActionForm{
     
-<<<<<<< HEAD
-=======
-    
->>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
     private String codigo;
     private String nombre;
     private String sede;
@@ -33,11 +29,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     private String correo;
     private String pagweb;
     private String jefe;
-<<<<<<< HEAD
-    private List jefes = new ArrayList<Empleado>();
-=======
-    private List jefes = new ArrayList();
->>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
+   private List jefes = new ArrayList<Empleado>();
     
     /**
      *
@@ -218,11 +210,8 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
      * @param jefes the jefes to set
      */
     public void setJefes(List<Empleado> jefes) {
-<<<<<<< HEAD
         this.jefes = new ArrayList<Empleado>();
-=======
-        this.jefes=new ArrayList();
->>>>>>> 4cac770f9524a8092c5b5870ccd3aaf8369cd452
+
         for (Empleado e:jefes){
             this.jefes.add(
                     new LabelValueBean(e.getNombres()+' '+e.getApellidos(),e.getUsbid())

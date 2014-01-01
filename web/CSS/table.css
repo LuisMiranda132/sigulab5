@@ -231,7 +231,7 @@ ul.action-links {
                 box-shadow: 0 1px 2px #d1d1d1;
             }
             table th {
-                padding:10px 20px 10px 20px;
+                padding:5px 5px 5px 5px;
                 border-top:1px solid #fafafa;
                 border-bottom:1px solid #e0e0e0;
 
@@ -240,8 +240,8 @@ ul.action-links {
                 background: -moz-linear-gradient(top,  #ededed,  #ebebeb);
             }
             table th:first-child{
-                text-align: left;
-                padding-left:10px;
+                text-align: center;
+                padding-left:5px;
             }
             table tr:first-child th:first-child{
                 -moz-border-radius-topleft:3px;
@@ -255,15 +255,15 @@ ul.action-links {
             }
             table tr{
                 text-align: center;
-                padding-left:10px;
+                padding-left:5px;
             }
             table tr td:first-child{
-                text-align: left;
-                padding-left:10px;
+                text-align: center;
+                padding-left:5px;
                 border-left: 0;
             }
             table tr td {
-                padding:10px;
+                padding:5px;
                 border-top: 1px solid #ffffff;
                 border-bottom:1px solid #e0e0e0;
                 border-left: 1px solid #e0e0e0;
