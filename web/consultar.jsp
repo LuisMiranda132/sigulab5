@@ -81,6 +81,9 @@
                         <th width="155px" align="center">
                             Tipo Empleado
                         </th>
+                        <th width="155px" align="center">
+                            Tipo
+                        </th>
                     </tr>
                 </thead>
 
@@ -122,10 +125,99 @@
                         <td width="155px" align="center">
                             <bean:write name="Empleado" property="tipoE"/>
                         </td>
+                        <td width="155px" align="center">
+                            <%--<html:link action="desactivar">
+                                <h2>Desactivar</h2>
+                            </html:link>--%>
+                        </td>
                     </tr>
                 </logic:iterate>
             </table>
         
+        
+        <table border="1" class="altrowstable" id="alternatecolor">
+                <thead>
+                    <tr>
+                        <th width="155px" align="center">
+                             UsbId 
+                        </th>
+                        <th width="155px" align="center">
+                            Nombres
+                        </th>
+                        <th width="155px" align="center">
+                            Apellidos
+                        </th>
+                        <th width="155px" align="center">
+                            Cedula
+                        </th>
+                        <th width="155px" align="center">
+                            Correo
+                        </th>
+                        <th width="155px" align="center">
+                            Direccion
+                        </th>
+                        <th width="155px" align="center">
+                            Telefono Casa
+                        </th>
+                        <th width="155px" align="center">
+                            Telefono Celular
+                        </th>
+                        <th width="155px" align="center">
+                            Tipo Empleado
+                        </th>
+                        <th width="155px" align="center">
+                            Cargo
+                        </th>
+                        <th width="155px" align="center">
+                            Antiguedad
+                        </th>
+                        <th width="155px" align="center">
+                            Tipo Empleado
+                        </th>
+                    </tr>
+                </thead>
+
+                <logic:iterate name="alluser" id="Empleado">
+                    <tr>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="usbid"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="nombres"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="apellidos"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="cedula"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="correo"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="direccion"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="telefono_casa"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="telefono_celular"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="tipo"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="cargo"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="antiguedad"/>
+                        </td>
+                        <td width="155px" align="center">
+                            <bean:write name="Empleado" property="tipoE"/>
+                        </td>
+                    </tr>
+                </logic:iterate>
+            </table>
         <html:link action="back">
             <h2>
                 Volver
