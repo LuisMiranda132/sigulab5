@@ -54,7 +54,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "INSERT INTO USUARIO VALUES (?,?,?,?,?,?,?,?,?);");
+                    "INSERT INTO USUARIO VALUES (?,?,?,?,?,?,?,?,?,?);");
             
             psAgregar.setString(1, u.getUsbid());
             psAgregar.setString(2, u.getNombres());
@@ -65,6 +65,7 @@ public class DBMS {
             psAgregar.setString(7, "");
             psAgregar.setString(8, "");
             psAgregar.setString(9, u.getTipo());
+            psAgregar.setInt(10, 1);
                     
             Integer i = psAgregar.executeUpdate();
             
@@ -126,6 +127,72 @@ public class DBMS {
     }
     
     public ArrayList<Empleado> listarEmpleados(){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND U.VISIBILIDAD=1;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado u = new Empleado();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCedula(rs.getString("cedula"));
+                u.setCorreo(rs.getString("correo"));
+                u.setDireccion(rs.getString("direccion"));
+                u.setTelefono_casa(rs.getString("telefono_casa"));
+                u.setTelefono_celular(rs.getString("telefono_celular"));
+                u.setTipo(rs.getString("tipo"));
+                u.setAntiguedad(rs.getString("antiguedad"));
+                u.setCargo(rs.getString("cargo"));
+                u.setTipoE(rs.getString("tipo_empleado")); 
+                
+                Empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
+    
+        public ArrayList<Empleado> listarEmpleadosNoVisibles(){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND U.VISIBILIDAD=0;");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado u = new Empleado();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCedula(rs.getString("cedula"));
+                u.setCorreo(rs.getString("correo"));
+                u.setDireccion(rs.getString("direccion"));
+                u.setTelefono_casa(rs.getString("telefono_casa"));
+                u.setTelefono_celular(rs.getString("telefono_celular"));
+                u.setTipo(rs.getString("tipo"));
+                u.setAntiguedad(rs.getString("antiguedad"));
+                u.setCargo(rs.getString("cargo"));
+                u.setTipoE(rs.getString("tipo_empleado")); 
+                
+                Empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
+    
+    public ArrayList<Empleado> listarAllEmpleados(){
         
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
@@ -216,6 +283,7 @@ public class DBMS {
                 u.setTelefono_casa(rs.getString("telefono_casa"));
                 u.setTelefono_celular(rs.getString("telefono_celular"));
                 u.setTipo(rs.getString("tipo"));
+                u.setVisibilidad(rs.getInt("visibilidad"));
                 
             }
         } catch (SQLException ex) {
