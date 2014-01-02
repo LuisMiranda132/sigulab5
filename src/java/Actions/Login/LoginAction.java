@@ -10,6 +10,7 @@ import java.util.*;
 import DBMS.DBMS;
 import Clases.LoginForm;
 import Clases.Empleado;
+import Clases.Usuario;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -54,14 +55,20 @@ public class LoginAction extends org.apache.struts.action.Action {
             bean.reset();
             return mapping.findForward(FAILURE);
         }
-
+          
         Empleado dummy = new Empleado();
         dummy.setUsbid(bean.getUsbid());
         
         DBMS db = DBMS.getInstance();
+        
         Empleado user = db.obtenerEmpleado(dummy);
+                        
+        Usuario usuario = new Usuario();
+        usuario.setUsbid(bean.getUsbid());
+        
+        Usuario usr = db.obtenerUsuario(usuario);
                 
-        if (user == null) {
+        if ((user == null) || (usr.getVisibilidad()==0)) {
             System.out.println("No USER");
             bean.reset();
 //            errors.add("credenciales", new ActionMessage("error.credenciales"));
