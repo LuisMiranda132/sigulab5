@@ -27,6 +27,7 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     protected String telefono_casa;
     protected String telefono_celular;
     protected String tipo;
+    protected int  visibilidad; 
     
     protected String errorUsbid;
     protected String errorCorreo;
@@ -166,7 +167,20 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
+    
+    /**
+     * @return the visibilidad
+     */
+    public int getVisibilidad() {
+        return visibilidad;
+    }
 
+    /**
+     * @param visibilidad the visibilidad to set
+     */
+    public void setVisibilidad(int visibilidad) {
+        this.visibilidad = visibilidad;
+    }
     /**
      * @return the errorUsbid
      */
@@ -233,6 +247,7 @@ public class Usuario extends org.apache.struts.action.ActionForm {
         this.telefono_casa = null;
         this.telefono_celular = null;
         this.tipo = null;
+        this.visibilidad = 1;
     }
 
     /**
