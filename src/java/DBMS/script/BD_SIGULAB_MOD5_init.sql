@@ -12,7 +12,8 @@ CREATE TABLE USUARIO (
     direccion        varchar(50)     NOT NULL,
     telefono_casa    varchar(12)     NOT NULL,
     telefono_celular varchar(12)     NOT NULL,
-    tipo             varchar(20)     NOT NULL
+    tipo             varchar(20)     NOT NULL,
+    visibilidad      INTEGER         NOT NULL DEFAULT 1
 
 );
 
