@@ -58,16 +58,12 @@
             </thead>
 
             <!-- DATOS DE LOS LABORATORIOS-->
-            <logic:iterate name="Laboratorios" id="Laboratorio">
+            <logic:iterate name="lab" id="Laboratorio">
                 <tr>
                     <td><bean:write name="Laboratorio" property="codigo"/></td>
                     <td><bean:write name="Laboratorio" property="nombre"/></td>
                     <td><bean:write name="Laboratorio" property="correo"/></td>
                     <td><bean:write name="Laboratorio" property="pagweb"/></td>
-                    <td><html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
-                        <img src="images/modificar.png"  />
-                    </html:link></td>
-                    <td><img src="images/ocultar.png"/></td>
                 </tr>
             </logic:iterate>
         </table>
