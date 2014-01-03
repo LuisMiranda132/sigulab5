@@ -45,12 +45,18 @@
             <forward name="success" path="/agregar.jsp"/>
         </action>
         
-        <action path="/eliminarL"  type="Actions.DB.eliminarL" validate="false">
-            <forward name="success" path="/eliminar.jsp"/>
+        <action path="/consultarL_jefe"  type="Actions.DB.consultarL_jefe" scope="session" validate="false">
+            <forward name="success" path="/consultar_empleados_jefe.jsp"/>
         </action>
         
-        <action path="/consultarL"  type="Actions.DB.consultarL" validate="false">
-            <forward name="success" path="/consultar.jsp"/>
+        <action path="/consultarL_emp"  type="Actions.DB.consultarL_emp" scope="session" validate="false">
+            <forward name="success" path="/consultar_empleados.jsp"/>
+        </action>
+        
+        <action path="/consultarTipo"  type="Actions.DB.consultar_tipo_emp" name="LoginForm" validate="false">
+            <forward name="empleado" path="/consultarL_emp.do"/>
+            <forward name="jefe" path="/consultarL_jefe.do"/>
+            <forward name="failure" path="/inicio.jsp"/>
         </action>
 
         <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
@@ -84,28 +90,23 @@
             <forward name="failure" path="/agregarLaboratorio.jsp"/>
         </action>
         
-        <action path="/modificar" name="Empleado" type="Actions.DB.modificar" validate="false">
+        <action path="/modificar" name="LoginForm" type="Actions.DB.modificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
             <forward name="failure" path="/modificar.jsp"/>
         </action>
-        
-        <action path="/eliminar" name="Usuario" type="Actions.DB.eliminar" validate="false">
-            <forward name="success" path="/eliminar.jsp"/>
-            <forward name="failure" path="/eliminar.jsp"/>
-        </action>
-        
+       
         <action path="/personal" type="Actions.personal" validate="false">
             <forward name="success" path="/Menu.jsp"/>
         </action>
         
         <action path="/desactivar" type="Actions.DB.desactivarPersonal" scope="request" validate="false">
-            <forward name="success" path="/consultarL.do"/>
-            <forward name="failure" path="/consultarL.do"/>
+            <forward name="success" path="/consultarL_jefe.do"/>
+            <forward name="failure" path="/consultarL_jefe.do"/>
         </action>
         
         <action path="/activar" type="Actions.DB.Activar_personal" scope="request" validate="false">
-            <forward name="success" path="/consultarL.do"/>
-            <forward name="failure" path="/consultarL.do"/>
+            <forward name="success" path="/consultarL_jefe.do"/>
+            <forward name="failure" path="/consultarL_jefe.do"/>
         </action>
         
     </action-mappings>
