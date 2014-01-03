@@ -6,21 +6,17 @@
 
 package Actions.DB;
 
-import Clases.Empleado;
-import DBMS.DBMS;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author luismiranda
+ * @author josefigueredo
  */
-public class consultarL_emp extends org.apache.struts.action.Action {
+public class modificarLaboratorioL extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
 
@@ -38,12 +34,6 @@ public class consultarL_emp extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        
-        HttpSession session = request.getSession(true);
- 
-        ArrayList<Empleado> Usuarios = DBMS.getInstance().listarEmpleadosVisibles();
-        
-        session.setAttribute("user", Usuarios);
         
         return mapping.findForward(SUCCESS);
     }

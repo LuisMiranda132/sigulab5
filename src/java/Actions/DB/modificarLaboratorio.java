@@ -6,8 +6,7 @@
 
 package Actions.DB;
 
-import Clases.Empleado;
-import Clases.LoginForm;
+import Clases.Laboratorio;
 import DBMS.DBMS;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,12 +16,13 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author luismiranda
+ * @author josefigueredo
  */
-public class modificar extends org.apache.struts.action.Action {
+public class modificarLaboratorio extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -41,60 +41,13 @@ public class modificar extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        /*
-        Empleado bean = (Empleado) form;
         
-        DBMS db = DBMS.getInstance();
-        
-        Empleado dummy = new Empleado();
-        dummy.setUsbid(bean.getUsbid());
-        
-        Empleado empleado = db.obtenerEmpleado(dummy);
-        
+        Laboratorio l = (Laboratorio) form;
         HttpSession session = request.getSession(true);
         
         ActionErrors error = null;
         
-        error = empleado.validateTodoE(mapping, request);
-        boolean huboError = false;
-        
-        if (error.size() != 0) {
-            huboError = true;
-        }
-        
-        if (huboError) {
-            
-            saveErrors(request, error);
-            session.removeAttribute("nolologre");
-            return mapping.findForward(FAILURE);
-            
-        } else {
-            
-            boolean agrego = db.modificarUsuario(empleado);
-            
-
-            if (agrego) {
-                session.setAttribute("lologre","conga!");
-                return mapping.findForward(SUCCESS);
-            } else {
-                session.removeAttribute("lologre");
-                return mapping.findForward(FAILURE);
-            }
-        }
-        
-//        Recuerden que esto es una plantilla trabajada con condicionales
-//        dentro de su sistema ustedes deben modelar tal cual si fuera un programa
-//        comun y corriente, es decir, pueden usar IF, ELSE, WHILE, entre otras
-//        herramientas que provea java para realizar su flujo en el sistema.
-    }
-    */
-        
-    Empleado u = (Empleado) form;
-        HttpSession session = request.getSession(true);
-        
-        ActionErrors error = null;
-        
-        error = u.validateTodoE(mapping, request);
+        error = l.validateTodo(mapping, request);
         boolean huboError = false;
         
         if (error.size() != 0) {
@@ -109,7 +62,7 @@ public class modificar extends org.apache.struts.action.Action {
             
         } else {
             
-            boolean agrego = DBMS.getInstance().modificarUsuario(u);
+            boolean agrego = DBMS.getInstance().modificarLaboratorio(l);
             
 
             if (agrego) {
@@ -126,5 +79,5 @@ public class modificar extends org.apache.struts.action.Action {
 //        comun y corriente, es decir, pueden usar IF, ELSE, WHILE, entre otras
 //        herramientas que provea java para realizar su flujo en el sistema.
     }
-        
+    
 }

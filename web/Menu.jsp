@@ -115,10 +115,10 @@
                                     <html:link action="agregarLaboratorioL" target="centro">
                                         <p>Agregar Laboratorio</p>
                                     </html:link>
-                                </li>
+                                </li>                      
                                 <li class="leaf">
                                     <html:link action="consultarLaboratorioL" target="centro">
-                                        <p>Consultar Laboratorio</p>
+                                        <p>Consultar Laboratorios</p>
                                     </html:link>
                                 </li>
                             </ul> </br>

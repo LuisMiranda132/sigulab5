@@ -218,5 +218,15 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
             );
         }
     }
+
+        public void limpiar() {
+        this.codigo = null;
+        this.nombre = null;
+        this.sede = null;
+        this.ubicacion = null;
+        this.correo = null;
+        this.pagweb = null;
+        this.jefe = null;
+    }
     
 }

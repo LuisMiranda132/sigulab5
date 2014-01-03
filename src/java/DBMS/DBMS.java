@@ -174,6 +174,7 @@ public class DBMS {
         try{
             ps = conexion.prepareStatement(
                     "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND U.VISIBILIDAD=1;");
+
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Empleado u = new Empleado();
@@ -283,6 +284,39 @@ public class DBMS {
                 
         return e;
     }
+    
+    public Laboratorio obtenerLaboratorio(Laboratorio l){
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM LABORATORIO AS L WHERE L.codigo=?;");
+            ps.setString(1, l.getCodigo());
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {
+                               
+                l.setCodigo(rs.getString("codigo"));
+                l.setNombre(rs.getString("nombre"));
+                l.setSede(rs.getString("sede"));
+                l.setUbicacion(rs.getString("ubicacion"));
+                l.setCorreo(rs.getString("correo"));
+                l.setPagweb(rs.getString("pagweb"));
+                l.setJefe(rs.getString("jefe"));                
+                
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+                
+        return l;
+    }    
     
     
     public Usuario obtenerUsuario(Usuario u){
@@ -421,8 +455,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE laboratorio SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , jefe=? where codigo=?;"
-                            + "nombres=? , apellidos=? , cedula=? , correo=? , direccion=? , telefono_casa=? , telefono_celular=? , tipo=? WHERE usbid=?;"
+                    "UPDATE LABORATORIO SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , jefe=? where codigo=?;"
             );
             
             psAgregar.setString(1, l.getNombre());
@@ -469,7 +502,9 @@ public class DBMS {
         ArrayList<Laboratorio> Laboratorios = new ArrayList<Laboratorio>();
         PreparedStatement ps = null;
         try{
-            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio;");
+
+            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio ORDER BY codigo;");
+
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()){

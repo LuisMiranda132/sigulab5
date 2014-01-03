@@ -42,7 +42,9 @@ CREATE TABLE laboratorio
 
 );
 
+
 /*
+
 CREATE TABLE LABORATORIO (
 	
     codigo          varchar(10)     NOT NULL, -- De la forma LAB'X'

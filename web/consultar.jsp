@@ -34,42 +34,41 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
-
         <style type="text/css" media="print">
             @import "CSS/print.css";
         </style>
-
-        <title>Consultar Laboratorio</title>
+        <title>Consultar Personal</title>
     </head>
     <body>
-        <h1>Consultar Laboratorio</h1>
+        <h1>Consultar Personal</h1>
         
         <table cellspacing='0'>
-            <!-- PRIMERA FILA -->
-            <thead>
-                <tr>
-                    <th>Codigo</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Pagina Web</th>
-                    <th>Modificar</th>
+			<thead>
+				<tr>
+					<th>Perfil</th>
+					<th>UsbId</th>
+					<th>Nombre</th>
+					<th>Correo</th>
+					<th>Cargo</th>
+					<th>Modificar</th>
                     <th>Ocultar</th>
-                </tr>
-            </thead>
+				</tr>
+			</thead>
 
-            <!-- DATOS DE LOS LABORATORIOS-->
-            <logic:iterate name="Laboratorios" id="Laboratorio">
-                <tr>
-                    <td><bean:write name="Laboratorio" property="codigo"/></td>
-                    <td><bean:write name="Laboratorio" property="nombre"/></td>
-                    <td><bean:write name="Laboratorio" property="correo"/></td>
-                    <td><bean:write name="Laboratorio" property="pagweb"/></td>
-                    <td><html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
-                        <img src="images/modificar.png"  />
-                    </html:link></td>
+            <!-- DATOS DEL PERSONAL -->
+			<logic:iterate name="user" id="Empleado">
+				<tr>
+					<td><img src="images/usuario.jpg"/></td>
+					<td><bean:write name="Empleado" property="usbid"/></td>
+					<td>
+						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
+					</td>
+					<td><bean:write name="Empleado" property="correo"/></td>
+					<td><bean:write name="Empleado" property="cargo"/></td>
+                    <td><img src="images/modificar.png"/></td>
                     <td><img src="images/ocultar.png"/></td>
-                </tr>
-            </logic:iterate>
+				</tr>
+			</logic:iterate>
         </table>
         
         <html:link action="back">
