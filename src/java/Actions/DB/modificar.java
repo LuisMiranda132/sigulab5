@@ -6,8 +6,8 @@
 
 package Actions.DB;
 
-import Clases.Usuario;
 import Clases.Empleado;
+import Clases.LoginForm;
 import DBMS.DBMS;
 
 import javax.servlet.http.HttpServletRequest;
@@ -17,7 +17,6 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.apache.struts.action.ActionMessage;
 
 /**
  *
@@ -43,12 +42,20 @@ public class modificar extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        Empleado u = (Empleado) form;
+        LoginForm bean = (LoginForm) form;
+        
+        DBMS db = DBMS.getInstance();
+        
+        Empleado dummy = new Empleado();
+        dummy.setUsbid(bean.getUsbid());
+        
+        Empleado empleado = db.obtenerEmpleado(dummy);
+        
         HttpSession session = request.getSession(true);
         
         ActionErrors error = null;
         
-        error = u.validateTodoE(mapping, request);
+        error = empleado.validateTodoE(mapping, request);
         boolean huboError = false;
         
         if (error.size() != 0) {
@@ -63,7 +70,7 @@ public class modificar extends org.apache.struts.action.Action {
             
         } else {
             
-            boolean agrego = DBMS.getInstance().modificarUsuario(u);
+            boolean agrego = db.modificarUsuario(empleado);
             
 
             if (agrego) {
