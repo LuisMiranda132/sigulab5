@@ -10,6 +10,7 @@
         <form-bean name="LoginForm" type="Clases.LoginForm"/>
         <form-bean name="Usuario" type="Clases.Usuario"/>
         <form-bean name="Empleado" type="Clases.Empleado"/>
+        <form-bean name="Laboratorio" type="Clases.Laboratorio"/>
     
     </form-beans>
     
@@ -51,6 +52,18 @@
         <action path="/consultarL"  type="Actions.DB.consultarL" validate="false">
             <forward name="success" path="/consultar.jsp"/>
         </action>
+
+        <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
+            <forward name="success" path="/consultarLaboratorio.jsp"/>
+        </action>
+
+        <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
+            <forward name="success" path="/agregarLaboratorio.jsp"/>
+        </action>
+        
+        <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
+            <forward name="success" path="/agregarLaboratorio.jsp"/>
+        </action>
         
         <action path="/modificarL" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
@@ -66,6 +79,11 @@
             <forward name="failure" path="/agregar.jsp"/>
         </action>
         
+        <action path="/agregarLaboratorio" name="Laboratorio" type="Actions.DB.agregarLaboratorio" validate="false">
+            <forward name="success" path="/agregarLaboratorio.jsp"/>
+            <forward name="failure" path="/agregarLaboratorio.jsp"/>
+        </action>
+        
         <action path="/modificar" name="Empleado" type="Actions.DB.modificar" validate="false">
             <forward name="success" path="/modificar.jsp"/>
             <forward name="failure" path="/modificar.jsp"/>
@@ -78,6 +96,16 @@
         
         <action path="/personal" type="Actions.personal" validate="false">
             <forward name="success" path="/Menu.jsp"/>
+        </action>
+        
+        <action path="/desactivar" type="Actions.DB.desactivarPersonal" scope="request" validate="false">
+            <forward name="success" path="/consultarL.do"/>
+            <forward name="failure" path="/consultarL.do"/>
+        </action>
+        
+        <action path="/activar" type="Actions.DB.Activar_personal" scope="request" validate="false">
+            <forward name="success" path="/consultarL.do"/>
+            <forward name="failure" path="/consultarL.do"/>
         </action>
         
     </action-mappings>
