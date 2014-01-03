@@ -117,7 +117,7 @@
                                     </html:link>
                                 </li>                      
                                 <li class="leaf">
-                                    <html:link action="consultarLaboratorioL" target="centro">
+                                    <html:link action="consultarTipoLab" target="centro">
                                         <p>Consultar Laboratorios</p>
                                     </html:link>
                                 </li>
