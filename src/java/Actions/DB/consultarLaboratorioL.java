@@ -41,7 +41,7 @@ public class consultarLaboratorioL extends org.apache.struts.action.Action {
 
         HttpSession session = request.getSession(true);
         
-        ArrayList<Laboratorio> Laboratorios = DBMS.getInstance().listarLaboratorio();
+        ArrayList<Laboratorio> Laboratorios = DBMS.getInstance().listarLaboratoriosVisibles();
         
         session.setAttribute("Laboratorios", Laboratorios);
         return mapping.findForward(SUCCESS);
