@@ -64,8 +64,9 @@
                     <td><bean:write name="Laboratorio" property="nombre"/></td>
                     <td><bean:write name="Laboratorio" property="correo"/></td>
                     <td><bean:write name="Laboratorio" property="pagweb"/></td>
-                    <!--<a href="tuotrapagina.jsp"><img src="urlimagenboton.gif" alt="" /></a>-->
-                    <td><img src="images/modificar.png"/></td>
+                    <td><html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
+                        <img src="images/modificar.png"  />
+                    </html:link></td>
                     <td><img src="images/ocultar.png"/></td>
                 </tr>
             </logic:iterate>
