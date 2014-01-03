@@ -102,12 +102,7 @@
                                     </html:link>
                                 </li>
                                 <li class="leaf">
-                                    <html:link action="eliminarL" target="centro">
-                                        <p>Eliminar</p>
-                                    </html:link>
-                                </li>
-                                <li class="leaf">
-                                    <html:link action="consultarL" target="centro" >
+                                    <html:link action="consultarTipo" target="centro" >
                                         <p>Consultar Personal</p>
                                     </html:link>
                                 </li>
