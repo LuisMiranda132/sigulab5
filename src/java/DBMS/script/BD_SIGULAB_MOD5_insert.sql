@@ -42,6 +42,8 @@ INSERT INTO EMPLEADO VALUES ('Asistente','2005','personal admin','luisl');
 --
 -- LABORATORIO (codigo, nombre, sede, ubicacion, correo, pagweb, jefe)
 --
+
+
 INSERT INTO LABORATORIO VALUES ('LAB-A','Laboratorios de Ingeniería Aplicada','Sartenejas','Edificio de Alta Tensión Oficina 018','usb-laba@usb.ve','http://www.laba.usb.ve/','pperez');
 INSERT INTO LABORATORIO VALUES ('LAB-B','Laboratorios de Biología, Química y Polímeros','Sartenejas','Edif. Química y Procesos P.B. Ofic. 019','usb-labb@usb.ve','N/A','robertor');
 INSERT INTO LABORATORIO VALUES ('LAB-C','Laboratorios de Electrónica','Sartenejas','Parte posterior del Conjunto de Auditorios','usb-labc@usb.ve','http://www.labc.usb.ve/','mmartinez');
