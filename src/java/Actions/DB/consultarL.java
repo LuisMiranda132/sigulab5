@@ -41,14 +41,11 @@ public class consultarL extends org.apache.struts.action.Action {
 
         HttpSession session = request.getSession(true);
         
-        ArrayList<Empleado> Usuarios = DBMS.getInstance().listarEmpleados();
-        
-        ArrayList<Empleado> AllUsuarios = DBMS.getInstance().listarAllEmpleados();
+        ArrayList<Empleado> Usuarios = DBMS.getInstance().listarEmpleadosVisibles();
         
         ArrayList<Empleado> NoVisibles = DBMS.getInstance().listarEmpleadosNoVisibles();
         
         session.setAttribute("user", Usuarios);
-        session.setAttribute("alluser", AllUsuarios);
         session.setAttribute("novisibles", NoVisibles);
         return mapping.findForward(SUCCESS);
         
