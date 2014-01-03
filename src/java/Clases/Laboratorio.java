@@ -29,7 +29,8 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     private String correo;
     private String pagweb;
     private String jefe;
-   private List jefes = new ArrayList<Empleado>();
+    private Integer visibilidad;
+    private List jefes = new ArrayList<Empleado>();
     
     /**
      *
@@ -42,6 +43,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.correo=null;
         this.pagweb=null;
         this.jefe=null;
+        this.visibilidad=0;
     }
     
     /**
@@ -200,6 +202,20 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     }
 
     /**
+     * @return the visivilidad
+     */
+    public Integer getVisibilidad() {
+        return visibilidad;
+    }
+
+    /**
+     * @param visibilidad the visibilidad to set
+     */
+    public void setVisibilidad(Integer visibilidad) {
+        this.visibilidad = visibilidad;
+    }
+    
+    /**
      * @return the jefes
      */
     public Collection getJefes() {
@@ -227,6 +243,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.correo = null;
         this.pagweb = null;
         this.jefe = null;
+        this.visibilidad = 0;
     }
     
 }
