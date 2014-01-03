@@ -54,6 +54,7 @@ CREATE TABLE LABORATORIO (
     correo          varchar(50)     NOT NULL,
     pagweb          varchar(50)     NOT NULL,
     jefe            varchar(50)     NOT NULL, --USB ID
+    visibilidad     INTEGER         NOT NULL DEFAULT 1,
     CONSTRAINT pk_laboratorio PRIMARY KEY (codigo),
     CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe) REFERENCES usuario (usbid) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
