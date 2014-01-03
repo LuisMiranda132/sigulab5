@@ -54,23 +54,6 @@
                             <html:text name="Empleado" property="usbid"/>
                         </td>
                     </tr>
-                        <td> Nombres </td>
-                        <td>
-                            <html:text name="Empleado" property="nombres"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Apellidos </td>
-                        <td>
-                            <html:text name="Empleado" property="apellidos"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Cedula </td>
-                        <td>
-                            <html:text name="Empleado" property="cedula"/>
-                        </td>
-                    </tr>
                     <tr>
                         <td> Tipo Usuario</td>
                         <td>
