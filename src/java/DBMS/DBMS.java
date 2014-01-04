@@ -218,7 +218,7 @@ public class DBMS {
         }
         
         return Empleados;
-    }
+    } 
     
     public ArrayList<Empleado> listarAllEmpleados(){
         
@@ -284,6 +284,41 @@ public class DBMS {
                 
         return e;
     }
+    
+    public ArrayList<Empleado> listarEmpleadosPorApellido(String letra){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+            consulta = "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " + 
+            "WHERE U.apellidos LIKE '" + letra + "%';";
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.getRow() == 0){
+                while (rs.next()){
+                    Empleado u = new Empleado();
+                   
+                    u.setUsbid(rs.getString("usbid"));
+                    u.setNombres(rs.getString("nombres"));
+                    u.setApellidos(rs.getString("apellidos"));
+                    u.setCorreo(rs.getString("correo"));
+                    u.setCargo(rs.getString("cargo"));
+                    
+                    Empleados.add(u);
+                }
+            } else {
+                String texto = "No hay personal que su apellido comience con '" + letra + "'.\n";
+                System.out.println(texto);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
+
+
     
     public Laboratorio obtenerLaboratorio(Laboratorio l){
         PreparedStatement ps = null;
