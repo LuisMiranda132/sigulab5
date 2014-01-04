@@ -73,6 +73,7 @@ public class premodificarLab extends org.apache.struts.action.Action {
         } else {
 
             Laboratorio lab = DBMS.getInstance().obtenerLaboratorio(l);
+            lab.setJefes(DBMS.getInstance().listarEmpleadosJefe());
 
             if (lab == null) {
                 l.limpiar();

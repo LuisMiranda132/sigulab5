@@ -25,7 +25,7 @@ CREATE TABLE EMPLEADO (
     usbid           varchar(15)     NOT NULL, constraint pk_empleado primary key (usbid),
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade
 );
-
+/*
 CREATE TABLE laboratorio
 (
   codigo varchar(20) NOT NULL, -- De la forma LAB'X'
@@ -41,9 +41,9 @@ CREATE TABLE laboratorio
       ON UPDATE NO ACTION ON DELETE NO ACTION
 
 );
+*/
 
 
-/*
 
 CREATE TABLE LABORATORIO (
 	
@@ -54,12 +54,13 @@ CREATE TABLE LABORATORIO (
     correo          varchar(50)     NOT NULL,
     pagweb          varchar(50)     NOT NULL,
     jefe            varchar(50)     NOT NULL, --USB ID
+    visibilidad     INTEGER         NOT NULL DEFAULT 1,
     CONSTRAINT pk_laboratorio PRIMARY KEY (codigo),
     CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe) REFERENCES usuario (usbid) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 
 );
-*/
+
 
 --CREATE TABLE SERVICIO (
 

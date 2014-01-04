@@ -465,7 +465,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?);");
+                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?);");
             
             psAgregar.setString(1, l.getCodigo());
             psAgregar.setString(2, l.getNombre());
@@ -474,7 +474,8 @@ public class DBMS {
             psAgregar.setString(5, l.getCorreo());
             psAgregar.setString(6, l.getPagweb());
             psAgregar.setString(7, l.getJefe());
-                    
+            psAgregar.setInt(8, 1);
+            
             Integer i = psAgregar.executeUpdate();
             
             return i>0;
@@ -532,13 +533,54 @@ public class DBMS {
         }
     }
     
-    public ArrayList<Laboratorio> listarLaboratorio(){
+    
+    public boolean desactivarVisibilidadLab(Laboratorio l){
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE LABORATORIO SET visibilidad=? WHERE codigo=?;"
+            );
+            
+            
+            psAgregar.setInt(1, 0);
+            psAgregar.setString(2, l.getCodigo());
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+    }
+    
+    public boolean activarVisibilidadLab(Laboratorio l){
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE LABORATORIO SET visibilidad=? WHERE codigo=?;"
+            );
+            
+            
+            psAgregar.setInt(1, 1);
+            psAgregar.setString(2, l.getCodigo());
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+    }
+             
+    public ArrayList<Laboratorio> listarLaboratoriosVisibles(){
         
         ArrayList<Laboratorio> Laboratorios = new ArrayList<Laboratorio>();
         PreparedStatement ps = null;
         try{
 
-            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio ORDER BY codigo;");
+            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio WHERE visibilidad=1 ORDER BY codigo;");
 
             ResultSet rs = ps.executeQuery();
 
@@ -558,6 +600,35 @@ public class DBMS {
         
         return Laboratorios;
     }
+    
+        public ArrayList<Laboratorio> listarLaboratoriosNoVisibles(){
+        
+        ArrayList<Laboratorio> Laboratorios = new ArrayList<Laboratorio>();
+        PreparedStatement ps = null;
+        try{
+
+            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio WHERE visibilidad=0 ORDER BY codigo;");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                Laboratorio l = new Laboratorio();
+
+                l.setCodigo(rs.getString("codigo"));
+                l.setNombre(rs.getString("nombre"));
+                l.setCorreo(rs.getString("correo"));
+                l.setPagweb(rs.getString("pagweb"));
+                
+                Laboratorios.add(l);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Laboratorios;
+    }
+    
+    
     // Main para pruebas sobre la base de datos.
     public static void main(String args[]) {
         

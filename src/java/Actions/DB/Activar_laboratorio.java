@@ -8,21 +8,20 @@ package Actions.DB;
 
 import Clases.Laboratorio;
 import DBMS.DBMS;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author luismiranda
+ * @author alejandro
  */
-public class consultarLaboratorioL extends org.apache.struts.action.Action {
+public class Activar_laboratorio extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
+    private static final String FAILURE = "failure";
 
     /**
      * This is the action called from the Struts framework.
@@ -38,15 +37,23 @@ public class consultarLaboratorioL extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        HttpSession session = request.getSession(true);
+ 
+        DBMS db = DBMS.getInstance();
+                                
+        Laboratorio laboratorio = new Laboratorio();
+        laboratorio.setCodigo(request.getParameter("codigo"));
         
-        ArrayList<Laboratorio> Laboratorios = DBMS.getInstance().listarLaboratoriosVisibles();
+        Laboratorio lab = db.obtenerLaboratorio(laboratorio);
         
-        session.setAttribute("Laboratorios", Laboratorios);
-        return mapping.findForward(SUCCESS);
-        
+        if (lab == null){
+            return mapping.findForward(FAILURE);
+        }else{
+            if (db.activarVisibilidadLab(lab)){
+                return mapping.findForward(SUCCESS);
+            } else{
+                return mapping.findForward(FAILURE);
+            }
+            
+        }
     }
-        
-    
 }

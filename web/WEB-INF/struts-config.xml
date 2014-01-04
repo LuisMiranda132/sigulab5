@@ -132,6 +132,31 @@
             <forward name="failure" path="/consultarL_jefe.do"/>
         </action>
         
+        <action path="/desactivarLaboratorio" type="Actions.DB.Desactivar_laboratorio" scope="request" validate="false">
+            <forward name="success" path="/ConsultarLab_jefe.do"/>
+            <forward name="failure" path="/inicio.jsp"/>
+            <forward name="nulo" path="/agregarLaboratorio.jsp"/>
+        </action>
+        
+        <action path="/activarLaboratorio" type="Actions.DB.Activar_laboratorio" scope="request" validate="false">
+            <forward name="success" path="/ConsultarLab_jefe.do"/>
+            <forward name="failure" path="/ConsultarLab_jefe.do"/>
+        </action>
+                
+        <action path="/ConsultarLab_jefe"  type="Actions.DB.ConsultarLab_jefe" scope="session" validate="false">
+            <forward name="success" path="/consultar_laboratorios_jefe.jsp"/>
+        </action>
+        
+        <action path="/ConsultarLab_emp"  type="Actions.DB.ConsultarLab_emp" scope="session" validate="false">
+            <forward name="success" path="/consultarLaboratorio.jsp"/>
+        </action>
+        
+        <action path="/consultarTipoLab"  type="Actions.DB.consultar_tipo_emp" name="LoginForm" validate="false">
+            <forward name="empleado" path="/ConsultarLab_emp.do"/>
+            <forward name="jefe" path="/ConsultarLab_jefe.do"/>
+            <forward name="failure" path="/inicio.jsp"/>
+        </action>
+        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>

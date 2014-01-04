@@ -20,7 +20,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class consultarLaboratorioL extends org.apache.struts.action.Action {
+public class ConsultarLab_jefe extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
 
@@ -38,15 +38,16 @@ public class consultarLaboratorioL extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        HttpSession session = request.getSession(true);
         
+        HttpSession session = request.getSession(true);
+ 
         ArrayList<Laboratorio> Laboratorios = DBMS.getInstance().listarLaboratoriosVisibles();
         
-        session.setAttribute("Laboratorios", Laboratorios);
+        ArrayList<Laboratorio> NoVisibles = DBMS.getInstance().listarLaboratoriosNoVisibles();
+        
+        session.setAttribute("lab", Laboratorios);
+        session.setAttribute("labNovisibles", NoVisibles);
+        
         return mapping.findForward(SUCCESS);
-        
     }
-        
-    
 }
