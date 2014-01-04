@@ -48,10 +48,10 @@
             <!-- PRIMERA FILA -->
             <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Pagina Web</th>
+                    <th>Página Web</th>
                     <th>Modificar</th>
                     <th>Ocultar</th>
                 </tr>

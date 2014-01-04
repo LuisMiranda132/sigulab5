@@ -290,8 +290,7 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            consulta = "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " + 
-            "WHERE U.apellidos LIKE '" + letra + "%';";
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " + "WHERE U.apellidos LIKE '" + letra + "%';";
             ps = conexion.prepareStatement(consulta);
 
             ResultSet rs = ps.executeQuery();

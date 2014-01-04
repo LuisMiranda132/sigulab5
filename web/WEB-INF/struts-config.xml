@@ -137,6 +137,10 @@
             <forward name="failure" path="/inicio.jsp"/>
             <forward name="nulo" path="/agregarLaboratorio.jsp"/>
         </action>
+
+        <action path="/perfilPersonalL" type="Actions.DB.perfilPersonalL" scope="request" validate="false">
+            <forward name="success" path="/perfilPersonal.jsp"/>
+        </action>
         
         <action path="/activarLaboratorio" type="Actions.DB.Activar_laboratorio" scope="request" validate="false">
             <forward name="success" path="/ConsultarLab_jefe.do"/>

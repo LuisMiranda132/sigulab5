@@ -89,7 +89,7 @@ public class modificar extends org.apache.struts.action.Action {
     }
     */
         
-    Empleado u = (Empleado) form;
+        Empleado u = (Empleado) form;
         HttpSession session = request.getSession(true);
         
         ActionErrors error = null;

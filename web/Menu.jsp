@@ -1,7 +1,7 @@
 <%-- 
     Document   : Menu
-    Created on : 26/11/2013, 06:23:23 PM
-    Author     : Esteban Oliveros
+    Created on :
+    Author     : 
 --%>
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
@@ -19,6 +19,7 @@
             @import "CSS/field.css";
             @import "CSS/user.css";    
             @import "CSS/views.css";
+            @import "CSS/style_interno.css";
         </style>
         <style type="text/css" media="all">
             @import "CSS/ckeditor.css";
@@ -58,13 +59,20 @@
             <div id="container" class="container-16">                
                 <!-- PARTE CENTRAL -->
                 <div id="content" class="column grid-10 push-3">
-                    <html:link action="logout" >
-                        <p align="right" >Cerrar Sesion</p>
-                    </html:link>                    
-                    Usuario:
-                    <b style="color:#126598;font-weight:bold" align="left">
+                    <!--IMAGEN DEL USUARIO-->
+                    <figure class="img-border left marg_right1"><img src="images/user.png" width="60"/></figure>
+                    <!--USBID-->
+                    Usuario:<b style="color:#126598;font-weight:bold" align="left">
                         <bean:write name="LoginForm" property="usbid"/>
                     </b>
+                    <!--PERFIL USUARIO-->
+                    <html:link action="perfilPersonalL" paramId="usbid" paramName="LoginForm" paramProperty="usbid" target="centro">
+                        <p>Mi Perfil</p>
+                    </html:link>
+                    <!--CERRAR SESION-->
+                    <html:link action="logout" >
+                        <p>Cerrar Sesión</p>
+                    </html:link>
 
                     <table>
                         <tr>
@@ -85,7 +93,7 @@
                 </div>
 
                 <!-- PANEL IZQUIERDO -->
-                <div id="sidebar-first" class="sidebar grid-3 pull-10">
+                <div id="sidebar-first" class="sidebar grid-3 pull-10">                    
                     <!-- MENU ACORDEON -->
                     <div id="accordion">
                         <h5 style="cursor: pointer;"> Gestionar Catalogo de Personal</h5>

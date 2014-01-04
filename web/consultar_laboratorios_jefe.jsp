@@ -48,10 +48,10 @@
             <!-- PRIMERA FILA -->
             <thead>
                 <tr>
-                    <th>Codigo</th>
+                    <th>Código</th>
                     <th>Nombre</th>
                     <th>Correo</th>
-                    <th>Pagina Web</th>
+                    <th>Página Web</th>
                     <th>Modificar</th>
                     <th>Ocultar</th>
                 </tr>
@@ -64,34 +64,35 @@
                     <td><bean:write name="Laboratorio" property="nombre"/></td>
                     <td><bean:write name="Laboratorio" property="correo"/></td>
                     <td><bean:write name="Laboratorio" property="pagweb"/></td>
-                    <td><html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
-                        <img src="images/modificar.png"  />
-                    </html:link></td>
-                    <td><html:link action="desactivarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
-                            
-                            <img src="images/ocultar.png"/>
-                            
-                        </html:link>
+                    <td>
+	                    <html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
+	                        <img src="images/modificar.png"/>
+	                    </html:link>
                     </td>
-                                           
+                    <td>
+                    	<html:link action="desactivarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
+							<img src="images/ocultar.png"/>
+						</html:link>
+                    </td>              
                 </tr>
             </logic:iterate>
+
             <logic:iterate name="labNovisibles" id="Laboratorio">
                 <tr>
                     <td><bean:write name="Laboratorio" property="codigo"/></td>
                     <td><bean:write name="Laboratorio" property="nombre"/></td>
                     <td><bean:write name="Laboratorio" property="correo"/></td>
                     <td><bean:write name="Laboratorio" property="pagweb"/></td>
-                    <td><html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
-                        <img src="images/modificar.png"  />
-                    </html:link></td>
-                    <td><html:link action="activarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
-                            <h2>
-                                ACTIVAR
-                            </h2>                           
-                        </html:link>
+                    <td>
+	                    <html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
+	                        <img src="images/modificar.png"/>
+	                    </html:link>
                     </td>
-                                           
+                    <td>
+                    	<html:link action="desactivarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
+							<img src="images/activar.png"/>
+						</html:link>
+                    </td>                  
                 </tr>
             </logic:iterate>
         </table>

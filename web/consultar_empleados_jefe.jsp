@@ -50,7 +50,7 @@
 					<th>Nombre</th>
 					<th>Correo</th>
 					<th>Cargo</th>
-                                        <th>Ocultar</th>
+                    <th>Ocultar</th>
 				</tr>
 			</thead>
 
@@ -58,7 +58,11 @@
 			<logic:iterate name="user" id="Empleado">
                                
 				<tr>
-					<td><img src="images/usuario.jpg"/></td>
+                    <td>
+                        <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                            <img src="images/usuario.jpg" width="64"/>
+                        </html:link>
+                    </td>					
 					<td><bean:write name="Empleado" property="usbid"/></td>
 					<td>
 						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
@@ -74,8 +78,9 @@
   
 			</logic:iterate>
                         
-                        <logic:iterate name="novisibles" id="Empleado"> 
-                            <tr>
+            <logic:iterate name="novisibles" id="Empleado"> 
+                <tr>
+                	<!--No estan visibles, no hay acceso al perfil-->
 					<td><img src="images/usuario.jpg"/></td>
 					<td><bean:write name="Empleado" property="usbid"/></td>
 					<td>
@@ -84,19 +89,12 @@
 					<td><bean:write name="Empleado" property="correo"/></td>
 					<td><bean:write name="Empleado" property="cargo"/></td>
                     <td>
-                        
-                            <html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <h2>ACTIVAR</h2>
-                            </html:link>
-                        
-                        
+                    	<html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                            <img src="images/activar.png"/>
+                        </html:link>
                     </td>
-				</tr>
-                            
-                        </logic:iterate>
-                                
-                                
-                                
+				</tr> 
+            </logic:iterate>
         </table>
 
         <html:link action="back">
