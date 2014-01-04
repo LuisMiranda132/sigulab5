@@ -50,7 +50,7 @@
 					<th>Nombre</th>
 					<th>Correo</th>
 					<th>Cargo</th>
-                                        <th>Ocultar</th>
+                                        <th>Activar/Desactivar</th>
 				</tr>
 			</thead>
 
@@ -86,7 +86,7 @@
                     <td>
                         
                             <html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <h2>ACTIVAR</h2>
+                                <img src="images/activar.png"/>
                             </html:link>
                         
                         

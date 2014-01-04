@@ -53,7 +53,7 @@
                     <th>Correo</th>
                     <th>Pagina Web</th>
                     <th>Modificar</th>
-                    <th>Ocultar</th>
+                    <th>Activar/Desactivar</th>
                 </tr>
             </thead>
 
@@ -86,9 +86,9 @@
                         <img src="images/modificar.png"  />
                     </html:link></td>
                     <td><html:link action="activarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
-                            <h2>
-                                ACTIVAR
-                            </h2>                           
+                            
+                                <img src="images/activar.png"/>
+                                                       
                         </html:link>
                     </td>
                                            
