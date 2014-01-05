@@ -19,6 +19,7 @@
             @import "CSS/field.css";
             @import "CSS/user.css";    
             @import "CSS/views.css";
+            @import "CSS/style_interno.css";
         </style>
         <style type="text/css" media="all">
             @import "CSS/ckeditor.css";
@@ -32,6 +33,10 @@
         <style type="text/css" media="print">
             @import "CSS/print.css";
         </style>
+
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+
         <title>SIGULAB - GSMDP</title>
     </head>
     <body class="html front not-logged-in two-sidebars page-node">

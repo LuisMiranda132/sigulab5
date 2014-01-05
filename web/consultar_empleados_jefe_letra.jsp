@@ -73,60 +73,97 @@
             <html:link action="consultarTipo">Todos</html:link>
         </p></div>
 
-        <table cellspacing='0'>
-			<thead>
-				<tr>
-					<th>Perfil</th>
-					<th>UsbId</th>
-					<th>Nombre</th>
-					<th>Correo</th>
-					<th>Cargo</th>
-                    <th>Ocultar</th>
-				</tr>
-			</thead>
+        <p><h1>Personal que su apellido comience con: 
+            "<logic:iterate name="letraLista" id="letraID">
+                <bean:write name="letraID"/>
+            </logic:iterate>".
+        </h1></p>
 
-            <!-- DATOS DEL PERSONAL -->
-			<logic:iterate name="user" id="Empleado">
-                               
-				<tr>
-                    <td>
-                        <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/usuario.jpg" width="64"/>
-                        </html:link>
-                    </td>					
-					<td><bean:write name="Empleado" property="usbid"/></td>
-					<td>
-						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
-					</td>
-					<td><bean:write name="Empleado" property="correo"/></td>
-					<td><bean:write name="Empleado" property="cargo"/></td>
-                    <td>
-                        <html:link action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/ocultar.png"/>
-                        </html:link>
-                    </td>
-				</tr>
-  
-			</logic:iterate>
-                        
-            <logic:iterate name="novisibles" id="Empleado"> 
-                <tr>
-                	<!--No estan visibles, no hay acceso al perfil-->
-					<td><img src="images/usuario.jpg"/></td>
-					<td><bean:write name="Empleado" property="usbid"/></td>
-					<td>
-						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
-					</td>
-					<td><bean:write name="Empleado" property="correo"/></td>
-					<td><bean:write name="Empleado" property="cargo"/></td>
-                    <td>
-                    	<html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/activar.png"/>
-                        </html:link>
-                    </td>
-				</tr> 
-            </logic:iterate>
-        </table>
+
+        <!--Lista vacia-->
+        <logic:empty name="user">
+            <logic:empty name="novisibles">
+                <h3>No hay personal.</h3>
+            </logic:empty>
+        </logic:empty>
+
+        <!--Lista no vacia-->
+        <logic:notEmpty name="user">
+            <table cellspacing='0'>
+    			<thead>
+    				<tr>
+    					<th>Perfil</th>
+    					<th>UsbId</th>
+    					<th>Nombre</th>
+    					<th>Correo</th>
+    					<th>Cargo</th>
+                        <th>Ocultar</th>
+    				</tr>
+    			</thead>
+
+                <!-- DATOS DEL PERSONAL -->
+    			<logic:iterate name="user" id="Empleado">
+                                   
+    				<tr>
+                        <td>
+                            <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/usuario.jpg" width="64"/>
+                            </html:link>
+                        </td>					
+    					<td><bean:write name="Empleado" property="usbid"/></td>
+    					<td>
+    						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
+    					</td>
+    					<td><bean:write name="Empleado" property="correo"/></td>
+    					<td><bean:write name="Empleado" property="cargo"/></td>
+                        <td>
+                            <html:link action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/ocultar.png"/>
+                            </html:link>
+                        </td>
+    				</tr>      
+    			</logic:iterate>
+            </table>
+        </logic:notEmpty>
+
+        <logic:notEmpty name="novisibles">
+            <p><h1>Personal oculto</h1></p>
+            <table cellspacing='0'>
+                <thead>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>UsbId</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Ocultar</th>
+                    </tr>
+                </thead>
+
+                <!-- DATOS DEL PERSONAL -->
+
+                <logic:iterate name="novisibles" id="Empleado"> 
+                    <tr>
+    					<td>
+                            <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/usuario.jpg" width="64"/>
+                            </html:link>
+                        </td>
+    					<td><bean:write name="Empleado" property="usbid"/></td>
+    					<td>
+    						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
+    					</td>
+    					<td><bean:write name="Empleado" property="correo"/></td>
+    					<td><bean:write name="Empleado" property="cargo"/></td>
+                        <td>
+                        	<html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/activar.png"/>
+                            </html:link>
+                        </td>
+    				</tr> 
+                </logic:iterate>
+            </table>
+        </logic:notEmpty>
 
         <html:link action="back">
             <h2>

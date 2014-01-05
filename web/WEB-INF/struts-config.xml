@@ -51,6 +51,14 @@
         <action path="/consultarL_emp"  type="Actions.DB.consultarL_emp" scope="session" validate="false">
             <forward name="success" path="/consultar_empleados.jsp"/>
         </action>
+
+        <action path="/consultarL_letra_jefe"  type="Actions.DB.consultarL_letra_jefe" scope="session" validate="false">
+            <forward name="success" path="/consultar_empleados_jefe_letra.jsp"/>
+        </action>
+        
+        <action path="/consultarL_letra_emp"  type="Actions.DB.consultarL_letra_emp" scope="session" validate="false">
+            <forward name="success" path="/consultar_empleados_letra.jsp"/>
+        </action>
         
         <action path="/consultarTipo"  type="Actions.DB.consultar_tipo_emp" name="LoginForm" validate="false">
             <forward name="empleado" path="/consultarL_emp.do"/>
