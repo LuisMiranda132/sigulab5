@@ -101,9 +101,11 @@
 					<td><bean:write name="Empleado" property="correo"/></td>
 					<td><bean:write name="Empleado" property="cargo"/></td>
                     <td>
-                        <html:link action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/ocultar.png"/>
-                        </html:link>
+                        
+                            <html:link onclick="javascript: return confirm('¿Está seguro desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/ocultar.png"/>
+                            </html:link>
+                        
                     </td>
 				</tr>
   
@@ -120,7 +122,7 @@
 					<td><bean:write name="Empleado" property="correo"/></td>
 					<td><bean:write name="Empleado" property="cargo"/></td>
                     <td>
-                    	<html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                    	<html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                             <img src="images/activar.png"/>
                         </html:link>
                     </td>
