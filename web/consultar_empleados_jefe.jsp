@@ -82,7 +82,6 @@
 					<th>Correo</th>
 					<th>Cargo</th>
                                         <th>Ocultar</th>
-
 				</tr>
 			</thead>
 
@@ -124,7 +123,6 @@
                     	<html:link  action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                             <img src="images/activar.png"/>
                         </html:link>
-
                     </td>
 				</tr> 
             </logic:iterate>

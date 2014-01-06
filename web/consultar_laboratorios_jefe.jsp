@@ -83,15 +83,15 @@
                     <td><bean:write name="Laboratorio" property="nombre"/></td>
                     <td><bean:write name="Laboratorio" property="correo"/></td>
                     <td><bean:write name="Laboratorio" property="pagweb"/></td>
-
-                    <td><html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
-                        <img src="images/modificar.png"  />
-                    </html:link></td>
-
+                    <td>
+                        <html:link action="modificarLaboratorioL" target="centro" paramName="Laboratorio" paramProperty="codigo" paramId="codigo">
+                            <img src="images/modificar.png"/>
+	                </html:link>
+                    </td>
                     <td>
                     	<html:link action="activarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
-							<img src="images/activar.png"/>
-						</html:link>
+                            <img src="images/activar.png"/>
+			</html:link>
                     </td>                  
                 </tr>
             </logic:iterate>
