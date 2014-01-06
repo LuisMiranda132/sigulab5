@@ -110,7 +110,7 @@
                                     </html:link>
                                 </li>
                                 <li class="leaf">
-                                    <html:link action="consultarTipo" target="centro" >
+                                    <html:link action="consultarL_jefe" target="centro" >
                                         <p>Consultar Personal</p>
                                     </html:link>
                                 </li>
@@ -125,7 +125,7 @@
                                     </html:link>
                                 </li>                      
                                 <li class="leaf">
-                                    <html:link action="consultarTipoLab" target="centro">
+                                    <html:link action="ConsultarLab_jefe" target="centro">
                                         <p>Consultar Laboratorios</p>
                                     </html:link>
                                 </li>

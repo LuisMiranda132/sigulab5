@@ -59,12 +59,6 @@
         <action path="/consultarL_letra_emp"  type="Actions.DB.consultarL_letra_emp" scope="session" validate="false">
             <forward name="success" path="/consultar_empleados_letra.jsp"/>
         </action>
-        
-        <action path="/consultarTipo"  type="Actions.DB.consultar_tipo_emp" name="LoginForm" validate="false">
-            <forward name="empleado" path="/consultarL_emp.do"/>
-            <forward name="jefe" path="/consultarL_jefe.do"/>
-            <forward name="failure" path="/inicio.jsp"/>
-        </action>
 
         <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
             <forward name="success" path="/consultarLaboratorio.jsp"/>
@@ -161,12 +155,6 @@
         
         <action path="/ConsultarLab_emp"  type="Actions.DB.ConsultarLab_emp" scope="session" validate="false">
             <forward name="success" path="/consultarLaboratorio.jsp"/>
-        </action>
-        
-        <action path="/consultarTipoLab"  type="Actions.DB.consultar_tipo_emp" name="LoginForm" validate="false">
-            <forward name="empleado" path="/ConsultarLab_emp.do"/>
-            <forward name="jefe" path="/ConsultarLab_jefe.do"/>
-            <forward name="failure" path="/inicio.jsp"/>
         </action>
         
     </action-mappings>

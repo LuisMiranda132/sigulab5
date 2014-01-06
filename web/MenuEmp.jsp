@@ -93,7 +93,7 @@
                             </html:link>
                         </li>
                         <li class="leaf">
-                            <html:link action="consultarTipo" target="centro" >
+                            <html:link action="consultarL_emp" target="centro" >
                                 <p>Consultar Personal</p>
                             </html:link>
                         </li>
