@@ -73,9 +73,6 @@ public class LoginAction extends org.apache.struts.action.Action {
         
         session.setAttribute("usbid", usr.getUsbid());
         
-        request.setAttribute("usbid", usr.getUsbid());
-        //request.getRequestDispatcher("/desactivarPersonal.do").forward(request, response);
-        
         if ((user == null) || (usr.getVisibilidad()==0)) {
             System.out.println("No USER");
             bean.reset();
