@@ -86,9 +86,7 @@
                         <img src="images/modificar.png"  />
                     </html:link></td>
                     <td><html:link action="activarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
-                            
-                                <img src="images/activar.png"/>
-                                                       
+                            <img src="images/activar.png"/>                        
                         </html:link>
                     </td>
                                            
