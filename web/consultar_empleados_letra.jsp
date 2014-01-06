@@ -73,34 +73,50 @@
             <html:link action="consultarTipo">Todos</html:link>
         </p></div>
 
-        <table cellspacing='0'>
-			<thead>
-				<tr>
-					<th>Perfil</th>
-					<th>UsbId</th>
-					<th>Nombre</th>
-					<th>Correo</th>
-					<th>Cargo</th>
-				</tr>
-			</thead>
+        <p><h1>Personal que su apellido comience con: 
+            "<logic:iterate name="letraLista" id="letraID">
+                <bean:write name="letraID"/>
+            </logic:iterate>".
+        </h1></p>
 
-            <!-- DATOS DEL PERSONAL -->
-			<logic:iterate name="user" id="Empleado">                               
-				<tr>
-                    <td>
-                        <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/usuario.jpg" width="64"/>
-                        </html:link>
-                    </td>
-					<td><bean:write name="Empleado" property="usbid"/></td>
-					<td>
-						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
-					</td>
-					<td><bean:write name="Empleado" property="correo"/></td>
-					<td><bean:write name="Empleado" property="cargo"/></td>
-				</tr>  
-			</logic:iterate>                               
-        </table>
+        <!--Lista vacia-->
+        <logic:empty name="user">
+            <h3>No hay personal.</h3>
+        </logic:empty>
+
+
+        <!--Lista no vacia-->
+        <logic:notEmpty name="user">
+
+            <table cellspacing='0'>
+    			<thead>
+    				<tr>
+    					<th>Perfil</th>
+    					<th>UsbId</th>
+    					<th>Nombre</th>
+    					<th>Correo</th>
+    					<th>Cargo</th>
+    				</tr>
+    			</thead>
+
+                <!-- DATOS DEL PERSONAL -->
+    			<logic:iterate name="user" id="Empleado">                               
+    				<tr>
+                        <td>
+                            <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/usuario.jpg" width="64"/>
+                            </html:link>
+                        </td>
+    					<td><bean:write name="Empleado" property="usbid"/></td>
+    					<td>
+    						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
+    					</td>
+    					<td><bean:write name="Empleado" property="correo"/></td>
+    					<td><bean:write name="Empleado" property="cargo"/></td>
+    				</tr>  
+    			</logic:iterate>                               
+            </table>
+        </logic:notEmpty>
 
         <html:link action="back">
             <h2>

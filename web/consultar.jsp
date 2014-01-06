@@ -58,7 +58,11 @@
             <!-- DATOS DEL PERSONAL -->
 			<logic:iterate name="user" id="Empleado">
 				<tr>
-					<td><img src="images/usuario.jpg"/></td>
+                    <td>
+                        <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                            <img src="images/usuario.jpg" width="64"/>
+                        </html:link>
+                    </td>
 					<td><bean:write name="Empleado" property="usbid"/></td>
 					<td>
 						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>

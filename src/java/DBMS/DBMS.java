@@ -218,7 +218,7 @@ public class DBMS {
         }
         
         return Empleados;
-    }
+    } 
     
     public ArrayList<Empleado> listarAllEmpleados(){
         
@@ -284,7 +284,7 @@ public class DBMS {
                 
         return e;
     }
-    
+        
     public Laboratorio obtenerLaboratorio(Laboratorio l){
         PreparedStatement ps = null;
         try{
@@ -668,6 +668,62 @@ public class DBMS {
         return Empleados;
     }
     
+
+
+    public ArrayList<Empleado> listarEmpleadosVisiblesLetra(String letra){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " 
+                                + "WHERE E.USBID=U.USBID AND U.VISIBILIDAD=1 AND U.apellidos LIKE '" + letra + "%';";
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado u = new Empleado();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCorreo(rs.getString("correo"));
+                u.setCargo(rs.getString("cargo")); 
+                
+                Empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
+    
+    public ArrayList<Empleado> listarEmpleadosNoVisiblesLetra(String letra){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+             String consulta = "SELECT U.usbid, U.nombres, U.apellidos, U.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " 
+                                + "WHERE E.USBID = U.USBID AND U.VISIBILIDAD = 0 AND U.apellidos LIKE '" + letra + "%';";
+            ps = conexion.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado u = new Empleado();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCorreo(rs.getString("correo"));
+                u.setCargo(rs.getString("cargo"));
+                
+                Empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
 
     
 }
