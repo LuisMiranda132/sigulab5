@@ -14,6 +14,7 @@ import Clases.Usuario;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForward;
@@ -55,7 +56,7 @@ public class LoginAction extends org.apache.struts.action.Action {
             bean.reset();
             return mapping.findForward(FAILURE);
         }
-          
+                        
         Empleado dummy = new Empleado();
         dummy.setUsbid(bean.getUsbid());
         
@@ -65,9 +66,16 @@ public class LoginAction extends org.apache.struts.action.Action {
                         
         Usuario usuario = new Usuario();
         usuario.setUsbid(bean.getUsbid());
-        
-        Usuario usr = db.obtenerUsuario(usuario);
                 
+        Usuario usr = db.obtenerUsuario(usuario);
+        
+        HttpSession session = request.getSession();
+        
+        session.setAttribute("usbid", usr.getUsbid());
+        
+        request.setAttribute("usbid", usr.getUsbid());
+        //request.getRequestDispatcher("/desactivarPersonal.do").forward(request, response);
+        
         if ((user == null) || (usr.getVisibilidad()==0)) {
             System.out.println("No USER");
             bean.reset();

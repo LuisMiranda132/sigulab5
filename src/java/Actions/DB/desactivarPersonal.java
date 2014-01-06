@@ -10,6 +10,7 @@ import Clases.Usuario;
 import DBMS.DBMS;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -43,9 +44,13 @@ public class desactivarPersonal extends org.apache.struts.action.Action {
         Usuario usuario = new Usuario();
         usuario.setUsbid(request.getParameter("usbid"));
         
+        Usuario dummy = new Usuario();
+        HttpSession session = request.getSession();
+        dummy.setUsbid(session.getAttribute("usbid").toString());
+        
         Usuario user = db.obtenerUsuario(usuario);
         
-        if (user == null){
+        if ((user == null)||(user.getUsbid().equals(dummy.getUsbid()))){
             return mapping.findForward(FAILURE);
         }else{
             if (db.desactivarVisibilidad(user)){
