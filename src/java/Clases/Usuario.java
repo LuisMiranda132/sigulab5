@@ -33,6 +33,7 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     protected String errorCorreo;
     protected String errorTelefono_casa;
     protected String errorTelefono_celular;
+    protected String errorOcultar;
     
     /**
      *
@@ -236,6 +237,20 @@ public class Usuario extends org.apache.struts.action.ActionForm {
     public void setErrorTelefono_celular(String errorTelefono_celular) {
         this.errorTelefono_celular = errorTelefono_celular;
     }    
+
+    /**
+     * @return the errorOcultar
+     */
+    public String getErrorOcultar() {
+        return errorOcultar;
+    }
+
+    /**
+     * @param errorOcultar the errorOcultar to set
+     */
+    public void setErrorOcultar(String errorOcultar) {
+        this.errorOcultar = errorOcultar;
+    }
     
     public void limpiar() {
         this.usbid = null;
@@ -272,6 +287,13 @@ public class Usuario extends org.apache.struts.action.ActionForm {
         }
         
         return errors;
+    }
+    
+    public ActionErrors validateOcultar(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        this.setErrorOcultar("error");
+        errors.add("error", new ActionMessage("error.consultar.ocultar"));
+        return errors;       
     }
     
     

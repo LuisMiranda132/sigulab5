@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 
 /**
@@ -38,7 +39,9 @@ public class desactivarPersonal extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
- 
+        
+        ActionErrors error = null;
+        
         DBMS db = DBMS.getInstance();
                                 
         Usuario usuario = new Usuario();
@@ -51,6 +54,8 @@ public class desactivarPersonal extends org.apache.struts.action.Action {
         Usuario user = db.obtenerUsuario(usuario);
         
         if ((user == null)||(user.getUsbid().equals(dummy.getUsbid()))){
+            error = dummy.validateOcultar(mapping, request);
+            saveErrors(request,error); 
             return mapping.findForward(FAILURE);
         }else{
             if (db.desactivarVisibilidad(user)){
