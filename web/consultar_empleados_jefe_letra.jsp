@@ -41,9 +41,10 @@
     </head>
     <body>
         <h1>Consultar Personal</h1>
-<center style="color:red;background-color:lightcoral" align="center">
-        <html:errors/>    
-    </center>
+        <center style="color:red;background-color:lightcoral" align="center">
+            <html:errors/>    
+        </center>
+
         <div class="letras_apellido"><p>
             <html:link action="consultarL_letra_jefe.do?param=A">A</html:link> - 
             <html:link action="consultarL_letra_jefe.do?param=B">B</html:link> - 
@@ -73,6 +74,7 @@
             <html:link action="consultarL_letra_jefe.do?param=Y">Y</html:link> - 
             <html:link action="consultarL_letra_jefe.do?param=Z">Z</html:link> - 
             <html:link action="consultarL_jefe">Todos</html:link>
+
         </p></div>
 
         <p><h1>Personal que su apellido comience con: 
@@ -119,7 +121,9 @@
     					<td><bean:write name="Empleado" property="correo"/></td>
     					<td><bean:write name="Empleado" property="cargo"/></td>
                         <td>
+
                             <html:link onclick="javascript: return confirm('¿Está seguro desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+
                                 <img src="images/ocultar.png"/>
                             </html:link>
                         </td>
@@ -158,7 +162,9 @@
     					<td><bean:write name="Empleado" property="correo"/></td>
     					<td><bean:write name="Empleado" property="cargo"/></td>
                         <td>
-                        	<html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+
+                            <html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+
                                 <img src="images/activar.png"/>
                             </html:link>
                         </td>

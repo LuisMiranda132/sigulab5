@@ -41,9 +41,9 @@
     </head>
     <body>
         <h1>Consultar Personal</h1>
-            <center style="color:red;background-color:lightcoral" align="center">
-        <html:errors/>    
-    </center>
+        <center style="color:red;background-color:lightcoral" align="center">
+            <html:errors/>    
+        </center>
         <div class="letras_apellido"><p>
             <html:link action="consultarL_letra_jefe.do?param=A">A</html:link> - 
             <html:link action="consultarL_letra_jefe.do?param=B">B</html:link> - 
@@ -83,7 +83,7 @@
 					<th>Nombre</th>
 					<th>Correo</th>
 					<th>Cargo</th>
-                                        <th>Ocultar</th>
+                    <th>Ocultar</th>
 				</tr>
 			</thead>
 
@@ -124,6 +124,7 @@
 					<td><bean:write name="Empleado" property="correo"/></td>
 					<td><bean:write name="Empleado" property="cargo"/></td>
                     <td>
+
                     	<html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                             <img src="images/activar.png"/>
                         </html:link>
