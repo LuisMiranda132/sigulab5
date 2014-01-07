@@ -70,7 +70,7 @@
 	                    </html:link>
                     </td>
                     <td>
-                    	<html:link action="desactivarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
+                    	<html:link onclick="javascript: return confirm('¿Está seguro desea ocultar la vista de este laboratorio?')" action="desactivarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
 							<img src="images/ocultar.png"/>
 						</html:link>
                     </td>              
@@ -89,7 +89,7 @@
 	                </html:link>
                     </td>
                     <td>
-                    	<html:link action="activarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
+                    	<html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este laboratorio?')" action="activarLaboratorio" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
                             <img src="images/activar.png"/>
 			</html:link>
                     </td>                  
