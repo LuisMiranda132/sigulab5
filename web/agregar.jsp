@@ -33,19 +33,85 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
+        
+        <style>
+            
+            .titulo_formulario {
+                font-size: 14px;
+                font-weight: bold;
+                color: #42a9be;
+                text-align: center;
+                background-color: beige;
+                height: 21px;
+                line-height: 21px;
+            }
+            
+            .logic_success {
+                color: green;
+                margin-top: 23px;
+            }
+            
+            .logic_failure {
+                color: red;
+                margin-top: 23px;
+            }
+            
+            .errors {
+                color: red;
+                margin-top: 23px;
+            }
+            
+            #submit {
+                margin-left: 222px;
+                margin-top: 16px;
+            }
+            
+            .boton {
+                background: transparent;
+                color: #1c6ea0;
+                font-weight: bold;
+                border: 0px;
+                cursor: pointer;
+            }
+            
+            .boton:hover, .boton:focus, .boton:active {
+                color: #42a9be;
+                transition: color .2s linear 0;
+            }
+                
+        </style>
+        
         <title>Catalogo</title>
     </head>
+    
     <body>
-        <h1>Agregar</h1>
-    <center style="color:red;background-color:lightcoral" align="center">
-        <html:errors/>    
-    </center>
-        <logic:present name="lologreA">
-        <center style="color:green;background-color: springgreen" align="center">
-            Se agrego exitosamente    
+        <div class="titulo_formulario"> Agregar Personal </div>
+        
+        <!-- ERRORES </!-->
+        <center class="errors" align="center">
+            <html:errors/>    
         </center>
-            </logic:present>
-        <html:form action="agregar" >
+    
+        <logic:present name="lologreA">
+            <center class="logic_success" align="center">
+                Se agrego exitosamente.
+            </center>
+        </logic:present>
+    
+        <logic:present name="noExistente">
+            <center class="logic_failure" align="center">
+                Dicho usuario no existe.    
+            </center>
+        </logic:present>
+    
+        <logic:present name="empExistente">
+            <center class="logic_failure" align="center">
+                Dicho usuario ya ha sido agregado como empleado.
+            </center>
+        </logic:present>
+        <!-- FIN ERRORES </!-->
+    
+        <html:form action="agregar" style="margin-left: 45px;">
             <table border="0">
                 <tbody>
                     <tr>
@@ -92,17 +158,18 @@
                     </tr>
                 </tbody>
             </table>
-            <p>
-
-                <html:submit value="agregar"/>
-                <html:reset value="limpiar"/>
-            </p>
+                        
+            <div id="submit">
+                <html:submit value="agregar" styleClass="boton" />
+                <html:reset value="limpiar" styleClass="boton"/>
+            </div>
         </html:form>
 
-           <html:link action="back">
-            <h2>
-                Volver
+        <html:link action="back">
+            <h2 style="margin: 0px;">
+                 << volver
             </h2>
         </html:link>
+        
     </body>
 </html>

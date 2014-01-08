@@ -13,8 +13,8 @@
     <head profile="http://www.w3.org/1999/xhtml/vocab">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <link rel="shortcut icon" href="http://www.ulab.usb.ve/misc/favicon.ico" type="image/vnd.microsoft.icon">
-        <link rel="alternate" type="application/rss+xml" title="Unidad de Laboratoris RSS" href="http://www.ulab.usb.ve/rss.xml">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/rss+xml" title="Unidad de Laboratorios RSS" href="http://www.ulab.usb.ve/rss.xml">
         <meta name="Generator" content="Drupal 7 (http://drupal.org)">
         <title>Unidad de Laboratorios</title>
         

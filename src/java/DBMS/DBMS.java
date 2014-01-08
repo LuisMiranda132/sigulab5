@@ -53,6 +53,7 @@ public class DBMS {
     public boolean agregarUsuario(Usuario u) {
         
         PreparedStatement psAgregar = null;
+        
         try {
             psAgregar = conexion.prepareStatement(
                     "INSERT INTO USUARIO VALUES (?,?,?,?,?,?,?,?,?);");
@@ -71,8 +72,8 @@ public class DBMS {
             
             return i>0;
             
-        }catch(SQLException ex){
-            ex.printStackTrace();;
+        } catch(SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
 
@@ -198,15 +199,21 @@ public class DBMS {
     }
     
     
-    public Usuario obtenerUsuario(Usuario u){
+    public Usuario obtenerUsuario(Usuario u) {
         
         PreparedStatement ps = null;
-        try{
+        
+        try {
             ps = conexion.prepareStatement("SELECT * FROM USUARIO WHERE usbid=?;");
             ps.setString(1, u.getUsbid());
             ResultSet rs = ps.executeQuery();
             
-            while (rs.next()){
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }                  
+            
+            while (rs.next()) {
                
                 u.setUsbid(rs.getString("usbid"));
                 u.setNombres(rs.getString("nombres"));
@@ -219,11 +226,9 @@ public class DBMS {
                 u.setTipo(rs.getString("tipo"));
                 
             }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        
-        if(u.getNombres() == null) {
             return null;
         }
         
