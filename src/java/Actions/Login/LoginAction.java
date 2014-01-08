@@ -63,26 +63,21 @@ public class LoginAction extends org.apache.struts.action.Action {
         DBMS db = DBMS.getInstance();
         
         Empleado user = db.obtenerEmpleado(dummy);
-                        
-        Usuario usuario = new Usuario();
-        usuario.setUsbid(bean.getUsbid());
                 
-        Usuario usr = db.obtenerUsuario(usuario);
-        
         HttpSession session = request.getSession();
         
-        session.setAttribute("usbid", usr.getUsbid());
+        session.setAttribute("usbid", user.getUsbid());
         
-        if ((user == null) || (usr.getVisibilidad()==0)) {
+        if ((user == null) || (user.getVisibilidad()==0)) {
             System.out.println("No USER");
             bean.reset();
 //            errors.add("credenciales", new ActionMessage("error.credenciales"));
             return mapping.findForward(FAILURE);
         }
                 
-        if (user.getTipoE().contentEquals("jefe")){
+        if (user.getTipo_empleado().contentEquals("jefe")){
             return mapping.findForward(JEFE);
-        }else if(user.getTipoE().contentEquals("tecnico")){
+        }else if(user.getTipo_empleado().contentEquals("tecnico")){
             return mapping.findForward(TECNICO);
         }
                 

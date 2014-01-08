@@ -53,7 +53,7 @@
                     <th>Correo</th>
                     <th>Página Web</th>
                     <th>Modificar</th>
-                    <th>Activar/Desactivar</th>
+                    <th>Ocultar</th>
                 </tr>
             </thead>
 

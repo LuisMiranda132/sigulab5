@@ -54,7 +54,7 @@ public class consultar_tipo_emp extends org.apache.struts.action.Action {
             bean.reset();
 //          errors.add("credenciales", new ActionMessage("error.credenciales"));
             return mapping.findForward(FAILURE);
-        } else if (user.getTipoE().contentEquals("jefe")){
+        } else if (user.getTipo_empleado().contentEquals("jefe")){
             return mapping.findForward(JEFE);
         } else {
             return mapping.findForward(EMPLEADO);

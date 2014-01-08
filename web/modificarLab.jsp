@@ -48,7 +48,7 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td> Codigo </td>
+                        <td> Código </td>
                         <td>
                             <bean:write name="Laboratorio" property="codigo"/>
                         </td>
@@ -69,7 +69,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Ubicacion </td>
+                        <td> Ubicación </td>
                         <td>
                             <html:text name="Laboratorio" property="ubicacion"/>
                         </td>
@@ -81,11 +81,29 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Pagina Web </td>
+                        <td> Página Web </td>
                         <td>
                             <html:text name="Laboratorio" property="pagweb"/>
                         </td>
                     </tr>
+                    <tr>
+                        <td> Teléfono </td>
+                        <td>
+                            <html:text name="Laboratorio" property="telefono"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Fax </td>
+                        <td>
+                            <html:text name="Laboratorio" property="fax"/>
+                        </td>
+                    </tr>
+                   <%-- <tr>
+                        <td> Características </td>
+                        <td>
+                            <html:text name="Laboratorio" property="caracteristicas"/>
+                        </td>
+                    </tr> --%>
                     <tr>
                         <td> Jefe </td>
                         <td>

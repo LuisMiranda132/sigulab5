@@ -57,7 +57,7 @@
                     <tr>
                         <td> Tipo Usuario</td>
                         <td>
-                            <html:select name="Empleado" property="tipo">
+                            <html:select name="Empleado" property="tipo_usuario">
                                 <html:option value=""></html:option>
                                 <%--
                                 <html:option value="estudiante">Estudiante</html:option>
@@ -76,13 +76,13 @@
                     <tr>
                         <td> Año de Ingreso </td>
                         <td>
-                            <html:text name="Empleado" property="antiguedad"/>
+                            <html:text name="Empleado" property="ano_ingreso"/>
                         </td>
                     </tr>
                     <tr>
                         <td> Tipo Empleado</td>
                         <td>
-                            <html:select name="Empleado" property="tipoE">
+                            <html:select name="Empleado" property="tipo_empleado">
                                 <html:option value=""></html:option>
                                 <html:option value="personal admin">Personal Admin</html:option>
                                 <html:option value="tecnico">Tecnico</html:option>

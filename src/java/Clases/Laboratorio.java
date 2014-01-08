@@ -7,7 +7,6 @@
 package Clases;
 
 import java.util.ArrayList;
-import Clases.Empleado;
 import java.util.Collection;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -28,6 +27,9 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     private String ubicacion;
     private String correo;
     private String pagweb;
+    private String telefono;
+    private String fax;
+    private String caracteristicas;
     private String jefe;
     private Integer visibilidad;
     private List jefes = new ArrayList<Empleado>();
@@ -42,6 +44,9 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.ubicacion=null;
         this.correo=null;
         this.pagweb=null;
+        this.telefono=null;
+        this.fax=null;
+        this.caracteristicas=null;
         this.jefe=null;
         this.visibilidad=0;
     }
@@ -56,7 +61,11 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.ubicacion="";
         this.correo="";
         this.pagweb="";
+        this.telefono="";
+        this.fax="";
+        this.caracteristicas="";
         this.jefe="";
+        this.visibilidad=0;
     }
     
     /**
@@ -84,6 +93,9 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
                 this.getJefe().contentEquals("")||
                 this.getNombre().contentEquals("")||
                 this.getPagweb().contentEquals("")||
+                this.getTelefono().contentEquals("")||
+                this.getFax().contentEquals("")||
+                this.getCaracateristicas().contentEquals("")||
                 this.getSede().contentEquals("")||
                 this.getUbicacion().contentEquals("")){
             errors.add("error",new ActionMessage("error.laboratorio.vacio"));
@@ -186,6 +198,48 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     public void setPagweb(String pagweb) {
         this.pagweb = pagweb;
     }
+    
+    /**
+     * @return the telefono
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    /**
+     * @return the fax
+     */
+    public String getFax() {
+        return fax;
+    }
+
+    /**
+     * @param fax the fax to set
+     */
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+    
+    /**
+     * @return the caracteristicas
+     */
+    public String getCaracateristicas() {
+        return caracteristicas;
+    }
+
+    /**
+     * @param caracteristicas the caracteristicas to set
+     */
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
 
     /**
      * @return the jefe
@@ -242,6 +296,9 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.ubicacion = null;
         this.correo = null;
         this.pagweb = null;
+        this.telefono = null;
+        this.fax = null;
+        this.caracteristicas = null;
         this.jefe = null;
         this.visibilidad = 0;
     }

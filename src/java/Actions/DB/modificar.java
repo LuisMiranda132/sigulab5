@@ -109,7 +109,7 @@ public class modificar extends org.apache.struts.action.Action {
             
         } else {
             
-            boolean agrego = DBMS.getInstance().modificarUsuario(u);
+            boolean agrego = DBMS.getInstance().modificarEmpleado(u);
             
 
             if (agrego) {

@@ -71,9 +71,8 @@
                         <p>Cédula: <bean:write name="Empleado" property="cedula"/>.</p>
                         <p>Correo: <bean:write name="Empleado" property="correo"/></p>
                         <p>Dirección: <bean:write name="Empleado" property="direccion"/>.</p>
-                        <p>Teléfono (casa): <bean:write name="Empleado" property="telefono_casa"/></p>
-                        <p>Teléfono (celular): <bean:write name="Empleado" property="telefono_celular"/></p>
-                        <p>Antigüedad: <bean:write name="Empleado" property="antiguedad"/></p>
+                        <p>Teléfono: <bean:write name="Empleado" property="telefono"/></p>
+                        <p>Fecha de ingreso: <bean:write name="Empleado" property="ano_ingreso"/></p>
                     </div>
 
                     <!--Segunda pestana-->

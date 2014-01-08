@@ -33,7 +33,7 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
-        <title>Catalogo</title>
+        <title>Catálogo</title>
     </head>
     <body>
         <h1>Modificar</h1>

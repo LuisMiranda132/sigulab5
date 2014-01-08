@@ -6,7 +6,7 @@
 
 package Actions.DB;
 
-import Clases.Usuario;
+import Clases.Empleado;
 import DBMS.DBMS;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,14 +44,14 @@ public class desactivarPersonal extends org.apache.struts.action.Action {
         
         DBMS db = DBMS.getInstance();
                                 
-        Usuario usuario = new Usuario();
-        usuario.setUsbid(request.getParameter("usbid"));
+        Empleado empleado = new Empleado();
+        empleado.setUsbid(request.getParameter("usbid"));
         
-        Usuario dummy = new Usuario();
+        Empleado dummy = new Empleado();
         HttpSession session = request.getSession();
         dummy.setUsbid(session.getAttribute("usbid").toString());
         
-        Usuario user = db.obtenerUsuario(usuario);
+        Empleado user = db.obtenerEmpleado(empleado);
         
         if ((user == null)||(user.getUsbid().equals(dummy.getUsbid()))){
             error = dummy.validateOcultar(mapping, request);

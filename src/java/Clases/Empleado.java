@@ -17,11 +17,23 @@ import org.apache.struts.action.ActionMessage;
  */
 public class Empleado extends Usuario{
     
+    private String correo;
+    private String direccion;
     private String cargo;
-    private String antiguedad;
-    private String tipoE;
-
-    private String errorAntiguedad;
+    private String ano_ingreso;
+    private String tipo_empleado;
+    private String status;    
+    private String telefono;
+    private String tipo_usuario;
+    private String area_laboral;
+    private String extension;
+    private String laboratorio;    
+    private int  visibilidad; 
+    
+    private String errorAnoIngreso;
+    private String errorCorreo;
+    private String errorTelefono;
+    private String errorOcultar;
 
     
     /**
@@ -29,9 +41,19 @@ public class Empleado extends Usuario{
      */
     public Empleado() {
         super();
+        this.usbid = null;
+        this.correo = null;
+        this.direccion = null;
         this.cargo = null;
-        this.antiguedad = null;
-        this.tipoE = null;
+        this.ano_ingreso = null;
+        this.tipo_empleado = null;
+        this.status = null;
+        this.telefono = null;
+        this.tipo_usuario = null;
+        this.area_laboral = null;
+        this.extension = null;
+        this.laboratorio = null;
+        this.visibilidad = 1;
     }
     
     /**
@@ -39,10 +61,21 @@ public class Empleado extends Usuario{
      */
     public void limpiarE(){
         this.limpiar();
+        this.usbid = null;
+        this.correo = null;
+        this.direccion = null;
         this.cargo = null;
-        this.antiguedad = null;
-        this.tipoE = null;
+        this.ano_ingreso = null;
+        this.tipo_empleado = null;
+        this.status = null;
+        this.telefono = null;
+        this.tipo_usuario = null;
+        this.area_laboral = null;
+        this.extension = null;
+        this.laboratorio = null;
+        this.visibilidad = 0;
     }
+    
     
     /**
      * @return the cargo
@@ -59,45 +92,213 @@ public class Empleado extends Usuario{
     }
 
     /**
-     * @return the antiguedad
+     * @return the ano_ingreso
      */
-    public String getAntiguedad() {
-        return antiguedad;
+    public String getAno_ingreso() {
+        return ano_ingreso;
     }
 
     /**
-     * @param antiguedad the antiguedad to set
+     * @param ano_ingreso the ano_ingreso to set
      */
-    public void setAntiguedad(String antiguedad) {
-        this.antiguedad = antiguedad;
+    public void setAno_ingreso(String ano_ingreso) {
+        this.ano_ingreso = ano_ingreso;
     }
 
     /**
-     * @return the tipo
+     * @return the tipo_empleado
      */
-    public String getTipoE() {
-        return tipoE;
+    public String getTipo_empleado() {
+        return tipo_empleado;
     }
 
     /**
-     * @param tipo the tipo to set
+     * @param tipo_empleado the tipo_empleado to set
      */
-    public void setTipoE(String tipo) {
-        this.tipoE = tipo;
+    public void setTipo_empleado(String tipo_empleado) {
+        this.tipo_empleado = tipo_empleado;
     }
 
     /**
-     * @return the errorAntiguedad
+     * @return the correo
      */
-    public String getErrorAntiguedad() {
-        return errorAntiguedad;
+    public String getCorreo() {
+        return correo;
     }
 
     /**
-     * @param errorAntiguedad the errorAntiguedad to set
+     * @param correo the correo to set
      */
-    public void setErrorAntiguedad(String errorAntiguedad) {
-        this.errorAntiguedad = errorAntiguedad;
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    /**
+     * @return the direccion
+     */
+    public String getDireccion() {
+        return direccion;
+    }
+
+    /**
+     * @param direccion the direccion to set
+     */
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    /**
+     * @return the telefono
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+  
+    /**
+     * @return the tipo_usuario
+     */
+    public String getTipo_usuario() {
+        return tipo_usuario;
+    }
+
+    /**
+     * @param tipo_usuario the tipo_usuario to set
+     */
+    public void setTipo_usuario(String tipo_usuario) {
+        this.tipo_usuario = tipo_usuario;
+    }
+    
+    /**
+     * @return the visibilidad
+     */
+    public int getVisibilidad() {
+        return visibilidad;
+    }
+
+    /**
+     * @param visibilidad the visibilidad to set
+     */
+    public void setVisibilidad(int visibilidad) {
+        this.visibilidad = visibilidad;
+    }    
+    
+    /**
+     * @return the status
+     */
+    public String getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(String status) {
+        this.status = status;
+    }
+    
+    /**
+     * @return the area_laboral
+     */
+    public String getArea_laboral() {
+        return area_laboral;
+    }
+
+    /**
+     * @param area_laboral the area_laboral to set
+     */
+    public void setArea_laboral(String area_laboral) {
+        this.area_laboral = area_laboral;
+    }
+    
+    /**
+     * @return the extension
+     */
+    public String getExtension() {
+        return extension;
+    }
+
+    /**
+     * @param extension the extension to set
+     */
+    public void setExtension(String extension) {
+        this.extension = extension;
+    } 
+    
+    /**
+     * @return the laboratorio
+     */
+    public String getLaboratorio() {
+        return laboratorio;
+    }
+
+    /**
+     * @param laboratorio the laboratorio to set
+     */
+    public void setLaboratorio(String laboratorio) {
+        this.laboratorio = laboratorio;
+    } 
+  
+    /**
+     * @return the errorCorreo
+     */
+    public String getErrorCorreo() {
+        return errorCorreo;
+    }
+
+    /**
+     * @param errorCorreo the errorCorreo to set
+     */
+    public void setErrorCorreo(String errorCorreo) {
+        this.errorCorreo = errorCorreo;
+    }
+
+    /**
+     * @return the errorTelefono
+     */
+    public String getErrorTelefono() {
+        return errorTelefono;
+    }
+
+    /**
+     * @param errorTelefono the errorTelefono to set
+     */
+    public void setErrorTelefono(String errorTelefono) {
+        this.errorTelefono = errorTelefono;
+    }
+
+    /**
+     * @return the errorOcultar
+     */
+    public String getErrorOcultar() {
+        return errorOcultar;
+    }
+
+    /**
+     * @param errorOcultar the errorOcultar to set
+     */
+    public void setErrorOcultar(String errorOcultar) {
+        this.errorOcultar = errorOcultar;
+    }    
+    
+    /**
+     * @return the errorAnoIngreso
+     */
+    public String getErrorAnoIngreso() {
+        return errorAnoIngreso;
+    }
+    
+    /**
+     * @param errorAnoIngreso the errorAnoIngreso to set
+     */
+    public void setErrorAnoIngreso(String errorAnoIngreso) {
+        this.errorAnoIngreso = errorAnoIngreso;
     }    
     
     /**
@@ -148,20 +349,20 @@ public class Empleado extends Usuario{
             Validacion anio Ingreso
             4 Digitos
         */
-        if (!(antiguedad.matches("\\d{4}"))) {
+        if (!(ano_ingreso.matches("\\d{4}"))) {
             errors.add("errorUsbid", new ActionMessage("error.usuario.antiguedad"));
         }
                 
         return errors;
     }    
     
-    public ActionErrors validateAntiguedad(ActionMapping mapping, HttpServletRequest request){
+    public ActionErrors validateAnoIngreso(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         
-        this.setErrorAntiguedad("");
+        this.setErrorAnoIngreso("");
         
-        if(!getErrorAntiguedad().matches("\\d*")){
-            this.setErrorAntiguedad("error");
+        if(!getErrorAnoIngreso().matches("\\d*")){
+            this.setErrorAnoIngreso("error");
             errors.add("error", new ActionMessage("error.empleado.antiguedad"));
         }
         
@@ -171,31 +372,68 @@ public class Empleado extends Usuario{
     public ActionErrors validateCampos(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         if(this.getCargo().contentEquals("")
-                ||this.getAntiguedad().contentEquals("")
-                ||this.getTipoE().contentEquals("")){
+                ||this.getAno_ingreso().contentEquals("")
+                ||this.getTipo_empleado().contentEquals("")){
             errors.add("error",new ActionMessage("error.empleado.vacio"));
         }
+        return errors;
+    }
+    
+    public ActionErrors validateVacio(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        if(this.getTipo_usuario().contentEquals("")
+                ||this.getUsbid().contentEquals("")){
+            errors.add("error", new ActionMessage("error.usuario.vacio"));
+        }
+        
+        return errors;
+    }
+    
+    public ActionErrors validateOcultar(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        this.setErrorOcultar("error");
+        errors.add("error", new ActionMessage("error.consultar.ocultar"));
+        return errors;       
+    }
+    
+    public ActionErrors validateTodo(ActionMapping mapping, HttpServletRequest request) {
+        ActionErrors errors = new ActionErrors();
+
+        this.setErrorUsbid("");
+        this.setErrorCorreo("");
+        this.setErrorTelefono("");
+        
+        if (getCorreo().indexOf("@")==-1){
+            this.setErrorCorreo("error");
+            errors.add("correo", new ActionMessage("error.codigo.required"));
+        }
+        
+        if (!getTelefono().matches("\\d{11}")){
+            this.setErrorTelefono("error");
+            errors.add("telefono", new ActionMessage("error.codigo.required"));
+        }
+              
         return errors;
     }
     
     public ActionErrors validateTodoE(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         
-        this.setErrorAntiguedad("");
+        this.setErrorAnoIngreso("");
         
         if(this.getApellidos()==null||this.getCorreo()==null||this.getDireccion()==null
-                ||this.getNombres()==null||this.getTelefono_casa()==null
-                ||this.getTelefono_celular()==null||this.getTipo().contentEquals("")
+                ||this.getNombres()==null||this.getTelefono()==null
+                ||this.getTipo_usuario().contentEquals("")
                 ||this.getUsbid()==null
                 ||this.getApellidos().contentEquals("")
                 ||this.getCorreo().contentEquals("")
                 ||this.getDireccion().contentEquals("")
                 ||this.getNombres().contentEquals("")
-                ||this.getTelefono_celular().contentEquals("")
                 ||this.getUsbid().contentEquals("")
                 ||this.getCargo().contentEquals("")
-                ||this.getAntiguedad().contentEquals("")
-                ||this.getTipoE().contentEquals("")){
+                ||this.getAno_ingreso().contentEquals("")
+                ||this.getTipo_empleado().contentEquals("")){
            
             errors.add("error",new ActionMessage("error.empleado.vacio"));
         
@@ -207,16 +445,11 @@ public class Empleado extends Usuario{
             
         }
         
-        if(!this.getTelefono_casa().matches("02\\d{9}")){
-            this.setErrorTelefono_casa("error");
+        if(!this.getTelefono().matches("02\\d{9}")){
+            this.setErrorTelefono("error");
             errors.add("error",new ActionMessage("error.empleado.telefonoFijo"));
         }
-        
-        if(!this.getTelefono_celular().matches("04\\d{9}")){
-            this.setErrorTelefono_celular("error");
-            errors.add("error",new ActionMessage("error.empleado.telefonoCelular"));
-        }
-        
+               
         return errors;
     } 
 

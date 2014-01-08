@@ -6,7 +6,7 @@
 
 package Actions.DB;
 
-import Clases.Usuario;
+import Clases.Empleado;
 import DBMS.DBMS;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -40,15 +40,15 @@ public class Activar_personal extends org.apache.struts.action.Action {
  
         DBMS db = DBMS.getInstance();
                                 
-        Usuario usuario = new Usuario();
-        usuario.setUsbid(request.getParameter("usbid"));
+        Empleado empleado = new Empleado();
+        empleado.setUsbid(request.getParameter("usbid"));
         
-        Usuario user = db.obtenerUsuario(usuario);
+        Empleado emp = db.obtenerEmpleado(empleado);
         
-        if (user == null){
+        if (emp == null){
             return mapping.findForward(FAILURE);
         }else{
-            if (db.activarVisibilidad(user)){
+            if (db.activarVisibilidad(emp)){
                 return mapping.findForward(SUCCESS);
             } else{
                 return mapping.findForward(FAILURE);

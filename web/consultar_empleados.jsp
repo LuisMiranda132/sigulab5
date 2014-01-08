@@ -70,7 +70,7 @@
             <html:link action="consultarL_letra_emp.do?param=X">X</html:link> - 
             <html:link action="consultarL_letra_emp.do?param=Y">Y</html:link> - 
             <html:link action="consultarL_letra_emp.do?param=Z">Z</html:link> - 
-            <html:link action="consultarTipo">Todos</html:link>
+            <html:link action="consultarL_emp">Todos</html:link>
         </p></div>
 
         <table cellspacing='0'>

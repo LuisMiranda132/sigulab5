@@ -2,6 +2,9 @@
 --********************************* DROP ***************************************
 --******************************************************************************
 
+DROP TABLE HABILIDAD;
+DROP TABLE PUBLICACION;
+DROP TABLE FORMACION;
 DROP TABLE EMPLEADO;
 DROP TABLE LABORATORIO;
 DROP TABLE USUARIO;

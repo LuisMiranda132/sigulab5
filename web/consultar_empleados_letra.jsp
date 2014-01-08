@@ -70,7 +70,7 @@
             <html:link action="consultarL_letra_emp.do?param=X">X</html:link> - 
             <html:link action="consultarL_letra_emp.do?param=Y">Y</html:link> - 
             <html:link action="consultarL_letra_emp.do?param=Z">Z</html:link> - 
-            <html:link action="consultarTipo">Todos</html:link>
+            <html:link action="consultarL_emp">Todos</html:link>
         </p></div>
 
         <p><h1>Personal que su apellido comience con: 
