@@ -1,7 +1,5 @@
 <%-- 
-    Document   : consultar
-    Created on : Nov 27, 2013, 12:06:26 AM
-    Author     : luismiranda
+    Document: consultar_empleados_jefe_letra
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -10,14 +8,14 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>  
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css" media="all">
             @import "CSS/system.base.css";
-        </style>
-        
+        </style>        
         <style type="text/css" media="all">
             @import "CSS/field.css";
             @import "CSS/user.css";    
@@ -27,7 +25,6 @@
             @import "CSS/ckeditor.css";
             @import "CSS/ctools.css";
         </style>
-
         <style type="text/css" media="all">
             @import "CSS/layout.css";
             @import "CSS/table.css";
@@ -39,11 +36,9 @@
         </style>
         <title>Consultar Personal</title>
     </head>
+
     <body>
         <h1>Consultar Personal</h1>
-        <center style="color:red;background-color:lightcoral" align="center">
-            <html:errors/>    
-        </center>
 
         <div class="letras_apellido"><p>
             <html:link action="consultarL_letra_jefe.do?param=A">A</html:link> - 
@@ -83,11 +78,10 @@
             </logic:iterate>".
         </h1></p>
 
-
         <!--Lista vacia-->
         <logic:empty name="user">
             <logic:empty name="novisibles">
-                <h3>No hay personal.</h3>
+                <h3>No se han encontrado resultados.</h3>
             </logic:empty>
         </logic:empty>
 
@@ -95,35 +89,34 @@
         <logic:notEmpty name="user">
             <table cellspacing='0'>
     			<thead>
-    				<tr>
-    					<th>Perfil</th>
-    					<th>UsbId</th>
-    					<th>Nombre</th>
-    					<th>Correo</th>
-    					<th>Cargo</th>
-                        <th>Ocultar</th>
-    				</tr>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Área laboral</th>
+                        <th>Extensión</th>
+                        <th>Laboratorio</th>
+                        <th>Visibilidad</th>
+                    </tr>
     			</thead>
 
-                <!-- DATOS DEL PERSONAL -->
-    			<logic:iterate name="user" id="Empleado">
-                                   
+                <!-- Usuarios visibles -->
+    			<logic:iterate name="user" id="Empleado">                                   
     				<tr>
                         <td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/usuario.jpg" width="64"/>
+                                <img src="images/usuario.jpg" width="48"/>
                             </html:link>
                         </td>					
-    					<td><bean:write name="Empleado" property="usbid"/></td>
-    					<td>
-    						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
-    					</td>
+    					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
     					<td><bean:write name="Empleado" property="correo"/></td>
     					<td><bean:write name="Empleado" property="cargo"/></td>
+                        <td><bean:write name="Empleado" property="area_laboral"/></td>
+                        <td><bean:write name="Empleado" property="extension"/></td>
+                        <td><bean:write name="Empleado" property="laboratorio"/></td>
                         <td>
-
                             <html:link onclick="javascript: return confirm('¿Está seguro desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-
                                 <img src="images/ocultar.png"/>
                             </html:link>
                         </td>
@@ -142,29 +135,27 @@
                         <th>Nombre</th>
                         <th>Correo</th>
                         <th>Cargo</th>
-                        <th>Ocultar</th>
+                        <th>Visibilidad</th>
                     </tr>
                 </thead>
 
-                <!-- DATOS DEL PERSONAL -->
-
+                <!-- Usuarios no visibles -->
                 <logic:iterate name="novisibles" id="Empleado"> 
                     <tr>
     					<td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/usuario.jpg" width="64"/>
+                                <img src="images/usuario.jpg" width="48"/>
                             </html:link>
                         </td>
     					<td><bean:write name="Empleado" property="usbid"/></td>
-    					<td>
-    						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
-    					</td>
+    					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
     					<td><bean:write name="Empleado" property="correo"/></td>
     					<td><bean:write name="Empleado" property="cargo"/></td>
+                        <td><bean:write name="Empleado" property="area_laboral"/></td>
+                        <td><bean:write name="Empleado" property="extension"/></td>
+                        <td><bean:write name="Empleado" property="laboratorio"/></td>
                         <td>
-
                             <html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-
                                 <img src="images/activar.png"/>
                             </html:link>
                         </td>

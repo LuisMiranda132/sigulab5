@@ -1,13 +1,13 @@
 --******************************************************************************
 --********************************* INSERT *************************************
 --******************************************************************************
+
+
 --
 -- INSERT USUARIO
 --
 -- USUARIO (usbid, nombres, apellidos, cedula);
 --
-
-
 INSERT INTO USUARIO VALUES ('09-10279', 'Michelle', 'Fernandez', '19505244');
 INSERT INTO USUARIO VALUES ('10-10333', 'Alejandro', 'Guillen', '21516707');
 INSERT INTO USUARIO VALUES ('pperez','Pedro','Perez',235456);
@@ -16,12 +16,12 @@ INSERT INTO USUARIO VALUES ('mmartinez','Marta','Martinez',357195);
 INSERT INTO USUARIO VALUES ('jjimenez','Jesus','Jimenez',902334);
 INSERT INTO USUARIO VALUES ('luisl','Luis','Lopez',913285);
 
+
 --
 -- INSERT EMPLEADO
 --
 -- EMPLEADO (usbid, correo, direccion, cargo, ano_ingreso, tipo_empleado, status, telefono, tipo_usuario, area_laboral, extension, laboratorio, visibilidad) 
 -- 
-
 INSERT INTO EMPLEADO VALUES ('10-10333', 'aguillenv93@gmail.com', 'Macaracuay', 'Jefe', '2001', 'jefe', 'Activo', '02122570280', 'Empleado', 'BD', 'Lab BD', 'Lab F', 1);
 INSERT INTO EMPLEADO VALUES ('09-10279', 'micafe.go@gmail.com', 'La Castellana', 'Jefe', '2000', 'jefe', 'Activo', '02122639194', 'Empleado', 'Materiales', 'Lab Polimeros', 'Lab A', 1);
 INSERT INTO EMPLEADO VALUES ('pperez', '', '', 'Tecnico', '2005','tecnico', 'Activo', '', 'empleado', 'Materiales', 'Lab de Ceramica', 'Lab A', 1);
@@ -30,12 +30,12 @@ INSERT INTO EMPLEADO VALUES ('mmartinez', '', '', 'Jefe Laboratorio','2009','jef
 INSERT INTO EMPLEADO VALUES ('jjimenez', '', '', 'Jefe Laboratorio','2002','jefe', 'En Congreso', '', 'jefe', '', '', 'Lab C', 1);
 INSERT INTO EMPLEADO VALUES ('luisl', '', '', 'Asistente','2005','personal admin', 'Activo', '', 'empleado', '', '', '', 1);
 
+
 --
 -- INSERT FORMACION
 --
 -- FORMACION (usbid, item, ano)
 -- 
-
 INSERT INTO FORMACION VALUES ('10-10333', 'Ing en Computacion', '2016');
 INSERT INTO FORMACION VALUES ('10-10333', 'SQLPlus by Oracle', '2012');
 INSERT INTO FORMACION VALUES ('09-10279', 'Ing en Computacion', '2015');
@@ -88,8 +88,7 @@ INSERT INTO HABILIDAD VALUES ('09-10279','Manejo de Constructor de Polimeros');
 INSERT INTO HABILIDAD VALUES ('pperez','Manejo de Constructor de Ceramicas');
 INSERT INTO HABILIDAD VALUES ('robertor','Mantenimiento de Explosivos Quimicos');
 INSERT INTO HABILIDAD VALUES ('mmartinez','Manejo de Matlab');
-INSERT INTO HABILIDAD VALUES ('jjimenez','Manejo de aIntelig');
-
+INSERT INTO HABILIDAD VALUES ('jjimenez','Manejo de Inteligencia Artificial');
 
 
 --
@@ -97,10 +96,8 @@ INSERT INTO HABILIDAD VALUES ('jjimenez','Manejo de aIntelig');
 --
 -- LABORATORIO (codigo, nombre, sede, ubicacion, correo, pagweb, telefono, fax, caracteristicas, jefe, visibilidad)
 --
-
-
 INSERT INTO LABORATORIO VALUES ('LAB-A','Laboratorios de Ingeniería Aplicada','Sartenejas','Edificio de Alta Tensión Oficina 018','usb-laba@usb.ve','http://www.laba.usb.ve/','02129064130','02129064131','Secciones: Alta Tensión, Conversión de Energía Eléctrica, Conversión de Energía Mecánica, Desarrollo de Modelos y Prototipos, Dinámica de Máquinas, Fenómenos de Transporte, Mecánica Computacional, Mecánica de Fluidos, Operaciones Unitarias, Sistemas de Potencia','pperez',1);
-INSERT INTO LABORATORIO VALUES ('LAB-B','Laboratorios de Biología, Química y Polímeros','Sartenejas','Edif. Química y Procesos P.B. Ofic. 019','usb-labb@usb.ve','N/A','02129063966', '02129063987', 'Secciones: Alimentos, Físico Química, Química Analítica, Química Inorgánica, Química General, Química Orgánica, Procesos Químicos,
+INSERT INTO LABORATORIO VALUES ('LAB-B','Laboratorios de Biología, Química y Polímeros','Sartenejas','Edif. Química y Procesos P.B. Ofic. 019','usb-labb@usb.ve','','02129063966', '02129063987', 'Secciones: Alimentos, Físico Química, Química Analítica, Química Inorgánica, Química General, Química Orgánica, Procesos Químicos,
 Polímeros, Biología Marina, Biología Celular, Biología de Organismo, Nutrición, Micoteca, Bioterio, Museo Ecología', 'robertor',1);
 INSERT INTO LABORATORIO VALUES ('LAB-C','Laboratorios de Electrónica','Sartenejas','Parte posterior del Conjunto de Auditorios','usb-labc@usb.ve','http://www.labc.usb.ve/','02129064005', '02129064009', 'Area Docente: Redes, Electrónica y Digital, Electrónica de Potencia, Procesamiento de Señales y Sistemas, Comunicaciones, Mecátronica, Instrumentación y Control de Procesos y Sistemas. Area de Investigación y Extensión: Centro de Automatización Industrial,
 Electrónica de Potencia, Sistemas Digitales, Telecomunicaciones, Mecatrónica, Control Automático, Acústica y Comunicaciones, Estado Sólido, Biomecánica,
@@ -117,7 +114,7 @@ Laboratorio de Diseño Asistido por Computadora, Laboratorio Docente de Matemát
 Centro de Estadística y Software Matemático, Laboratorio de Bases de Datos, Laboratorio de Computación Gráfica y Multimedia, Laboratorio de Geomática Urbana,
 Laboratorio de Inteligencia Artificial, Laboratorio de Investigación en Sistemas de Información, Laboratorio de Lenguajes y Algoritmos, Laboratorio Digital de Música,
 Laboratorio de Sistemas Paralelos y Distribuidos, Laboratorio de Computación de Alto Rendimiento', 'luisl',1);
-INSERT INTO LABORATORIO VALUES ('LAB-G','Laboratorios de la Sede del Litoral','Litoral','Edf. de los Laboratorios Pesados, Piso 1, Ofic. LPD102','usb-labg@usb.ve','N/A','02129069158', '02129069405', 'Tecnologías Aplicadas: Conversión de Energía Electrica, Conversión de Energía Mecánica, Aeronaves, Procesos Mecánicos de Fabricación y Materiales. Física - Electrónica: Física, Fundamentos de Circuitos Eléctricos, Digitales, Intrumentación y Control, Equipos Biomédicos.
+INSERT INTO LABORATORIO VALUES ('LAB-G','Laboratorios de la Sede del Litoral','Litoral','Edf. de los Laboratorios Pesados, Piso 1, Ofic. LPD102','usb-labg@usb.ve','','02129069158', '02129069405', 'Tecnologías Aplicadas: Conversión de Energía Electrica, Conversión de Energía Mecánica, Aeronaves, Procesos Mecánicos de Fabricación y Materiales. Física - Electrónica: Física, Fundamentos de Circuitos Eléctricos, Digitales, Intrumentación y Control, Equipos Biomédicos.
 Tecnologías de la Información y Comunicaciones: Tecnologías de la Información, Telemática, Comunicaciones. Servicios: Idiomas, Alimentos y Bebidas', 'luisl',1);
 
 

@@ -1,7 +1,5 @@
 <%-- 
-    Document   : consultar
-    Created on : Nov 27, 2013, 12:06:26 AM
-    Author     : luismiranda
+    Document: consultar_empleados_letra
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -10,14 +8,14 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>  
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css" media="all">
             @import "CSS/system.base.css";
-        </style>
-        
+        </style>        
         <style type="text/css" media="all">
             @import "CSS/field.css";
             @import "CSS/user.css";    
@@ -27,7 +25,6 @@
             @import "CSS/ckeditor.css";
             @import "CSS/ctools.css";
         </style>
-
         <style type="text/css" media="all">
             @import "CSS/layout.css";
             @import "CSS/table.css";
@@ -81,22 +78,24 @@
 
         <!--Lista vacia-->
         <logic:empty name="user">
-            <h3>No hay personal.</h3>
+            <h3>No se han encontrado resultados.</h3>
         </logic:empty>
-
 
         <!--Lista no vacia-->
         <logic:notEmpty name="user">
 
             <table cellspacing='0'>
     			<thead>
-    				<tr>
-    					<th>Perfil</th>
-    					<th>UsbId</th>
-    					<th>Nombre</th>
-    					<th>Correo</th>
-    					<th>Cargo</th>
-    				</tr>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Área laboral</th>
+                        <th>Extensión</th>
+                        <th>Laboratorio</th>
+                        <th>Visibilidad</th>
+                    </tr>
     			</thead>
 
                 <!-- DATOS DEL PERSONAL -->
@@ -104,15 +103,15 @@
     				<tr>
                         <td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/usuario.jpg" width="64"/>
+                                <img src="images/usuario.jpg" width="48"/>
                             </html:link>
                         </td>
-    					<td><bean:write name="Empleado" property="usbid"/></td>
-    					<td>
-    						<bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>
-    					</td>
+    					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
     					<td><bean:write name="Empleado" property="correo"/></td>
     					<td><bean:write name="Empleado" property="cargo"/></td>
+                        <td><bean:write name="Empleado" property="area_laboral"/></td>
+                        <td><bean:write name="Empleado" property="extension"/></td>
+                        <td><bean:write name="Empleado" property="laboratorio"/></td>
     				</tr>  
     			</logic:iterate>                               
             </table>

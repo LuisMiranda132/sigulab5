@@ -52,34 +52,13 @@ CREATE TABLE LABORATORIO (
     sede            varchar(15)     NOT NULL, -- Sartenejas o Litoral
     ubicacion       varchar(100)    NOT NULL, -- Edificio
     correo          varchar(50)     NOT NULL,
-    pagweb          varchar(50)     NOT NULL,
-	telefono		varchar(12)	NOT NULL	,
-	fax				varchar(12)	NOT NULL	,
-	caracteristicas	varchar(2000)   NOT NULL    ,
-    jefe            varchar(50)     NOT NULL, --USB ID
+    pagweb          varchar(50)     NOT NULL DEFAULT 'N/P',
+	telefono		varchar(12)	    NOT NULL,
+	fax				varchar(12)	    NOT NULL,
+	caracteristicas	varchar(2000)   NOT NULL,
+    jefe            varchar(50)     NOT NULL, -- USB ID
     visibilidad     INTEGER         NOT NULL DEFAULT 1,
     CONSTRAINT pk_laboratorio PRIMARY KEY (codigo),
     CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe) REFERENCES usuario (usbid) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
 );
-
-
---CREATE TABLE SERVICIO (
-
---        id              varchar(15)      PRIMARY KEY;
---        tipo            varchar(50)     NOT NULL;
---        nombre          varchar(50)     NOT NULL;
---        disponibilidad  varchar(50)     NOT NULL
- 
---);
-
-
--- CREATE TABLE ESTUDIANTE (
---   usbid			varchar(15)           	PRIMARY KEY references USUARIO(usbid),
---   carnet		varchar(8)				NOT NULL,
---   tipo			tipo_estudiante       	NOT NULL
--- );
-
--- CREATE TABLE PROFESOR (
---   usbid			varchar(15)           	PRIMARY KEY references USUARIO(usbid),
--- );

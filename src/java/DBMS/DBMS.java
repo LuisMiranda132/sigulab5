@@ -18,8 +18,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 /**
- *
- * @author luismiranda
+ * BASE DE DATOS
+ * 
  */
 public class DBMS {
     private static Connection conexion;
@@ -50,6 +50,11 @@ public class DBMS {
         return false;
     }
 
+
+/**
+ * USUARIO - EMPLEADO
+ * 
+ */
     public boolean agregarUsuario(Usuario u) {
         
         PreparedStatement psAgregar = null;
@@ -79,8 +84,7 @@ public class DBMS {
             psAgregar = conexion.prepareStatement(
                     "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , area_laboral=? , extension=? , laboratorio=? WHERE usbid=?;"
             );
-            
-            
+                        
             psAgregar.setString(1, e.getCorreo());
             psAgregar.setString(2, e.getDireccion());
             psAgregar.setString(3, e.getTelefono());
@@ -144,8 +148,9 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            ps = conexion.prepareStatement(
-                    "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1;");
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1;";
+            ps = conexion.prepareStatement(consulta);
+                    
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
@@ -156,6 +161,9 @@ public class DBMS {
                 u.setApellidos(rs.getString("apellidos"));
                 u.setCorreo(rs.getString("correo"));
                 u.setCargo(rs.getString("cargo")); 
+                u.setArea_laboral(rs.getString("area_laboral"));
+                u.setExtension(rs.getString("extension"));
+                u.setLaboratorio(rs.getString("laboratorio"));
                 
                 Empleados.add(u);
             }
@@ -171,17 +179,20 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            ps = conexion.prepareStatement(
-                    "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=0;");
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=0;";
+            ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Empleado u = new Empleado();
-               
+
                 u.setUsbid(rs.getString("usbid"));
                 u.setNombres(rs.getString("nombres"));
                 u.setApellidos(rs.getString("apellidos"));
                 u.setCorreo(rs.getString("correo"));
                 u.setCargo(rs.getString("cargo"));
+                u.setArea_laboral(rs.getString("area_laboral"));
+                u.setExtension(rs.getString("extension"));
+                u.setLaboratorio(rs.getString("laboratorio"));
                 
                 Empleados.add(u);
             }
@@ -192,13 +203,50 @@ public class DBMS {
         return Empleados;
     } 
     
-    public ArrayList<Empleado> listarAllEmpleados(){
+    public ArrayList<Empleado> listarEmpleadosJefe(){
         
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
             ps = conexion.prepareStatement(
-                    "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID;");
+                    "SELECT * FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.tipo_empleado='jefe';");
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado e = new Empleado();
+               
+                e.setUsbid(rs.getString("usbid"));
+                e.setNombres(rs.getString("nombres"));
+                e.setApellidos(rs.getString("apellidos"));
+                e.setCedula(rs.getString("cedula"));
+                e.setCorreo(rs.getString("correo"));
+                e.setDireccion(rs.getString("direccion"));
+                e.setTelefono(rs.getString("telefono"));
+                e.setTipo_usuario(rs.getString("tipo_usuario"));
+                e.setAno_ingreso(rs.getString("ano_ingreso"));
+                e.setCargo(rs.getString("cargo"));
+                e.setTipo_empleado(rs.getString("tipo_empleado"));
+                e.setStatus(rs.getString("status"));
+                e.setExtension(rs.getString("extension"));
+                e.setArea_laboral(rs.getString("area_laboral"));
+                e.setLaboratorio(rs.getString("laboratorio")); 
+                
+                Empleados.add(e);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }  
+
+    public ArrayList<Empleado> listarEmpleadosVisiblesLetra(String letra){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E " 
+                                + "WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1 AND U.apellidos LIKE '" + letra + "%';";
+            ps = conexion.prepareStatement(consulta);
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
@@ -209,6 +257,39 @@ public class DBMS {
                 u.setApellidos(rs.getString("apellidos"));
                 u.setCorreo(rs.getString("correo"));
                 u.setCargo(rs.getString("cargo"));
+                u.setArea_laboral(rs.getString("area_laboral"));
+                u.setExtension(rs.getString("extension"));
+                u.setLaboratorio(rs.getString("laboratorio")); 
+                
+                Empleados.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Empleados;
+    }
+    
+    public ArrayList<Empleado> listarEmpleadosNoVisiblesLetra(String letra){
+        
+        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
+        PreparedStatement ps = null;
+        try{
+             String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E " 
+                                + "WHERE E.USBID = U.USBID AND E.VISIBILIDAD = 0 AND U.apellidos LIKE '" + letra + "%';";
+            ps = conexion.prepareStatement(consulta);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Empleado u = new Empleado();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCorreo(rs.getString("correo"));
+                u.setCargo(rs.getString("cargo"));
+                u.setArea_laboral(rs.getString("area_laboral"));
+                u.setExtension(rs.getString("extension"));
+                u.setLaboratorio(rs.getString("laboratorio")); 
                 
                 Empleados.add(u);
             }
@@ -259,44 +340,7 @@ public class DBMS {
                 
         return e;
     }
-        
-    public Laboratorio obtenerLaboratorio(Laboratorio l){
-        PreparedStatement ps = null;
-        try{
-            ps = conexion.prepareStatement(
-                    "SELECT * FROM LABORATORIO AS L WHERE L.codigo=?;");
-            ps.setString(1, l.getCodigo());
-            ResultSet rs = ps.executeQuery();
-            
-            // Si el Query es vacio, retorna null.
-            if (!rs.isBeforeFirst()) {
-                return null;
-            }             
-            
-            while (rs.next()) {
-                               
-                l.setCodigo(rs.getString("codigo"));
-                l.setNombre(rs.getString("nombre"));
-                l.setSede(rs.getString("sede"));
-                l.setUbicacion(rs.getString("ubicacion"));
-                l.setCorreo(rs.getString("correo"));
-                l.setPagweb(rs.getString("pagweb"));
-                l.setTelefono(rs.getString("telefono"));
-                l.setFax(rs.getString("fax"));
-                l.setCaracteristicas(rs.getString("caracteristicas"));
-                l.setJefe(rs.getString("jefe"));                
-                
-            }
-            
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-            return null;
-        }
-                
-        return l;
-    }    
-    
-    
+       
     public Usuario obtenerUsuario(Usuario u){
         
         PreparedStatement ps = null;
@@ -415,6 +459,47 @@ public class DBMS {
         
     }
 
+
+/**
+ * LABORATORIO
+ * 
+ */
+    public Laboratorio obtenerLaboratorio(Laboratorio l){
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM LABORATORIO AS L WHERE L.codigo=?;");
+            ps.setString(1, l.getCodigo());
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {
+                               
+                l.setCodigo(rs.getString("codigo"));
+                l.setNombre(rs.getString("nombre"));
+                l.setSede(rs.getString("sede"));
+                l.setUbicacion(rs.getString("ubicacion"));
+                l.setCorreo(rs.getString("correo"));
+                l.setPagweb(rs.getString("pagweb"));
+                l.setTelefono(rs.getString("telefono"));
+                l.setFax(rs.getString("fax"));
+                l.setCaracteristicas(rs.getString("caracteristicas"));
+                l.setJefe(rs.getString("jefe"));                
+                
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+                
+        return l;
+    }  
+    
     public boolean agregarLaboratorio(Laboratorio l) {
         
         PreparedStatement psAgregar = null;
@@ -610,119 +695,5 @@ public class DBMS {
         } catch (Exception e) {
             e.printStackTrace();
         }
-                
-//        LoginForm user = new LoginForm();
-//        
-//        user.setUsbid("10-00000");
-//        user.setPassword("1234");
-//                
-//        try {
-//            
-//            DBMS db = DBMS.getInstance();
-//            Empleado emp = db.consultar(user);
-//                        
-//            System.out.print(emp.getNombres());
-//            System.out.println();
-//            System.out.println(emp.getUsbid());
-//            
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//        }
-
     }   
-    
-    public ArrayList<Empleado> listarEmpleadosJefe(){
-        
-        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
-        PreparedStatement ps = null;
-        try{
-            ps = conexion.prepareStatement(
-                    "SELECT * FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.tipo_empleado='jefe';");
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                Empleado e = new Empleado();
-               
-                e.setUsbid(rs.getString("usbid"));
-                e.setNombres(rs.getString("nombres"));
-                e.setApellidos(rs.getString("apellidos"));
-                e.setCedula(rs.getString("cedula"));
-                e.setCorreo(rs.getString("correo"));
-                e.setDireccion(rs.getString("direccion"));
-                e.setTelefono(rs.getString("telefono"));
-                e.setTipo_usuario(rs.getString("tipo_usuario"));
-                e.setAno_ingreso(rs.getString("ano_ingreso"));
-                e.setCargo(rs.getString("cargo"));
-                e.setTipo_empleado(rs.getString("tipo_empleado"));
-                e.setStatus(rs.getString("status"));
-                e.setExtension(rs.getString("extension"));
-                e.setArea_laboral(rs.getString("area_laboral"));
-                e.setLaboratorio(rs.getString("laboratorio")); 
-                
-                Empleados.add(e);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
-        return Empleados;
-    }
-    
-
-
-    public ArrayList<Empleado> listarEmpleadosVisiblesLetra(String letra){
-        
-        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
-        PreparedStatement ps = null;
-        try{
-            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " 
-                                + "WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1 AND U.apellidos LIKE '" + letra + "%';";
-            ps = conexion.prepareStatement(consulta);
-
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                Empleado u = new Empleado();
-               
-                u.setUsbid(rs.getString("usbid"));
-                u.setNombres(rs.getString("nombres"));
-                u.setApellidos(rs.getString("apellidos"));
-                u.setCorreo(rs.getString("correo"));
-                u.setCargo(rs.getString("cargo")); 
-                
-                Empleados.add(u);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
-        return Empleados;
-    }
-    
-    public ArrayList<Empleado> listarEmpleadosNoVisiblesLetra(String letra){
-        
-        ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
-        PreparedStatement ps = null;
-        try{
-             String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo FROM USUARIO AS U,EMPLEADO AS E " 
-                                + "WHERE E.USBID = U.USBID AND E.VISIBILIDAD = 0 AND U.apellidos LIKE '" + letra + "%';";
-            ps = conexion.prepareStatement(consulta);
-            ResultSet rs = ps.executeQuery();
-            while (rs.next()){
-                Empleado u = new Empleado();
-               
-                u.setUsbid(rs.getString("usbid"));
-                u.setNombres(rs.getString("nombres"));
-                u.setApellidos(rs.getString("apellidos"));
-                u.setCorreo(rs.getString("correo"));
-                u.setCargo(rs.getString("cargo"));
-                
-                Empleados.add(u);
-            }
-        } catch (SQLException ex) {
-            ex.printStackTrace();
-        }
-        
-        return Empleados;
-    }
-
-    
 }
