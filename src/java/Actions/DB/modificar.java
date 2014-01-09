@@ -48,15 +48,30 @@ public class modificar extends org.apache.struts.action.Action {
         ActionErrors error = null;
         ActionErrors error_anos_pub = null;
         ActionErrors error_anos_for = null;
+        ActionErrors error_formacion = null;
+        ActionErrors error_publicacion = null;
         
         boolean huboError = false;
         boolean huboError_anos_pub = false;
         boolean huboError_anos_for = false;
+        boolean huboError_formacion = false;
+        boolean huboError_publicacion = false;
         
         error = u.validateTodoE(mapping, request);
-        /*
+        
         if (!u.getAno_for().equals("")){
-            error_anos_for = u.validateAnos(mapping, request);
+            
+            error_formacion = u.validateFormacion(mapping, request);
+            if (error_formacion.size() != 0){
+                huboError_formacion = true;
+            }
+            if (huboError_formacion){
+                saveErrors(request, error_formacion);
+                session.removeAttribute("lologre");
+                return mapping.findForward(FAILURE);
+            }
+            
+            error_anos_for = u.validateAno_for(mapping, request);
             if (error_anos_for.size() != 0){
                 huboError_anos_for = true;
             }
@@ -66,8 +81,20 @@ public class modificar extends org.apache.struts.action.Action {
                 return mapping.findForward(FAILURE);
             }
         }
+        
         if (!u.getAno_pub().equals("")){
-            error_anos_pub = u.validateAnos(mapping, request);
+            
+            error_publicacion = u.validatePublicacion(mapping, request);
+            if (error_publicacion.size() != 0){
+                huboError_publicacion = true;
+            }
+            if (huboError_publicacion){
+                saveErrors(request, error_publicacion);
+                session.removeAttribute("lologre");
+                return mapping.findForward(FAILURE);
+            }
+            
+            error_anos_pub = u.validateAno_pub(mapping, request);
             if (error_anos_pub.size() != 0){
                 huboError_anos_pub = true;
             }
@@ -76,7 +103,8 @@ public class modificar extends org.apache.struts.action.Action {
                 session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);
             }
-        }      */         
+        }      
+        
         
         if (error.size() != 0) {
             huboError = true;

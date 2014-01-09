@@ -41,6 +41,9 @@ public class Empleado extends Usuario{
     private String errorOcultar;
     private String errorAno_pub;
     private String errorAno_for;
+    private String errorFormacion;
+    private String errorPublicacion;
+    
     
     /**
      *
@@ -381,7 +384,7 @@ public class Empleado extends Usuario{
      * @return the errorAnos
      */
     public String getErrorAno_pub() {
-        return errorAno_for;
+        return errorAno_pub;
     }
     
     /**
@@ -390,6 +393,35 @@ public class Empleado extends Usuario{
     public void setErrorAno_pub(String errorAno_pub) {
         this.errorAno_pub = errorAno_pub;
     }
+    
+    /**
+     * @return the errorFormacion
+     */
+    public String getErrorFormacion() {
+        return errorFormacion;
+    }
+    
+    /**
+     * @param errorFormacion the errorFormacion to set
+     */
+    public void setErrorFormacion(String errorFormacion) {
+        this.errorFormacion = errorFormacion;
+    }
+    
+    /**
+     * @return the errorPublicacion
+     */
+    public String getErrorPublicacion() {
+        return errorPublicacion;
+    }
+    
+    /**
+     * @param errorPublicacion the errorPublicacion to set
+     */
+    public void setErrorPublicacion(String errorPublicacion) {
+        this.errorPublicacion = errorPublicacion;
+    }
+    
     
     /**
      * This is the action called from the Struts framework.
@@ -530,6 +562,30 @@ public class Empleado extends Usuario{
             errors.add("telefono", new ActionMessage("error.codigo.required"));
         }
               
+        return errors;
+    }
+    
+    public ActionErrors validateFormacion(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        this.setErrorFormacion("");
+        
+        if(this.getFormacion().contentEquals("")){
+            errors.add("error", new ActionMessage("error.formacion.vacio"));
+        }
+        
+        return errors;
+    }
+    
+    public ActionErrors validatePublicacion(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        this.setErrorPublicacion("");
+        
+        if(this.getPublicacion().contentEquals("")){
+            errors.add("error", new ActionMessage("error.publicacion.vacio"));
+        }
+        
         return errors;
     }
     
