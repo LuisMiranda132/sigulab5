@@ -13,20 +13,19 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
+ * @author alejandro
  */
-public class Publicacion extends Usuario{
+public class Publicacion extends Empleado{
     
     private String publicacion;
-    private String ano;
-
-    /**
-     *
-     */
-    public Publicacion() {
+    private String ano_pub;
+    
+    
+    public Publicacion(){
         super();
-        this.usbid = null;
         this.publicacion = null;
-        this.ano = null;
+        this.ano_pub = null;
+
     }
     
     /**
@@ -36,35 +35,28 @@ public class Publicacion extends Usuario{
         this.limpiar();
         this.usbid = null;
         this.publicacion = null;
-        this.ano = null;
+        this.ano_pub = null;
     }
     
-    /**
-     * @return the publicacion
-     */
-    public String getPublicacion() {
+    @Override
+    public String getPublicacion(){
         return publicacion;
     }
-
-    /**
-     * @param publicacion the publicacion to set
-     */
-    public void setPublicacion(String publicacion) {
+    
+    @Override
+    public void setPublicacion (String publicacion){
         this.publicacion = publicacion;
     }
-
-    /**
-     * @return the ano
-     */
-    public String getAno() {
-        return ano;
+    
+    @Override
+    public String getAno_pub(){
+        return ano_pub;
+    }
+    
+    @Override
+    public void setAno_pub (String ano_pub){
+        this.ano_pub = ano_pub;
     }
 
-    /**
-     * @param ano the ano to set
-     */
-    public void setAno(String ano) {
-        this.ano = ano;
-    }
-     
+
 }

@@ -13,20 +13,18 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
+ * @author alejandro
  */
-public class Formacion extends Usuario{
+public class Formacion extends Empleado{
     
-    private String item;
-    private String ano;
-
-    /**
-     *
-     */
-    public Formacion() {
+    private String formacion;
+    private String ano_for;
+        
+    public Formacion(){
         super();
-        this.usbid = null;
-        this.item = null;
-        this.ano = null;
+        this.formacion = null;
+        this.ano_for = null;
+
     }
     
     /**
@@ -35,36 +33,28 @@ public class Formacion extends Usuario{
     public void limpiarF(){
         this.limpiar();
         this.usbid = null;
-        this.item = null;
-        this.ano = null;
+        this.formacion = null;
+        this.ano_for = null;
     }
     
-    /**
-     * @return the item
-     */
-    public String getItem() {
-        return item;
+    @Override
+    public String getFormacion(){
+        return formacion;
+    }
+    
+    @Override
+    public void setFormacion (String formacion){
+        this.formacion = formacion;
+    }
+    
+    @Override
+    public String getAno_for(){
+        return ano_for;
+    }
+    
+    @Override
+    public void setAno_for (String ano_for){
+        this.ano_for = ano_for;
     }
 
-    /**
-     * @param item the item to set
-     */
-    public void setItem(String item) {
-        this.item = item;
-    }
-
-    /**
-     * @return the ano
-     */
-    public String getAno() {
-        return ano;
-    }
-
-    /**
-     * @param ano the ano to set
-     */
-    public void setAno(String ano) {
-        this.ano = ano;
-    }
-     
 }

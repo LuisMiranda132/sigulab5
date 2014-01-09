@@ -6,9 +6,12 @@
 
 package Actions.DB;
 
-import Clases.LoginForm;
+import Clases.Laboratorio;
 import Clases.Empleado;
+import Clases.LoginForm;
+import java.util.ArrayList;
 import DBMS.DBMS;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -21,8 +24,8 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class premodificar extends org.apache.struts.action.Action {
-    /* forward name="success" path="" */
+public class perfilLaboratorioL extends org.apache.struts.action.Action {
+    
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
     
@@ -40,51 +43,25 @@ public class premodificar extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        LoginForm l = (LoginForm) form;
-        Empleado u = new Empleado();
-        u.setUsbid(l.getUsbid());
         
         HttpSession session = request.getSession(true);
-        session.removeAttribute("lologre");
-        
-        ActionErrors error=null;
-                
-        if(u.getUsbid()==""){
-            return mapping.findForward(FAILURE);
-        }
-        
-        error = u.validate(mapping, request);
-        
-        if(error == null){
-            return mapping.findForward(FAILURE);
-        }
-        
-        boolean huboError = false;
-        
-        if (error.size() != 0) {
-            huboError = true;
-        }
-        
-                if (huboError) {
-            saveErrors(request, error);
-            return mapping.findForward(FAILURE);
-            
-        } else {
 
-            Empleado user = DBMS.getInstance().obtenerEmpleado(u);
-            
-            if (user == null) {
-                u.limpiar();
-                return mapping.findForward(FAILURE);
-            }
-            
-            user.limpiarFPH();
-            u.limpiarFPH();
-            session.setAttribute("Empleado", user);            
-            return mapping.findForward(SUCCESS);
-        }
+        Laboratorio labCodigo = new Laboratorio();
+        labCodigo.setCodigo(request.getParameter("codigo"));
+
+        ArrayList<Laboratorio> perfilLaboratorio = new ArrayList<Laboratorio>();
+        Laboratorio lab = DBMS.getInstance().obtenerLaboratorio(labCodigo);
+        perfilLaboratorio.add(lab);
+
+        ArrayList<Empleado> EmpleadoPerfil = new ArrayList<Empleado>();
+        Empleado emp = DBMS.getInstance().obtenerJefeLab(labCodigo);
+        EmpleadoPerfil.add(emp);
+
+        session.setAttribute("lab", perfilLaboratorio);
+        session.setAttribute("user", EmpleadoPerfil);
+
+        return mapping.findForward(SUCCESS);
+    }
         
-    }        
     
 }

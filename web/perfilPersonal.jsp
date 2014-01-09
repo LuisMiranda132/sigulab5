@@ -91,8 +91,8 @@
                         <div id="view2" class="perfil_cuerpo">
                             <logic:iterate name="userFormacion" id="Formacion">
                                 <dl>
-                                    <p><dt><bean:write name="Formacion" property="ano"/>:</dt>
-                                    <dd><bean:write name="Formacion" property="item"/>.</dd></p>
+                                    <p><dt><bean:write name="Formacion" property="ano_for"/>:</dt>
+                                    <dd><bean:write name="Formacion" property="formacion"/>.</dd></p>
                                 </dl>
                             </logic:iterate>  
                         </div>
@@ -103,7 +103,7 @@
                         <div id="view3" class="perfil_cuerpo">
                             <logic:iterate name="userPublicacion" id="Publicacion">
                                 <dl>
-                                    <p><dt><bean:write name="Publicacion" property="ano"/>:</dt>
+                                    <p><dt><bean:write name="Publicacion" property="ano_pub"/>:</dt>
                                     <dd><bean:write name="Publicacion" property="publicacion"/>.</dd></p>
                                 </dl>
                             </logic:iterate>  
@@ -115,20 +115,20 @@
                         <div id="view4">
                             <logic:iterate name="userHabilidad" id="Habilidad">
                                 <ul class = "view4">
-                                    <li class = "perfil_cuerpo"><p><bean:write name="Habilidad" property="item"/>.</p></li>
+                                    <li class = "perfil_cuerpo"><p><bean:write name="Habilidad" property="habilidad"/>.</p></li>
                                 </ul>
                             </logic:iterate>
                         </div>
                     </logic:notEmpty>
                 </div>
             </div>
+       
         
-        
-        <html:link action="back">
+        <a href="javascript:window.history.back();">
             <h2>
-                Volver al inicio
+                Volver
             </h2>
-        </html:link>
+        </a>
     </body>
 </html>
 

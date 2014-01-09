@@ -13,10 +13,13 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
+
+ * @author alejandro
  */
-public class Habilidad extends Usuario{
+
+public class Habilidad extends Empleado{
     
-    private String item;
+    private String habilidad;
 
     /**
      *
@@ -24,7 +27,8 @@ public class Habilidad extends Usuario{
     public Habilidad() {
         super();
         this.usbid = null;
-        this.item = null;
+        this.habilidad = null;
+
     }
     
     /**
@@ -33,21 +37,24 @@ public class Habilidad extends Usuario{
     public void limpiarH(){
         this.limpiar();
         this.usbid = null;
-        this.item = null;
+        this.habilidad = null;
      }
     
     /**
-     * @return the item
+     * @return the habilidad
      */
-    public String getItem() {
-        return item;
+    @Override
+    public String getHabilidad() {
+        return habilidad;
     }
 
     /**
-     * @param item the item to set
+     * @param habilidad the habilidad to set
      */
-    public void setItem(String item) {
-        this.item = item;
+    @Override
+    public void setHabilidad(String habilidad) {
+        this.habilidad = habilidad;
     }
-     
+
+
 }

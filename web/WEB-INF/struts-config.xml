@@ -111,9 +111,16 @@
         
 
         <action path="/modificar" name="Empleado" type="Actions.DB.modificar" validate="false">
+            <forward name="success" path="/premodificar_modificado.do"/>
+            <forward name="failure" path="/premodificar.do"/>
+        </action>
+        
+        <action path="/premodificar_modificado" name="LoginForm"  type="Actions.DB.premodificar_modificado" validate="false">
             <forward name="success" path="/modificar.jsp"/>
-            <forward name="failure" path="/modificar.jsp"/>
-        </action>        
+            <forward name="failure" path="/premodificar.jsp"/>
+        </action>
+        
+                 
                 
         <action path="/modificarLaboratorio" name="Laboratorio" type="Actions.DB.modificarLaboratorio" validate="false">
             <forward name="success" path="/modificarLab.jsp"/>

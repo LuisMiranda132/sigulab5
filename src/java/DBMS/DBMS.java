@@ -106,6 +106,90 @@ public class DBMS {
         
     }
     
+    public boolean agregarFormacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO FORMACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getFormacion());
+            ps.setString(3, e.getAno_for());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getFormacion());            
+            System.out.print(e.getAno_for());            
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    public boolean agregarHabilidad(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO HABILIDAD VALUES (?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getHabilidad());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getHabilidad());      
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    public boolean agregarPublicacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO PUBLICACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getPublicacion());
+            ps.setString(3, e.getAno_pub());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getPublicacion());            
+            System.out.print(e.getAno_pub());
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+        
+    
+    
     public boolean desactivarVisibilidad(Empleado e){
         PreparedStatement psAgregar = null;
         try {
@@ -713,7 +797,7 @@ public class DBMS {
         ArrayList<Habilidad> HabilidadEmpleado = new ArrayList<Habilidad>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, H.item FROM USUARIO AS U, HABILIDAD AS H WHERE H.USBID = U.USBID AND H.USBID = '" 
+            String consulta = "SELECT U.usbid, H.habilidad FROM USUARIO AS U, HABILIDAD AS H WHERE H.USBID = U.USBID AND H.USBID = '" 
                                 + e.getUsbid() + "';";
             ps = conexion.prepareStatement(consulta);
 
@@ -722,7 +806,9 @@ public class DBMS {
                 Habilidad u = new Habilidad();
                
                 u.setUsbid(rs.getString("usbid"));
-                u.setItem(rs.getString("item"));
+
+                u.setHabilidad(rs.getString("habilidad"));
+
                 
                 HabilidadEmpleado.add(u);
             }
@@ -735,16 +821,16 @@ public class DBMS {
 
 /**
  * Publicacion
- * PUBLICACION (usbid, publicacion, ano)
+ * PUBLICACION (usbid, publicacion, ano_pub)
  */
     public ArrayList<Publicacion> listarPublicacionEmpleado(Empleado e){
         
         ArrayList<Publicacion> PublicacionEmpleado = new ArrayList<Publicacion>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, P.publicacion, P.ano FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
-                              " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano;";            
-            ps = conexion.prepareStatement(consulta);
+
+            String consulta = "SELECT U.usbid, P.publicacion, P.ano_pub FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
+                              " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano_pub;";            
 
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
@@ -752,7 +838,8 @@ public class DBMS {
                
                 u.setUsbid(rs.getString("usbid"));
                 u.setPublicacion(rs.getString("publicacion"));
-                u.setAno(rs.getString("ano"));
+                u.setAno_pub(rs.getString("ano_pub"));
+
                 
                 PublicacionEmpleado.add(u);
             }
@@ -765,15 +852,16 @@ public class DBMS {
 
 /**
  * Formacion
- * FORMACION (usbid, item, ano)
+ * FORMACION (usbid, formacion, ano_for)
  */
     public ArrayList<Formacion> listarFormacionEmpleado(Empleado e){
         
         ArrayList<Formacion> FormacionEmpleado = new ArrayList<Formacion>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, F.item, F.ano FROM USUARIO AS U, FORMACION AS F WHERE F.USBID = U.USBID AND F.USBID = '" 
-                                + e.getUsbid() + "' ORDER BY F.ano;";
+            String consulta = "SELECT U.usbid, F.formacion, F.ano_for FROM USUARIO AS U, FORMACION AS F WHERE F.USBID = U.USBID AND F.USBID = '" 
+                                + e.getUsbid() + "' ORDER BY F.ano_for;";
+
             ps = conexion.prepareStatement(consulta);
 
             ResultSet rs = ps.executeQuery();
@@ -781,8 +869,9 @@ public class DBMS {
                 Formacion u = new Formacion();
                
                 u.setUsbid(rs.getString("usbid"));
-                u.setItem(rs.getString("item"));
-                u.setAno(rs.getString("ano"));
+                u.setFormacion(rs.getString("formacion"));
+                u.setAno_for(rs.getString("ano_for"));
+
                 
                 FormacionEmpleado.add(u);
             }

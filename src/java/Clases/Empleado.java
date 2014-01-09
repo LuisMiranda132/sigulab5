@@ -28,13 +28,19 @@ public class Empleado extends Usuario{
     private String area_laboral;
     private String extension;
     private String laboratorio;    
-    private int  visibilidad; 
+    private int  visibilidad;
+    private String formacion;
+    private String publicacion;
+    private String habilidad;
+    private String ano_for;
+    private String ano_pub;
     
     private String errorAnoIngreso;
     private String errorCorreo;
     private String errorTelefono;
     private String errorOcultar;
-
+    private String errorAno_pub;
+    private String errorAno_for;
     
     /**
      *
@@ -54,6 +60,11 @@ public class Empleado extends Usuario{
         this.extension = null;
         this.laboratorio = null;
         this.visibilidad = 1;
+        this.habilidad = null;
+        this.formacion = null;
+        this.publicacion = null;
+        this.ano_for = null;
+        this.ano_pub = null;
     }
     
     /**
@@ -74,6 +85,17 @@ public class Empleado extends Usuario{
         this.extension = null;
         this.laboratorio = null;
         this.visibilidad = 0;
+    }
+    
+    /**
+     *
+     */
+    public void limpiarFPH(){
+        this.publicacion = null;
+        this.habilidad = null;
+        this.formacion = null;
+        this.ano_for = null;
+        this.ano_pub = null;
     }
     
     
@@ -244,6 +266,46 @@ public class Empleado extends Usuario{
     public void setLaboratorio(String laboratorio) {
         this.laboratorio = laboratorio;
     } 
+    
+    public String getHabilidad(){
+        return habilidad;
+    }
+    
+    public void setHabilidad(String habilidad){
+        this.habilidad = habilidad;
+    }
+    
+    public String getFormacion(){
+        return formacion;
+    }
+    
+    public void setFormacion (String formacion){
+        this.formacion = formacion;
+    }
+    
+    public String getPublicacion(){
+        return publicacion;
+    }
+    
+    public void setPublicacion (String publicacion){
+        this.publicacion = publicacion;
+    }
+    
+    public String getAno_for(){
+        return ano_for;
+    }
+    
+    public void setAno_for (String ano_for){
+        this.ano_for = ano_for;
+    }
+    
+    public String getAno_pub(){
+        return ano_pub;
+    }
+    
+    public void setAno_pub (String ano_pub){
+        this.ano_pub = ano_pub;
+    }
   
     /**
      * @return the errorCorreo
@@ -300,6 +362,34 @@ public class Empleado extends Usuario{
     public void setErrorAnoIngreso(String errorAnoIngreso) {
         this.errorAnoIngreso = errorAnoIngreso;
     }    
+    
+    /**
+     * @return the errorAnos
+     */
+    public String getErrorAno_for() {
+        return errorAno_for;
+    }
+    
+    /**
+     * @param errorAnos the errorAnos to set
+     */
+    public void setErrorAno_for(String errorAno_for) {
+        this.errorAno_for = errorAno_for;
+    }
+    
+    /**
+     * @return the errorAnos
+     */
+    public String getErrorAno_pub() {
+        return errorAno_for;
+    }
+    
+    /**
+     * @param errorAnos the errorAnos to set
+     */
+    public void setErrorAno_pub(String errorAno_pub) {
+        this.errorAno_pub = errorAno_pub;
+    }
     
     /**
      * This is the action called from the Struts framework.
@@ -364,6 +454,32 @@ public class Empleado extends Usuario{
         if(!getErrorAnoIngreso().matches("\\d*")){
             this.setErrorAnoIngreso("error");
             errors.add("error", new ActionMessage("error.empleado.antiguedad"));
+        }
+        
+        return errors;
+    } 
+    
+    public ActionErrors validateAno_for(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        this.setErrorAno_for("");
+        
+        if(!ano_for.matches("\\d{4}")){
+            this.setErrorAno_for("error");
+            errors.add("error", new ActionMessage("error.empleado.anos"));
+        }
+        
+        return errors;
+    } 
+    
+    public ActionErrors validateAno_pub(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        this.setErrorAno_pub("");
+        
+        if(!ano_pub.matches("\\d{4}")){
+            this.setErrorAno_pub("error");
+            errors.add("error", new ActionMessage("error.empleado.anos"));
         }
         
         return errors;
