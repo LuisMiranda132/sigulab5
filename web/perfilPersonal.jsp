@@ -89,10 +89,10 @@
             </div>
         </logic:iterate>
         
-        <html:link action="back">
+        <a href="javascript:window.history.back();">
             <h2>
                 Volver
             </h2>
-        </html:link>
+        </a>
     </body>
 </html>
