@@ -49,7 +49,7 @@ public class desactivarPersonal extends org.apache.struts.action.Action {
         
         Empleado dummy = new Empleado();
         HttpSession session = request.getSession();
-        dummy.setUsbid(session.getAttribute("usbid").toString());
+//        dummy.setUsbid(session.getAttribute("usbid").toString());
         
         Empleado user = db.obtenerEmpleado(empleado);
         

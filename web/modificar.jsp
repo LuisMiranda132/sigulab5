@@ -33,19 +33,70 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
+        
+        <style>
+            
+            .titulo_formulario {
+                font-size: 14px;
+                font-weight: bold;
+                color: #42a9be;
+                text-align: center;
+                background-color: beige;
+                height: 21px;
+                line-height: 21px;
+            }
+            
+            .logic_success {
+                color: green;
+                margin-top: 23px;
+            }
+            
+            .logic_failure {
+                color: red;
+                margin-top: 23px;
+            }
+            
+            .errors {
+                color: red;
+                margin-top: 23px;
+                font-size: 10px;
+            }
+            
+            #submit {
+                margin-left: 372px;
+                margin-top: 16px;
+            }
+            
+            .boton {
+                background: transparent;
+                color: #1c6ea0;
+                font-weight: bold;
+                border: 0px;
+                cursor: pointer;
+            }
+            
+            .boton:hover, .boton:focus, .boton:active {
+                color: #42a9be;
+                transition: color .2s linear 0;
+            }
+                
+        </style>        
+        
         <title>Catalogo</title>
     </head>
     <body>
-        <h1>Modificar</h1>
-    <center style="color:red;background-color:lightcoral" align="center">
-            <html:errors/>    
+        <div class="titulo_formulario"> Modificar Perfil </div>
+        <center class="errors" align="center">
+            <html:errors/>
         </center>
-            <logic:present name="lologre">
-            <center style="color:green;background-color: springgreen" align="center">
-                Se modifico exitosamente    
+    
+        <logic:present name="lologre">
+            <center class="logic_success" align="center">
+                El perfil ha sido modificado exitosamente.
             </center>
-            </logic:present>
-        <html:form action="modificar">
+        </logic:present>
+
+        <html:form action="modificar" style="margin-left: 45px;">
             <table border="0">
                 <tbody>
                     <tr>
@@ -139,16 +190,15 @@
                     
                 </tbody>
             </table>
-            <p>
-                
-                <html:submit value="modificar"/>
-                <html:reset value="limpiar"/>
-            </p>
+            <div id="submit">
+                <html:submit value="modificar" styleClass="boton" />
+                <html:reset value="limpiar" styleClass="boton"/>
+            </div>
         </html:form>
             
             <html:link action="back">
                 <h2>
-                    Volver
+                    << volver
                 </h2>
             </html:link>
     </body>
