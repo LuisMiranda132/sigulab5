@@ -980,3 +980,75 @@ div.panel-container > div
     color: #42a9be;
     transition: color .2s linear 0;
 }
+
+
+textarea {
+    font-size: 11px;
+    height: 100px;
+}
+
+input {
+    border-radius: 4px;
+ }
+
+textarea {
+    border-radius: 4px;
+    color: black;
+}
+ 
+textarea:focus {
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+
+/* Personalizacion de los placeholders */
+input::-webkit-input-placeholder {
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus:-moz-placeholder { /* Firefox 18- */
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus::-moz-placeholder {  /* Firefox 19+ */
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+input::-ms-input-placeholder {  
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus:-ms-input-placeholder {  
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}

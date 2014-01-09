@@ -34,6 +34,24 @@
             @import "CSS/colors.css";
         </style>
        
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        
+        <script>
+            
+            $( document ).ready(function() {
+               alert("Document ready");
+               
+               $( "#usbid" ).mouseenter(function() {
+                   
+               });
+                              
+               
+            });
+            
+        </script>
+            
+        
         <title>Catalogo</title>
     </head>
     
@@ -83,7 +101,7 @@
                     <tr>
                         <td> UsbId </td>
                         <td>
-                            <html:text name="Empleado" property="usbid"/>
+                            <html:text styleId="usbid" name="Empleado" property="usbid"/>
                         </td>
                     </tr>
                     <tr>

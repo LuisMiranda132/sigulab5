@@ -27,6 +27,7 @@
         </style>
         <style type="text/css" media="all">
             @import "CSS/layout.css";
+            @import "CSS/style_interno.css";            
             @import "CSS/table.css";
             @import "CSS/form.css";
             @import "CSS/colors.css";
@@ -40,7 +41,7 @@
     <body>
     <br></br>
         <logic:iterate name="lab" id="Laboratorio">
-            <h2><b><p><bean:write name="Laboratorio" property="nombre"/></p></b></h2>
+            <div class="titulo_formulario"><bean:write name="Laboratorio" property="nombre"/></div>
         </logic:iterate>
 
         <logic:iterate name="lab" id="Laboratorio">
@@ -96,7 +97,7 @@
         
         <html:link action="back">
             <h2>
-                Volver al inicio
+                << volver
             </h2>
         </html:link>
     </body>

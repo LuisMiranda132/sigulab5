@@ -35,6 +35,20 @@
             @import "CSS/colors.css";
         </style>
         
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        
+        <script>
+            
+            $( document ).ready(function() {
+               alert("Document ready");
+               
+                $( "#textarea" ).attr('placeholder', 'Descripcion del Laboratorio.');
+               
+            });
+            
+        </script>
+        
         <title>Agregar Laboratorio</title>
     <body>
     <body>
@@ -105,9 +119,9 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Caracteristicas </td>
+                        <td> Descripcion </td>
                         <td>
-                            <html:text name="Laboratorio" property="caracteristicas"/>
+                            <html:textarea styleId="textarea" name="Laboratorio" property="caracteristicas"/>
                         </td>
                     </tr>
                     <tr>
