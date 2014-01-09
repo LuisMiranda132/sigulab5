@@ -103,6 +103,90 @@ public class DBMS {
         
     }
     
+    public boolean agregarFormacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO FORMACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getFormacion());
+            ps.setString(3, e.getAno_for());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getFormacion());            
+            System.out.print(e.getAno_for());            
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    public boolean agregarHabilidad(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO HABILIDAD VALUES (?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getHabilidad());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getHabilidad());      
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    public boolean agregarPublicacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO PUBLICACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getPublicacion());
+            ps.setString(3, e.getAno_pub());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getPublicacion());            
+            System.out.print(e.getAno_pub());
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+        
+    
+    
     public boolean desactivarVisibilidad(Empleado e){
         PreparedStatement psAgregar = null;
         try {

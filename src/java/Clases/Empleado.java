@@ -28,12 +28,18 @@ public class Empleado extends Usuario{
     private String area_laboral;
     private String extension;
     private String laboratorio;    
-    private int  visibilidad; 
+    private int  visibilidad;
+    private String formacion;
+    private String publicacion;
+    private String habilidad;
+    private String ano_for;
+    private String ano_pub;
     
     private String errorAnoIngreso;
     private String errorCorreo;
     private String errorTelefono;
     private String errorOcultar;
+    private String errorAnos;
 
     
     /**
@@ -54,6 +60,11 @@ public class Empleado extends Usuario{
         this.extension = null;
         this.laboratorio = null;
         this.visibilidad = 1;
+        this.habilidad = null;
+        this.formacion = null;
+        this.publicacion = null;
+        this.ano_for = null;
+        this.ano_pub = null;
     }
     
     /**
@@ -74,6 +85,17 @@ public class Empleado extends Usuario{
         this.extension = null;
         this.laboratorio = null;
         this.visibilidad = 0;
+    }
+    
+    /**
+     *
+     */
+    public void limpiarFPH(){
+        this.publicacion = null;
+        this.habilidad = null;
+        this.formacion = null;
+        this.ano_for = null;
+        this.ano_pub = null;
     }
     
     
@@ -244,6 +266,46 @@ public class Empleado extends Usuario{
     public void setLaboratorio(String laboratorio) {
         this.laboratorio = laboratorio;
     } 
+    
+    public String getHabilidad(){
+        return habilidad;
+    }
+    
+    public void setHabilidad(String habilidad){
+        this.habilidad = habilidad;
+    }
+    
+    public String getFormacion(){
+        return formacion;
+    }
+    
+    public void setFormacion (String formacion){
+        this.formacion = formacion;
+    }
+    
+    public String getPublicacion(){
+        return publicacion;
+    }
+    
+    public void setPublicacion (String publicacion){
+        this.publicacion = publicacion;
+    }
+    
+    public String getAno_for(){
+        return ano_for;
+    }
+    
+    public void setAno_for (String ano_for){
+        this.ano_for = ano_for;
+    }
+    
+    public String getAno_pub(){
+        return ano_pub;
+    }
+    
+    public void setAno_pub (String ano_pub){
+        this.ano_pub = ano_pub;
+    }
   
     /**
      * @return the errorCorreo
@@ -300,6 +362,20 @@ public class Empleado extends Usuario{
     public void setErrorAnoIngreso(String errorAnoIngreso) {
         this.errorAnoIngreso = errorAnoIngreso;
     }    
+    
+    /**
+     * @return the errorAnos
+     */
+    public String getErrorAnos() {
+        return errorAnos;
+    }
+    
+    /**
+     * @param errorAnos the errorAnos to set
+     */
+    public void setErrorAnos(String errorAnos) {
+        this.errorAnos = errorAnos;
+    }
     
     /**
      * This is the action called from the Struts framework.
@@ -364,6 +440,19 @@ public class Empleado extends Usuario{
         if(!getErrorAnoIngreso().matches("\\d*")){
             this.setErrorAnoIngreso("error");
             errors.add("error", new ActionMessage("error.empleado.antiguedad"));
+        }
+        
+        return errors;
+    } 
+    
+    public ActionErrors validateAnos(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        this.setErrorAnos("");
+        
+        if(!getErrorAnos().matches("\\d{4}")){
+            this.setErrorAnos("error");
+            errors.add("error", new ActionMessage("error.empleado.anos"));
         }
         
         return errors;

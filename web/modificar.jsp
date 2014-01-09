@@ -79,7 +79,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Direccion </td>
+                        <td> Dirección </td>
                         <td>
                             <html:text name="Empleado" property="direccion"/>
                         </td>
@@ -114,6 +114,29 @@
                             <bean:write name="Empleado" property="tipo_empleado"/>
                         </td>
                     </tr>
+                    <tr>
+                        <td> Añadir nueva publicación</td>
+                        <td>
+                            <html:text name="Empleado" property="publicacion"/>
+                            Año
+                            <html:text name="Empleado" property="ano_pub"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Añadir nueva habilidad </td>
+                        <td>
+                            <html:text name="Empleado" property="habilidad"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Añadir nueva formación</td>
+                        <td>
+                            <html:text name="Empleado" property="formacion"/>
+                            Año
+                            <html:text name="Empleado" property="ano_for"/>
+                        </td>
+                    </tr>
+                    
                 </tbody>
             </table>
             <p>

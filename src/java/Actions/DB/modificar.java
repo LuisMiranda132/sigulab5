@@ -93,9 +93,24 @@ public class modificar extends org.apache.struts.action.Action {
         HttpSession session = request.getSession(true);
         
         ActionErrors error = null;
+        ActionErrors error_anos = null;
+        
+        boolean huboError = false;
+        boolean huboError_anos = false;
         
         error = u.validateTodoE(mapping, request);
-        boolean huboError = false;
+        
+        if ((!u.getAno_for().equals(""))||(!u.getAno_pub().equals(""))){
+            error_anos = u.validateAnos(mapping, request);
+            if (error_anos.size() != 0){
+                huboError_anos = true;
+            }
+            if (huboError_anos){
+                saveErrors(request, error_anos);
+                session.removeAttribute("lologre");
+                return mapping.findForward(FAILURE);
+            }
+        }               
         
         if (error.size() != 0) {
             huboError = true;
@@ -109,10 +124,22 @@ public class modificar extends org.apache.struts.action.Action {
             
         } else {
             
-            boolean agrego = DBMS.getInstance().modificarEmpleado(u);
+            DBMS db = DBMS.getInstance();
+            
+            boolean agrego = db.modificarEmpleado(u);
             
 
             if (agrego) {
+                if (!u.getHabilidad().equals("")){
+                    db.agregarHabilidad(u);
+                }
+                if (!u.getPublicacion().equals("")){
+                    db.agregarPublicacion(u);
+                }
+                if (!u.getFormacion().equals("")){
+                    db.agregarFormacion(u);
+                }
+                
                 session.setAttribute("lologre","conga!");
                 return mapping.findForward(SUCCESS);
             } else {
