@@ -1,7 +1,5 @@
 <%-- 
-    Document   : consultar
-    Created on : Nov 27, 2013, 12:06:26 AM
-    Author     : luismiranda
+    Document: consultar_laboratorios_jefe
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -60,7 +58,11 @@
             <!-- DATOS DE LOS LABORATORIOS-->
             <logic:iterate name="lab" id="Laboratorio">
                 <tr>
-                    <td><bean:write name="Laboratorio" property="codigo"/></td>
+                    <td>
+                        <html:link action="perfilLaboratorioL" paramId="codigo" paramName="Laboratorio" paramProperty="codigo">
+                            <bean:write name="Laboratorio" property="codigo"/>
+                        </html:link>
+                    </td>
                     <td><bean:write name="Laboratorio" property="nombre"/></td>
                     <td><bean:write name="Laboratorio" property="correo"/></td>
                     <td><bean:write name="Laboratorio" property="pagweb"/></td>

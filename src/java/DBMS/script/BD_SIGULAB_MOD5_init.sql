@@ -35,21 +35,21 @@ CREATE TABLE EMPLEADO (
 
 CREATE TABLE FORMACION (
 	usbid		varchar(15)     NOT NULL,
-	item		varchar(100)	NOT NULL,
-	ano			varchar(4),
+	formacion		varchar(100)	NOT NULL,
+	ano_for			varchar(4),
     constraint fk_formado foreign key (usbid) references usuario(usbid) on delete cascade
 );
 
 CREATE TABLE PUBLICACION (
 	usbid		varchar(15)     NOT NULL,
 	publicacion varchar(100)	NOT NULL,
-	ano			varchar(4),
+	ano_pub			varchar(4),
     constraint fk_autor foreign key (usbid) references usuario(usbid) on delete cascade
 );
 
 CREATE TABLE HABILIDAD (
 	usbid		varchar(15)     NOT NULL,
-	item		varchar(100)	NOT NULL,
+	habilidad		varchar(100)	NOT NULL,
     constraint fk_habil foreign key (usbid) references usuario(usbid) on delete cascade
 );
 

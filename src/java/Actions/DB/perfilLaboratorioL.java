@@ -6,10 +6,8 @@
 
 package Actions.DB;
 
+import Clases.Laboratorio;
 import Clases.Empleado;
-import Clases.Habilidad;
-import Clases.Formacion;
-import Clases.Publicacion;
 import Clases.LoginForm;
 import java.util.ArrayList;
 import DBMS.DBMS;
@@ -26,7 +24,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class perfilPersonalL extends org.apache.struts.action.Action {
+public class perfilLaboratorioL extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -48,28 +46,20 @@ public class perfilPersonalL extends org.apache.struts.action.Action {
         
         HttpSession session = request.getSession(true);
 
-        Empleado usuario = new Empleado();
-        usuario.setUsbid(request.getParameter("usbid"));
+        Laboratorio labCodigo = new Laboratorio();
+        labCodigo.setCodigo(request.getParameter("codigo"));
 
-        //Empleado
+        ArrayList<Laboratorio> perfilLaboratorio = new ArrayList<Laboratorio>();
+        Laboratorio lab = DBMS.getInstance().obtenerLaboratorio(labCodigo);
+        perfilLaboratorio.add(lab);
+
         ArrayList<Empleado> EmpleadoPerfil = new ArrayList<Empleado>();
-        Empleado emp = DBMS.getInstance().obtenerEmpleado(usuario);
+        Empleado emp = DBMS.getInstance().obtenerJefeLab(labCodigo);
         EmpleadoPerfil.add(emp);
 
-        //Habilidad
-        ArrayList<Habilidad> EmpleadoHabilidad = DBMS.getInstance().listarHabilidadEmpleado(usuario);
-        
-        //Publicacion
-        ArrayList<Publicacion> EmpleadoPublicacion = DBMS.getInstance().listarPublicacionEmpleado(usuario);
-        
-        //Formacion
-        ArrayList<Formacion> EmpleadoFormacion = DBMS.getInstance().listarFormacionEmpleado(usuario);
-
+        session.setAttribute("lab", perfilLaboratorio);
         session.setAttribute("user", EmpleadoPerfil);
-        session.setAttribute("userHabilidad", EmpleadoHabilidad);
-        session.setAttribute("userPublicacion", EmpleadoPublicacion);
-        session.setAttribute("userFormacion", EmpleadoFormacion);
-                
+
         return mapping.findForward(SUCCESS);
     }
         

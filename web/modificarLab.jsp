@@ -120,7 +120,7 @@
             </p>
         </html:form>
             
-            <html:link action="back">
+            <html:link action="ConsultarLab_jefe">
                 <h2>
                     Volver
                 </h2>

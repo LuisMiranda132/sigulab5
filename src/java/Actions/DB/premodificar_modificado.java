@@ -21,7 +21,7 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class premodificar extends org.apache.struts.action.Action {
+public class premodificar_modificado extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
@@ -46,27 +46,30 @@ public class premodificar extends org.apache.struts.action.Action {
         u.setUsbid(l.getUsbid());
         
         HttpSession session = request.getSession(true);
-        session.removeAttribute("lologre");
-        
+               
         ActionErrors error=null;
                 
         if(u.getUsbid()==""){
+            session.removeAttribute("lologre");
             return mapping.findForward(FAILURE);
         }
         
         error = u.validate(mapping, request);
         
         if(error == null){
+            session.removeAttribute("lologre");
             return mapping.findForward(FAILURE);
         }
         
         boolean huboError = false;
         
         if (error.size() != 0) {
+            
             huboError = true;
         }
         
                 if (huboError) {
+            session.removeAttribute("lologre");
             saveErrors(request, error);
             return mapping.findForward(FAILURE);
             
@@ -76,12 +79,14 @@ public class premodificar extends org.apache.struts.action.Action {
             
             if (user == null) {
                 u.limpiar();
+                session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);
             }
             
             user.limpiarFPH();
             u.limpiarFPH();
-            session.setAttribute("Empleado", user);            
+            session.setAttribute("Empleado", user);
+            session.setAttribute("lologre","conga!");
             return mapping.findForward(SUCCESS);
         }
         

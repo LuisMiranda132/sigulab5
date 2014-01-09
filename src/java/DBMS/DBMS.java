@@ -9,6 +9,9 @@ package DBMS;
 import Clases.Laboratorio;
 import Clases.Usuario;
 import Clases.Empleado;
+import Clases.Habilidad;
+import Clases.Publicacion;
+import Clases.Formacion;
 import Clases.LoginForm;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -101,8 +104,90 @@ public class DBMS {
             ex.printStackTrace();;
             return false;
         }
-        
     }
+    
+    public boolean agregarFormacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO FORMACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getFormacion());
+            ps.setString(3, e.getAno_for());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getFormacion());            
+            System.out.print(e.getAno_for());            
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
+    public boolean agregarHabilidad(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO HABILIDAD VALUES (?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getHabilidad());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getHabilidad());      
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+        }
+
+    }
+    
+    public boolean agregarPublicacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO PUBLICACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getPublicacion());
+            ps.setString(3, e.getAno_pub());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getPublicacion());            
+            System.out.print(e.getAno_pub());
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+        
+    
     
     public boolean desactivarVisibilidad(Empleado e){
         PreparedStatement psAgregar = null;
@@ -171,6 +256,7 @@ public class DBMS {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
+>>>>>>> d80450fa145f569f1aacf02c954ee23bb5fd644c
         
         return Empleados;
     }
@@ -541,6 +627,33 @@ public class DBMS {
                 
         return l;
     }  
+
+    public Empleado obtenerJefeLab(Laboratorio l){
+        PreparedStatement ps = null;
+        Empleado e = new Empleado();
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT U.nombres, U.apellidos FROM LABORATORIO AS L, USUARIO AS U, EMPLEADO AS E WHERE U.USBID=E.USBID AND "
+                    + "L.jefe=E.USBID AND L.jefe= '" + l.getCodigo() + "';");
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {               
+                e.setNombres(rs.getString("nombres"));
+                e.setApellidos(rs.getString("apellidos"));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+                
+        return e;
+    }
     
     public boolean agregarLaboratorio(Laboratorio l) {
         
@@ -715,8 +828,101 @@ public class DBMS {
         
         return Laboratorios;
     }
-    
-    
+
+/**
+ * Habilidad
+ * HABILIDAD (usbid, item)
+ */
+    public ArrayList<Habilidad> listarHabilidadEmpleado(Empleado e){
+        
+        ArrayList<Habilidad> HabilidadEmpleado = new ArrayList<Habilidad>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, H.habilidad FROM USUARIO AS U, HABILIDAD AS H WHERE H.USBID = U.USBID AND H.USBID = '" 
+                                + e.getUsbid() + "';";
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Habilidad u = new Habilidad();
+               
+                u.setUsbid(rs.getString("usbid"));
+
+                u.setHabilidad(rs.getString("habilidad"));
+
+                
+                HabilidadEmpleado.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return HabilidadEmpleado;
+    }
+
+/**
+ * Publicacion
+ * PUBLICACION (usbid, publicacion, ano_pub)
+ */
+    public ArrayList<Publicacion> listarPublicacionEmpleado(Empleado e){
+        
+        ArrayList<Publicacion> PublicacionEmpleado = new ArrayList<Publicacion>();
+        PreparedStatement ps = null;
+        try{
+
+            String consulta = "SELECT U.usbid, P.publicacion, P.ano_pub FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
+                              " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano_pub;";            
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Publicacion u = new Publicacion();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setPublicacion(rs.getString("publicacion"));
+                u.setAno_pub(rs.getString("ano_pub"));
+
+                
+                PublicacionEmpleado.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return PublicacionEmpleado;
+    }
+
+/**
+ * Formacion
+ * FORMACION (usbid, formacion, ano_for)
+ */
+    public ArrayList<Formacion> listarFormacionEmpleado(Empleado e){
+        
+        ArrayList<Formacion> FormacionEmpleado = new ArrayList<Formacion>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, F.formacion, F.ano_for FROM USUARIO AS U, FORMACION AS F WHERE F.USBID = U.USBID AND F.USBID = '" 
+                                + e.getUsbid() + "' ORDER BY F.ano_for;";
+
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Formacion u = new Formacion();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setFormacion(rs.getString("formacion"));
+                u.setAno_for(rs.getString("ano_for"));
+
+                
+                FormacionEmpleado.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return FormacionEmpleado;
+    }
+
     // Main para pruebas sobre la base de datos.
     public static void main(String args[]) {
         
@@ -737,5 +943,6 @@ public class DBMS {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }   
-}
+    }
+
+} //END DBMS.java
