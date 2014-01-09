@@ -44,67 +44,111 @@ public class agregar extends org.apache.struts.action.Action {
             throws Exception {
         
         Empleado u = (Empleado) form;
-                
+        Usuario usuario = new Usuario();
+        
         ActionErrors error = null;
         HttpSession session = request.getSession(true);
+        DBMS instance;
         
+        boolean existePersona;
         boolean existeUsuario;
         boolean existeEmpleado;
-        boolean agrego;
+        boolean agregoUsuario;
+        boolean agregoEmpleado;
         
-        DBMS instance = DBMS.getInstance();
-                
+        String tipoUsuario;
+        String usbid;
+        String nombres;
+        String apellidos;
+        String cedula;
+        
+        instance = DBMS.getInstance();
+
+        session.removeAttribute("usuarioAgregado");
+        session.removeAttribute("operacionFallida");
+        session.removeAttribute("tipoUsuarioInvalido");
+        session.removeAttribute("usuarioExistente");
+        session.removeAttribute("usuarioInexistente");
+                        
         // Validaciones del formulario.
         error = u.validateAgregar(mapping, request);
 
         // Si hay errores en el formulario, retorna FAILURE.
         if (error.size() != 0) {
             saveErrors(request, error);
-            session.removeAttribute("lologreA");
             return mapping.findForward(FAILURE);
         }
         
-        // Busca si el empleado a agregar se encuentra en el CAS.
-        existeUsuario = (instance.consultarCas(u) != null);
+        usbid = u.getUsbid();
         
-//        existeUsuario = (instance.obtenerUsuario(u) != null);
+        // Busca si el personal a agregar se encuentra en el CAS.
+        usuario = instance.consultarCas(usbid);
         
-        // Si encuentra al usuario, lo busca en la tabla de empleado.
-        if (existeUsuario) {
+        // Si encuentra a la persona, agrega en la tabla de usuario y en la 
+        // tabla correspondiente segun su cargo.
+        if (usuario != null) {
             
-            // Busca si el usuario existe en la tabla de empleado.
-            existeEmpleado = (instance.obtenerEmpleado(u) != null);
+            // Busca si la persona existe en la tabla de usuario.
+            existeUsuario = (instance.obtenerUsuario(u) != null);
             
-            // Si no existe el usuario en la tabla de empleado, lo agrega.
-            if (!existeEmpleado) {
-                agrego = instance.agregarEmpleado(u);
+            if (!existeUsuario) {
+             
+                nombres = usuario.getNombres();
+                apellidos = usuario.getApellidos();
+                cedula = usuario.getCedula();
+                       
+                u.setNombres(nombres);
+                u.setApellidos(apellidos);
+                u.setCedula(cedula);
+                u.setStatus("Inactivo");
+                
+                agregoUsuario = instance.agregarUsuario(u);
+                System.out.println("agregoUsuario " + agregoUsuario);
+                
+                tipoUsuario = u.getTipo_usuario();
+                System.out.println(tipoUsuario);
+             
+                // Si el usuario es de tipo empleado, se agrega en la tabla 
+                // de empleado.
+                if (tipoUsuario.equals("empleado")) {
+                    
+                    agregoEmpleado = instance.agregarEmpleado(u);
+                    System.out.println("agregoEmpleado " + agregoEmpleado);
 
-                if (agrego) {
-                    u.limpiarE();
-                    session.setAttribute("lologreA","conga!");
-                    session.removeAttribute("noExistente");                
-                    session.removeAttribute("empExistente");                                    
-                    return mapping.findForward(SUCCESS);
+                    if (agregoUsuario && agregoEmpleado) {
+                        
+                        u.limpiarE();
+                        session.setAttribute("usuarioAgregado", u);
+                        return mapping.findForward(SUCCESS);
+                        
+                    } else {
+                        
+                        session.setAttribute("operacionFallida", u);
+                        return mapping.findForward(FAILURE);
+                        
+                    }
 
                 } else {
-                    session.removeAttribute("lologreA");
+                    
+                    session.setAttribute("tipoUsuarioInvalido", u);
                     return mapping.findForward(FAILURE);
+                    
                 }
                 
             // Si existe el usuario, se notifica que dicho usuario ya ha sido
-            // agregado como empleado.
+            // agregado.
             } else {
-                session.removeAttribute("lologreA");
-                session.setAttribute("empExistente", "");
+                session.setAttribute("usuarioExistente", u);
                 return mapping.findForward(FAILURE);
+                
             }
-           
-        // Si no consigue al usuario en la tabla de usuario, se notifica que
-        // dicho usuario no existe.
+
+        // Si no existe la persona en el CAS, se notifica.
         } else {
-            session.removeAttribute("lologre");
-            session.setAttribute("noExistente", "");
-            return mapping.findForward(FAILURE);
+            
+            session.setAttribute("usuarioInexistente", u);
+            return mapping.findForward(FAILURE);            
+            
         }
 
     }

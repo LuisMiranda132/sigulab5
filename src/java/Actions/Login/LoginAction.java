@@ -10,9 +10,11 @@ import java.util.*;
 import DBMS.DBMS;
 import Clases.LoginForm;
 import Clases.Empleado;
+import Clases.Usuario;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForward;
@@ -47,30 +49,42 @@ public class LoginAction extends org.apache.struts.action.Action {
             throws Exception {
         
         LoginForm bean = (LoginForm) form;
+        Empleado dummy = new Empleado();
+        Empleado user;
         
-        ActionErrors errors = bean.validate(mapping, request);
+        ActionErrors error = null;
+        HttpSession session = request.getSession(true);
+        DBMS db;
         
-        if (errors.size() != 0) {
-            bean.reset();
+        session.removeAttribute("errorCredenciales");
+        
+        // Validaciones del formulario.
+        error = bean.validate(mapping, request);
+        
+        if (error.size() != 0) {
+            saveErrors(request, error);
             return mapping.findForward(FAILURE);
         }
-
-        Empleado dummy = new Empleado();
+                        
         dummy.setUsbid(bean.getUsbid());
         
-        DBMS db = DBMS.getInstance();
-        Empleado user = db.obtenerEmpleado(dummy);
-                
-        if (user == null) {
+        db = DBMS.getInstance();
+
+        user = db.obtenerEmpleado(dummy);
+        
+//        session.setAttribute("usbid", user.getUsbid());
+        
+        if ((user == null) || (user.getVisibilidad() == 0)) {
             System.out.println("No USER");
             bean.reset();
-//            errors.add("credenciales", new ActionMessage("error.credenciales"));
+            System.out.println("Error Credenciales");
+            session.setAttribute("errorCredenciales", "");
             return mapping.findForward(FAILURE);
         }
                 
-        if (user.getTipoE().contentEquals("jefe")){
+        if (user.getTipo_empleado().contentEquals("jefe")){
             return mapping.findForward(JEFE);
-        }else if(user.getTipoE().contentEquals("tecnico")){
+        }else if(user.getTipo_empleado().contentEquals("tecnico")){
             return mapping.findForward(TECNICO);
         }
                 

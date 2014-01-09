@@ -6,7 +6,7 @@
 
 package Actions.DB;
 
-import Clases.Usuario;
+import Clases.Laboratorio;
 import DBMS.DBMS;
 
 import javax.servlet.http.HttpServletRequest;
@@ -20,30 +20,34 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
- * @author luismiranda
+ * @author josefigueredo
  */
-public class eliminar extends org.apache.struts.action.Action{
+public class modificarLaboratorio extends org.apache.struts.action.Action {
     
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
     
+    /**
+     * This is the action called from the Struts framework.
+     *
+     * @param mapping The ActionMapping used to select this instance.
+     * @param form The optional ActionForm bean for this request.
+     * @param request The HTTP Request we are processing.
+     * @param response The HTTP Response we are processing.
+     * @throws java.lang.Exception
+     * @return
+     */
     @Override
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
-        Usuario u = (Usuario) form;
+        Laboratorio l = (Laboratorio) form;
         HttpSession session = request.getSession(true);
         
-        ActionErrors error = new ActionErrors();
+        ActionErrors error = null;
         
-        if(u.getUsbid().contentEquals("")){
-            session.removeAttribute("lologreE");
-            error.add("error", new ActionMessage("error.usuario.vacio"));
-            saveErrors(request, error);
-            return mapping.findForward(FAILURE);
-        }
-        
+        error = l.validateTodo(mapping, request);
         boolean huboError = false;
         
         if (error.size() != 0) {
@@ -51,27 +55,29 @@ public class eliminar extends org.apache.struts.action.Action{
         }
         
         if (huboError) {
+            
             saveErrors(request, error);
-            session.removeAttribute("lologreE");
+            session.removeAttribute("lologre");
             return mapping.findForward(FAILURE);
             
         } else {
             
-            boolean eliminar = DBMS.getInstance().eliminarUsuario(u);
+            boolean agrego = DBMS.getInstance().modificarLaboratorio(l);
             
-            
-            if (eliminar) {
-                u.limpiar();
-                session.setAttribute("lologreE","conga!");
+
+            if (agrego) {
+                session.setAttribute("lologre","conga!");
                 return mapping.findForward(SUCCESS);
             } else {
-                session.removeAttribute("lologreE");
-                error.add("error", new ActionMessage("error.usuario.noexist"));
-                saveErrors(request, error);
+                session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);
             }
         }
-    
+        
+//        Recuerden que esto es una plantilla trabajada con condicionales
+//        dentro de su sistema ustedes deben modelar tal cual si fuera un programa
+//        comun y corriente, es decir, pueden usar IF, ELSE, WHILE, entre otras
+//        herramientas que provea java para realizar su flujo en el sistema.
     }
-
+    
 }

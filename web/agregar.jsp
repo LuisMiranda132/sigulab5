@@ -59,6 +59,7 @@
             .errors {
                 color: red;
                 margin-top: 23px;
+                font-size: 10px;
             }
             
             #submit {
@@ -85,31 +86,44 @@
     </head>
     
     <body>
+
         <div class="titulo_formulario"> Agregar Personal </div>
         
-        <!-- ERRORES </!-->
         <center class="errors" align="center">
-            <html:errors/>    
+            <html:errors/>
         </center>
     
-        <logic:present name="lologreA">
+        <!-- LOGIC PRESENT </!-->
+        <logic:present name="usuarioAgregado">
             <center class="logic_success" align="center">
-                Se agrego exitosamente.
+                El usuario ha sido agregado exitosamente.
             </center>
         </logic:present>
     
-        <logic:present name="noExistente">
+        <logic:present name="usuarioInexistente">
             <center class="logic_failure" align="center">
-                Dicho usuario no existe.    
+                Usbid invalido.
             </center>
         </logic:present>
     
-        <logic:present name="empExistente">
+        <logic:present name="usuarioExistente">
             <center class="logic_failure" align="center">
-                Dicho usuario ya ha sido agregado como empleado.
+                El usuario ya ha sido agregado como empleado.
             </center>
         </logic:present>
-        <!-- FIN ERRORES </!-->
+    
+        <logic:present name="tipoUsuarioInvalido">
+            <center class="logic_failure" align="center">
+                El tipo de usuario es invalido.
+            </center>
+        </logic:present>
+    
+        <logic:present name="operacionFallida">
+            <center class="logic_failure" align="center">
+                Ocurrio un error durante la operacion, intente de nuevo.
+            </center>
+        </logic:present>
+        <!-- FIN LOGIC PRESENT </!-->
     
         <html:form action="agregar" style="margin-left: 45px;">
             <table border="0">
@@ -123,7 +137,7 @@
                     <tr>
                         <td> Tipo Usuario</td>
                         <td>
-                            <html:select name="Empleado" property="tipo">
+                            <html:select name="Empleado" property="tipo_usuario">
                                 <html:option value=""></html:option>
                                 <%--
                                 <html:option value="estudiante">Estudiante</html:option>
@@ -142,13 +156,13 @@
                     <tr>
                         <td> Año de Ingreso </td>
                         <td>
-                            <html:text name="Empleado" property="antiguedad"/>
+                            <html:text name="Empleado" property="ano_ingreso"/>
                         </td>
                     </tr>
                     <tr>
                         <td> Tipo Empleado</td>
                         <td>
-                            <html:select name="Empleado" property="tipoE">
+                            <html:select name="Empleado" property="tipo_empleado">
                                 <html:option value=""></html:option>
                                 <html:option value="personal admin">Personal Admin</html:option>
                                 <html:option value="tecnico">Tecnico</html:option>

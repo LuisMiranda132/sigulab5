@@ -45,7 +45,7 @@
                 Se modifico exitosamente    
             </center>
             </logic:present>
-        <html:form action="modificar" >
+        <html:form action="modificar">
             <table border="0">
                 <tbody>
                     <tr>
@@ -73,7 +73,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Correo </td>
+                        <td> Correo Alterno</td>
                         <td>
                             <html:text name="Empleado" property="correo"/>
                         </td>
@@ -85,21 +85,15 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Telefono fijo </td>
+                        <td> Teléfono </td>
                         <td>
-                            <html:text name="Empleado" property="telefono_casa"/>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td> Telefono celular</td>
-                        <td>
-                            <html:text name="Empleado" property="telefono_celular"/>
+                            <html:text name="Empleado" property="telefono"/>
                         </td>
                     </tr>
                     <tr>
                         <td> Tipo Usuario </td>
                         <td>
-                            <bean:write name="Empleado" property="tipo"/>
+                            <bean:write name="Empleado" property="tipo_usuario"/>
                         </td>
                     </tr>
                     <tr>
@@ -111,13 +105,13 @@
                     <tr>
                         <td> Año de Ingreso </td>
                         <td>
-                            <bean:write name="Empleado" property="antiguedad"/>
+                            <bean:write name="Empleado" property="ano_ingreso"/>
                         </td>
                     </tr>
                     <tr>
                         <td> Tipo Empleado</td>
                         <td>
-                            <bean:write name="Empleado" property="tipoE"/>
+                            <bean:write name="Empleado" property="tipo_empleado"/>
                         </td>
                     </tr>
                 </tbody>

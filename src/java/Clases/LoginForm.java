@@ -77,7 +77,6 @@ public class LoginForm extends org.apache.struts.action.ActionForm {
      * @return
      */
     public ActionErrors validate(ActionMapping mapping, HttpServletRequest request) {
-        
         ActionErrors errors = new ActionErrors();
         
         if (this.getUsbid().equals("") && 

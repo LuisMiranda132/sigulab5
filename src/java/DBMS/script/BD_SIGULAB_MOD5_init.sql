@@ -2,61 +2,70 @@
 --************************* CREACION DE TABLAS *********************************
 --******************************************************************************
 
+CREATE TABLE CAS (
+    usbid            varchar(15)    PRIMARY KEY,
+    nombres         varchar(20)     NOT NULL,
+    apellidos       varchar(20)     NOT NULL,
+    cedula          varchar(8)      NOT NULL
+);
+
 CREATE TABLE USUARIO (
-
-    usbid            varchar(15)     PRIMARY KEY,
-    nombres          varchar(20)     NOT NULL,
-    apellidos        varchar(20)     NOT NULL,
-    cedula           varchar(8)         NOT NULL,
-    correo           varchar(30)     NOT NULL,
-    direccion        varchar(50)     NOT NULL,
-    telefono_casa    varchar(12)     NOT NULL,
-    telefono_celular varchar(12)     NOT NULL,
-    tipo             varchar(20)     NOT NULL
-
+    usbid            varchar(15)    PRIMARY KEY,
+    nombres         varchar(20)     NOT NULL,
+    apellidos       varchar(20)     NOT NULL,
+    cedula          varchar(8)      NOT NULL
 );
 
 CREATE TABLE EMPLEADO (
-
-    cargo           varchar(30) not null,
-    antiguedad      varchar(30) not null,
-    tipo_empleado   varchar(15) not null,
-    usbid           varchar(15) not null, constraint pk_empleado primary key (usbid),
+    usbid           varchar(15)     NOT NULL, constraint pk_empleado primary key (usbid),
+    correo          varchar(30),
+    direccion       varchar(50),
+    cargo           varchar(30)     NOT NULL,
+    ano_ingreso     varchar(4)      NOT NULL,
+    tipo_empleado   varchar(15)     NOT NULL,
+    status	    varchar(30)	    NOT NULL DEFAULT 'Inactivo',
+    telefono        varchar(12),
+    tipo_usuario    varchar(20)     NOT NULL,
+    area_laboral	varchar(30),
+    extension		varchar(30),
+    laboratorio		varchar(100),
+    visibilidad     INTEGER         NOT NULL DEFAULT 1,
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade
 );
 
-CREATE TABLE laboratorio
-(
-  codigo varchar(20) NOT NULL, -- De la forma LAB'X'
-  nombre varchar(20), -- Laboratorio 'X'
-  sede varchar(15), -- Sartenejas o Litoral
-  ubicacion varchar(30), -- Edificio
-  correo varchar(25),
-  pagweb varchar(25),
-  jefe varchar(15), --USB ID
-  CONSTRAINT pk_laboratorio PRIMARY KEY (codigo),
-  CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe)
-      REFERENCES usuario (usbid) MATCH SIMPLE
-      ON UPDATE NO ACTION ON DELETE NO ACTION
-
+CREATE TABLE FORMACION (
+	usbid		varchar(15)     NOT NULL,
+	item		varchar(100)	NOT NULL,
+	ano			varchar(4),
+    constraint fk_formado foreign key (usbid) references usuario(usbid) on delete cascade
 );
 
---CREATE TABLE SERVICIO (
+CREATE TABLE PUBLICACION (
+	usbid		varchar(15)     NOT NULL,
+	publicacion varchar(100)	NOT NULL,
+	ano			varchar(4),
+    constraint fk_autor foreign key (usbid) references usuario(usbid) on delete cascade
+);
 
---        id              varchar(15)      PRIMARY KEY;
---        tipo            varchar(50)     NOT NULL;
---        nombre          varchar(50)     NOT NULL;
---        disponibilidad  varchar(50)     NOT NULL
- 
---);
+CREATE TABLE HABILIDAD (
+	usbid		varchar(15)     NOT NULL,
+	item		varchar(100)	NOT NULL,
+    constraint fk_habil foreign key (usbid) references usuario(usbid) on delete cascade
+);
 
-
--- CREATE TABLE ESTUDIANTE (
---   usbid			varchar(15)           	PRIMARY KEY references USUARIO(usbid),
---   carnet		varchar(8)				NOT NULL,
---   tipo			tipo_estudiante       	NOT NULL
--- );
-
--- CREATE TABLE PROFESOR (
---   usbid			varchar(15)           	PRIMARY KEY references USUARIO(usbid),
--- );
+CREATE TABLE LABORATORIO (	
+    codigo          varchar(10)     NOT NULL, -- De la forma LAB'X'
+    nombre          varchar(100)    NOT NULL, -- Laboratorio 'X'
+    sede            varchar(15)     NOT NULL, -- Sartenejas o Litoral
+    ubicacion       varchar(100)    NOT NULL, -- Edificio
+    correo          varchar(50)     NOT NULL,
+    pagweb          varchar(50)     NOT NULL DEFAULT 'N/P',
+	telefono		varchar(12)	    NOT NULL,
+	fax				varchar(12)	    NOT NULL,
+	caracteristicas	varchar(2000)   NOT NULL,
+    jefe            varchar(50)     NOT NULL, -- USB ID
+    visibilidad     INTEGER         NOT NULL DEFAULT 1,
+    CONSTRAINT pk_laboratorio PRIMARY KEY (codigo),
+    CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe) REFERENCES usuario (usbid) MATCH SIMPLE
+    ON UPDATE NO ACTION ON DELETE NO ACTION
+);

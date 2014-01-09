@@ -7,7 +7,6 @@
 package Clases;
 
 import java.util.ArrayList;
-import Clases.Empleado;
 import java.util.Collection;
 import java.util.List;
 import javax.servlet.http.HttpServletRequest;
@@ -22,15 +21,18 @@ import org.apache.struts.util.LabelValueBean;
  */
 public class Laboratorio extends org.apache.struts.action.ActionForm{
     
-    
     private String codigo;
     private String nombre;
     private String sede;
     private String ubicacion;
     private String correo;
     private String pagweb;
+    private String telefono;
+    private String fax;
+    private String caracteristicas;
     private String jefe;
-    private List jefes = new ArrayList();
+    private Integer visibilidad;
+    private List jefes = new ArrayList<Empleado>();
     
     /**
      *
@@ -42,7 +44,11 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.ubicacion=null;
         this.correo=null;
         this.pagweb=null;
+        this.telefono=null;
+        this.fax=null;
+        this.caracteristicas=null;
         this.jefe=null;
+        this.visibilidad=0;
     }
     
     /**
@@ -55,7 +61,11 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.ubicacion="";
         this.correo="";
         this.pagweb="";
+        this.telefono="";
+        this.fax="";
+        this.caracteristicas="";
         this.jefe="";
+        this.visibilidad=0;
     }
     
     /**
@@ -83,6 +93,9 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
                 this.getJefe().contentEquals("")||
                 this.getNombre().contentEquals("")||
                 this.getPagweb().contentEquals("")||
+                this.getTelefono().contentEquals("")||
+                this.getFax().contentEquals("")||
+                this.getCaracateristicas().contentEquals("")||
                 this.getSede().contentEquals("")||
                 this.getUbicacion().contentEquals("")){
             errors.add("error",new ActionMessage("error.laboratorio.vacio"));
@@ -185,6 +198,48 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     public void setPagweb(String pagweb) {
         this.pagweb = pagweb;
     }
+    
+    /**
+     * @return the telefono
+     */
+    public String getTelefono() {
+        return telefono;
+    }
+
+    /**
+     * @param telefono the telefono to set
+     */
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
+    }
+    
+    /**
+     * @return the fax
+     */
+    public String getFax() {
+        return fax;
+    }
+
+    /**
+     * @param fax the fax to set
+     */
+    public void setFax(String fax) {
+        this.fax = fax;
+    }
+    
+    /**
+     * @return the caracteristicas
+     */
+    public String getCaracateristicas() {
+        return caracteristicas;
+    }
+
+    /**
+     * @param caracteristicas the caracteristicas to set
+     */
+    public void setCaracteristicas(String caracteristicas) {
+        this.caracteristicas = caracteristicas;
+    }
 
     /**
      * @return the jefe
@@ -201,6 +256,20 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     }
 
     /**
+     * @return the visivilidad
+     */
+    public Integer getVisibilidad() {
+        return visibilidad;
+    }
+
+    /**
+     * @param visibilidad the visibilidad to set
+     */
+    public void setVisibilidad(Integer visibilidad) {
+        this.visibilidad = visibilidad;
+    }
+    
+    /**
      * @return the jefes
      */
     public Collection getJefes() {
@@ -211,12 +280,27 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
      * @param jefes the jefes to set
      */
     public void setJefes(List<Empleado> jefes) {
-        this.jefes=new ArrayList();
+        this.jefes = new ArrayList<Empleado>();
+
         for (Empleado e:jefes){
             this.jefes.add(
                     new LabelValueBean(e.getNombres()+' '+e.getApellidos(),e.getUsbid())
             );
         }
+    }
+
+        public void limpiar() {
+        this.codigo = null;
+        this.nombre = null;
+        this.sede = null;
+        this.ubicacion = null;
+        this.correo = null;
+        this.pagweb = null;
+        this.telefono = null;
+        this.fax = null;
+        this.caracteristicas = null;
+        this.jefe = null;
+        this.visibilidad = 0;
     }
     
 }

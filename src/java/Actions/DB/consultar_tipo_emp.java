@@ -7,11 +7,10 @@
 package Actions.DB;
 
 import Clases.Empleado;
+import Clases.LoginForm;
 import DBMS.DBMS;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -20,9 +19,11 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class consultarL extends org.apache.struts.action.Action {
+public class consultar_tipo_emp extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
-    private static final String SUCCESS = "success";
+    private static final String JEFE = "jefe";
+    private static final String EMPLEADO = "empleado";
+    private static final String FAILURE = "failure";
 
     /**
      * This is the action called from the Struts framework.
@@ -38,15 +39,25 @@ public class consultarL extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-
-        HttpSession session = request.getSession(true);
+         
+        LoginForm bean = (LoginForm) form;
+         
+        Empleado dummy = new Empleado();
+        dummy.setUsbid(bean.getUsbid());
         
-        ArrayList<Empleado> Usuarios = DBMS.getInstance().listarEmpleados();
+        DBMS db = DBMS.getInstance();
         
-        session.setAttribute("user", Usuarios);
-        return mapping.findForward(SUCCESS);
+        Empleado user = db.obtenerEmpleado(dummy);
         
+        if (user == null) {
+            System.out.println("No USER");
+            bean.reset();
+//          errors.add("credenciales", new ActionMessage("error.credenciales"));
+            return mapping.findForward(FAILURE);
+        } else if (user.getTipo_empleado().contentEquals("jefe")){
+            return mapping.findForward(JEFE);
+        } else {
+            return mapping.findForward(EMPLEADO);
+        }
     }
-        
-    
 }

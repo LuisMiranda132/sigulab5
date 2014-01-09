@@ -49,11 +49,6 @@
                 Agregar
             </h2>
         </html:link>
-        <html:link action="eliminarL">
-            <h2>
-                Eliminar
-            </h2>
-        </html:link>
         <html:link action="consultarL">
             <h2>
                 Consultar
