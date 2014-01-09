@@ -13,6 +13,7 @@ import org.apache.struts.action.ActionMessage;
 
 /**
  *
+
  * @author alejandro
  */
 
@@ -27,6 +28,7 @@ public class Habilidad extends Empleado{
         super();
         this.usbid = null;
         this.habilidad = null;
+
     }
     
     /**
@@ -53,5 +55,6 @@ public class Habilidad extends Empleado{
     public void setHabilidad(String habilidad) {
         this.habilidad = habilidad;
     }
+
 
 }

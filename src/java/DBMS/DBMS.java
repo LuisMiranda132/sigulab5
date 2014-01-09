@@ -779,7 +779,9 @@ public class DBMS {
                 Habilidad u = new Habilidad();
                
                 u.setUsbid(rs.getString("usbid"));
+
                 u.setHabilidad(rs.getString("habilidad"));
+
                 
                 HabilidadEmpleado.add(u);
             }
@@ -801,6 +803,7 @@ public class DBMS {
         try{
             String consulta = "SELECT U.usbid, P.publicacion, P.ano_pub FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
                               " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano_pub;";            
+
             ps = conexion.prepareStatement(consulta);
 
             ResultSet rs = ps.executeQuery();
@@ -810,6 +813,7 @@ public class DBMS {
                 u.setUsbid(rs.getString("usbid"));
                 u.setPublicacion(rs.getString("publicacion"));
                 u.setAno_pub(rs.getString("ano_pub"));
+
                 
                 PublicacionEmpleado.add(u);
             }
@@ -831,6 +835,7 @@ public class DBMS {
         try{
             String consulta = "SELECT U.usbid, F.formacion, F.ano_for FROM USUARIO AS U, FORMACION AS F WHERE F.USBID = U.USBID AND F.USBID = '" 
                                 + e.getUsbid() + "' ORDER BY F.ano_for;";
+
             ps = conexion.prepareStatement(consulta);
 
             ResultSet rs = ps.executeQuery();
@@ -840,6 +845,7 @@ public class DBMS {
                 u.setUsbid(rs.getString("usbid"));
                 u.setFormacion(rs.getString("formacion"));
                 u.setAno_for(rs.getString("ano_for"));
+
                 
                 FormacionEmpleado.add(u);
             }

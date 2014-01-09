@@ -122,7 +122,7 @@
                     </logic:notEmpty>
                 </div>
             </div>
-        
+       
         
         <a href="javascript:window.history.back();">
             <h2>

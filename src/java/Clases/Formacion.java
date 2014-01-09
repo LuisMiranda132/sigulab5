@@ -24,6 +24,7 @@ public class Formacion extends Empleado{
         super();
         this.formacion = null;
         this.ano_for = null;
+
     }
     
     /**
@@ -55,4 +56,5 @@ public class Formacion extends Empleado{
     public void setAno_for (String ano_for){
         this.ano_for = ano_for;
     }
+
 }

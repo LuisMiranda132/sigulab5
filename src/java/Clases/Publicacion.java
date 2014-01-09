@@ -25,6 +25,7 @@ public class Publicacion extends Empleado{
         super();
         this.publicacion = null;
         this.ano_pub = null;
+
     }
     
     /**
@@ -56,4 +57,6 @@ public class Publicacion extends Empleado{
     public void setAno_pub (String ano_pub){
         this.ano_pub = ano_pub;
     }
+
+
 }
