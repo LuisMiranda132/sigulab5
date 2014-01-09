@@ -143,6 +143,10 @@
         <action path="/perfilPersonalL" type="Actions.DB.perfilPersonalL" scope="request" validate="false">
             <forward name="success" path="/perfilPersonal.jsp"/>
         </action>
+
+        <action path="/perfilLaboratorioL" type="Actions.DB.perfilLaboratorioL" scope="request" validate="false">
+            <forward name="success" path="/perfilLaboratorio.jsp"/>
+        </action>
         
         <action path="/activarLaboratorio" type="Actions.DB.Activar_laboratorio" scope="request" validate="false">
             <forward name="success" path="/ConsultarLab_jefe.do"/>

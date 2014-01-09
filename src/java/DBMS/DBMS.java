@@ -502,6 +502,33 @@ public class DBMS {
                 
         return l;
     }  
+
+    public Empleado obtenerJefeLab(Laboratorio l){
+        PreparedStatement ps = null;
+        Empleado e = new Empleado();
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT U.nombres, U.apellidos FROM LABORATORIO AS L, USUARIO AS U, EMPLEADO AS E WHERE U.USBID=E.USBID AND "
+                    + "L.jefe=E.USBID AND L.jefe= '" + l.getCodigo() + "';");
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {               
+                e.setNombres(rs.getString("nombres"));
+                e.setApellidos(rs.getString("apellidos"));
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+                
+        return e;
+    }
     
     public boolean agregarLaboratorio(Laboratorio l) {
         
@@ -716,7 +743,7 @@ public class DBMS {
         PreparedStatement ps = null;
         try{
             String consulta = "SELECT U.usbid, P.publicacion, P.ano FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
-                              "P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano;";            
+                              " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano;";            
             ps = conexion.prepareStatement(consulta);
 
             ResultSet rs = ps.executeQuery();
