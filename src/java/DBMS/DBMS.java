@@ -851,7 +851,8 @@ public class DBMS {
 
             String consulta = "SELECT U.usbid, P.publicacion, P.ano_pub FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
                               " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano_pub;";            
-
+            ps = conexion.prepareStatement(consulta);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Publicacion u = new Publicacion();
