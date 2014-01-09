@@ -39,8 +39,8 @@ public class Empleado extends Usuario{
     private String errorCorreo;
     private String errorTelefono;
     private String errorOcultar;
-    private String errorAnos;
-
+    private String errorAno_pub;
+    private String errorAno_for;
     
     /**
      *
@@ -366,15 +366,29 @@ public class Empleado extends Usuario{
     /**
      * @return the errorAnos
      */
-    public String getErrorAnos() {
-        return errorAnos;
+    public String getErrorAno_for() {
+        return errorAno_for;
     }
     
     /**
      * @param errorAnos the errorAnos to set
      */
-    public void setErrorAnos(String errorAnos) {
-        this.errorAnos = errorAnos;
+    public void setErrorAno_for(String errorAno_for) {
+        this.errorAno_for = errorAno_for;
+    }
+    
+    /**
+     * @return the errorAnos
+     */
+    public String getErrorAno_pub() {
+        return errorAno_for;
+    }
+    
+    /**
+     * @param errorAnos the errorAnos to set
+     */
+    public void setErrorAno_pub(String errorAno_pub) {
+        this.errorAno_pub = errorAno_pub;
     }
     
     /**
@@ -445,13 +459,26 @@ public class Empleado extends Usuario{
         return errors;
     } 
     
-    public ActionErrors validateAnos(ActionMapping mapping, HttpServletRequest request){
+    public ActionErrors validateAno_for(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();
         
-        this.setErrorAnos("");
+        this.setErrorAno_for("");
         
-        if(!getErrorAnos().matches("\\d{4}")){
-            this.setErrorAnos("error");
+        if(!ano_for.matches("\\d{4}")){
+            this.setErrorAno_for("error");
+            errors.add("error", new ActionMessage("error.empleado.anos"));
+        }
+        
+        return errors;
+    } 
+    
+    public ActionErrors validateAno_pub(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        this.setErrorAno_pub("");
+        
+        if(!ano_pub.matches("\\d{4}")){
+            this.setErrorAno_pub("error");
             errors.add("error", new ActionMessage("error.empleado.anos"));
         }
         

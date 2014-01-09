@@ -7,6 +7,9 @@
 package Actions.DB;
 
 import Clases.Empleado;
+import Clases.Habilidad;
+import Clases.Formacion;
+import Clases.Publicacion;
 import Clases.LoginForm;
 import java.util.ArrayList;
 import DBMS.DBMS;
@@ -48,13 +51,24 @@ public class perfilPersonalL extends org.apache.struts.action.Action {
         Empleado usuario = new Empleado();
         usuario.setUsbid(request.getParameter("usbid"));
 
+        //Empleado
         ArrayList<Empleado> EmpleadoPerfil = new ArrayList<Empleado>();
-   
         Empleado emp = DBMS.getInstance().obtenerEmpleado(usuario);
-
         EmpleadoPerfil.add(emp);
 
+        //Habilidad
+        ArrayList<Habilidad> EmpleadoHabilidad = DBMS.getInstance().listarHabilidadEmpleado(usuario);
+        
+        //Publicacion
+        ArrayList<Publicacion> EmpleadoPublicacion = DBMS.getInstance().listarPublicacionEmpleado(usuario);
+        
+        //Formacion
+        ArrayList<Formacion> EmpleadoFormacion = DBMS.getInstance().listarFormacionEmpleado(usuario);
+
         session.setAttribute("user", EmpleadoPerfil);
+        session.setAttribute("userHabilidad", EmpleadoHabilidad);
+        session.setAttribute("userPublicacion", EmpleadoPublicacion);
+        session.setAttribute("userFormacion", EmpleadoFormacion);
                 
         return mapping.findForward(SUCCESS);
     }

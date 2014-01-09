@@ -74,7 +74,7 @@ INSERT INTO PUBLICACION VALUES ('jjimenez','Robot Boxeador','2001');
 --
 -- INSERT HABILIDAD
 --
--- PUBLICACION (usbid, item)
+-- HABILIDAD (usbid, item)
 -- 
 INSERT INTO HABILIDAD VALUES ('10-10333','Manejo de SQLPlus y Postgres');
 INSERT INTO HABILIDAD VALUES ('09-10279','Manejo de Microscopio de Polimeros');

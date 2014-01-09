@@ -19,8 +19,19 @@ public class Formacion extends Empleado{
     
     private String formacion;
     private String ano_for;
-    
+        
     public Formacion(){
+        super();
+        this.formacion = null;
+        this.ano_for = null;
+    }
+    
+    /**
+     *
+     */
+    public void limpiarF(){
+        this.limpiar();
+        this.usbid = null;
         this.formacion = null;
         this.ano_for = null;
     }

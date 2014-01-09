@@ -22,6 +22,17 @@ public class Publicacion extends Empleado{
     
     
     public Publicacion(){
+        super();
+        this.publicacion = null;
+        this.ano_pub = null;
+    }
+    
+    /**
+     *
+     */
+    public void limpiarP(){
+        this.limpiar();
+        this.usbid = null;
         this.publicacion = null;
         this.ano_pub = null;
     }

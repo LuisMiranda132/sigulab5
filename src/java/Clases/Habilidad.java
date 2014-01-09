@@ -15,22 +15,43 @@ import org.apache.struts.action.ActionMessage;
  *
  * @author alejandro
  */
-public class Habilidad extends Empleado {
+
+public class Habilidad extends Empleado{
     
     private String habilidad;
-    
-    public Habilidad(){
-        this.habilidad = null;        
+
+    /**
+     *
+     */
+    public Habilidad() {
+        super();
+        this.usbid = null;
+        this.habilidad = null;
     }
     
+    /**
+     *
+     */
+    public void limpiarH(){
+        this.limpiar();
+        this.usbid = null;
+        this.habilidad = null;
+     }
+    
+    /**
+     * @return the habilidad
+     */
     @Override
-    public String getHabilidad(){
+    public String getHabilidad() {
         return habilidad;
     }
-    
+
+    /**
+     * @param habilidad the habilidad to set
+     */
     @Override
-    public void setHabilidad(String habilidad){
+    public void setHabilidad(String habilidad) {
         this.habilidad = habilidad;
     }
-    
+
 }
