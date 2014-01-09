@@ -125,9 +125,11 @@
        
         
         <a href="javascript:window.history.back();">
-            <h2>
-                Volver
-            </h2>
+            <html:link action="back">
+                <h2>
+                    << volver
+                </h2>
+            </html:link>
         </a>
     </body>
 </html>

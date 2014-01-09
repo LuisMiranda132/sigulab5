@@ -72,7 +72,7 @@ public class LoginAction extends org.apache.struts.action.Action {
 
         user = db.obtenerEmpleado(dummy);
         
-//        session.setAttribute("usbid", user.getUsbid());
+        session.setAttribute("usbid", user.getUsbid());
         
         if ((user == null) || (user.getVisibilidad() == 0)) {
             System.out.println("No USER");

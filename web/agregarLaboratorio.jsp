@@ -93,6 +93,24 @@
                         </td>
                     </tr>
                     <tr>
+                        <td> Telefono </td>
+                        <td>
+                            <html:text name="Laboratorio" property="telefono"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Fax </td>
+                        <td>
+                            <html:text name="Laboratorio" property="fax"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Caracteristicas </td>
+                        <td>
+                            <html:text name="Laboratorio" property="caracteristicas"/>
+                        </td>
+                    </tr>
+                    <tr>
                         <td> Jefe </td>
                         <td>
                              <html:select name="Laboratorio" property="jefe" >
