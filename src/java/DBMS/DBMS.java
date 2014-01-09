@@ -134,6 +134,34 @@ public class DBMS {
 
     }
     
+    public boolean agregarFormacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO FORMACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getFormacion());
+            ps.setString(3, e.getAno_for());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getFormacion());            
+            System.out.print(e.getAno_for());            
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
     public boolean agregarHabilidad(Empleado e){
         PreparedStatement ps;
         Integer filas;
@@ -628,12 +656,13 @@ public class DBMS {
         return l;
     }  
 
-    public Empleado obtenerJefeLab(Laboratorio l){
+    public ArrayList<Empleado> obtenerJefeLab(Laboratorio l){
+        ArrayList<Empleado> JefeLaboratorio = new ArrayList<Empleado>();
         PreparedStatement ps = null;
-        Empleado e = new Empleado();
+        
         try{
             ps = conexion.prepareStatement(
-                    "SELECT U.nombres, U.apellidos FROM LABORATORIO AS L, USUARIO AS U, EMPLEADO AS E WHERE U.USBID=E.USBID AND "
+                    "SELECT * FROM LABORATORIO AS L, USUARIO AS U, EMPLEADO AS E WHERE U.USBID=E.USBID AND "
                     + "L.jefe=E.USBID AND L.jefe= '" + l.getCodigo() + "';");
             ResultSet rs = ps.executeQuery();
             
@@ -642,9 +671,28 @@ public class DBMS {
                 return null;
             }             
             
-            while (rs.next()) {               
+            while (rs.next()) {
+                Empleado e = new Empleado();
+
+                e.setUsbid(rs.getString("usbid"));
                 e.setNombres(rs.getString("nombres"));
                 e.setApellidos(rs.getString("apellidos"));
+                e.setCedula(rs.getString("cedula"));
+                e.setCorreo(rs.getString("correo"));
+                e.setDireccion(rs.getString("direccion"));
+                e.setTelefono(rs.getString("telefono"));
+                e.setTipo_usuario(rs.getString("tipo_usuario"));
+                e.setAno_ingreso(rs.getString("ano_ingreso"));
+                e.setCargo(rs.getString("cargo"));
+                e.setTipo_empleado(rs.getString("tipo_empleado"));
+                e.setStatus(rs.getString("status"));
+                e.setExtension(rs.getString("extension"));
+                e.setArea_laboral(rs.getString("area_laboral"));
+                e.setLaboratorio(rs.getString("laboratorio"));
+                e.setVisibilidad(rs.getInt("visibilidad"));
+
+                JefeLaboratorio.add(e);
+
             }
             
         } catch (SQLException ex) {
@@ -652,7 +700,7 @@ public class DBMS {
             return null;
         }
                 
-        return e;
+        return JefeLaboratorio;
     }
     
     public boolean agregarLaboratorio(Laboratorio l) {
@@ -670,7 +718,7 @@ public class DBMS {
             psAgregar.setString(6, l.getPagweb());
             psAgregar.setString(7, l.getTelefono());
             psAgregar.setString(8, l.getFax());
-            psAgregar.setString(9, l.getCaracateristicas());
+            psAgregar.setString(9, l.getCaracteristicas());
             psAgregar.setString(10, l.getJefe());
             psAgregar.setInt(11, 1);
             
@@ -872,7 +920,8 @@ public class DBMS {
 
             String consulta = "SELECT U.usbid, P.publicacion, P.ano_pub FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
                               " P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano_pub;";            
-
+            ps = conexion.prepareStatement(consulta);
+            
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
                 Publicacion u = new Publicacion();

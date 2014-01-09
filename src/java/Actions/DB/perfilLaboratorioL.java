@@ -49,15 +49,13 @@ public class perfilLaboratorioL extends org.apache.struts.action.Action {
         Laboratorio labCodigo = new Laboratorio();
         labCodigo.setCodigo(request.getParameter("codigo"));
 
-        ArrayList<Laboratorio> perfilLaboratorio = new ArrayList<Laboratorio>();
-        Laboratorio lab = DBMS.getInstance().obtenerLaboratorio(labCodigo);
-        perfilLaboratorio.add(lab);
+        ArrayList<Laboratorio> PerfilLaboratorio = new ArrayList<Laboratorio>();
+        Laboratorio laboratorios = DBMS.getInstance().obtenerLaboratorio(labCodigo);
+        PerfilLaboratorio.add(laboratorios);
 
-        ArrayList<Empleado> EmpleadoPerfil = new ArrayList<Empleado>();
-        Empleado emp = DBMS.getInstance().obtenerJefeLab(labCodigo);
-        EmpleadoPerfil.add(emp);
+        ArrayList<Empleado> EmpleadoPerfil = DBMS.getInstance().obtenerJefeLab(labCodigo);
 
-        session.setAttribute("lab", perfilLaboratorio);
+        session.setAttribute("lab", PerfilLaboratorio);
         session.setAttribute("user", EmpleadoPerfil);
 
         return mapping.findForward(SUCCESS);

@@ -44,7 +44,7 @@ public class agregarLaboratorioL extends org.apache.struts.action.Action {
         session.removeAttribute("lologreA");
         
         Laboratorio l = (Laboratorio) form;
-        l.limpiarE();
+        l.limpiarL();
         l.setJefes(DBMS.getInstance().listarEmpleadosJefe());
         
         return mapping.findForward(SUCCESS);

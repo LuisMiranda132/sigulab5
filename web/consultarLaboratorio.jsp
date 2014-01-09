@@ -42,6 +42,7 @@
     </head>
     <body>
         <div class="titulo_formulario"> Consultar Personal </div>        
+
         <table cellspacing='0'>
             <!-- PRIMERA FILA -->
             <thead>
