@@ -9,6 +9,9 @@ package DBMS;
 import Clases.Laboratorio;
 import Clases.Usuario;
 import Clases.Empleado;
+import Clases.Habilidad;
+import Clases.Publicacion;
+import Clases.Formacion;
 import Clases.LoginForm;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -673,8 +676,96 @@ public class DBMS {
         
         return Laboratorios;
     }
-    
-    
+
+/**
+ * Habilidad
+ * HABILIDAD (usbid, item)
+ */
+    public ArrayList<Habilidad> listarHabilidadEmpleado(Empleado e){
+        
+        ArrayList<Habilidad> HabilidadEmpleado = new ArrayList<Habilidad>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, H.item FROM USUARIO AS U, HABILIDAD AS H WHERE H.USBID = U.USBID AND H.USBID = '" 
+                                + e.getUsbid() + "';";
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Habilidad u = new Habilidad();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setItem(rs.getString("item"));
+                
+                HabilidadEmpleado.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return HabilidadEmpleado;
+    }
+
+/**
+ * Publicacion
+ * PUBLICACION (usbid, publicacion, ano)
+ */
+    public ArrayList<Publicacion> listarPublicacionEmpleado(Empleado e){
+        
+        ArrayList<Publicacion> PublicacionEmpleado = new ArrayList<Publicacion>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, P.publicacion, P.ano FROM USUARIO AS U, PUBLICACION AS P WHERE" + 
+                              "P.USBID = U.USBID AND P.USBID = '" + e.getUsbid() + "' ORDER BY P.ano;";            
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Publicacion u = new Publicacion();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setPublicacion(rs.getString("publicacion"));
+                u.setAno(rs.getString("ano"));
+                
+                PublicacionEmpleado.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return PublicacionEmpleado;
+    }
+
+/**
+ * Formacion
+ * FORMACION (usbid, item, ano)
+ */
+    public ArrayList<Formacion> listarFormacionEmpleado(Empleado e){
+        
+        ArrayList<Formacion> FormacionEmpleado = new ArrayList<Formacion>();
+        PreparedStatement ps = null;
+        try{
+            String consulta = "SELECT U.usbid, F.item, F.ano FROM USUARIO AS U, FORMACION AS F WHERE F.USBID = U.USBID AND F.USBID = '" 
+                                + e.getUsbid() + "' ORDER BY F.ano;";
+            ps = conexion.prepareStatement(consulta);
+
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Formacion u = new Formacion();
+               
+                u.setUsbid(rs.getString("usbid"));
+                u.setItem(rs.getString("item"));
+                u.setAno(rs.getString("ano"));
+                
+                FormacionEmpleado.add(u);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return FormacionEmpleado;
+    }
+
     // Main para pruebas sobre la base de datos.
     public static void main(String args[]) {
         
@@ -695,5 +786,6 @@ public class DBMS {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }   
-}
+    }
+
+} //END DBMS.java

@@ -1,7 +1,5 @@
 <%-- 
-    Document   : consultar
-    Created on : Nov 27, 2013, 12:06:26 AM
-    Author     : luismiranda
+    Document: perfilPersonal 
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -10,6 +8,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>  
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -26,11 +25,9 @@
             @import "CSS/ckeditor.css";
             @import "CSS/ctools.css";
         </style>
-
         <style type="text/css" media="all">
             @import "CSS/layout.css";
             @import "CSS/table.css";
-            @import "CSS/style_interno.css";
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
@@ -41,58 +38,99 @@
         <title>Perfil</title>
     </head>
     <body>
-        <h1>Perfil</h1>
+        <logic:iterate name="user" id="Empleado">
+            <div class="perfil_cuerpo"><b><p>Perfil de <bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>.</p></b></div>
+        </logic:iterate>
 
         <!-- DATOS DEL PERSONAL -->
         <logic:iterate name="user" id="Empleado">
             <div class="wrapper">
                 <figure class="img-border left marg_right1"><img src="images/user.png" width="160"/></figure>
                 <div class="perfil_tamano">
-                    <br>USBID: <bean:write name="Empleado" property="usbid"/>.</br>
-                    <br>Nombre: <bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>.</br>
-                    <br>Cargo: <bean:write name="Empleado" property="cargo"/>.</br>
+                    <p></p>
+                    <p><b>USBID:</b> <bean:write name="Empleado" property="usbid"/>.</p>
+                    <p><b>Nombre:</b> <bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>.</p>
+                    <p><b>Cargo:</b> <bean:write name="Empleado" property="cargo"/>.</p>
+                    <p><b>Área laboral:</b> <bean:write name="Empleado" property="area_laboral"/>.</p>
+                    <p><b>Status:</b> <bean:write name="Empleado" property="status"/>.</p>
                 </div>
             </div>
             <br></br>
         </logic:iterate>
 
-        <!--TABS-->
-        <logic:iterate name="user" id="Empleado">
-            <div id="demopage" class="perfil_cuerpo">
+        <!--TABS-->        
+            <div id="demopage">
                 <ul class="mctabs">
                     <li><a href="#view1">Datos personales</a></li>
-                    <li><a href="#view2">Formación</a></li>
-                    <li><a href="#view3">Publicaciones</a></li>
+                    <logic:notEmpty name="userFormacion">
+                        <li><a href="#view2">Formación</a></li>
+                    </logic:notEmpty>
+                    <logic:notEmpty name="userPublicacion">
+                        <li><a href="#view3">Publicaciones</a></li>
+                    </logic:notEmpty>
+                    <logic:notEmpty name="userHabilidad">
+                        <li><a href="#view4">Habilidades</a></li>
+                    </logic:notEmpty>
                 </ul>
 
                 <div class="panel-container">
                     <!--Primera pestana-->
-                    <div id="view1">
-                        <p>Cédula: <bean:write name="Empleado" property="cedula"/>.</p>
-                        <p>Correo: <bean:write name="Empleado" property="correo"/></p>
-                        <p>Dirección: <bean:write name="Empleado" property="direccion"/>.</p>
-                        <p>Teléfono: <bean:write name="Empleado" property="telefono"/></p>
-                        <p>Fecha de ingreso: <bean:write name="Empleado" property="ano_ingreso"/></p>
-                    </div>
+                    <div id="view1" class="perfil_cuerpo">
+                        <logic:iterate name="user" id="Empleado">
+                            <p><b>Correo:</b> <bean:write name="Empleado" property="correo"/></p>
+                            <p><b>Dirección:</b> <bean:write name="Empleado" property="direccion"/>.</p>
+                            <p><b>Teléfono:</b> <bean:write name="Empleado" property="telefono"/>.</p>
+                            <p><b>Fecha de ingreso:</b> <bean:write name="Empleado" property="ano_ingreso"/>.</p>
+                            <p><b>Extensión:</b> <bean:write name="Empleado" property="extension"/>.</p>
+                            <p><b>Laboratorio:</b> <bean:write name="Empleado" property="laboratorio"/>.</p>
+                        </logic:iterate>
+                    </div>        
 
                     <!--Segunda pestana-->
-                    <div id="view2">
-                        <p>Aquí van los cursos, estudios, etc. que haya hecho la persona.</p>        
-                    </div>
+                    <logic:notEmpty name="userFormacion">
+                        <div id="view2" class="perfil_cuerpo">
+                            <logic:iterate name="userFormacion" id="Formacion">
+                                <dl>
+                                    <p><dt><bean:write name="Formacion" property="ano"/>:</dt>
+                                    <dd><bean:write name="Formacion" property="item"/>.</dd></p>
+                                </dl>
+                            </logic:iterate>  
+                        </div>
+                    </logic:notEmpty>
 
                     <!--Tercera pestana-->
-                    <div id="view3">
-                        <p>Aquí van las publicaciones que ha hecho la persona.</p>
-                    </div>
+                    <logic:notEmpty name="userPublicacion">
+                        <div id="view3" class="perfil_cuerpo">
+                            <logic:iterate name="userPublicacion" id="Publicacion">
+                                <dl>
+                                    <p><dt><bean:write name="Publicacion" property="ano"/>:</dt>
+                                    <dd><bean:write name="Publicacion" property="publicacion"/>.</dd></p>
+                                </dl>
+                            </logic:iterate>  
+                        </div>
+                    </logic:notEmpty>
 
+                    <!--Cuarta pestana-->
+                    <logic:notEmpty name="userHabilidad">
+                        <div id="view4">
+                            <logic:iterate name="userHabilidad" id="Habilidad">
+                                <ul class = "view4">
+                                    <li class = "perfil_cuerpo"><p><bean:write name="Habilidad" property="item"/>.</p></li>
+                                </ul>
+                            </logic:iterate>
+                        </div>
+                    </logic:notEmpty>
                 </div>
             </div>
-        </logic:iterate>
+        
         
         <html:link action="back">
             <h2>
-                Volver
+                Volver al inicio
             </h2>
         </html:link>
     </body>
 </html>
+
+
+
