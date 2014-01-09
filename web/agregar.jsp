@@ -38,7 +38,7 @@
         <script src="js/jquery-ui.js"></script>
         
         <script>
-            
+             
             $( document ).ready(function() {
                alert("Document ready");
                
