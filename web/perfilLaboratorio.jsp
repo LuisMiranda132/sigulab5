@@ -43,8 +43,6 @@
             <h2><b><p><bean:write name="Laboratorio" property="nombre"/></p></b></h2>
         </logic:iterate>
 
-
-
         <logic:iterate name="lab" id="Laboratorio">
             <div class="wrapper">
                 <div class="perfil_tamano">
@@ -75,12 +73,12 @@
                         <logic:iterate name="lab" id="Laboratorio">
                             <p></p>
                             <p><b>Sede:</b> <bean:write name="Laboratorio" property="sede"/>.</p>
-                            <p><b>Ubicacion:</b> <bean:write name="Laboratorio" property="ubicacion"/>.</p>
+                            <p><b>Ubicación:</b> <bean:write name="Laboratorio" property="ubicacion"/>.</p>
                             <p><b>Correo:</b> <bean:write name="Laboratorio" property="correo"/>.</p>
-                            <p><b>Pagina web:</b> <bean:write name="Laboratorio" property="pagweb"/>.</p>
-                            <p><b>Telefono:</b> <bean:write name="Laboratorio" property="telefono"/>.</p>
+                            <p><b>Página web:</b> <bean:write name="Laboratorio" property="pagweb"/>.</p>
+                            <p><b>Teléfono:</b> <bean:write name="Laboratorio" property="telefono"/>.</p>
                             <p><b>Fax:</b> <bean:write name="Laboratorio" property="fax"/>.</p>
-                            <!--<p><b>Caracteristicas:</b> <bean:write name="Laboratorio" property="caracteristicas"/>.</p>-->
+                            <p style="text-align:justify;"><b>Características:</b> <bean:write name="Laboratorio" property="caracteristicas"/>.</p>
                         </logic:iterate>
                     </div>        
 

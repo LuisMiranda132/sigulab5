@@ -62,7 +62,7 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
             boolean agrego = DBMS.getInstance().agregarLaboratorio(u);
                 
             if (agrego){
-                u.limpiarE();
+                u.limpiarL();
                 session.setAttribute("lologreA","conga!");
                 return mapping.findForward(SUCCESS);
                 

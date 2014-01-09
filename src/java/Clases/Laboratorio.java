@@ -54,7 +54,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     /**
      *
      */
-    public void limpiarE(){
+    public void limpiarL(){
         this.codigo="";
         this.nombre="";
         this.sede="";
@@ -95,7 +95,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
                 this.getPagweb().contentEquals("")||
                 this.getTelefono().contentEquals("")||
                 this.getFax().contentEquals("")||
-                this.getCaracateristicas().contentEquals("")||
+                this.getCaracteristicas().contentEquals("")||
                 this.getSede().contentEquals("")||
                 this.getUbicacion().contentEquals("")){
             errors.add("error",new ActionMessage("error.laboratorio.vacio"));
@@ -230,7 +230,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     /**
      * @return the caracteristicas
      */
-    public String getCaracateristicas() {
+    public String getCaracteristicas() {
         return caracteristicas;
     }
 
