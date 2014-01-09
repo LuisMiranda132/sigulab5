@@ -31,32 +31,19 @@
             
         <style type="text/css" media="all">
             @import url("CSS/ckeditor.css");
-            @import url("CSS//ctools.css");
+            @import url("CSS/ctools.css");
         </style>
             
         <style type="text/css" media="all">
             @import url("CSS/layout.css");
-            @import url("CSS//style.css");
+            @import url("CSS/style.css");
+            @import url("CSS/style_interno.css");
             @import url("CSS/forms.css");
             @import url("CSS/colors.css");    
         </style>
         
         <style type="text/css" media="print">
             @import url("CSS/print.css");
-        </style>
-
-        <style>
-        
-            .errors {
-                color: red;
-                font-size: 10px;
-            }
-            
-            .logic_failure {
-                color: red;
-                font-size: 10px;
-            }
-            
         </style>
          
         <script type="text/javascript" src="http://www.ulab.usb.ve/misc/jquery.js?v=1.4.4"></script>

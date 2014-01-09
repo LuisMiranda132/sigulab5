@@ -34,54 +34,6 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
-
-        <style>
-            
-            .titulo_formulario {
-                font-size: 14px;
-                font-weight: bold;
-                color: #42a9be;
-                text-align: center;
-                background-color: beige;
-                height: 21px;
-                line-height: 21px;
-            }
-            
-            .logic_success {
-                color: green;
-                margin-top: 23px;
-            }
-            
-            .logic_failure {
-                color: red;
-                margin-top: 23px;
-            }
-            
-            .errors {
-                color: red;
-                margin-top: 23px;
-                font-size: 10px;
-            }
-            
-            #submit {
-                margin-left: 372px;
-                margin-top: 16px;
-            }
-            
-            .boton {
-                background: transparent;
-                color: #1c6ea0;
-                font-weight: bold;
-                border: 0px;
-                cursor: pointer;
-            }
-            
-            .boton:hover, .boton:focus, .boton:active {
-                color: #42a9be;
-                transition: color .2s linear 0;
-            }
-                
-        </style>          
         
         <title>Agregar Laboratorio</title>
     <body>
