@@ -8,6 +8,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>  
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -130,3 +131,6 @@
         </a>
     </body>
 </html>
+
+
+

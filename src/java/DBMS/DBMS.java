@@ -134,6 +134,34 @@ public class DBMS {
 
     }
     
+    public boolean agregarFormacion(Empleado e){
+        PreparedStatement ps;
+        Integer filas;
+        
+        try {
+
+            ps = conexion.prepareStatement("INSERT INTO FORMACION VALUES (?,?,?);");
+
+            ps.setString(1, e.getUsbid());
+            ps.setString(2, e.getFormacion());
+            ps.setString(3, e.getAno_for());
+            
+            
+            System.out.print(e.getUsbid());
+            System.out.print(e.getFormacion());            
+            System.out.print(e.getAno_for());            
+                    
+            filas = ps.executeUpdate();
+            
+            return filas > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();
+            return false;
+        }
+
+    }
+    
     public boolean agregarHabilidad(Empleado e){
         PreparedStatement ps;
         Integer filas;
@@ -155,6 +183,7 @@ public class DBMS {
             
         }catch(SQLException ex){
             ex.printStackTrace();
+            return false;
         }
 
     }
@@ -256,7 +285,6 @@ public class DBMS {
         } catch (SQLException ex) {
             ex.printStackTrace();
         }
->>>>>>> d80450fa145f569f1aacf02c954ee23bb5fd644c
         
         return Empleados;
     }

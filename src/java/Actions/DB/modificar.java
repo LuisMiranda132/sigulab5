@@ -41,6 +41,7 @@ public class modificar extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+          
         Empleado u = (Empleado) form;
         HttpSession session = request.getSession(true);
         
