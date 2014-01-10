@@ -41,6 +41,7 @@
     </head>
 
     <body style="overflow: hidden;">
+
         <div class="titulo_formulario"> Modificar Laboratorio </div>
         
         <center class="errors" align="center">
