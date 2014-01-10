@@ -4,11 +4,10 @@ $( document ).ready(function() {
     // Placeholder de la descripcion del Laboratorio.
     $( "#textarea" ).attr('placeholder', 'Descripcion del Laboratorio.');
 
-//    $(document).click(function(e) {
-//        if(!$(e.target).is('.descripcion'))
-//            alert("NO ES DESCR");
-        //$('#yourdiv').css('background-color', 'red');
-//    });
+    $(document).click(function(e) {
+        if(!$(e.target).is('.input_formulario'))
+            $(".descripcion").hide();
+    });
 
     // Descripcion de los campos del formulario.
     $( ".input_formulario" )

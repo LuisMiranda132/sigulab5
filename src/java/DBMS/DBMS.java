@@ -680,7 +680,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
+                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?,?,?,?);");
             
             psAgregar.setString(1, l.getCodigo());
             psAgregar.setString(2, l.getNombre());
@@ -692,8 +692,8 @@ public class DBMS {
             psAgregar.setString(8, l.getFax());
             psAgregar.setString(9, l.getCaracteristicas());
             psAgregar.setString(10, l.getJefe());
-            psAgregar.setString(11, l.getNombre_jefe());
-            psAgregar.setInt(12, 1);
+//            psAgregar.setString(11, l.getNombre_jefe());
+            psAgregar.setInt(11, 1);
             
             Integer i = psAgregar.executeUpdate();
             
