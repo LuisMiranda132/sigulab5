@@ -40,7 +40,7 @@
         
         <title>Catalogo</title>
     </head>
-    <body style="overflow: hidden;">
+    <body>
         <div class="titulo_formulario"> Modificar Perfil </div>
         <center class="errors" align="center">
             <html:errors/>
