@@ -61,6 +61,7 @@ public class DBMS {
     public boolean agregarUsuario(Usuario u) {
         
         PreparedStatement psAgregar = null;
+        
         try {
             psAgregar = conexion.prepareStatement(
                     "INSERT INTO USUARIO VALUES (?,?,?,?);");
@@ -74,8 +75,8 @@ public class DBMS {
             
             return i>0;
             
-        }catch(SQLException ex){
-            ex.printStackTrace();;
+        } catch(SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
 
@@ -103,7 +104,6 @@ public class DBMS {
             ex.printStackTrace();;
             return false;
         }
-        
     }
     
     public boolean agregarFormacion(Empleado e){
@@ -387,6 +387,43 @@ public class DBMS {
         return Empleados;
     }
     
+    public Usuario consultarCas(String usbid) {
+
+        PreparedStatement ps = null;
+        String statement = "SELECT * FROM CAS WHERE CAS.USBID = ?;";
+        
+        Usuario u = new Usuario();
+        
+        try {
+            ps = conexion.prepareStatement(statement);
+            ps.setString(1, usbid);
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }      
+            
+            while (rs.next()) {
+                
+                u.setUsbid(rs.getString("usbid"));
+                u.setNombres(rs.getString("nombres"));
+                u.setApellidos(rs.getString("apellidos"));
+                u.setCedula(rs.getString("cedula"));
+                
+            }
+            
+        } catch (SQLException ex) {
+            
+            ex.printStackTrace();
+            return null;
+            
+        }
+        
+        return u;
+        
+    }
+    
     public Empleado obtenerEmpleado(Empleado e){
         PreparedStatement ps = null;
         try{
@@ -431,12 +468,18 @@ public class DBMS {
     public Usuario obtenerUsuario(Usuario u){
         
         PreparedStatement ps = null;
-        try{
+        
+        try {
             ps = conexion.prepareStatement("SELECT * FROM USUARIO WHERE usbid=?;");
             ps.setString(1, u.getUsbid());
             ResultSet rs = ps.executeQuery();
             
-            while (rs.next()){
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }                  
+            
+            while (rs.next()) {
                
                 u.setUsbid(rs.getString("usbid"));
                 u.setNombres(rs.getString("nombres"));
@@ -444,11 +487,9 @@ public class DBMS {
                 u.setCedula(rs.getString("cedula"));
                 
             }
+            
         } catch (SQLException ex) {
             ex.printStackTrace();
-        }
-        
-        if(u.getNombres() == null) {
             return null;
         }
         

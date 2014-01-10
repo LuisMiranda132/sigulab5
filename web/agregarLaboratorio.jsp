@@ -34,19 +34,37 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
+        
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        
+        <script>
+            
+            $( document ).ready(function() {
+               alert("Document ready");
+               
+                $( "#textarea" ).attr('placeholder', 'Descripcion del Laboratorio.');
+               
+            });
+            
+        </script>
+        
         <title>Agregar Laboratorio</title>
     <body>
     <body>
-        <h1>Agregar Laboratorio</h1>
-    <center style="color:red;background-color:lightcoral" align="center">
-        <html:errors/>    
-    </center>
-        <logic:present name="lologreA">
-        <center style="color:green;background-color: springgreen" align="center">
-            Se agrego exitosamente    
+        <div class="titulo_formulario"> Agregar Laboratorio </div>
+        
+        <center class="errors" align="center">
+            <html:errors/>
         </center>
-            </logic:present>
-        <html:form action="agregarLaboratorio" >
+
+        <logic:present name="lologreA">
+            <center class="logic_success" align="center">
+                El laboratorio ha sido agregado exitosamente.
+            </center>
+        </logic:present>    
+    
+        <html:form action="agregarLaboratorio" style="margin-left: 45px;" >
             <table border="0">
                 <tbody>
                     <tr>
@@ -89,6 +107,24 @@
                         </td>
                     </tr>
                     <tr>
+                        <td> Telefono </td>
+                        <td>
+                            <html:text name="Laboratorio" property="telefono"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Fax </td>
+                        <td>
+                            <html:text name="Laboratorio" property="fax"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Descripcion </td>
+                        <td>
+                            <html:textarea styleId="textarea" name="Laboratorio" property="caracteristicas"/>
+                        </td>
+                    </tr>
+                    <tr>
                         <td> Jefe </td>
                         <td>
                              <html:select name="Laboratorio" property="jefe" >
@@ -98,15 +134,15 @@
                     </tr>
                 </tbody>
             </table>
-            <p>
-                <html:submit value="agregar"/>
-                <html:reset value="limpiar"/>
-            </p>
+            <div id="submit">
+                <html:submit value="agregar" styleClass="boton" />
+                <html:reset value="limpiar" styleClass="boton"/>
+            </div>
         </html:form>
 
-           <html:link action="back">
-            <h2>
-                Volver
+        <html:link action="back">
+            <h2 style="margin: 0px;">
+                 << volver
             </h2>
         </html:link>
 

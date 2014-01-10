@@ -36,10 +36,18 @@ public class agregarL extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        
         Empleado u = (Empleado) form;
         HttpSession session = request.getSession(true);
-        session.removeAttribute("lologreA");
+        
+        session.removeAttribute("usuarioAgregado");
+        session.removeAttribute("operacionFallida");
+        session.removeAttribute("tipoUsuarioInvalido");
+        session.removeAttribute("usuarioExistente");
+        session.removeAttribute("usuarioInexistente");        
+        
         u.limpiarE();
         return mapping.findForward(SUCCESS);
+        
     }
 }

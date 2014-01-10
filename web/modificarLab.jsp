@@ -34,17 +34,22 @@
             @import "CSS/colors.css";
         </style>   
     </head>
-    
-     <h1>Modificar Laboratorio</h1>
-    <center style="color:red;background-color:lightcoral" align="center">
-            <html:errors/>    
+
+        <div class="titulo_formulario"> Modificar Laboratorio </div>
+        
+        <center class="errors" align="center">
+            <html:errors/>
         </center>
-            <logic:present name="lologre">
-            <center style="color:green;background-color: springgreen" align="center">
-                Laboratorio modificado exitosamente 
+        
+        <!-- LOGIC PRESENT </!-->
+        <logic:present name="lologre">
+            <center class="logic_success" align="center">
+                El laboratorio ha sido modificado exitosamente.
             </center>
-            </logic:present>
-        <html:form action="modificarLaboratorio" >
+        </logic:present>        
+        <!-- FIN LOGIC PRESENT </!-->
+
+        <html:form action="modificarLaboratorio" style="margin-left: 45px;">
             <table border="0">
                 <tbody>
                     <tr>
@@ -114,15 +119,15 @@
                     </tr>
                 </tbody>
             </table>
-            <p>                
-                <html:submit value="modificar"/>
-                <html:reset value="limpiar"/>
-            </p>
+            <div id="submit">
+                <html:submit value="modificar" styleClass="boton" />
+                <html:reset value="limpiar" styleClass="boton"/>
+            </div>
         </html:form>
             
-            <html:link action="ConsultarLab_jefe">
+            <html:link action="back">
                 <h2>
-                    Volver
+                    << volver
                 </h2>
             </html:link>
     </body>

@@ -2,6 +2,13 @@
 --************************* CREACION DE TABLAS *********************************
 --******************************************************************************
 
+CREATE TABLE CAS (
+    usbid            varchar(15)    PRIMARY KEY,
+    nombres         varchar(20)     NOT NULL,
+    apellidos       varchar(20)     NOT NULL,
+    cedula          varchar(8)      NOT NULL
+);
+
 CREATE TABLE USUARIO (
     usbid            varchar(15)    PRIMARY KEY,
     nombres         varchar(20)     NOT NULL,
@@ -16,12 +23,12 @@ CREATE TABLE EMPLEADO (
     cargo           varchar(30)     NOT NULL,
     ano_ingreso     varchar(4)      NOT NULL,
     tipo_empleado   varchar(15)     NOT NULL,
-	status			varchar(30)		NOT NULL,
-    telefono    	varchar(12),
+    status          varchar(30)     NOT NULL DEFAULT 'Inactivo',
+    telefono        varchar(12),
     tipo_usuario    varchar(20)     NOT NULL,
-	area_laboral	varchar(30),
-	extension		varchar(30),
-	laboratorio		varchar(100),
+    area_laboral    varchar(30),
+    extension       varchar(30),
+    laboratorio     varchar(100),
     visibilidad     INTEGER         NOT NULL DEFAULT 1,
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade
 );

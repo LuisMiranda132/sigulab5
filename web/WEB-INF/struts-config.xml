@@ -24,8 +24,7 @@
     <action-mappings>
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
 
-        <action input="/login.jsp" path="/login" name="LoginForm"
-                scope="session" type="Actions.Login.LoginAction">
+        <action path="/login" name="LoginForm" type="Actions.Login.LoginAction" validate="false">
             <forward name="success" path="/Menu.jsp"/>
             <forward name="failure" path="/login.jsp"/>
             <forward name="jefe" path="/Menu.jsp"/>

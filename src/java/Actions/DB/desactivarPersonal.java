@@ -66,4 +66,8 @@ public class desactivarPersonal extends org.apache.struts.action.Action {
             
         }
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 6828254d67018a71d00dab4fa2119c1f57d2a16a

@@ -27,6 +27,7 @@
         </style>
         <style type="text/css" media="all">
             @import "CSS/layout.css";
+            @import "CSS/style_interno.css";       
             @import "CSS/table.css";
             @import "CSS/form.css";
             @import "CSS/colors.css";
@@ -39,7 +40,7 @@
     </head>
     <body>
         <logic:iterate name="user" id="Empleado">
-            <div class="perfil_cuerpo"><b><p>Perfil de <bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/>.</p></b></div>
+             <div class="titulo_formulario"><b><p><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></p></b></div>
         </logic:iterate>
 
         <!-- DATOS DEL PERSONAL -->
@@ -122,12 +123,12 @@
                     </logic:notEmpty>
                 </div>
             </div>
-       
-        
-        <a href="javascript:window.history.back();">
-            <h2>
-                Volver
-            </h2>
+               
+            <html:link action="back">
+                <h2>
+                    << volver
+                </h2>
+            </html:link>
         </a>
     </body>
 </html>

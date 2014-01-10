@@ -58,7 +58,8 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
             session.removeAttribute("lologreA");
             return mapping.findForward(FAILURE);
         } else {
-                        
+                     
+            System.out.println(u.getFax());
             boolean agrego = DBMS.getInstance().agregarLaboratorio(u);
                 
             if (agrego){
