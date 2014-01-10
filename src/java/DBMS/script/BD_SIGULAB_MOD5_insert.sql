@@ -14,7 +14,7 @@ INSERT INTO CAS VALUES ('10-10640', 'Donato', 'Rolo', '19505247');
 INSERT INTO CAS VALUES ('10-11247', 'Rosangelis', 'Garcia', '19505244');
 INSERT INTO CAS VALUES ('10-10333', 'Alejandro', 'Guillen', '21516707');
 INSERT INTO CAS VALUES ('pperez','Pedro','Perez',235456);
-INSERT INTO CASO VALUES ('robertor','Roberto','Rodriguez',543643);
+INSERT INTO CAS VALUES ('robertor','Roberto','Rodriguez',543643);
 INSERT INTO CAS VALUES ('mmartinez','Marta','Martinez',357195);
 INSERT INTO CAS VALUES ('jjimenez','Jesus','Jimenez',902334);
 INSERT INTO CAS VALUES ('luisl','Luis','Lopez',913285);

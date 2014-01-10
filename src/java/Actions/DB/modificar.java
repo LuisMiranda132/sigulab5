@@ -130,7 +130,7 @@ public class modificar extends org.apache.struts.action.Action {
                 if (!u.getHabilidad().equals("")){
                     db.agregarHabilidad(u);
                 }
-                if (!u.getPublicacion().equals("")){/*
+                if (!u.getPublicacion().equals("")){
                     error = u.validateAno_pub(mapping, request);
                     if (error.size() != 0) {
                         huboError = true;
@@ -140,11 +140,11 @@ public class modificar extends org.apache.struts.action.Action {
                         saveErrors(request, error);
                         session.removeAttribute("lologre");
                         return mapping.findForward(FAILURE);
-                    }*/
+                    }
                     db.agregarPublicacion(u);
                 }
                 if (!u.getFormacion().equals("")){
-                    /*error = u.validateAno_for(mapping, request);
+                    error = u.validateAno_for(mapping, request);
                     if (error.size() != 0) {
                         huboError = true;
                     }
@@ -153,7 +153,7 @@ public class modificar extends org.apache.struts.action.Action {
                         saveErrors(request, error);
                         session.removeAttribute("lologre");
                         return mapping.findForward(FAILURE);
-                    }*/
+                    }
                     db.agregarFormacion(u);
                 }
                 
