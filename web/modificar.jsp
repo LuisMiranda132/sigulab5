@@ -135,19 +135,31 @@
                     <tr>
                         <td> Área Laboral </td>
                         <td>
-                            <html:text name="Empleado" property="area_laboral"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="area_laboral"/>
+                            <div class="descripcion">
+                                Area de Trabajo <br>
+                                (i.e Materiales)
+                            </div>     
                         </td>
                     </tr>
                     <tr>
                         <td> Extensión </td>
                         <td>
-                            <html:text name="Empleado" property="extension"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="extension"/>
+                            <div class="descripcion">
+                                Extensión <br>
+                                (i.e Lab de Polimeros)
+                            </div>                                 
                         </td>
                     </tr>
                     <tr>
                         <td> Laboratorio </td>
                         <td>
-                            <html:text name="Empleado" property="laboratorio"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="laboratorio"/>
+                            <div class="descripcion">
+                                Laboratorio al que Pertenece <br>
+                                (i.e Laboratorio A)
+                            </div>     
                         </td>
                     </tr>
                     <tr>
