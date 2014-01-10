@@ -33,8 +33,14 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>   
+        
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/scripts.js"></script>        
+                
     </head>
 
+    <body style="overflow: hidden;">
         <div class="titulo_formulario"> Modificar Laboratorio </div>
         
         <center class="errors" align="center">
@@ -61,7 +67,11 @@
                     <tr>
                         <td> Nombre </td>
                         <td>
-                            <html:text name="Laboratorio" property="nombre"/>
+                            <html:text styleClass="input_formulario" name="Laboratorio" property="nombre"/>
+                            <div class="descripcion">
+                                Nombre del Laboratorio <br>
+                                (i.e Laboratorio A)
+                            </div>                            
                         </td>
                     </tr>
                     <tr>
@@ -74,33 +84,53 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Ubicación </td>
+                        <td> Ubicacion </td>
                         <td>
-                            <html:text name="Laboratorio" property="ubicacion"/>
+                            <html:text styleClass="input_formulario" name="Laboratorio" property="ubicacion"/>
+                            <div class="descripcion">
+                                Ubicacion del Laboratorio <br>
+                                (i.e Edificio de MYS)
+                            </div>
                         </td>
                     </tr>
                     <tr>
                         <td> Correo </td>
                         <td>
-                            <html:text name="Laboratorio" property="correo"/>
+                            <html:text styleClass="input_formulario" name="Laboratorio" property="correo"/>
+                            <div class="descripcion">
+                                Correo del Encargado <br>
+                                <p style="color:red;">[ ejemplo@usb.ve ]</p>
+                            </div>                              
                         </td>
                     </tr>
                     <tr>
-                        <td> Página Web </td>
+                        <td> Pagina Web </td>
                         <td>
-                            <html:text name="Laboratorio" property="pagweb"/>
+                            <html:text styleClass="input_formulario" name="Laboratorio" property="pagweb"/>
+                            <div class="descripcion">
+                                URL Laboratorio <br>
+                                (i.e www.laba.usb.ve)
+                            </div>                              
                         </td>
                     </tr>
                     <tr>
-                        <td> Teléfono </td>
+                        <td> Telefono </td>
                         <td>
-                            <html:text name="Laboratorio" property="telefono"/>
+                            <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
+                            <div class="descripcion">
+                                Telefono de Contacto 
+                                <p style="color:red;">[ dddd ddd dd dd ]</p>
+                            </div>                              
                         </td>
                     </tr>
                     <tr>
                         <td> Fax </td>
                         <td>
-                            <html:text name="Laboratorio" property="fax"/>
+                            <html:text styleClass="input_formulario" name="Laboratorio" property="fax"/>
+                            <div class="descripcion">
+                                Fax
+                                <p style="color:red;">[ dddd ddd dd dd ]</p>
+                            </div>                               
                         </td>
                     </tr>
                    <%-- <tr>

@@ -981,72 +981,69 @@ div.panel-container > div
     transition: color .2s linear 0;
 }
 
+input {
+    border-radius: 4px;
+}
+
+.descripcion {
+    display: none;
+    color: #838383;
+}
+
+.formato {
+/*    display: none; */
+    color: red;
+}
 
 textarea {
+    border-radius: 4px;
     font-size: 11px;
     height: 100px;
 }
 
-input {
-    border-radius: 4px;
- }
-
-textarea {
-    border-radius: 4px;
-    color: black;
-}
- 
-textarea:focus {
-    color: #ccc;
-    transition: color .2s linear 0;
-    -webkit-transition: color .2s linear 0;
-    -moz-transition: color .2s linear 0
-}
-
-
 /* Personalizacion de los placeholders */
-input::-webkit-input-placeholder {
+textarea::-webkit-input-placeholder {
     color: #838383;
     font-style: italic;
 }
 
-input:focus::-webkit-input-placeholder {
+textarea:focus::-webkit-input-placeholder {
     color: #ccc;
     transition: color .2s linear 0;
     -webkit-transition: color .2s linear 0;
     -moz-transition: color .2s linear 0
 }
 
-input:-moz-placeholder { /* Firefox 18- */
+textarea:-moz-placeholder { /* Firefox 18- */
     color: #838383;
     font-style: italic;
 }
 
-input:focus:-moz-placeholder { /* Firefox 18- */
+textarea:focus:-moz-placeholder { /* Firefox 18- */
     color: #ccc;
     transition: color .2s linear 0;
     -webkit-transition: color .2s linear 0;
     -moz-transition: color .2s linear 0
 }
 
-input::-moz-placeholder {  /* Firefox 19+ */
+textarea::-moz-placeholder {  /* Firefox 19+ */
     color: #838383;
     font-style: italic;
 }
 
-input:focus::-moz-placeholder {  /* Firefox 19+ */
+textarea:focus::-moz-placeholder {  /* Firefox 19+ */
     color: #ccc;
     transition: color .2s linear 0;
     -webkit-transition: color .2s linear 0;
     -moz-transition: color .2s linear 0
 }
 
-input::-ms-input-placeholder {  
+textarea::-ms-input-placeholder {  
     color: #838383;
     font-style: italic;
 }
 
-input:focus:-ms-input-placeholder {  
+textarea:focus:-ms-input-placeholder {  
     color: #ccc;
     transition: color .2s linear 0;
     -webkit-transition: color .2s linear 0;

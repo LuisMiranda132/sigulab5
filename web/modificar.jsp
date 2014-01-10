@@ -34,9 +34,13 @@
             @import "CSS/colors.css";
         </style>
         
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        <script src="js/scripts.js"></script>        
+        
         <title>Catalogo</title>
     </head>
-    <body>
+    <body style="overflow: hidden;">
         <div class="titulo_formulario"> Modificar Perfil </div>
         <center class="errors" align="center">
             <html:errors/>
@@ -78,19 +82,30 @@
                     <tr>
                         <td> Correo Alterno</td>
                         <td>
-                            <html:text name="Empleado" property="correo"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="correo"/>
+                            <div class="descripcion">
+                                Correo Alterno <br>
+                                <p style="color:red;">[ ejemplo@usb.ve ]</p>
+                            </div>                  
                         </td>
                     </tr>
                     <tr>
                         <td> Dirección </td>
                         <td>
-                            <html:text name="Empleado" property="direccion"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="direccion"/>
+                            <div class="descripcion">
+                                Direccion de Habitacion
+                            </div>                                 
                         </td>
                     </tr>
                     <tr>
                         <td> Teléfono </td>
                         <td>
-                            <html:text name="Empleado" property="telefono"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="telefono"/>
+                            <div class="descripcion">
+                                Telefono de Contacto 
+                                <p style="color:red;">[ dddd ddd dd dd ]</p>
+                            </div>         
                         </td>
                     </tr>
                     <tr>

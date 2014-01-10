@@ -36,6 +36,22 @@
             @import "CSS/print.css";
         </style>
         <script src="js/javascript-tabs.js" type="text/javascript"></script>
+        
+<!--        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        
+        <script>
+            
+            $( document ).ready(function() {
+                alert("Document Ready");
+                
+                $( "#jefe" ).click(function() {
+                    var usbid = $( this ).text();
+                });
+            });
+            
+        </script>-->
+        
         <title>Perfil</title>
     </head>
     <body>
@@ -51,8 +67,8 @@
                     <p><b>Codigo:</b> <bean:write name="Laboratorio" property="codigo"/>.</p>
                     <p><b>Nombre:</b> <bean:write name="Laboratorio" property="nombre"/>.</p>
                     <p><b>Jefe:</b>
-                        <html:link action="perfilPersonalL" paramId="usbid" paramName="Laboratorio" paramProperty="jefe">
-                            <bean:write name="Laboratorio" property="jefe"/>.
+                        <html:link styleId="jefe" action="perfilPersonalL" paramId="usbid" paramName="Laboratorio" paramProperty="jefe">
+                            <bean:write name="Laboratorio" property="jefe"/>
                         </html:link>
                     </p>
                 </div>

@@ -36,21 +36,7 @@
        
         <script src="js/jquery-1.9.1.js"></script>
         <script src="js/jquery-ui.js"></script>
-        
-        <script>
-             
-            $( document ).ready(function() {
-               alert("Document ready");
-               
-               $( "#usbid" ).mouseenter(function() {
-                   
-               });
-                              
-               
-            });
-            
-        </script>
-            
+        <script src="js/scripts.js"></script>
         
         <title>Catalogo</title>
     </head>
@@ -101,7 +87,14 @@
                     <tr>
                         <td> UsbId </td>
                         <td>
-                            <html:text styleId="usbid" name="Empleado" property="usbid"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="usbid"/>
+                            <div class="descripcion">
+                                usbid del usuario 
+                                <p style="color:red;">[ dd-ddddd ]</p>
+                            </div>
+<!--                            <div class="formato">
+                                [ XX-XXXXX ]
+                            </div>-->
                         </td>
                     </tr>
                     <tr>
@@ -120,13 +113,21 @@
                     <tr>
                         <td> Cargo </td>
                         <td>
-                            <html:text name="Empleado" property="cargo"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="cargo"/>
+                            <div class="descripcion"">
+                                Cargo que desempeña el usuario <br> 
+                                (i.e Jefe de Laboratorio)
+                            </div>                            
                         </td>
                     </tr>
                     <tr>
                         <td> Año de Ingreso </td>
                         <td>
-                            <html:text name="Empleado" property="ano_ingreso"/>
+                            <html:text styleClass="input_formulario" name="Empleado" property="ano_ingreso"/>
+                            <div class="descripcion">
+                                Año de ingreso del usuario 
+                                <p style="color:red;">[ dddd ]</p>
+                            </div>                              
                         </td>
                     </tr>
                     <tr>

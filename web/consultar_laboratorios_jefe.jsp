@@ -40,7 +40,7 @@
 
         <title>Consultar Laboratorio</title>
     </head>
-    <body>
+    <body style="width: 99%;">
         <div class="titulo_formulario"> Consultar Laboratorios </div>
         
         <table cellspacing='0'>

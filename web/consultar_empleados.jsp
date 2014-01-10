@@ -39,7 +39,7 @@
         <title>Consultar Personal</title>
     </head>
 
-    <body>
+    <body style="width: 99%;">
         <div class="titulo_formulario"> Consultar Personal </div>
 
         <div class="letras_apellido"><p>
