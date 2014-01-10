@@ -89,8 +89,9 @@
                         <td>
                             <html:text styleClass="input_formulario" name="Empleado" property="usbid"/>
                             <div class="descripcion">
-                                usbid del usuario 
-                                <p style="color:red;">[ dd-ddddd ]</p>
+                                usbid del usuario <br> 
+                                [ XX-XXXXX ]
+                                <!--<p style="color:red;">[ dd-ddddd ]</p>-->
                             </div>
 <!--                            <div class="formato">
                                 [ XX-XXXXX ]
@@ -125,8 +126,9 @@
                         <td>
                             <html:text styleClass="input_formulario" name="Empleado" property="ano_ingreso"/>
                             <div class="descripcion">
-                                Año de ingreso del usuario 
-                                <p style="color:red;">[ dddd ]</p>
+                                Año de ingreso del usuario <br>
+                                [ XXXX ]
+                                <!--<p style="color:red;">[ dddd ]</p>-->
                             </div>                              
                         </td>
                     </tr>

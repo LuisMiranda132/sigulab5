@@ -40,7 +40,7 @@
                 
     </head>
 
-    <body style="overflow: hidden;">
+    <body>
 
         <div class="titulo_formulario"> Modificar Laboratorio </div>
         
@@ -100,7 +100,8 @@
                             <html:text styleClass="input_formulario" name="Laboratorio" property="correo"/>
                             <div class="descripcion">
                                 Correo del Encargado <br>
-                                <p style="color:red;">[ ejemplo@usb.ve ]</p>
+                                [ ejemplo@usb.ve ]
+                                <!--<p style="color:red;">[ ejemplo@usb.ve ]</p>-->
                             </div>                              
                         </td>
                     </tr>
@@ -119,8 +120,9 @@
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
                             <div class="descripcion">
-                                Telefono de Contacto 
-                                <p style="color:red;">[ dddd ddd dd dd ]</p>
+                                Telefono de Contacto <br>
+                                [ XXXXXXXXXXX ]
+                                <!--<p style="color:red;">[ dddd ddd dd dd ]</p>-->
                             </div>                              
                         </td>
                     </tr>
@@ -129,8 +131,9 @@
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="fax"/>
                             <div class="descripcion">
-                                Fax
-                                <p style="color:red;">[ dddd ddd dd dd ]</p>
+                                Fax <br>
+                                [ XXXXXXXXXXX ]
+                                <!--<p style="color:red;">[ dddd ddd dd dd ]</p>-->
                             </div>                               
                         </td>
                     </tr>

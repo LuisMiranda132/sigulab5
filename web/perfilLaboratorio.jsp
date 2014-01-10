@@ -58,8 +58,9 @@
     <br></br>
         <logic:iterate name="lab" id="Laboratorio">
             <div class="titulo_formulario"><bean:write name="Laboratorio" property="nombre"/></div>
-        </logic:iterate>
-
+        </logic:iterate>         
+         
+           
         <logic:iterate name="lab" id="Laboratorio">
             <div class="wrapper">
                 <div class="perfil_tamano">
@@ -101,12 +102,12 @@
 
                     <!--Segunda pestana-->
                     <div id="view2" class="perfil_cuerpo">
-                        ORGANIGRAMA
+                        EN CONSTRUCCION
                     </div>
 
                     <!--Tercera pestana-->
                     <div id="view3" class="perfil_cuerpo">
-                        MAPA
+                        EN CONSTRUCCION
                     </div>
                 </div>
             </div>        

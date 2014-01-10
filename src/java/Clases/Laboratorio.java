@@ -31,8 +31,18 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     private String fax;
     private String caracteristicas;
     private String jefe;
+    private String nombre_jefe;
     private Integer visibilidad;
     private List jefes = new ArrayList<Empleado>();
+    
+    
+    public String getNombre_jefe() {
+        return nombre_jefe;
+    }
+
+    public void setNombre_jefe(String nombre_jefe) {
+        this.nombre_jefe = nombre_jefe;
+    }    
     
     /**
      *
@@ -48,6 +58,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.fax=null;
         this.caracteristicas=null;
         this.jefe=null;
+        this.nombre_jefe=null;
         this.visibilidad=0;
     }
     
