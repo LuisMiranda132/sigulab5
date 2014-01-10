@@ -7,14 +7,15 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
 <%@ taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
+<%@ taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
 
 <!DOCTYPE html>
 <html version="HTML+RDFa 1.0" lang="es" dir="ltr" xmlns="http://www.w3.org/1999/xhtml" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:dc="http://purl.org/dc/terms/" xmlns:foaf="http://xmlns.com/foaf/0.1/" xmlns:og="http://ogp.me/ns#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" xmlns:sioc="http://rdfs.org/sioc/ns#" xmlns:sioct="http://rdfs.org/sioc/types#" xmlns:skos="http://www.w3.org/2004/02/skos/core#" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" class="js">
     <head profile="http://www.w3.org/1999/xhtml/vocab">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <link rel="shortcut icon" href="http://www.ulab.usb.ve/misc/favicon.ico" type="image/vnd.microsoft.icon">
-        <link rel="alternate" type="application/rss+xml" title="Unidad de Laboratoris RSS" href="http://www.ulab.usb.ve/rss.xml">
+        <link rel="shortcut icon" href="images/favicon.ico" type="image/vnd.microsoft.icon">
+        <link rel="alternate" type="application/rss+xml" title="Unidad de Laboratorios RSS" href="http://www.ulab.usb.ve/rss.xml">
         <meta name="Generator" content="Drupal 7 (http://drupal.org)">
         <title>Unidad de Laboratorios</title>
         
@@ -30,12 +31,13 @@
             
         <style type="text/css" media="all">
             @import url("CSS/ckeditor.css");
-            @import url("CSS//ctools.css");
+            @import url("CSS/ctools.css");
         </style>
             
         <style type="text/css" media="all">
             @import url("CSS/layout.css");
-            @import url("CSS//style.css");
+            @import url("CSS/style.css");
+            @import url("CSS/style_interno.css");
             @import url("CSS/forms.css");
             @import url("CSS/colors.css");    
         </style>
@@ -43,7 +45,7 @@
         <style type="text/css" media="print">
             @import url("CSS/print.css");
         </style>
-
+         
         <script type="text/javascript" src="http://www.ulab.usb.ve/misc/jquery.js?v=1.4.4"></script>
         <script type="text/javascript" src="http://www.ulab.usb.ve/misc/jquery.once.js?v=1.2"></script>
         <script type="text/javascript" src="http://www.ulab.usb.ve/misc/drupal.js?ml8e0y"></script>
@@ -72,14 +74,23 @@
             <div class="inner">
 
 <!--                <h4 align="center">Modulo de Administracion</h4>-->
+
+        <!-- LOGIC PRESENT </!-->
+        <logic:present name="errorCredenciales">
+            <center class="logic_failure" align="center">
+                Credenciales Invalidas.
+            </center>
+        </logic:present>
+        <!-- LOGIC PRESENT </!-->
                 
         <html:form action="/login">
             <table border="0">
                 <tbody>
-                    <tr align="center" style="color:red">
-                        <center style="color:red">
+                    <tr>
+                        <center class="errors" align="center">
                             <html:errors/>
                         </center>
+                        
                     </tr>                    
                     <tr>
                         <td align="right">USBID</td>

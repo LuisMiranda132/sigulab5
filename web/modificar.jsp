@@ -33,19 +33,22 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
+        
         <title>Catalogo</title>
     </head>
     <body>
-        <h1>Modificar</h1>
-    <center style="color:red;background-color:lightcoral" align="center">
-            <html:errors/>    
+        <div class="titulo_formulario"> Modificar Perfil </div>
+        <center class="errors" align="center">
+            <html:errors/>
         </center>
-            <logic:present name="lologre">
-            <center style="color:green;background-color: springgreen" align="center">
-                Se modifico exitosamente    
+    
+        <logic:present name="lologre">
+            <center class="logic_success" align="center">
+                El perfil ha sido modificado exitosamente.
             </center>
-            </logic:present>
-        <html:form action="modificar">
+        </logic:present>
+
+        <html:form action="modificar" style="margin-left: 45px;">
             <table border="0">
                 <tbody>
                     <tr>
@@ -139,16 +142,16 @@
                     
                 </tbody>
             </table>
-            <p>
-                
-                <html:submit value="modificar"/>
-                <html:reset value="limpiar"/>
-            </p>
+            <div id="submit" style="
+                     margin-left: 372px;">
+                <html:submit value="modificar" styleClass="boton" />
+                <html:reset value="limpiar" styleClass="boton"/>
+            </div>
         </html:form>
             
             <html:link action="back">
                 <h2>
-                    Volver
+                    << volver
                 </h2>
             </html:link>
     </body>

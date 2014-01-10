@@ -150,7 +150,7 @@ dl dl {
   margin-left: 1em;
 }
 ul, ol {
-  padding-left:20px;
+  padding-left:0px;
   margin: 0;
 }
 ul.menu {
@@ -163,7 +163,7 @@ ul.menu li {
     margin: 0 -10px 6px -17px; /* LTR */
 }
 li {
-  font-size: 11px;
+  font-size:8px;
  /* font-weight: bold;*/
 }
 ul.inline,
@@ -936,4 +936,119 @@ div.panel-container > div
     /* The two settings below should not be changed. */
     display: block;
     margin:0px;
+}
+
+/* Formularios */
+.titulo_formulario {
+    font-size: 14px;
+    font-weight: bold;
+    color: #42a9be;
+    text-align: center;
+    background-color: beige;
+    height: 21px;
+    line-height: 21px;
+    margin-bottom: 23px;
+}
+
+.logic_success {
+    color: green;
+}
+
+.logic_failure {
+    color: red;
+}
+
+.errors {
+    color: red;
+    font-size: 10px;
+}
+
+#submit {
+    margin-left: 222px;
+    margin-top: 16px;
+}
+
+.boton {
+    background: transparent;
+    color: #1c6ea0;
+    font-weight: bold;
+    border: 0px;
+    cursor: pointer;
+}
+
+.boton:hover, .boton:focus, .boton:active {
+    color: #42a9be;
+    transition: color .2s linear 0;
+}
+
+
+textarea {
+    font-size: 11px;
+    height: 100px;
+}
+
+input {
+    border-radius: 4px;
+ }
+
+textarea {
+    border-radius: 4px;
+    color: black;
+}
+ 
+textarea:focus {
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+
+/* Personalizacion de los placeholders */
+input::-webkit-input-placeholder {
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus::-webkit-input-placeholder {
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+input:-moz-placeholder { /* Firefox 18- */
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus:-moz-placeholder { /* Firefox 18- */
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+input::-moz-placeholder {  /* Firefox 19+ */
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus::-moz-placeholder {  /* Firefox 19+ */
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
+}
+
+input::-ms-input-placeholder {  
+    color: #838383;
+    font-style: italic;
+}
+
+input:focus:-ms-input-placeholder {  
+    color: #ccc;
+    transition: color .2s linear 0;
+    -webkit-transition: color .2s linear 0;
+    -moz-transition: color .2s linear 0
 }

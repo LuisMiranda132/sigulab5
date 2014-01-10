@@ -27,6 +27,7 @@
         </style>
         <style type="text/css" media="all">
             @import "CSS/layout.css";
+            @import "CSS/style_interno.css";
             @import "CSS/table.css";
             @import "CSS/form.css";
             @import "CSS/colors.css";
@@ -34,11 +35,12 @@
         <style type="text/css" media="print">
             @import "CSS/print.css";
         </style>
+
         <title>Consultar Personal</title>
     </head>
 
     <body>
-        <h1>Consultar Personal</h1>
+        <div class="titulo_formulario"> Consultar Personal </div>
 
         <div class="letras_apellido"><p>
             <html:link action="consultarL_letra_emp.do?param=A">A</html:link> - 
@@ -104,7 +106,7 @@
 
         <html:link action="back">
             <h2>
-                Volver
+                << volver
             </h2>
         </html:link>
     </body>

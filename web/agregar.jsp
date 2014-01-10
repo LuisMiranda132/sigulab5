@@ -33,25 +33,75 @@
             @import "CSS/form.css";
             @import "CSS/colors.css";
         </style>
+       
+        <script src="js/jquery-1.9.1.js"></script>
+        <script src="js/jquery-ui.js"></script>
+        
+        <script>
+             
+            $( document ).ready(function() {
+               alert("Document ready");
+               
+               $( "#usbid" ).mouseenter(function() {
+                   
+               });
+                              
+               
+            });
+            
+        </script>
+            
+        
         <title>Catalogo</title>
     </head>
+    
     <body>
-        <h1>Agregar</h1>
-    <center style="color:red;background-color:lightcoral" align="center">
-        <html:errors/>    
-    </center>
-        <logic:present name="lologreA">
-        <center style="color:green;background-color: springgreen" align="center">
-            Se agrego exitosamente    
+
+        <div class="titulo_formulario"> Agregar Personal </div>
+        
+        <center class="errors" align="center">
+            <html:errors/>
         </center>
-            </logic:present>
-        <html:form action="agregar" >
+    
+        <!-- LOGIC PRESENT </!-->
+        <logic:present name="usuarioAgregado">
+            <center class="logic_success" align="center">
+                El usuario ha sido agregado exitosamente.
+            </center>
+        </logic:present>
+    
+        <logic:present name="usuarioInexistente">
+            <center class="logic_failure" align="center">
+                Usbid invalido.
+            </center>
+        </logic:present>
+    
+        <logic:present name="usuarioExistente">
+            <center class="logic_failure" align="center">
+                El usuario ya ha sido agregado como empleado.
+            </center>
+        </logic:present>
+    
+        <logic:present name="tipoUsuarioInvalido">
+            <center class="logic_failure" align="center">
+                El tipo de usuario es invalido.
+            </center>
+        </logic:present>
+    
+        <logic:present name="operacionFallida">
+            <center class="logic_failure" align="center">
+                Ocurrio un error durante la operacion, intente de nuevo.
+            </center>
+        </logic:present>
+        <!-- FIN LOGIC PRESENT </!-->
+    
+        <html:form action="agregar" style="margin-left: 45px;">
             <table border="0">
                 <tbody>
                     <tr>
                         <td> UsbId </td>
                         <td>
-                            <html:text name="Empleado" property="usbid"/>
+                            <html:text styleId="usbid" name="Empleado" property="usbid"/>
                         </td>
                     </tr>
                     <tr>
@@ -92,17 +142,18 @@
                     </tr>
                 </tbody>
             </table>
-            <p>
-
-                <html:submit value="agregar"/>
-                <html:reset value="limpiar"/>
-            </p>
+                        
+            <div id="submit">
+                <html:submit value="agregar" styleClass="boton" />
+                <html:reset value="limpiar" styleClass="boton"/>
+            </div>
         </html:form>
 
-           <html:link action="back">
-            <h2>
-                Volver
+        <html:link action="back">
+            <h2 style="margin: 0px;">
+                 << volver
             </h2>
         </html:link>
+        
     </body>
 </html>

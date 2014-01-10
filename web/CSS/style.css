@@ -347,6 +347,7 @@ header {
 .region-header .block-search .inner {
   padding: 0;
 }
+
 .block-search input.form-text {
   padding-right: 24px;
   width: 100%;

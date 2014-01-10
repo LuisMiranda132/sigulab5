@@ -28,6 +28,7 @@
 
         <style type="text/css" media="all">
             @import "CSS/layout.css";
+            @import "CSS/style_interno.css";
             @import "CSS/table.css";
             @import "CSS/form.css";
             @import "CSS/colors.css";
@@ -35,13 +36,12 @@
 
         <style type="text/css" media="print">
             @import "CSS/print.css";
-        </style>
-
+        </style>       
         <title>Consultar Laboratorio</title>
     </head>
     <body>
-        <h1>Consultar Laboratorio</h1>
-        
+        <div class="titulo_formulario"> Consultar Personal </div>        
+
         <table cellspacing='0'>
             <!-- PRIMERA FILA -->
             <thead>
@@ -70,7 +70,7 @@
         
         <html:link action="back">
             <h2>
-                Volver
+                << volver
             </h2>
         </html:link>
     </body>

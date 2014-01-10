@@ -49,29 +49,36 @@ public class LoginAction extends org.apache.struts.action.Action {
             throws Exception {
         
         LoginForm bean = (LoginForm) form;
+        Empleado dummy = new Empleado();
+        Empleado user;
         
-        ActionErrors errors = bean.validate(mapping, request);
+        ActionErrors error = null;
+        HttpSession session = request.getSession(true);
+        DBMS db;
         
-        if (errors.size() != 0) {
-            bean.reset();
+        session.removeAttribute("errorCredenciales");
+        
+        // Validaciones del formulario.
+        error = bean.validate(mapping, request);
+        
+        if (error.size() != 0) {
+            saveErrors(request, error);
             return mapping.findForward(FAILURE);
         }
                         
-        Empleado dummy = new Empleado();
         dummy.setUsbid(bean.getUsbid());
         
-        DBMS db = DBMS.getInstance();
-        
-        Empleado user = db.obtenerEmpleado(dummy);
-                
-        HttpSession session = request.getSession();
+        db = DBMS.getInstance();
+
+        user = db.obtenerEmpleado(dummy);
         
         session.setAttribute("usbid", user.getUsbid());
         
-        if ((user == null) || (user.getVisibilidad()==0)) {
+        if ((user == null) || (user.getVisibilidad() == 0)) {
             System.out.println("No USER");
             bean.reset();
-//            errors.add("credenciales", new ActionMessage("error.credenciales"));
+            System.out.println("Error Credenciales");
+            session.setAttribute("errorCredenciales", "");
             return mapping.findForward(FAILURE);
         }
                 

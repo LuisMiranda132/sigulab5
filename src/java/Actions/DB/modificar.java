@@ -60,7 +60,7 @@ public class modificar extends org.apache.struts.action.Action {
         error = u.validateTodoE(mapping, request);
         
         if (!u.getAno_for().equals("")){
-            
+
             error_formacion = u.validateFormacion(mapping, request);
             if (error_formacion.size() != 0){
                 huboError_formacion = true;
@@ -71,6 +71,7 @@ public class modificar extends org.apache.struts.action.Action {
                 return mapping.findForward(FAILURE);
             }
             
+
             error_anos_for = u.validateAno_for(mapping, request);
             if (error_anos_for.size() != 0){
                 huboError_anos_for = true;
@@ -83,7 +84,7 @@ public class modificar extends org.apache.struts.action.Action {
         }
         
         if (!u.getAno_pub().equals("")){
-            
+
             error_publicacion = u.validatePublicacion(mapping, request);
             if (error_publicacion.size() != 0){
                 huboError_publicacion = true;
@@ -93,7 +94,7 @@ public class modificar extends org.apache.struts.action.Action {
                 session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);
             }
-            
+
             error_anos_pub = u.validateAno_pub(mapping, request);
             if (error_anos_pub.size() != 0){
                 huboError_anos_pub = true;
@@ -103,8 +104,10 @@ public class modificar extends org.apache.struts.action.Action {
                 session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);
             }
+
         }      
         
+
         
         if (error.size() != 0) {
             huboError = true;
@@ -127,7 +130,7 @@ public class modificar extends org.apache.struts.action.Action {
                 if (!u.getHabilidad().equals("")){
                     db.agregarHabilidad(u);
                 }
-                if (!u.getPublicacion().equals("")){
+                if (!u.getPublicacion().equals("")){/*
                     error = u.validateAno_pub(mapping, request);
                     if (error.size() != 0) {
                         huboError = true;
@@ -137,11 +140,11 @@ public class modificar extends org.apache.struts.action.Action {
                         saveErrors(request, error);
                         session.removeAttribute("lologre");
                         return mapping.findForward(FAILURE);
-                    }
+                    }*/
                     db.agregarPublicacion(u);
                 }
                 if (!u.getFormacion().equals("")){
-                    error = u.validateAno_for(mapping, request);
+                    /*error = u.validateAno_for(mapping, request);
                     if (error.size() != 0) {
                         huboError = true;
                     }
@@ -150,7 +153,7 @@ public class modificar extends org.apache.struts.action.Action {
                         saveErrors(request, error);
                         session.removeAttribute("lologre");
                         return mapping.findForward(FAILURE);
-                    }
+                    }*/
                     db.agregarFormacion(u);
                 }
                 
