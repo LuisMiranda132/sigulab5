@@ -132,10 +132,12 @@
                 <thead>
                     <tr>
                         <th>Perfil</th>
-                        <th>UsbId</th>
                         <th>Nombre</th>
                         <th>Correo</th>
                         <th>Cargo</th>
+                        <th>Área laboral</th>
+                        <th>Extensión</th>
+                        <th>Laboratorio</th>
                         <th>Visibilidad</th>
                     </tr>
                 </thead>
@@ -143,15 +145,15 @@
                 <!-- Usuarios no visibles -->
                 <logic:iterate name="novisibles" id="Empleado"> 
                     <tr>
-    					<td>
+    			<td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                                 <img src="images/usuario.jpg" width="48"/>
                             </html:link>
                         </td>
-    					<td><bean:write name="Empleado" property="usbid"/></td>
-    					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
-    					<td><bean:write name="Empleado" property="correo"/></td>
-    					<td><bean:write name="Empleado" property="cargo"/></td>
+    			<td><bean:write name="Empleado" property="usbid"/></td>
+    			<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
+    			<td><bean:write name="Empleado" property="correo"/></td>
+    			<td><bean:write name="Empleado" property="cargo"/></td>
                         <td><bean:write name="Empleado" property="area_laboral"/></td>
                         <td><bean:write name="Empleado" property="extension"/></td>
                         <td><bean:write name="Empleado" property="laboratorio"/></td>
