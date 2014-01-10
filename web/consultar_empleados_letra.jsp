@@ -105,7 +105,7 @@
     				<tr>
                         <td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/usuario.jpg" width="48"/>
+                                <img src="images/usuario.jpg" width="36"/>
                             </html:link>
                         </td>
     					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>

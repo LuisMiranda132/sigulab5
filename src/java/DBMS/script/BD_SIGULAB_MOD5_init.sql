@@ -27,7 +27,7 @@ CREATE TABLE EMPLEADO (
     telefono        varchar(12),
     tipo_usuario    varchar(20)     NOT NULL,
     area_laboral    varchar(30),
-    extension       varchar(30),
+    extension       varchar(200),
     laboratorio     varchar(100),
     visibilidad     INTEGER         NOT NULL DEFAULT 1,
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade

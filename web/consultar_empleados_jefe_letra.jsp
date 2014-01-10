@@ -107,7 +107,7 @@
     				<tr>
                         <td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/usuario.jpg" width="48"/>
+                                <img src="images/usuario.jpg" width="36"/>
                             </html:link>
                         </td>					
     					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
@@ -118,7 +118,7 @@
                         <td><bean:write name="Empleado" property="laboratorio"/></td>
                         <td>
                             <html:link onclick="javascript: return confirm('¿Está seguro desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/ocultar.png"/>
+                                <img src="images/ocultar.png" width="36"/>
                             </html:link>
                         </td>
     				</tr>      
@@ -147,7 +147,7 @@
                     <tr>
     			<td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/usuario.jpg" width="48"/>
+                                <img src="images/usuario.jpg" width="36"/>
                             </html:link>
                         </td>
     			<td><bean:write name="Empleado" property="usbid"/></td>
@@ -159,7 +159,7 @@
                         <td><bean:write name="Empleado" property="laboratorio"/></td>
                         <td>
                             <html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                <img src="images/activar.png"/>
+                                <img src="images/activar.png" width="36"/>
                             </html:link>
                         </td>
     				</tr> 
