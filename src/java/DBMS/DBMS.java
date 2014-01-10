@@ -503,7 +503,7 @@ public class DBMS {
         
         try {
 
-            ps = conexion.prepareStatement("INSERT INTO EMPLEADO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);");
+            ps = conexion.prepareStatement("INSERT INTO EMPLEADO VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
 
             ps.setString(1, e.getUsbid());
             ps.setString(2, e.getCorreo());
@@ -517,7 +517,7 @@ public class DBMS {
             ps.setString(10, e.getArea_laboral());
             ps.setString(11, e.getExtension());
             ps.setString(12, e.getLaboratorio());
-            ps.setInt(13, e.getVisibilidad());
+            //ps.setInt(13, e.getVisibilidad());
             
             
             System.out.print(e.getUsbid());

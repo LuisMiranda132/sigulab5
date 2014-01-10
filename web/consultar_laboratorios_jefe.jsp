@@ -79,7 +79,23 @@
                     </td>              
                 </tr>
             </logic:iterate>
-
+        </table>
+        
+        <logic:notEmpty name="labNovisibles">
+            <p><h1>Laboratorios ocultos</h1></p>
+        
+            <table cellspacing='0'>
+            <!-- PRIMERA FILA -->
+            <thead>
+                <tr>
+                    <th>Código</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Página Web</th>
+                    <th>Modificar</th>
+                    <th>Ocultar</th>
+                </tr>
+            </thead>
             <logic:iterate name="labNovisibles" id="Laboratorio">
                 <tr>
                     <td><bean:write name="Laboratorio" property="codigo"/></td>
@@ -99,7 +115,7 @@
                 </tr>
             </logic:iterate>
         </table>
-        
+    </logic:notEmpty>
         <html:link action="back">
             <h2>
                 << volver

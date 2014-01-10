@@ -531,7 +531,9 @@ public class Empleado extends Usuario{
         ActionErrors errors = new ActionErrors();
         
         if(this.getTipo_usuario().contentEquals("")
-                ||this.getUsbid().contentEquals("")){
+                ||this.getUsbid().contentEquals("")
+                ||this.getTipo_empleado().contentEquals("")
+                ||this.getCargo().contentEquals("")){
             errors.add("error", new ActionMessage("error.usuario.vacio"));
         }
         

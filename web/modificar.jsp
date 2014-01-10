@@ -118,6 +118,24 @@
                         </td>
                     </tr>
                     <tr>
+                        <td> Área Laboral </td>
+                        <td>
+                            <html:text name="Empleado" property="area_laboral"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Extensión </td>
+                        <td>
+                            <html:text name="Empleado" property="extension"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td> Laboratorio </td>
+                        <td>
+                            <html:text name="Empleado" property="laboratorio"/>
+                        </td>
+                    </tr>
+                    <tr>
                         <td> Añadir nueva publicación</td>
                         <td>
                             <html:text name="Empleado" property="publicacion"/>
