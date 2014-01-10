@@ -70,7 +70,6 @@ public class modificar extends org.apache.struts.action.Action {
                 session.removeAttribute("lologre");
                 return mapping.findForward(FAILURE);
             }
-            
 
             error_anos_for = u.validateAno_for(mapping, request);
             if (error_anos_for.size() != 0){
@@ -106,9 +105,7 @@ public class modificar extends org.apache.struts.action.Action {
             }
 
         }      
-        
-
-        
+         
         if (error.size() != 0) {
             huboError = true;
         }
