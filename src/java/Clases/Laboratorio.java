@@ -104,6 +104,13 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
             if(!this.getCorreo().matches("^[\\w-]+(\\.[\\w-]+)*@[A-Za-z0-9]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$")){
                 errors.add("error",new ActionMessage("error.laboratorio.correo"));
             }
+            if (!this.getTelefono().matches("\\d{11}")){
+                errors.add("error", new ActionMessage("error.laboratorio.telefono"));
+            }
+            if (!this.getFax().matches("\\d{11}")){
+                errors.add("error", new ActionMessage("error.laboratorio.fax"));
+            }
+            
         }
 
         /*

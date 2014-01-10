@@ -48,17 +48,13 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
         HttpSession session = request.getSession(true);
         
         error = u.validateTodo(mapping, request);
-                
-//        boolean huboError = false;
-        
-        System.out.println(error.size());
         
         if (error.size() != 0) {
             saveErrors(request, error);
             session.removeAttribute("lologreA");
             return mapping.findForward(FAILURE);
         } else {
-                     
+            
             System.out.println(u.getFax());
             boolean agrego = DBMS.getInstance().agregarLaboratorio(u);
                 
@@ -68,8 +64,10 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
                 return mapping.findForward(SUCCESS);
                 
             } else {
-                session.removeAttribute("lologreA");
-                return mapping.findForward(FAILURE);
+                    
+                    session.removeAttribute("lologreA");
+                    return mapping.findForward(FAILURE);                    
+                
             }
                 
         }
