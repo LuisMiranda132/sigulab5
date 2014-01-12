@@ -86,7 +86,7 @@
                     <th>Área laboral</th>
                     <th>Extensión</th>
                     <th>Laboratorio</th>
-                    <th>Visibilidad</th>
+                    <th>Ocultar</th>
                 </tr>
 			</thead>
 
@@ -125,7 +125,7 @@
                         <th>Área laboral</th>
                         <th>Extensión</th>
                         <th>Laboratorio</th>
-                        <th>Visibilidad</th>
+                        <th>Activar</th>
                     </tr>
                 </thead>
                 
