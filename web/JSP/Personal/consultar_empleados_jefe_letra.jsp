@@ -1,5 +1,5 @@
 <%-- 
-    Document: consultar_empleados_jefe
+    Document: consultar_empleados_jefe_letra
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -40,10 +40,6 @@
 
     <body style="width: 99%;">
         <div class="titulo_formulario"> Consultar Personal </div>
-        
-        <center class="errors" align="center">
-            <html:errors/>
-        </center>
 
         <div class="letras_apellido"><p>
             <html:link action="consultarL_letra_jefe.do?param=A">A</html:link> - 
@@ -74,48 +70,65 @@
             <html:link action="consultarL_letra_jefe.do?param=Y">Y</html:link> - 
             <html:link action="consultarL_letra_jefe.do?param=Z">Z</html:link> - 
             <html:link action="consultarL_jefe">Todos</html:link>
+
         </p></div>
 
-        <table cellspacing='0'>
-			<thead>
-                <tr>
-                    <th>Perfil</th>
-                    <th>Nombre</th>
-                    <th>Correo</th>
-                    <th>Cargo</th>
-                    <th>Área laboral</th>
-                    <th>Extensión</th>
-                    <th>Laboratorio</th>
-                    <th>Visibilidad</th>
-                </tr>
-			</thead>
+        <p><h1>Personal que su apellido comience con: 
+            "<logic:iterate name="letraLista" id="letraID">
+                <bean:write name="letraID"/>
+            </logic:iterate>".
+        </h1></p>
 
-            <!-- Usuarios visibles -->
-			<logic:iterate name="user" id="Empleado">                               
-				<tr>
-                    <td>
-                        <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/usuario.jpg" width="36"/>
-                        </html:link>
-                    </td>					
-					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
-					<td><bean:write name="Empleado" property="correo"/></td>
-					<td><bean:write name="Empleado" property="cargo"/></td>
-                    <td><bean:write name="Empleado" property="area_laboral"/></td>
-                    <td><bean:write name="Empleado" property="extension"/></td>
-                    <td><bean:write name="Empleado" property="laboratorio"/></td>                    
-                    <td>                        
-                        <html:link onclick="javascript: return confirm('¿Está seguro que desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                            <img src="images/ocultar.png" width="36"/>
-                        </html:link>                        
-                    </td>
-				</tr>  
-			</logic:iterate>
-                                </table>
-               
-            <logic:notEmpty name="novisibles">
-                <p><h1>Personal oculto</h1></p>
-                <table cellspacing='0'>
+        <!--Lista vacia-->
+        <logic:empty name="user">
+            <logic:empty name="novisibles">
+                <h3>No se han encontrado resultados.</h3>
+            </logic:empty>
+        </logic:empty>
+
+        <!--Lista no vacia-->
+        <logic:notEmpty name="user">
+            <table cellspacing='0'>
+    			<thead>
+                    <tr>
+                        <th>Perfil</th>
+                        <th>Nombre</th>
+                        <th>Correo</th>
+                        <th>Cargo</th>
+                        <th>Área laboral</th>
+                        <th>Extensión</th>
+                        <th>Laboratorio</th>
+                        <th>Ocultar</th>
+                    </tr>
+    			</thead>
+
+                <!-- Usuarios visibles -->
+    			<logic:iterate name="user" id="Empleado">                                   
+    				<tr>
+                        <td>
+                            <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/usuario.jpg" width="36"/>
+                            </html:link>
+                        </td>					
+    					<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
+    					<td><bean:write name="Empleado" property="correo"/></td>
+    					<td><bean:write name="Empleado" property="cargo"/></td>
+                        <td><bean:write name="Empleado" property="area_laboral"/></td>
+                        <td><bean:write name="Empleado" property="extension"/></td>
+                        <td><bean:write name="Empleado" property="laboratorio"/></td>
+                        <td>
+                            <html:link onclick="javascript: return confirm('¿Está seguro desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                                <img src="images/ocultar.png" width="36"/>
+                            </html:link>
+                        </td>
+    				</tr>      
+    			</logic:iterate>
+            </table>
+        </logic:notEmpty>
+
+        <logic:notEmpty name="novisibles">
+            <p><h1>Personal oculto</h1></p>
+            <table cellspacing='0'>
                 <thead>
                     <tr>
                         <th>Perfil</th>
@@ -125,30 +138,31 @@
                         <th>Área laboral</th>
                         <th>Extensión</th>
                         <th>Laboratorio</th>
-                        <th>Visibilidad</th>
+                        <th>Activar</th>
                     </tr>
                 </thead>
-                
+
                 <!-- Usuarios no visibles -->
                 <logic:iterate name="novisibles" id="Empleado"> 
                     <tr>
-                        <td>
+    			<td>
                             <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                                 <img src="images/usuario.jpg" width="36"/>
                             </html:link>
                         </td>
-                        <td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
-                        <td><bean:write name="Empleado" property="correo"/></td>
-                        <td><bean:write name="Empleado" property="cargo"/></td>
+    			<td><bean:write name="Empleado" property="usbid"/></td>
+    			<td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
+    			<td><bean:write name="Empleado" property="correo"/></td>
+    			<td><bean:write name="Empleado" property="cargo"/></td>
                         <td><bean:write name="Empleado" property="area_laboral"/></td>
                         <td><bean:write name="Empleado" property="extension"/></td>
                         <td><bean:write name="Empleado" property="laboratorio"/></td>
                         <td>
-                            <html:link onclick="javascript: return confirm('¿Está seguro que desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
+                            <html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                                 <img src="images/activar.png" width="36"/>
                             </html:link>
                         </td>
-                    </tr> 
+    				</tr> 
                 </logic:iterate>
             </table>
         </logic:notEmpty>
@@ -158,6 +172,5 @@
                 << volver
             </h2>
         </html:link>
-
     </body>
 </html>

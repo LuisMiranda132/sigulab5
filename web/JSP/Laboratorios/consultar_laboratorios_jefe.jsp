@@ -93,7 +93,7 @@
                     <th>Correo</th>
                     <th>Página Web</th>
                     <th>Modificar</th>
-                    <th>Ocultar</th>
+                    <th>Activar</th>
                 </tr>
             </thead>
             <logic:iterate name="labNovisibles" id="Laboratorio">
