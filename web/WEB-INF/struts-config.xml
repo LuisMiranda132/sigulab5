@@ -36,7 +36,7 @@
         </action>
         
         <action path="/logout" name="LoginForm" type="Actions.Navegacion.logout" validate="false">
-            <forward name="success" path="/JSP/login.jsp"/>
+            <forward name="success" path="/login.jsp"/>
         </action>
         
         <action path="/agregarL" name="Empleado"  type="Actions.DB.agregarL" validate="false">
