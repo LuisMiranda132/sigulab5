@@ -25,10 +25,10 @@
         <action path="/Welcome" forward="/welcomeStruts.jsp"/>
 
         <action path="/login" name="LoginForm" type="Actions.Login.LoginAction" validate="false">
-            <forward name="success" path="/Menu.jsp"/>
-            <forward name="failure" path="/login.jsp"/>
-            <forward name="jefe" path="/Menu.jsp"/>
-            <forward name="tecnico" path="/MenuEmp.jsp"/>
+            <forward name="success" path="/JSP/Vistas/Menu.jsp"/>
+            <forward name="failure" path="/JSP/login.jsp"/>
+            <forward name="jefe" path="/JSP/Vistas/Menu.jsp"/>
+            <forward name="tecnico" path="/JSP/Vistas/MenuEmp.jsp"/>
         </action>        
                 
         <action path="/back" type="Actions.Navegacion.backHome" validate="false">
@@ -40,72 +40,72 @@
         </action>
         
         <action path="/agregarL" name="Empleado"  type="Actions.DB.agregarL" validate="false">
-            <forward name="success" path="/agregar.jsp"/>
+            <forward name="success" path="/JSP/Personal/agregar.jsp"/>
         </action>
         
         <action path="/consultarL_jefe"  type="Actions.DB.consultarL_jefe" scope="session" validate="false">
-            <forward name="success" path="/consultar_empleados_jefe.jsp"/>
+            <forward name="success" path="/JSP/Personal/consultar_empleados_jefe.jsp"/>
         </action>
         
         <action path="/consultarL_emp"  type="Actions.DB.consultarL_emp" scope="session" validate="false">
-            <forward name="success" path="/consultar_empleados.jsp"/>
+            <forward name="success" path="/JSP/Personal/consultar_empleados.jsp"/>
         </action>
 
         <action path="/consultarL_letra_jefe"  type="Actions.DB.consultarL_letra_jefe" scope="session" validate="false">
-            <forward name="success" path="/consultar_empleados_jefe_letra.jsp"/>
+            <forward name="success" path="/JSP/Personal/consultar_empleados_jefe_letra.jsp"/>
         </action>
         
         <action path="/consultarL_letra_emp"  type="Actions.DB.consultarL_letra_emp" scope="session" validate="false">
-            <forward name="success" path="/consultar_empleados_letra.jsp"/>
+            <forward name="success" path="/JSP/Personal/consultar_empleados_letra.jsp"/>
         </action>
 
         <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
-            <forward name="success" path="/consultarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
 
         <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
-            <forward name="success" path="/agregarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
         
         <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
-            <forward name="success" path="/agregarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
 
         <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
-            <forward name="success" path="/consultarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
 
         <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
-            <forward name="success" path="/agregarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
         
         <action path="/modificarL" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
-            <forward name="success" path="/modificar.jsp"/>
+            <forward name="success" path="/JSP/Personal/modificar.jsp"/>
             
         </action>
         
         <action path="/modificarLaboratorioL" name="Laboratorio"  type="Actions.DB.premodificarLab" validate="false">
-            <forward name="success" path="/modificarLab.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
         </action>
                 
         <action path="/premodificar" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
-            <forward name="success" path="/modificar.jsp"/>
-            <forward name="failure" path="/premodificar.jsp"/>
+            <forward name="success" path="/JSP/Personal/modificar.jsp"/>
+            <forward name="failure" path="/JSP/Personal/premodificar.jsp"/>
         </action>
         
         <action path="/premodificarLab" name="Laboratorio"  type="Actions.DB.premodificarLab" validate="false">
-            <forward name="success" path="/modificarLab.jsp"/>
-            <forward name="failure" path="/premodificarLab.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
+            <forward name="failure" path="/JSP/Laboratorios/premodificarLab.jsp"/>
         </action>
         
         <action path="/agregar" name="Empleado" type="Actions.DB.agregar" validate="false">
-            <forward name="success" path="/agregar.jsp"/>
-            <forward name="failure" path="/agregar.jsp"/>
+            <forward name="success" path="/JSP/Personal/agregar.jsp"/>
+            <forward name="failure" path="/JSP/Personal/agregar.jsp"/>
         </action>
         
         <action path="/agregarLaboratorio" name="Laboratorio" type="Actions.DB.agregarLaboratorio" validate="false">
-            <forward name="success" path="/agregarLaboratorio.jsp"/>
-            <forward name="failure" path="/agregarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
+            <forward name="failure" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
         
 
@@ -115,19 +115,19 @@
         </action>
         
         <action path="/premodificar_modificado" name="LoginForm"  type="Actions.DB.premodificar_modificado" validate="false">
-            <forward name="success" path="/modificar.jsp"/>
-            <forward name="failure" path="/premodificar.jsp"/>
+            <forward name="success" path="/JSP/Personal/modificar.jsp"/>
+            <forward name="failure" path="/JSP/Personal/premodificar.jsp"/>
         </action>
         
                  
                 
         <action path="/modificarLaboratorio" name="Laboratorio" type="Actions.DB.modificarLaboratorio" validate="false">
-            <forward name="success" path="/modificarLab.jsp"/>
-            <forward name="failure" path="/modificarLab.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
+            <forward name="failure" path="/JSP/Laboratorios/modificarLab.jsp"/>
         </action>
        
         <action path="/personal" type="Actions.personal" validate="false">
-            <forward name="success" path="/Menu.jsp"/>
+            <forward name="success" path="/JSP/Personal/Menu.jsp"/>
         </action>
         
         <action path="/desactivar" type="Actions.DB.desactivarPersonal" scope="request" validate="false">
@@ -143,15 +143,15 @@
         <action path="/desactivarLaboratorio" type="Actions.DB.Desactivar_laboratorio" scope="request" validate="false">
             <forward name="success" path="/ConsultarLab_jefe.do"/>
             <forward name="failure" path="/inicio.jsp"/>
-            <forward name="nulo" path="/agregarLaboratorio.jsp"/>
+            <forward name="nulo" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
 
         <action path="/perfilPersonalL" type="Actions.DB.perfilPersonalL" scope="request" validate="false">
-            <forward name="success" path="/perfilPersonal.jsp"/>
+            <forward name="success" path="/JSP/Personal/perfilPersonal.jsp"/>
         </action>
 
         <action path="/perfilLaboratorioL" type="Actions.DB.perfilLaboratorioL" scope="request" validate="false">
-            <forward name="success" path="/perfilLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/perfilLaboratorio.jsp"/>
         </action>
         
         <action path="/activarLaboratorio" type="Actions.DB.Activar_laboratorio" scope="request" validate="false">
@@ -160,11 +160,11 @@
         </action>
                 
         <action path="/ConsultarLab_jefe"  type="Actions.DB.ConsultarLab_jefe" scope="session" validate="false">
-            <forward name="success" path="/consultar_laboratorios_jefe.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/consultar_laboratorios_jefe.jsp"/>
         </action>
         
         <action path="/ConsultarLab_emp"  type="Actions.DB.ConsultarLab_emp" scope="session" validate="false">
-            <forward name="success" path="/consultarLaboratorio.jsp"/>
+            <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
         
     </action-mappings>
