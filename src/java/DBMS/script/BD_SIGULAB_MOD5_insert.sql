@@ -133,5 +133,18 @@ Laboratorio de Sistemas Paralelos y Distribuidos, Laboratorio de Computación de
 INSERT INTO LABORATORIO VALUES ('LAB-G','Laboratorios de la Sede del Litoral','Litoral','Edf. de los Laboratorios Pesados, Piso 1, Ofic. LPD102','usb-labg@usb.ve','','02129069158', '02129069405', 'Tecnologías Aplicadas: Conversión de Energía Electrica, Conversión de Energía Mecánica, Aeronaves, Procesos Mecánicos de Fabricación y Materiales. Física - Electrónica: Física, Fundamentos de Circuitos Eléctricos, Digitales, Intrumentación y Control, Equipos Biomédicos.
 Tecnologías de la Información y Comunicaciones: Tecnologías de la Información, Telemática, Comunicaciones. Servicios: Idiomas, Alimentos y Bebidas', 'luisl',1);
 
+--
+-- INSERT SERVICIO
+--
+-- SERVICIO (codigo, nombre, imagen, laboratorio, caracteristicas)
+--
+INSERT INTO SERVICIO VALUES('001','Analisis microestructural','N/A','LAB-E','Cualitativo y Cuantitativo');
+INSERT INTO SERVICIO VALUES('002','Analisis macroestructural','N/A','LAB-E','Relacionado con fallas y defectos');
+INSERT INTO SERVICIO VALUES('003','Medicion de dureza','N/A','LAB-E','Macroscopico y Microscopico');
+INSERT INTO SERVICIO VALUES('004','Ensayos de Dureza','N/A','LAB-E','N/A');
 
+INSERT INTO SERVICIO VALUES('005','Servicio de Computo Numerico ','N/A','LAB-F','N/A');
+INSERT INTO SERVICIO VALUES('006','Alquiler de salas','N/A','LAB-F','Para Docencia, Talleres y Practicas con Computador');
+INSERT INTO SERVICIO VALUES('007','Mineria de Datos','N/A','LAB-F','N/A');
 
+INSERT INTO SERVICIO VALUES('009','Analisis de Sustancias','N/A','LAB-B','Organicas y Inorganicas');
