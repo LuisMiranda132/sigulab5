@@ -13,6 +13,7 @@ import Clases.Habilidad;
 import Clases.Publicacion;
 import Clases.Formacion;
 import Clases.LoginForm;
+import Clases.Servicio;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -967,4 +968,132 @@ public class DBMS {
         }
     }
 
+    public boolean agregarServicio(Servicio s) {
+        
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "INSERT INTO servicio VALUES (?,?,?,?,?);");
+            
+            psAgregar.setString(1, s.getCodigo());
+            psAgregar.setString(2, s.getNombre());
+            psAgregar.setString(3, s.getImagen());
+            psAgregar.setString(4, s.getLaboratorio());
+            psAgregar.setString(5, s.getCaracteristicas());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+
+    }
+
+    public boolean modificarServicio(Servicio s){
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE servicio SET nombre=? , imagen=? , laboratorio=? , caracteristicas=? where codigo=?;"
+            );
+
+            psAgregar.setString(1, s.getNombre());
+            psAgregar.setString(2, s.getImagen());
+            psAgregar.setString(3, s.getLaboratorio());
+            psAgregar.setString(4, s.getCaracteristicas());
+            psAgregar.setString(5, s.getCodigo());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+        
+    }
+    
+    public boolean eliminarServicio(Servicio s){
+        
+        PreparedStatement psEliminar = null;
+        try {
+
+            psEliminar = conexion.prepareStatement(
+                    "DELETE FROM servicio WHERE codigo=(?);");
+            
+            psEliminar.setString(1, s.getCodigo());
+
+            Integer i = psEliminar.executeUpdate();
+
+            return i > 0;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+                 
+    public ArrayList<Servicio> listarServicio(){
+        
+        ArrayList<Servicio> Servicios = new ArrayList<Servicio>();
+        PreparedStatement ps = null;
+        try{
+
+            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio WHERE visibilidad=1 ORDER BY codigo;");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                Servicio s = new Servicio();
+
+                s.setCodigo(rs.getString("codigo"));
+                s.setNombre(rs.getString("nombre"));
+                s.setImagen(rs.getString("imagen"));
+                s.setLaboratorio(rs.getString("laboratorio"));
+                s.setCaracteristicas(rs.getString("caracteristicas"));
+                
+                Servicios.add(s);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Servicios;
+    }
+    
+    public Servicio obtenerServicio(Servicio s){
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM SERVICIO AS S WHERE S.CODIGO=?;");
+            ps.setString(1, s.getCodigo());
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {
+                               
+                s.setCodigo(rs.getString("codigo"));
+                s.setNombre(rs.getString("nombre"));
+                s.setImagen(rs.getString("imagen"));
+                s.setLaboratorio(rs.getString("laboratorio"));
+                s.setCaracteristicas(rs.getString("caracteristicas"));
+
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+                
+        return s;
+    }
+     
+    
 } //END DBMS.java
