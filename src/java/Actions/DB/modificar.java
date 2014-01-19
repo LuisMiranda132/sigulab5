@@ -9,6 +9,8 @@ package Actions.DB;
 import Clases.Empleado;
 import Clases.LoginForm;
 import DBMS.DBMS;
+import java.io.File;
+import java.io.FileOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.upload.FormFile;
 
 /**
  *
@@ -119,6 +122,28 @@ public class modificar extends org.apache.struts.action.Action {
         } else {
             
             DBMS db = DBMS.getInstance();
+            
+            FormFile imagen = u.getImagenfile();
+            String path = getServlet().getServletContext().getRealPath("/")+"images/perfiles";
+            
+            File folder = new File(path);
+	    if(!folder.exists()){
+	    	folder.mkdir();
+	    }
+            
+            if(!("").equals(imagen.getFileName())){
+                String fileName = u.getUsbid();
+            
+                File newFile = new File(path,fileName);
+            
+                FileOutputStream fos = new FileOutputStream(newFile);
+            
+                fos.write(imagen.getFileData());
+                fos.flush();
+                fos.close();
+            
+                u.setImagen("images/perfiles/"+u.getUsbid());
+            }
             
             boolean agrego = db.modificarEmpleado(u);
             

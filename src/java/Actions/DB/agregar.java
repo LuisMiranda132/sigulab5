@@ -101,6 +101,7 @@ public class agregar extends org.apache.struts.action.Action {
                 u.setApellidos(apellidos);
                 u.setCedula(cedula);
                 u.setStatus("Inactivo");
+                u.setImagen("imagenes/user.png");
                 
                 agregoUsuario = instance.agregarUsuario(u);
                 System.out.println("agregoUsuario " + agregoUsuario);

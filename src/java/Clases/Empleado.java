@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.upload.FormFile;
 
 /**
  *
@@ -34,6 +35,8 @@ public class Empleado extends Usuario{
     private String habilidad;
     private String ano_for;
     private String ano_pub;
+    private String imagen;
+    private FormFile imagenfile;
     
     private String errorAnoIngreso;
     private String errorCorreo;
@@ -68,6 +71,7 @@ public class Empleado extends Usuario{
         this.publicacion = null;
         this.ano_for = null;
         this.ano_pub = null;
+        this.imagen = null;
     }
     
     /**
@@ -88,6 +92,7 @@ public class Empleado extends Usuario{
         this.extension = null;
         this.laboratorio = null;
         this.visibilidad = 0;
+        
     }
     
     /**
@@ -626,5 +631,33 @@ public class Empleado extends Usuario{
                
         return errors;
     } 
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    /**
+     * @return the imagenfile
+     */
+    public FormFile getImagenfile() {
+        return imagenfile;
+    }
+
+    /**
+     * @param imagenfile the imagenfile to set
+     */
+    public void setImagenfile(FormFile imagenfile) {
+        this.imagenfile = imagenfile;
+    }
 
 }

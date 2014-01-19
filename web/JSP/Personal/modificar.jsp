@@ -52,9 +52,17 @@
             </center>
         </logic:present>
 
-        <html:form action="modificar" style="margin-left: 45px;">
+        <html:form action="modificar" style="margin-left: 45px;" enctype="multipart/form-data">
             <table border="0">
                 <tbody>
+                    <tr>
+                        <td>Imagen</td>
+                        <td>            
+                            <br />
+                            <html:file name="Empleado" property="imagenfile" size="50" />
+                            <br />
+                        </td>
+                    </tr>
                     <tr>
                         <td> UsbId </td>
                         <td>

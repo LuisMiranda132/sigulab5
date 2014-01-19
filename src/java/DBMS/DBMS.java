@@ -87,7 +87,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , area_laboral=? , extension=? , laboratorio=? WHERE usbid=?;"
+                    "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , area_laboral=? , extension=? , laboratorio=?, imagen=? WHERE usbid=?;"
             );
                         
             psAgregar.setString(1, e.getCorreo());
@@ -96,7 +96,8 @@ public class DBMS {
             psAgregar.setString(4, e.getArea_laboral());
             psAgregar.setString(5, e.getExtension());
             psAgregar.setString(6, e.getLaboratorio());
-            psAgregar.setString(7, e.getUsbid());
+            psAgregar.setString(7, e.getImagen());
+            psAgregar.setString(8, e.getUsbid());
             Integer i = psAgregar.executeUpdate();
             
             return i>0;
@@ -377,7 +378,8 @@ public class DBMS {
                 u.setCargo(rs.getString("cargo"));
                 u.setArea_laboral(rs.getString("area_laboral"));
                 u.setExtension(rs.getString("extension"));
-                u.setLaboratorio(rs.getString("laboratorio")); 
+                u.setLaboratorio(rs.getString("laboratorio"));
+                u.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(u);
             }
@@ -456,6 +458,7 @@ public class DBMS {
                 e.setArea_laboral(rs.getString("area_laboral"));
                 e.setLaboratorio(rs.getString("laboratorio"));
                 e.setVisibilidad(rs.getInt("visibilidad"));
+                e.setImagen(rs.getString("imagen"));
             }
             
         } catch (SQLException ex) {
@@ -504,7 +507,7 @@ public class DBMS {
         
         try {
 
-            ps = conexion.prepareStatement("INSERT INTO EMPLEADO VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
+            ps = conexion.prepareStatement("INSERT INTO EMPLEADO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,1,?);");
 
             ps.setString(1, e.getUsbid());
             ps.setString(2, e.getCorreo());
@@ -518,6 +521,7 @@ public class DBMS {
             ps.setString(10, e.getArea_laboral());
             ps.setString(11, e.getExtension());
             ps.setString(12, e.getLaboratorio());
+            ps.setString(13, e.getImagen());
             //ps.setInt(13, e.getVisibilidad());
             
             
