@@ -56,9 +56,17 @@
         </logic:present>        
         <!-- FIN LOGIC PRESENT </!-->
 
-        <html:form action="modificarLaboratorio" style="margin-left: 45px;">
+        <html:form action="modificarLaboratorio" enctype="multipart/form-data" style="margin-left: 45px;">
             <table border="0">
                 <tbody>
+                    <tr>
+                        <td>Imagen</td>
+                        <td>            
+                            <br />
+                            <html:file name="Laboratorio" property="imagenfile" size="50" />
+                            <br />
+                        </td>
+                    </tr>
                     <tr>
                         <td> Código </td>
                         <td>

@@ -8,6 +8,8 @@ package Actions.DB;
 
 import Clases.Laboratorio;
 import DBMS.DBMS;
+import java.io.File;
+import java.io.FileOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.upload.FormFile;
 
 /**
  *
@@ -61,6 +64,28 @@ public class modificarLaboratorio extends org.apache.struts.action.Action {
             return mapping.findForward(FAILURE);
             
         } else {
+            
+            FormFile imagen = l.getImagenfile();
+            String path = getServlet().getServletContext().getRealPath("/")+"images/perfiles";
+            
+            File folder = new File(path);
+	    if(!folder.exists()){
+	    	folder.mkdir();
+	    }
+            
+            if(!("").equals(imagen.getFileName())){
+                String fileName = l.getCodigo();
+            
+                File newFile = new File(path,fileName);
+            
+                FileOutputStream fos = new FileOutputStream(newFile);
+            
+                fos.write(imagen.getFileData());
+                fos.flush();
+                fos.close();
+            
+                l.setImagen("images/perfiles/"+l.getCodigo());
+            }
             
             boolean agrego = DBMS.getInstance().modificarLaboratorio(l);
             
