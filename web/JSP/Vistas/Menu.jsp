@@ -128,7 +128,22 @@
                                     </html:link>
                                 </li>
                             </ul> </br>
-                        </div>                        
+                        </div>  
+                        <h5 style="cursor: pointer;">Gestionar Servicios</h5>
+                        <div>
+                            <ul class="menu">
+                                <li class="first leaf">
+                                    <html:link action="formularioServicio" target="centro">
+                                        <p>Agregar Servicio</p>
+                                    </html:link>
+                                </li>                      
+                                <li class="leaf">
+                                    <html:link action="" target="centro">
+                                        <p>Consultar Servicios</p>
+                                    </html:link>
+                                </li>
+                            </ul> </br>
+                        </div>
                     </div>
                 </div>
 

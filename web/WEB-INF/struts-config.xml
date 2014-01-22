@@ -7,6 +7,7 @@
 
 <struts-config>
     <form-beans>
+        <form-bean name="Servicio" type="Clases.Servicio"/>
         <form-bean name="LoginForm" type="Clases.LoginForm"/>
         <form-bean name="Usuario" type="Clases.Usuario"/>
         <form-bean name="Empleado" type="Clases.Empleado"/>
@@ -159,13 +160,23 @@
             <forward name="failure" path="/ConsultarLab_jefe.do"/>
         </action>
                 
-        <action path="/ConsultarLab_jefe"  type="Actions.DB.ConsultarLab_jefe" scope="session" validate="false">
+        <action path="/ConsultarLab_jefe" type="Actions.DB.ConsultarLab_jefe" scope="session" validate="false">
             <forward name="success" path="/JSP/Laboratorios/consultar_laboratorios_jefe.jsp"/>
         </action>
         
         <action path="/ConsultarLab_emp"  type="Actions.DB.ConsultarLab_emp" scope="session" validate="false">
             <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
+        
+        <action path="/formularioServicio" type="Actions.DB.formularioServicio" scope="session" validate="false">
+            <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
+        </action>
+        
+        <action path="/agregarServicio" name="Servicio" type="Actions.DB.agregarServicio" scope="session" validate="false">
+            <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
+            <forward name="failure" path="/JSP/Servicios/agregarServicio.jsp"/>            
+        </action>
+        <action input="/agregarServicio" name="Servicio" path="/agregarServicio" scope="session" type="Actions.DB.agregarServicio"/>        
         
     </action-mappings>
     
