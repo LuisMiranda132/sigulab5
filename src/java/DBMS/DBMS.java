@@ -189,8 +189,6 @@ public class DBMS {
         }
 
     }
-        
-    
     
     public boolean desactivarVisibilidad(Empleado e){
         PreparedStatement psAgregar = null;
@@ -263,7 +261,7 @@ public class DBMS {
         return Empleados;
     }
     
-        public ArrayList<Empleado> listarEmpleadosNoVisibles(){
+    public ArrayList<Empleado> listarEmpleadosNoVisibles(){
         
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
@@ -621,8 +619,8 @@ public class DBMS {
                 l.setTelefono(rs.getString("telefono"));
                 l.setFax(rs.getString("fax"));
                 l.setCaracteristicas(rs.getString("caracteristicas"));
-                l.setJefe(rs.getString("jefe"));                
-                
+                l.setJefe(rs.getString("jefe"));     
+                l.setImagen(rs.getString("imagen"));
             }
             
         } catch (SQLException ex) {
@@ -685,7 +683,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
             
             psAgregar.setString(1, l.getCodigo());
             psAgregar.setString(2, l.getNombre());
@@ -699,6 +697,7 @@ public class DBMS {
             psAgregar.setString(10, l.getJefe());
 //            psAgregar.setString(11, l.getNombre_jefe());
             psAgregar.setInt(11, 1);
+            psAgregar.setString(12, l.getImagen());
             
             Integer i = psAgregar.executeUpdate();
             
@@ -715,7 +714,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE LABORATORIO SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , telefono=?, fax=?, jefe=? where codigo=?;"
+                    "UPDATE LABORATORIO SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , telefono=?, fax=?, jefe=?, imagen=? where codigo=?;"
             );
             
             psAgregar.setString(1, l.getNombre());
@@ -725,9 +724,9 @@ public class DBMS {
             psAgregar.setString(5, l.getPagweb());            
             psAgregar.setString(6, l.getTelefono());
             psAgregar.setString(7, l.getFax());
-            //psAgregar.setString(8, l.getCaracateristicas());
             psAgregar.setString(8, l.getJefe());
-            psAgregar.setString(9, l.getCodigo());
+            psAgregar.setString(9, l.getImagen());
+            psAgregar.setString(10, l.getCodigo());
 
             Integer i = psAgregar.executeUpdate();
             

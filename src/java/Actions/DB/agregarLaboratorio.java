@@ -8,6 +8,8 @@ package Actions.DB;
 
 import Clases.Laboratorio;
 import DBMS.DBMS;
+import java.io.File;
+import java.io.FileOutputStream;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +19,7 @@ import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.upload.FormFile;
 
 /**
  *
@@ -56,6 +59,32 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
         } else {
             
             System.out.println(u.getFax());
+            
+            FormFile imagen = u.getImagenfile();
+            
+            if(imagen.getFileSize()==0){
+                u.setImagen("images/user.png");
+            }else{
+                String path = getServlet().getServletContext().getRealPath("/")+"images/perfiles";
+                File folder = new File(path);
+                if(!folder.exists()){
+                    folder.mkdir();
+                }
+                
+                if(!("").equals(imagen.getFileName())){
+                    String fileName = u.getCodigo();
+                    
+                    File newFile = new File(path,fileName);
+                    
+                    FileOutputStream fos = new FileOutputStream(newFile);
+                    
+                    fos.write(imagen.getFileData());
+                    fos.flush();
+                    fos.close();
+                    
+                    u.setImagen("images/perfiles/"+u.getCodigo());
+                }
+            }
             boolean agrego = DBMS.getInstance().agregarLaboratorio(u);
                 
             if (agrego){

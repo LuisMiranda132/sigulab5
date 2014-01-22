@@ -53,14 +53,22 @@
             </center>
         </logic:present>    
     
-        <html:form action="agregarLaboratorio" style="margin-left: 45px;" >
+        <html:form action="agregarLaboratorio" enctype="multipart/form-data" style="margin-left: 45px;" >
             <table border="0">
                 <tbody>
+                    <tr>
+                        <td>Imagen</td>
+                        <td>            
+                            <br />
+                            <html:file name="Laboratorio" property="imagenfile" size="50" />
+                            <br />
+                        </td>
+                    </tr>
                     <tr>
                         <td> Codigo </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="codigo"/>
-                            <div class="descripcion"">
+                            <div class="descripcion">
                                 Codigo del Laboratorio <br>
                                 (i.e LAB A)
                             </div>

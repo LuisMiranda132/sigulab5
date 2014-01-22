@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.upload.FormFile;
 import org.apache.struts.util.LabelValueBean;
 
 /**
@@ -34,7 +35,8 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
     private String nombre_jefe;
     private Integer visibilidad;
     private List jefes = new ArrayList<Empleado>();
-    
+    private String imagen;
+    private FormFile imagenfile;
     
     public String getNombre_jefe() {
         return nombre_jefe;
@@ -60,6 +62,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.jefe=null;
         this.nombre_jefe=null;
         this.visibilidad=0;
+        this.imagen=null;
     }
     
     /**
@@ -77,6 +80,7 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.caracteristicas="";
         this.jefe="";
         this.visibilidad=0;
+        this.imagen=null;
     }
     
     /**
@@ -319,6 +323,34 @@ public class Laboratorio extends org.apache.struts.action.ActionForm{
         this.caracteristicas = null;
         this.jefe = null;
         this.visibilidad = 0;
+    }
+
+    /**
+     * @return the imagen
+     */
+    public String getImagen() {
+        return imagen;
+    }
+
+    /**
+     * @param imagen the imagen to set
+     */
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
+
+    /**
+     * @return the imagenfile
+     */
+    public FormFile getImagenfile() {
+        return imagenfile;
+    }
+
+    /**
+     * @param imagenfile the imagenfile to set
+     */
+    public void setImagenfile(FormFile imagenfile) {
+        this.imagenfile = imagenfile;
     }
     
 }

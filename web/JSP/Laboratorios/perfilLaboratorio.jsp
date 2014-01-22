@@ -63,6 +63,7 @@
            
         <logic:iterate name="lab" id="Laboratorio">
             <div class="wrapper">
+                <figure class="img-border left marg_right1"><img src="<bean:write name="Laboratorio" property="imagen"/>" width="160"/></figure>
                 <div class="perfil_tamano">
                     <p></p>
                     <p><b>Codigo:</b> <bean:write name="Laboratorio" property="codigo"/>.</p>
