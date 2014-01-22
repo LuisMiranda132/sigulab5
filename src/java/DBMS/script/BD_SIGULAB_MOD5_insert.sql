@@ -38,13 +38,13 @@ INSERT INTO USUARIO VALUES ('luisl','Luis','Lopez',913285);
 --
 -- EMPLEADO (usbid, correo, direccion, cargo, ano_ingreso, tipo_empleado, status, telefono, tipo_usuario, area_laboral, extension, laboratorio, visibilidad, imagen) 
 -- 
-INSERT INTO EMPLEADO VALUES ('10-10333', 'aguillenv93@gmail.com', 'Macaracuay', 'Jefe', '2001', 'jefe', 'Activo', '02122570280', 'Empleado', 'BD', 'Lab BD', 'Lab F', 1,'images/user.png');
-INSERT INTO EMPLEADO VALUES ('09-10279', 'micafe.go@gmail.com', 'La Castellana', 'Jefe', '2000', 'jefe', 'Activo', '02122639194', 'Empleado', 'Materiales', 'Lab Polimeros', 'Lab A', 1,'images/user.png');
-INSERT INTO EMPLEADO VALUES ('pperez', '', '', 'Tecnico', '2005','tecnico', 'Activo', '', 'empleado', 'Materiales', 'Lab de Ceramica', 'Lab A', 1,'images/user.png');
-INSERT INTO EMPLEADO VALUES ('robertor', '', '', 'Tecnico','2010','tecnico', 'Activo', '', 'empleado', 'Quimicos Explosivos', 'Lab de Nitrogeno', 'Lab B', 1,'images/user.png');
-INSERT INTO EMPLEADO VALUES ('mmartinez', '', '', 'Jefe Laboratorio','2009','jefe', 'Reposo Postnatal', '', 'jefe', '', '', 'Lab A', 1,'images/user.png');
-INSERT INTO EMPLEADO VALUES ('jjimenez', '', '', 'Jefe Laboratorio','2002','jefe', 'En Congreso', '', 'jefe', '', '', 'Lab C', 1,'images/user.png');
-INSERT INTO EMPLEADO VALUES ('luisl', '', '', 'Asistente','2005','personal admin', 'Activo', '', 'empleado', '', '', '', 1,'images/user.png');
+INSERT INTO EMPLEADO VALUES ('10-10333', 'aguillenv93@gmail.com', 'Macaracuay', 'Jefe', '2001', 'jefe', 'Activo', '02122570280', 'Empleado', 'BD', 'Lab BD', 'Lab F', 1);
+INSERT INTO EMPLEADO VALUES ('09-10279', 'micafe.go@gmail.com', 'La Castellana', 'Jefe', '2000', 'jefe', 'Activo', '02122639194', 'Empleado', 'Materiales', 'Lab Polimeros', 'Lab A', 1);
+INSERT INTO EMPLEADO VALUES ('pperez', '', '', 'Tecnico', '2005','tecnico', 'Activo', '', 'empleado', 'Materiales', 'Lab de Ceramica', 'Lab A', 1);
+INSERT INTO EMPLEADO VALUES ('robertor', '', '', 'Tecnico','2010','tecnico', 'Activo', '', 'empleado', 'Quimicos Explosivos', 'Lab de Nitrogeno', 'Lab B', 1);
+INSERT INTO EMPLEADO VALUES ('mmartinez', '', '', 'Jefe Laboratorio','2009','jefe', 'Reposo Postnatal', '', 'jefe', '', '', 'Lab A', 1);
+INSERT INTO EMPLEADO VALUES ('jjimenez', '', '', 'Jefe Laboratorio','2002','jefe', 'En Congreso', '', 'jefe', '', '', 'Lab C', 1);
+INSERT INTO EMPLEADO VALUES ('luisl', '', '', 'Asistente','2005','personal admin', 'Activo', '', 'empleado', '', '', '', 1);
 
 
 --

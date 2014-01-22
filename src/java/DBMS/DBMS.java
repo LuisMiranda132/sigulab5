@@ -237,7 +237,7 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1;";
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio, E.imagen FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1;";
             ps = conexion.prepareStatement(consulta);
                     
 
@@ -253,6 +253,7 @@ public class DBMS {
                 u.setArea_laboral(rs.getString("area_laboral"));
                 u.setExtension(rs.getString("extension"));
                 u.setLaboratorio(rs.getString("laboratorio"));
+                u.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(u);
             }

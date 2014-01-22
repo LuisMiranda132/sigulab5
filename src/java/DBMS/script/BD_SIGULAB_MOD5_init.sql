@@ -30,7 +30,7 @@ CREATE TABLE EMPLEADO (
     extension       varchar(200),
     laboratorio     varchar(100),
     visibilidad     INTEGER         NOT NULL DEFAULT 1,
-    imagen          varchar(100),
+    imagen          varchar(100)    DEFAULT 'images/user.png',
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade
 );
 
