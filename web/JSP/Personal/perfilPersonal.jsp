@@ -46,7 +46,7 @@
         <!-- DATOS DEL PERSONAL -->
         <logic:iterate name="user" id="Empleado">
             <div class="wrapper">
-                <figure class="img-border left marg_right1"><img src="images/user.png" width="160"/></figure>
+                <figure class="img-border left marg_right1"><img src="<bean:write name="Empleado" property="imagen"/>" width="160"/></figure>
                 <div class="perfil_tamano">
                     <p></p>
                     <p><b>USBID:</b> <bean:write name="Empleado" property="usbid"/>.</p>

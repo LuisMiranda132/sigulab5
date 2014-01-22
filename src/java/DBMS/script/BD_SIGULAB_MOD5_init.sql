@@ -30,6 +30,7 @@ CREATE TABLE EMPLEADO (
     extension       varchar(200),
     laboratorio     varchar(100),
     visibilidad     INTEGER         NOT NULL DEFAULT 1,
+    imagen          varchar(100),
     constraint fk_empleado foreign key (usbid) references usuario(usbid) on delete cascade
 );
 
@@ -65,7 +66,18 @@ CREATE TABLE LABORATORIO (
 	caracteristicas	varchar(2000)   NOT NULL,
     jefe            varchar(50)     NOT NULL, -- USB ID
     visibilidad     INTEGER         NOT NULL DEFAULT 1,
+    imagen          varchar(100),
     CONSTRAINT pk_laboratorio PRIMARY KEY (codigo),
     CONSTRAINT fk_laboratorio_jefe FOREIGN KEY (jefe) REFERENCES usuario (usbid) MATCH SIMPLE
     ON UPDATE NO ACTION ON DELETE NO ACTION
+);
+
+CREATE TABLE SERVICIO (	
+    codigo          varchar(10)     NOT NULL, 
+    nombre          varchar(100)    NOT NULL, 
+    imagen 	    varchar(100)    NOT NULL,
+    laboratorio          varchar(10)     NOT NULL, -- De la forma LAB'X'
+    caracteristicas	varchar(2000)   NOT NULL,   
+    CONSTRAINT pk_servicio PRIMARY KEY (codigo),
+    CONSTRAINT fk_laboratorio FOREIGN KEY (laboratorio) REFERENCES laboratorio (codigo) on delete cascade
 );

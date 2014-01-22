@@ -13,6 +13,7 @@ import Clases.Habilidad;
 import Clases.Publicacion;
 import Clases.Formacion;
 import Clases.LoginForm;
+import Clases.Servicio;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -86,7 +87,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , area_laboral=? , extension=? , laboratorio=? WHERE usbid=?;"
+                    "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , area_laboral=? , extension=? , laboratorio=?, imagen=? WHERE usbid=?;"
             );
                         
             psAgregar.setString(1, e.getCorreo());
@@ -95,7 +96,8 @@ public class DBMS {
             psAgregar.setString(4, e.getArea_laboral());
             psAgregar.setString(5, e.getExtension());
             psAgregar.setString(6, e.getLaboratorio());
-            psAgregar.setString(7, e.getUsbid());
+            psAgregar.setString(7, e.getImagen());
+            psAgregar.setString(8, e.getUsbid());
             Integer i = psAgregar.executeUpdate();
             
             return i>0;
@@ -187,8 +189,6 @@ public class DBMS {
         }
 
     }
-        
-    
     
     public boolean desactivarVisibilidad(Empleado e){
         PreparedStatement psAgregar = null;
@@ -261,7 +261,7 @@ public class DBMS {
         return Empleados;
     }
     
-        public ArrayList<Empleado> listarEmpleadosNoVisibles(){
+    public ArrayList<Empleado> listarEmpleadosNoVisibles(){
         
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
@@ -376,7 +376,8 @@ public class DBMS {
                 u.setCargo(rs.getString("cargo"));
                 u.setArea_laboral(rs.getString("area_laboral"));
                 u.setExtension(rs.getString("extension"));
-                u.setLaboratorio(rs.getString("laboratorio")); 
+                u.setLaboratorio(rs.getString("laboratorio"));
+                u.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(u);
             }
@@ -455,6 +456,7 @@ public class DBMS {
                 e.setArea_laboral(rs.getString("area_laboral"));
                 e.setLaboratorio(rs.getString("laboratorio"));
                 e.setVisibilidad(rs.getInt("visibilidad"));
+                e.setImagen(rs.getString("imagen"));
             }
             
         } catch (SQLException ex) {
@@ -503,7 +505,7 @@ public class DBMS {
         
         try {
 
-            ps = conexion.prepareStatement("INSERT INTO EMPLEADO VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
+            ps = conexion.prepareStatement("INSERT INTO EMPLEADO VALUES (?,?,?,?,?,?,?,?,?,?,?,?,1,?);");
 
             ps.setString(1, e.getUsbid());
             ps.setString(2, e.getCorreo());
@@ -517,6 +519,7 @@ public class DBMS {
             ps.setString(10, e.getArea_laboral());
             ps.setString(11, e.getExtension());
             ps.setString(12, e.getLaboratorio());
+            ps.setString(13, e.getImagen());
             //ps.setInt(13, e.getVisibilidad());
             
             
@@ -616,8 +619,8 @@ public class DBMS {
                 l.setTelefono(rs.getString("telefono"));
                 l.setFax(rs.getString("fax"));
                 l.setCaracteristicas(rs.getString("caracteristicas"));
-                l.setJefe(rs.getString("jefe"));                
-                
+                l.setJefe(rs.getString("jefe"));     
+                l.setImagen(rs.getString("imagen"));
             }
             
         } catch (SQLException ex) {
@@ -680,7 +683,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?,?,?,?);");
+                    "INSERT INTO laboratorio VALUES (?,?,?,?,?,?,?,?,?,?,?,?);");
             
             psAgregar.setString(1, l.getCodigo());
             psAgregar.setString(2, l.getNombre());
@@ -694,6 +697,7 @@ public class DBMS {
             psAgregar.setString(10, l.getJefe());
 //            psAgregar.setString(11, l.getNombre_jefe());
             psAgregar.setInt(11, 1);
+            psAgregar.setString(12, l.getImagen());
             
             Integer i = psAgregar.executeUpdate();
             
@@ -710,7 +714,7 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE LABORATORIO SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , telefono=?, fax=?, jefe=? where codigo=?;"
+                    "UPDATE LABORATORIO SET nombre=? , sede=? , ubicacion=? , correo=? , pagweb=? , telefono=?, fax=?, jefe=?, imagen=? where codigo=?;"
             );
             
             psAgregar.setString(1, l.getNombre());
@@ -720,9 +724,9 @@ public class DBMS {
             psAgregar.setString(5, l.getPagweb());            
             psAgregar.setString(6, l.getTelefono());
             psAgregar.setString(7, l.getFax());
-            //psAgregar.setString(8, l.getCaracateristicas());
             psAgregar.setString(8, l.getJefe());
-            psAgregar.setString(9, l.getCodigo());
+            psAgregar.setString(9, l.getImagen());
+            psAgregar.setString(10, l.getCodigo());
 
             Integer i = psAgregar.executeUpdate();
             
@@ -967,4 +971,132 @@ public class DBMS {
         }
     }
 
+    public boolean agregarServicio(Servicio s) {
+        
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "INSERT INTO servicio VALUES (?,?,?,?,?);");
+            
+            psAgregar.setString(1, s.getCodigo());
+            psAgregar.setString(2, s.getNombre());
+            psAgregar.setString(3, s.getImagen());
+            psAgregar.setString(4, s.getLaboratorio());
+            psAgregar.setString(5, s.getCaracteristicas());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+
+    }
+
+    public boolean modificarServicio(Servicio s){
+        PreparedStatement psAgregar = null;
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE servicio SET nombre=? , imagen=? , laboratorio=? , caracteristicas=? where codigo=?;"
+            );
+
+            psAgregar.setString(1, s.getNombre());
+            psAgregar.setString(2, s.getImagen());
+            psAgregar.setString(3, s.getLaboratorio());
+            psAgregar.setString(4, s.getCaracteristicas());
+            psAgregar.setString(5, s.getCodigo());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i>0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+        
+    }
+    
+    public boolean eliminarServicio(Servicio s){
+        
+        PreparedStatement psEliminar = null;
+        try {
+
+            psEliminar = conexion.prepareStatement(
+                    "DELETE FROM servicio WHERE codigo=(?);");
+            
+            psEliminar.setString(1, s.getCodigo());
+
+            Integer i = psEliminar.executeUpdate();
+
+            return i > 0;
+
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return false;
+        }
+    }
+                 
+    public ArrayList<Servicio> listarServicio(){
+        
+        ArrayList<Servicio> Servicios = new ArrayList<Servicio>();
+        PreparedStatement ps = null;
+        try{
+
+            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio WHERE visibilidad=1 ORDER BY codigo;");
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()){
+                Servicio s = new Servicio();
+
+                s.setCodigo(rs.getString("codigo"));
+                s.setNombre(rs.getString("nombre"));
+                s.setImagen(rs.getString("imagen"));
+                s.setLaboratorio(rs.getString("laboratorio"));
+                s.setCaracteristicas(rs.getString("caracteristicas"));
+                
+                Servicios.add(s);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        
+        return Servicios;
+    }
+    
+    public Servicio obtenerServicio(Servicio s){
+        PreparedStatement ps = null;
+        try{
+            ps = conexion.prepareStatement(
+                    "SELECT * FROM SERVICIO AS S WHERE S.CODIGO=?;");
+            ps.setString(1, s.getCodigo());
+            ResultSet rs = ps.executeQuery();
+            
+            // Si el Query es vacio, retorna null.
+            if (!rs.isBeforeFirst()) {
+                return null;
+            }             
+            
+            while (rs.next()) {
+                               
+                s.setCodigo(rs.getString("codigo"));
+                s.setNombre(rs.getString("nombre"));
+                s.setImagen(rs.getString("imagen"));
+                s.setLaboratorio(rs.getString("laboratorio"));
+                s.setCaracteristicas(rs.getString("caracteristicas"));
+
+            }
+            
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+            return null;
+        }
+                
+        return s;
+    }
+     
+    
 } //END DBMS.java
