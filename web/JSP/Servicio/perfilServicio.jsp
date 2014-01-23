@@ -66,7 +66,7 @@
                     <p><b>Código:</b> <bean:write name="Servicio" property="codigo"/>.</p>
                     <p><b>Nombre:</b> <bean:write name="Servicio" property="nombre"/>.</p>
                     <p><b>Laboratorio:</b>
-                        <html:link action="perfilLaboratorioL" paramId="laboratorio" paramName="Servicio" paramProperty="laboratorio">
+                        <html:link action="perfilLaboratorioL" paramId="codigo" paramName="Servicio" paramProperty="laboratorio">
                             <bean:write name="Servicio" property="laboratorio"/>
                         </html:link>
                     </p>

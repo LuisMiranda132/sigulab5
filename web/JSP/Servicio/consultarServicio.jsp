@@ -14,63 +14,85 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <style type="text/css" media="all">
             @import "CSS/system.base.css";
-        </style>
-        
-        <style type="text/css" media="all">
             @import "CSS/field.css";
             @import "CSS/user.css";    
             @import "CSS/views.css";
-        </style>
-        <style type="text/css" media="all">
             @import "CSS/ckeditor.css";
             @import "CSS/ctools.css";
-        </style>
-
-        <style type="text/css" media="all">
-            @import "CSS/layout.css";
-            @import "CSS/style_interno.css";
-            @import "CSS/table.css";
+            @import "CSS/print.css";
             @import "CSS/form.css";
             @import "CSS/colors.css";
+            @import "CSS/layout.css";
+            @import "CSS/style_table.css";
         </style>
-
-        <style type="text/css" media="print">
-            @import "CSS/print.css";
-        </style>       
+        <style type="text/css" title="currentStyle">
+            @import "CSS/demo_table_jui.css";
+            @import "themes/smoothness/jquery-ui-1.8.4.custom.css";
+            @import "CSS/shCore.css";
+            .ColVis {
+                float: left;
+                margin-bottom: 0
+            }
+            .dataTables_length {
+                width: auto;
+            }           
+        </style>
+        <script type="text/javascript" language="javascript" src="js/jquery.js"></script>
+        <script type="text/javascript" language="javascript" src="js/jquery-1.6.3.min.js"></script>
+        <script type="text/javascript" language="javascript" src="js/jquery.dataTables.js"></script>
+        <script type="text/javascript" language="javascript" src="js/shCore.js"></script>
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function() {
+                $('#example').dataTable( {
+                    "sDom": '<"H"Cfr>t<"F"ip>',
+                    "bJQueryUI": true,
+                    "sPaginationType": "full_numbers"
+                } );
+            } );
+        </script>
         <title>Consultar Servicio</title>
     </head>
-    <body style="width: 99%;">
-        <div class="titulo_formulario"> Consultar Servicio </div>        
 
         <table cellspacing='0'>
-            <!-- PRIMERA FILA -->
-            <thead>
-                <tr>
-                    <th>Código</th>
-                    <th>Nombre</th>
-                    <th>Laboratorio</th>
-                    <th>Modificar</th>                    
-                </tr>
-            </thead>
 
-            <!-- DATOS DE LOS LABORATORIOS-->
-            <logic:iterate name="ser" id="Servicio">
-                <tr>
-                    <td>
-                        <html:link action="perfilServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
-                            <bean:write name="Servicio" property="codigo"/>
-                        </html:link>
-                    </td>
-                    <td><bean:write name="Servicio" property="nombre"/></td>
-                    <td><bean:write name="Servicio" property="laboratorio"/></td>
-                    <td>
-                        <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
-                            <img src="images/modificar.png"/>
-	                </html:link>
-                    </td>                    
-                </tr>
-            </logic:iterate>
-        </table>
+    <body>
+    <body>
+        <div class="titulo_formulario">Consultar Servicio</div>
+
+        <div  class="ex_highlight_row">
+            <table cellpadding='0'  cellspacing='0' border='0' class="display" id="example">
+            <!--ENCABEZADO-->
+                <thead>
+                    <tr>
+                        <th>Código</th>
+                        <th>Nombre</th>
+                        <th>Laboratorio</th>
+                        <th>Modificar</th>                        
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <!-- DATOS DE LOS SERVICIOS-->
+                    <logic:iterate name="ser" id="Servicio">
+                        <tr>
+                            <td>
+                                <html:link action="perfilServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
+                                    <bean:write name="Servicio" property="codigo"/>
+                                </html:link>
+                            </td>
+                            <td><bean:write name="Servicio" property="nombre"/></td>
+                            <td><bean:write name="Servicio" property="laboratorio"/></td>
+                            <td>
+                                <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
+                                    <img src="images/modificar.png"/>
+                            </html:link>
+                            </td>                            
+                        </tr>
+                    </logic:iterate>                                                                       
+                </tbody>
+            </table>
+        </div>
+
         
         <html:link action="back">
             <h2>

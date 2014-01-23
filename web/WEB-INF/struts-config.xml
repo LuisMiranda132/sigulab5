@@ -52,14 +52,6 @@
             <forward name="success" path="/JSP/Personal/consultar_empleados.jsp"/>
         </action>
 
-        <action path="/consultarL_letra_jefe"  type="Actions.DB.consultarL_letra_jefe" scope="session" validate="false">
-            <forward name="success" path="/JSP/Personal/consultar_empleados_jefe_letra.jsp"/>
-        </action>
-        
-        <action path="/consultarL_letra_emp"  type="Actions.DB.consultarL_letra_emp" scope="session" validate="false">
-            <forward name="success" path="/JSP/Personal/consultar_empleados_letra.jsp"/>
-        </action>
-
         <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
             <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
