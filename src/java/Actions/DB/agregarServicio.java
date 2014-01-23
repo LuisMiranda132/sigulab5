@@ -27,6 +27,7 @@ public class agregarServicio extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
     private static final String FAILURE = "failure";
+    private static final String PRUEBA = "prueba";
     
     /**
      * This is the action called from the Struts framework.
@@ -49,25 +50,56 @@ public class agregarServicio extends org.apache.struts.action.Action {
         HttpSession session = request.getSession(true);
         DBMS instance;        
         
+        boolean existeServicio;
+        boolean agregoServicio;
+        
         String codigo;
         
         instance = DBMS.getInstance();
 
+        session.removeAttribute("servicioAgregado");
+        session.removeAttribute("operacionFallida");
+        session.removeAttribute("servicioExistente");        
+        
         // Validaciones del formulario.
-//        error = s.validateAgregar(mapping, request);
+        error = s.validateTodo(mapping, request);
 
         // Si hay errores en el formulario, retorna FAILURE.
-//        if (error.size() != 0) {
-//            saveErrors(request, error);
-//            return mapping.findForward(FAILURE);
-//        }
-        
-        codigo = s.getCodigo();
-        
+        if (error.size() != 0) {
+            saveErrors(request, error);
+            return mapping.findForward(FAILURE);
+        }
+                
         // Verifica que dicho servicio no haya sido agregado anteriormente.
+        existeServicio = (instance.obtenerServicio(s) != null);
         
+        // Si no existe el servicio, se agrega.
+        if (!existeServicio) {
         
+            agregoServicio = instance.agregarServicio(s);
+            System.out.println("agregoServicio " + agregoServicio);
+            
+            if (agregoServicio) {
+
+//                s.limpiarL();
+                session.setAttribute("servicioAgregado", s);
+                return mapping.findForward(SUCCESS);
+
+            } else {
+
+                session.setAttribute("operacionFallida", s);
+                return mapping.findForward(FAILURE);
+
+            }
+            
+        // Si el servicio existe, se notifica que dicho servicio ya ha sido
+        // agregado
+        } else {
+            
+            session.setAttribute("servicioExistente", s);
+            return mapping.findForward(FAILURE);             
+            
+        }
         
-        return mapping.findForward(SUCCESS);
     }
 }

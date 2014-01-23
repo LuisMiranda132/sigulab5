@@ -54,7 +54,6 @@ public class DBMS {
         return false;
     }
 
-
 /**
  * USUARIO - EMPLEADO
  * 
@@ -952,17 +951,17 @@ public class DBMS {
     // Main para pruebas sobre la base de datos.
     public static void main(String args[]) {
         
-        Empleado emp = new Empleado();
+        Servicio srv = new Servicio();
         
-        emp.setCargo("Jefe");
-        emp.setAno_ingreso("1991");
-        emp.setTipo_empleado("Jefe");
-        emp.setUsbid("09-10278");
+        srv.setCodigo("r");
+        srv.setNombre("r");
+        srv.setLaboratorio("LAB-A");
+        srv.setCaracteristicas("r");
         
         try {
             
             DBMS db = DBMS.getInstance();
-            boolean agrego = db.agregarEmpleado(emp);  
+            boolean agrego = db.agregarServicio(srv);  
             
             System.out.println(agrego);
             
@@ -974,6 +973,7 @@ public class DBMS {
     public boolean agregarServicio(Servicio s) {
         
         PreparedStatement psAgregar = null;
+        
         try {
             psAgregar = conexion.prepareStatement(
                     "INSERT INTO servicio VALUES (?,?,?,?,?);");
@@ -983,13 +983,13 @@ public class DBMS {
             psAgregar.setString(3, s.getImagen());
             psAgregar.setString(4, s.getLaboratorio());
             psAgregar.setString(5, s.getCaracteristicas());
-            
+
             Integer i = psAgregar.executeUpdate();
             
-            return i>0;
+            return i > 0;
             
-        }catch(SQLException ex){
-            ex.printStackTrace();;
+        } catch(SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
 

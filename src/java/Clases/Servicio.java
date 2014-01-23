@@ -66,20 +66,12 @@ public class Servicio extends org.apache.struts.action.ActionForm{
         ActionErrors errors = new ActionErrors();
         
         if(this.getCodigo().contentEquals("")||
-                this.getImagen().contentEquals("")||
+//                this.getImagen().contentEquals("")||
                 this.getLaboratorio().contentEquals("")||
                 this.getNombre().contentEquals("")||
                 this.getCaracteristicas().contentEquals("")){
             errors.add("error",new ActionMessage("error.laboratorio.vacio"));
         }
-        else{
-        }
-
-        /*
-        if(!this.getPagweb().matches("/^(http\:\/\/[a-zA-Z0-9_\-]+(?:\.[a-zA-Z0-9_\-]+)*\.[a-zA-Z]{2,4}(?:\/[a-zA-Z0-9_]+)*(?:\/[a-zA-Z0-9_]+\.[a-zA-Z]{2,4}(?:\?[a-zA-Z0-9_]+\=[a-zA-Z0-9_]+)?)?(?:\&[a-zA-Z0-9_]+\=[a-zA-Z0-9_]+)*)$/")){
-            error.add("error",new ActionMessage("error.laboratorio.web"));
-        }
-        */
         
         return errors;
     }

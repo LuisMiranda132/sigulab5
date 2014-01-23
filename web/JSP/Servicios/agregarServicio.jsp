@@ -53,6 +53,12 @@
                 El servicio ha sido agregado exitosamente.
             </center>
         </logic:present>
+        
+        <logic:present name="servicioExistente">
+            <center class="logic_failure" align="center">
+                El servicio ya ha sido agregado anteriormente.
+            </center>
+        </logic:present>        
     
         <logic:present name="operacionFallida">
             <center class="logic_failure" align="center">
@@ -61,7 +67,8 @@
         </logic:present>
         <!-- FIN LOGIC PRESENT </!-->    
         
-        <html:form action="agregarServicio" style="margin-left: 45px;">
+        <%--<html:form action="agregarServicio" style="margin-left: 45px;">--%>
+        <html:form action="agregarServicio" style="margin-left: 45px;">            
             <table border="0">
                 <tbody>
                     <tr>
@@ -85,28 +92,28 @@
                         </td>
                     </tr>
                     <tr>
-<!--
-                      <td> Imagen </td>
+                        <td>Imagen</td>
                         <td>
-                            <%--<html:select name="Laboratorio" property="sede">--%>
-                                <%--<html:option value="sartenejas">Sartenejas</html:option>--%>
-                                <%--<html:option value="litoral">Litoral</html:option>--%>
-                            <%--</html:select>--%>
+                            <br/>
+                            <html:file name="Servicio" property="imagen" size="50"/>
+                            <br/>
                         </td>
--->
                     </tr>
                     <tr>
                         <td> Laboratorio </td>
                         <td>
+                             <%--<html:select name="Servicio" property="laboratorio" >--%>
+                                 <%--<html:optionsCollection name="Empleado" property="usbid" />--%>
+                             <%--</html:select>--%>
                             <html:text styleClass="input_formulario" name="Servicio" property="laboratorio"/>
                             <div class="descripcion">
-                                Laboratorio <br>
+                                Nombre del Laboratorio <br>
                                 (i.e LAB A)
-                            </div>                              
+                            </div>                             
                         </td>
                     </tr>
                     <tr>
-                        <td> Caracter�sticas </td>
+                        <td> Características </td>
                         <td>
                             <html:textarea styleId="textarea" name="Servicio" property="caracteristicas"/>
                         </td>

@@ -6,8 +6,11 @@
 
 package Actions.DB;
 
+import Clases.Servicio;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -35,6 +38,15 @@ public class formularioServicio extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
+        
+        Servicio s = (Servicio) form;
+        HttpSession session = request.getSession(true);
+        
+        session.removeAttribute("servicioAgregado");
+        session.removeAttribute("operacionFallida");
+        session.removeAttribute("servicioExistente");
+        
+//        s.limpiarL();        
         
         return mapping.findForward(SUCCESS);
     }

@@ -176,7 +176,6 @@
             <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
             <forward name="failure" path="/JSP/Servicios/agregarServicio.jsp"/>            
         </action>
-        <action input="/agregarServicio" name="Servicio" path="/agregarServicio" scope="session" type="Actions.DB.agregarServicio"/>        
         
     </action-mappings>
     
