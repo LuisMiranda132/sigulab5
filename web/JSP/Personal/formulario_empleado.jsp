@@ -72,7 +72,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Tipo de Usuario * </td>
+                        <td> Tipo de Usuario </td>
                         <td>
                             <html:select name="Empleado" property="tipo_usuario">
                                 <html:option value=""></html:option>
@@ -81,7 +81,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Cargo </td>
+                        <td> Cargo <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Empleado" property="cargo"/>
                             <div class="descripcion">
@@ -91,7 +91,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Año de Ingreso </td>
+                        <td> Año de Ingreso <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Empleado" property="ano_ingreso"/>
                             <div class="descripcion">
