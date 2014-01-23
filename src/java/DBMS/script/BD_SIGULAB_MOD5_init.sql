@@ -77,7 +77,8 @@ CREATE TABLE SERVICIO (
     nombre          varchar(100)    NOT NULL, 
     imagen 	    varchar(100)    NOT NULL,
     laboratorio          varchar(10)     NOT NULL, -- De la forma LAB'X'
-    caracteristicas	varchar(2000)   NOT NULL,   
+    caracteristicas	varchar(2000)   NOT NULL,  
+    visibilidad     INTEGER         NOT NULL DEFAULT 1,
     CONSTRAINT pk_servicio PRIMARY KEY (codigo),
     CONSTRAINT fk_laboratorio FOREIGN KEY (laboratorio) REFERENCES laboratorio (codigo) on delete cascade
 );

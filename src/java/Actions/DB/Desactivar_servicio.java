@@ -8,22 +8,23 @@ package Actions.DB;
 
 import Clases.Servicio;
 import DBMS.DBMS;
-import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author luismiranda
+ * @author alejandro
  */
-public class consultarServicio extends org.apache.struts.action.Action {
+public class Desactivar_servicio extends org.apache.struts.action.Action {
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
-
+    private static final String FAILURE = "failure";
+    private static final String NULO = "nulo";
+    
+    
     /**
      * This is the action called from the Struts framework.
      *
@@ -38,15 +39,22 @@ public class consultarServicio extends org.apache.struts.action.Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
-        
-        HttpSession session = request.getSession(true);
  
-        ArrayList<Servicio> Servicios = DBMS.getInstance().listarServicio();
-        ArrayList<Servicio> ServiciosNoVisibles = DBMS.getInstance().listarServicioNoVisible();
+        DBMS db = DBMS.getInstance();
+                                
+        Servicio servicio = new Servicio();
+        servicio.setCodigo(request.getParameter("codigo"));
+        Servicio ser = db.obtenerServicio(servicio);
         
-        session.setAttribute("ser", Servicios);
-        session.setAttribute("sernov", ServiciosNoVisibles);
-        
-        return mapping.findForward(SUCCESS);
+        if (ser == null){
+            return mapping.findForward(NULO);
+        }else{
+            if (db.desactivarVisibilidadSer(ser)){
+                return mapping.findForward(SUCCESS);
+            } else{
+                return mapping.findForward(FAILURE);
+            }
+            
+        }
     }
 }

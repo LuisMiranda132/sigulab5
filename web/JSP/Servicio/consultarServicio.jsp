@@ -67,7 +67,8 @@
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Laboratorio</th>
-                        <th>Modificar</th>                        
+                        <th>Modificar</th> 
+                        <th>Visibilidad</th>
                     </tr>
                 </thead>
 
@@ -86,9 +87,35 @@
                                 <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
                                     <img src="images/modificar.png"/>
                             </html:link>
-                            </td>                            
+                            </td>      
+                            <td>
+                                <html:link onclick="javascript: return confirm('¿Está seguro desea desactivar la vista de este servicio?')" action="desactivarServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
+                                    <img src="images/ocultar.png" width="36"/>
+                                </html:link>
+                            </td>  
                         </tr>
-                    </logic:iterate>                                                                       
+                    </logic:iterate>   
+                    <logic:iterate name="sernov" id="Servicio">
+                        <tr>
+                            <td>
+                                <html:link action="perfilServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
+                                    <bean:write name="Servicio" property="codigo"/>
+                                </html:link>
+                            </td>
+                            <td><bean:write name="Servicio" property="nombre"/></td>
+                            <td><bean:write name="Servicio" property="laboratorio"/></td>
+                            <td>
+                                <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
+                                    <img src="images/modificar.png"/>
+                            </html:link>
+                            </td>      
+                            <td>
+                                <html:link onclick="javascript: return confirm('¿Está seguro desea activar la vista de este servicio?')" action="activarServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
+                                    <img src="images/activar.png" width="36"/>
+                                </html:link>
+                            </td>  
+                        </tr>
+                    </logic:iterate>    
                 </tbody>
             </table>
         </div>

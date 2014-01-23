@@ -173,7 +173,17 @@
             <forward name="success" path="/ConsultarLab_jefe.do"/>
             <forward name="failure" path="/ConsultarLab_jefe.do"/>
         </action>
-                
+        
+        <action path="/activarServicio" type="Actions.DB.Activar_servicio" scope="request" validate="false">
+            <forward name="success" path="/consultarServicio.do"/>
+            <forward name="failure" path="/consultarServicio.do"/>
+        </action>
+        
+        <action path="/desactivarServicio" type="Actions.DB.Desactivar_servicio" scope="request" validate="false">
+            <forward name="success" path="/consultarServicio.do"/>
+            <forward name="failure" path="/consultarServicio.do"/>
+        </action>                
+                                
         <action path="/ConsultarLab_jefe"  type="Actions.DB.ConsultarLab_jefe" scope="session" validate="false">
             <forward name="success" path="/JSP/Laboratorios/consultar_laboratorios_jefe.jsp"/>
         </action>

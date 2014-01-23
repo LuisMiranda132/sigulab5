@@ -26,6 +26,7 @@ public class Servicio extends org.apache.struts.action.ActionForm{
     private String caracteristicas;
     private String imagen;
     private String laboratorio;
+    private Integer visibilidad; 
     private List labs = new ArrayList<Laboratorio>();
         
     /**
@@ -36,6 +37,7 @@ public class Servicio extends org.apache.struts.action.ActionForm{
         this.nombre=null;
         this.imagen=null;
         this.laboratorio=null;
+        this.visibilidad=1;
         this.caracteristicas=null;
     }
     
@@ -118,6 +120,20 @@ public class Servicio extends org.apache.struts.action.ActionForm{
      */
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+    
+    /**
+     * @return the visibilidad
+     */
+    public Integer getVisibilidad() {
+        return visibilidad;
+    }
+
+    /**
+     * @param visibilidad the visibilidad to set
+     */
+    public void setVisibilidad(Integer visibilidad) {
+        this.visibilidad = visibilidad;
     }
 
     /**
