@@ -453,6 +453,18 @@ public class Empleado extends Usuario{
         return errors;
     }
     
+    public ActionErrors validateModificarEmpleado(ActionMapping mapping, HttpServletRequest request){
+        ActionErrors errors = new ActionErrors();
+        
+        errors = this.validateVacio(mapping, request);
+        
+        if (errors.size() <= 0) {
+            errors = this.validateCamposModificarEmpleado(mapping, request);
+        }
+        
+        return errors;
+    }    
+    
     public ActionErrors validateCamposAgregar(ActionMapping mapping, HttpServletRequest request) {
         
         ActionErrors errors = new ActionErrors();
@@ -481,7 +493,23 @@ public class Empleado extends Usuario{
         }
                 
         return errors;
-    }    
+    } 
+    
+    
+    public ActionErrors validateCamposModificarEmpleado(ActionMapping mapping, HttpServletRequest request) {
+        
+        ActionErrors errors = new ActionErrors();         
+                        
+        /*
+            Validacion anio Ingreso
+            4 Digitos
+        */
+        if (!(ano_ingreso.matches("\\d{4}"))) {
+            errors.add("errorUsbid", new ActionMessage("error.usuario.antiguedad"));
+        }
+                
+        return errors;
+    } 
     
     public ActionErrors validateAnoIngreso(ActionMapping mapping, HttpServletRequest request){
         ActionErrors errors = new ActionErrors();

@@ -107,6 +107,33 @@ public class DBMS {
         }
     }
     
+    public boolean modificarEmpleadoDesdeJefe(Empleado e){
+        
+        PreparedStatement psAgregar = null;
+        
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE EMPLEADO SET tipo_usuario=? , cargo=? , ano_ingreso=? , tipo_empleado=? , status=? WHERE usbid=?;"
+            );
+                        
+            psAgregar.setString(1, e.getTipo_usuario());
+            psAgregar.setString(2, e.getCargo());
+            psAgregar.setString(3, e.getAno_ingreso());
+            psAgregar.setString(4, e.getTipo_empleado());
+            psAgregar.setString(5, e.getStatus());
+            psAgregar.setString(6, e.getUsbid());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+        
+    }
+    
     public boolean agregarFormacion(Empleado e){
         PreparedStatement ps;
         Integer filas;

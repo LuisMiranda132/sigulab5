@@ -88,7 +88,16 @@
         
         <action path="/modificarLaboratorioL" name="Laboratorio"  type="Actions.DB.premodificarLab" validate="false">
             <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
-        </action>        
+        </action>       
+        
+        <action path="/formulario_empleado" name="Empleado" type="Actions.DB.preformulario_empleado" validate="false">
+           <forward name="success" path="/JSP/Personal/formulario_empleado.jsp"/>
+       </action>  
+               
+       <action path="/modificar_empleado" name="Empleado" type="Actions.DB.modificar_empleado" validate="false">
+           <forward name="success" path="/JSP/Personal/formulario_empleado.jsp"/>
+           <forward name="failure" path="/JSP/Personal/formulario_empleado.jsp"/>            
+       </action>           
                 
         <action path="/premodificar" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/JSP/Personal/modificar.jsp"/>
