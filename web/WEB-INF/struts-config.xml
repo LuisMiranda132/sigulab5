@@ -11,7 +11,6 @@
         <form-bean name="Usuario" type="Clases.Usuario"/>
         <form-bean name="Empleado" type="Clases.Empleado"/>
         <form-bean name="Laboratorio" type="Clases.Laboratorio"/>    
-        <form-bean name="Servicio" type="Clases.Servicio"/>
     </form-beans>
     
     <global-exceptions>
@@ -81,13 +80,9 @@
             
         </action>
         
-        <action path="/modificarServicioL" name="Servicio"  type="Actions.DB.premodificarServ" validate="false">
-            <forward name="success" path="/JSP/Servicio/modificarServ.jsp"/>
-        </action>
-        
         <action path="/modificarLaboratorioL" name="Laboratorio"  type="Actions.DB.premodificarLab" validate="false">
             <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
-        </action>        
+        </action>
                 
         <action path="/premodificar" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/JSP/Personal/modificar.jsp"/>
@@ -98,11 +93,6 @@
             <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
             <forward name="failure" path="/JSP/Laboratorios/premodificarLab.jsp"/>
         </action>
-        
-        <action path="/premodificarServ" name="Servicio"  type="Actions.DB.premodificarServ" validate="false">
-            <forward name="success" path="/JSP/Servicio/modificarServ.jsp"/>
-            <forward name="failure" path="/JSP/Servicio/premodificarServ.jsp"/>
-        </action>        
         
         <action path="/agregar" name="Empleado" type="Actions.DB.agregar" validate="false">
             <forward name="success" path="/JSP/Personal/agregar.jsp"/>
@@ -131,11 +121,6 @@
             <forward name="success" path="/JSP/Laboratorios/modificarLab.jsp"/>
             <forward name="failure" path="/JSP/Laboratorios/modificarLab.jsp"/>
         </action>
-       
-        <action path="/modificarServicio" name="Servicio" type="Actions.DB.modificarServicio" validate="false">
-            <forward name="success" path="/JSP/Servicio/modificarServ.jsp"/>
-            <forward name="failure" path="/JSP/Servicio/modificarServ.jsp"/>
-        </action>       
        
         <action path="/personal" type="Actions.personal" validate="false">
             <forward name="success" path="/JSP/Personal/Menu.jsp"/>
@@ -181,7 +166,7 @@
         <action path="/ConsultarLab_emp"  type="Actions.DB.ConsultarLab_emp" scope="session" validate="false">
             <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
-                
+        
     </action-mappings>
     
     <controller processorClass="org.apache.struts.tiles.TilesRequestProcessor"/>
