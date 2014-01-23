@@ -183,7 +183,7 @@
             <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
         
-        <action path="/formularioServicio" type="Actions.DB.formularioServicio" scope="session" validate="false">
+        <action path="/formularioServicio" name="Servicio" type="Actions.DB.formularioServicio" validate="false">
             <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
         </action>
         

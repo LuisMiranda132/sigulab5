@@ -46,7 +46,7 @@ public class formularioServicio extends org.apache.struts.action.Action {
         session.removeAttribute("operacionFallida");
         session.removeAttribute("servicioExistente");
         
-//        s.limpiarL();        
+        s.limpiar();        
         
         return mapping.findForward(SUCCESS);
     }

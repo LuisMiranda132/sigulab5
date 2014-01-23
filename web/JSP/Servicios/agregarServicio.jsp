@@ -67,7 +67,6 @@
         </logic:present>
         <!-- FIN LOGIC PRESENT </!-->    
         
-        <%--<html:form action="agregarServicio" style="margin-left: 45px;">--%>
         <html:form action="agregarServicio" style="margin-left: 45px;">            
             <table border="0">
                 <tbody>
@@ -77,7 +76,7 @@
                             <html:text styleClass="input_formulario" name="Servicio" property="codigo"/>
                             <div class="descripcion">
                                 Codigo del Servicio <br>
-                                (i.e ...)
+                                (i.e 001)
                             </div>
                         </td>
                     </tr>
@@ -87,7 +86,7 @@
                             <html:text styleClass="input_formulario" name="Servicio" property="nombre"/>
                             <div class="descripcion">
                                 Nombre del Servicio <br>
-                                (i.e ...)
+                                (i.e Analisis microestructural)
                             </div>                            
                         </td>
                     </tr>

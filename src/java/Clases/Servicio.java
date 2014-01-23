@@ -149,7 +149,7 @@ public class Servicio extends org.apache.struts.action.ActionForm{
     public void limpiar() {
         this.codigo = null;
         this.nombre = null;
-        this.setImagen(null);
+//        this.setImagen(null);
         this.caracteristicas = null;
         this.setLaboratorio(null);
     }

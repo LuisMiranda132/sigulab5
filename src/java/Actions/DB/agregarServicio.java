@@ -81,7 +81,7 @@ public class agregarServicio extends org.apache.struts.action.Action {
             
             if (agregoServicio) {
 
-//                s.limpiarL();
+                s.limpiar();
                 session.setAttribute("servicioAgregado", s);
                 return mapping.findForward(SUCCESS);
 
@@ -95,7 +95,7 @@ public class agregarServicio extends org.apache.struts.action.Action {
         // Si el servicio existe, se notifica que dicho servicio ya ha sido
         // agregado
         } else {
-            
+            s.limpiar();
             session.setAttribute("servicioExistente", s);
             return mapping.findForward(FAILURE);             
             
