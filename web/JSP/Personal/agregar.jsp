@@ -50,6 +50,7 @@
     </center>
 
     <!-- LOGIC PRESENT </!-->
+
         <logic:present name="usuarioAgregado">
             <center class="logic_success" align="center">
                 <h5>El usuario ha sido agregado exitosamente.</h5>
@@ -80,6 +81,7 @@
             </center>
         </logic:present>
         <!-- FIN LOGIC PRESENT </!-->
+
 
     <html:form action="agregar" style="margin-left: 45px;">
         <table border="0">

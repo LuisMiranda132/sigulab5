@@ -253,7 +253,6 @@
 </div>
 </html:form>
 
-
 <html:link action="back">
     <h2>
         << volver
