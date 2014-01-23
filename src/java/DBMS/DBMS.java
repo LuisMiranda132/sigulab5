@@ -1003,14 +1003,12 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE servicio SET nombre=? , imagen=? , laboratorio=? , caracteristicas=? where codigo=?;"
+                    "UPDATE servicio SET nombre=? , laboratorio=? where codigo=?;"
             );
 
             psAgregar.setString(1, s.getNombre());
-            psAgregar.setString(2, s.getImagen());
-            psAgregar.setString(3, s.getLaboratorio());
-            psAgregar.setString(4, s.getCaracteristicas());
-            psAgregar.setString(5, s.getCodigo());
+            psAgregar.setString(2, s.getLaboratorio());
+            psAgregar.setString(3, s.getCodigo());
             
             Integer i = psAgregar.executeUpdate();
             

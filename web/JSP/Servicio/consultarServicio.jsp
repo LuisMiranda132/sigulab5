@@ -49,6 +49,7 @@
                     <th>Código</th>
                     <th>Nombre</th>
                     <th>Laboratorio</th>
+                    <th>Modificar</th>                    
                 </tr>
             </thead>
 
@@ -62,6 +63,11 @@
                     </td>
                     <td><bean:write name="Servicio" property="nombre"/></td>
                     <td><bean:write name="Servicio" property="laboratorio"/></td>
+                    <td>
+                        <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
+                            <img src="images/modificar.png"/>
+	                </html:link>
+                    </td>                    
                 </tr>
             </logic:iterate>
         </table>

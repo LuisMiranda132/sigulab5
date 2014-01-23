@@ -6,10 +6,14 @@
 
 package Clases;
 
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.action.ActionMessage;
+import org.apache.struts.util.LabelValueBean;
 
 /**
  *
@@ -22,6 +26,7 @@ public class Servicio extends org.apache.struts.action.ActionForm{
     private String caracteristicas;
     private String imagen;
     private String laboratorio;
+    private List labs = new ArrayList<Laboratorio>();
         
     /**
      *
@@ -66,11 +71,14 @@ public class Servicio extends org.apache.struts.action.ActionForm{
         ActionErrors errors = new ActionErrors();
         
         if(this.getCodigo().contentEquals("")||
-                this.getImagen().contentEquals("")||
+       //         this.getImagen().contentEquals("")||
                 this.getLaboratorio().contentEquals("")||
-                this.getNombre().contentEquals("")||
-                this.getCaracteristicas().contentEquals("")){
-            errors.add("error",new ActionMessage("error.laboratorio.vacio"));
+                this.getNombre().contentEquals("")
+                )
+       //         ||
+       //         this.getCaracteristicas().contentEquals("")){
+                {
+            errors.add("error",new ActionMessage("error.servicio.vacio"));
         }
         else{
         }
@@ -124,6 +132,26 @@ public class Servicio extends org.apache.struts.action.ActionForm{
      */
     public void setCaracteristicas(String caracteristicas) {
         this.caracteristicas = caracteristicas;
+    }
+    
+        /**
+     * @return the labs
+     */
+    public Collection getLabs() {
+        return labs;
+    }
+
+    /**
+     * @param labs the labs to set
+     */
+    public void setLabs(List<Laboratorio> labs) {
+        this.labs = new ArrayList<Laboratorio>();
+
+        for (Laboratorio l:labs){
+            this.labs.add(
+                    new LabelValueBean(l.getNombre(),l.getCodigo())
+            );
+        }
     }
     
     public void limpiar() {
