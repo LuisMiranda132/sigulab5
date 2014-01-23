@@ -49,8 +49,12 @@
             <div id="container" class="container-16">
                 <!-- PARTE CENTRAL -->
                 <div id="content" class="column grid-10 push-3">
-                    <!--IMAGEN DEL USUARIO-->
-                    <figure class="img-border left marg_right1"><img src="images/user.png" width="60"/></figure>
+                    <!--IMAGEN DEL USUARIO-->                    
+                    <figure class="img-border left marg_right1">
+                        <logic:iterate name="user" id="Empleado">
+                            <img src="<bean:write name="Empleado" property="imagen"/>" width="60"/>
+                        </logic:iterate>
+                    </figure>
                     <!--USBID-->
                     Usuario:<b style="color:#126598;font-weight:bold" align="left">
                         <bean:write name="LoginForm" property="usbid"/>
@@ -99,7 +103,12 @@
                             <html:link action="ConsultarLab_emp" target="centro">
                                 <p>Consultar Laboratorios</p>
                             </html:link>
-                        </li>                        
+                        </li>            
+                        <li class="leaf">
+                            <html:link action="consultarServicio" target="centro">
+                                <p>Consultar Servicios</p>
+                            </html:link>
+                        </li>
                     </ul>
                 </div>
                 

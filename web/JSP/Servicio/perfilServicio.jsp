@@ -1,5 +1,5 @@
 <%-- 
-    Document: perfilLaboratorio
+    Document: perfilServicio
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -18,7 +18,7 @@
         </style>       
         <style type="text/css" media="all">
             @import "CSS/field.css";
-            @import "CSS/lab.css";    
+            @import "CSS/ser.css";    
             @import "CSS/views.css";
         </style>
         <style type="text/css" media="all">
@@ -56,20 +56,18 @@
     </head>
     <body>
     <br></br>
-        <logic:iterate name="lab" id="Laboratorio">
-            <div class="titulo_formulario"><bean:write name="Laboratorio" property="nombre"/></div>
-        </logic:iterate>         
-         
+        <logic:iterate name="ser" id="Servicio">
+            <div class="titulo_formulario"><bean:write name="Servicio" property="nombre"/></div>
+        </logic:iterate>                  
            
-        <logic:iterate name="lab" id="Laboratorio">
+        <logic:iterate name="ser" id="Servicio">
             <div class="wrapper">
                 <div class="perfil_tamano">
-                    <p></p>
-                    <p><b>Codigo:</b> <bean:write name="Laboratorio" property="codigo"/>.</p>
-                    <p><b>Nombre:</b> <bean:write name="Laboratorio" property="nombre"/>.</p>
-                    <p><b>Jefe:</b>
-                        <html:link styleId="jefe" action="perfilPersonalL" paramId="usbid" paramName="Laboratorio" paramProperty="jefe">
-                            <bean:write name="Laboratorio" property="jefe"/>
+                    <p><b>Código:</b> <bean:write name="Servicio" property="codigo"/>.</p>
+                    <p><b>Nombre:</b> <bean:write name="Servicio" property="nombre"/>.</p>
+                    <p><b>Laboratorio:</b>
+                        <html:link action="perfilLaboratorioL" paramId="codigo" paramName="Servicio" paramProperty="laboratorio">
+                            <bean:write name="Servicio" property="laboratorio"/>
                         </html:link>
                     </p>
                 </div>
@@ -81,22 +79,15 @@
             <div id="demopage">
                 <ul class="mctabs">
                     <li><a href="#view1">Descripción</a></li>
-                    <li><a href="#view2">Organigrama</a></li>
-                    <li><a href="#view3">Mapa de ubicación</a></li>
+                    <li><a href="#view2">Galería de fotos</a></li>
                 </ul>
 
                 <div class="panel-container">
                     <!--Primera pestana-->
                     <div id="view1" class="perfil_cuerpo">
-                        <logic:iterate name="lab" id="Laboratorio">
+                        <logic:iterate name="ser" id="Servicio">
                             <p></p>
-                            <p><b>Sede:</b> <bean:write name="Laboratorio" property="sede"/>.</p>
-                            <p><b>Ubicación:</b> <bean:write name="Laboratorio" property="ubicacion"/>.</p>
-                            <p><b>Correo:</b> <bean:write name="Laboratorio" property="correo"/>.</p>
-                            <p><b>Página web:</b> <bean:write name="Laboratorio" property="pagweb"/>.</p>
-                            <p><b>Teléfono:</b> <bean:write name="Laboratorio" property="telefono"/>.</p>
-                            <p><b>Fax:</b> <bean:write name="Laboratorio" property="fax"/>.</p>
-                            <p style="text-align:justify;"><bean:write name="Laboratorio" property="caracteristicas"/>.</p>
+                            <p style="text-align:justify;"><bean:write name="Servicio" property="caracteristicas"/>.</p>
                         </logic:iterate>
                     </div>        
 
@@ -104,17 +95,12 @@
                     <div id="view2" class="perfil_cuerpo">
                         <center><img src="images/construccion.png"/></center>
                     </div>
-
-                    <!--Tercera pestana-->
-                    <div id="view3" class="perfil_cuerpo">
-                        <center><img src="images/construccion.png"/></center>
-                    </div>
                 </div>
             </div>        
         
         <html:link action="back">
             <h2>
-                << volver
+                << Volver
             </h2>
         </html:link>
     </body>

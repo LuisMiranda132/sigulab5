@@ -12,6 +12,9 @@ import Clases.LoginForm;
 import Clases.Empleado;
 import Clases.Usuario;
 
+import java.util.ArrayList;
+import DBMS.DBMS;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -71,7 +74,16 @@ public class LoginAction extends org.apache.struts.action.Action {
         db = DBMS.getInstance();
 
         user = db.obtenerEmpleado(dummy);
-        
+
+        Empleado usuario = new Empleado();
+        usuario.setUsbid(bean.getUsbid());
+
+        //Empleado
+        ArrayList<Empleado> EmpleadoPerfil = new ArrayList<Empleado>();
+        Empleado emp = DBMS.getInstance().obtenerEmpleado(usuario);
+        EmpleadoPerfil.add(emp);
+
+        session.setAttribute("user", EmpleadoPerfil);
         session.setAttribute("usbid", bean.getUsbid());
         
         if ((user == null) || (user.getVisibilidad() == 0)) {

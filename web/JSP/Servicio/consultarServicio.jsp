@@ -1,5 +1,5 @@
 <%-- 
-    Document: consultar_empleados
+    Document: consultarServicio
 --%>
 
 <%@ taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
@@ -50,48 +50,49 @@
                 } );
             } );
         </script>
-        <title>Consultar Empleados</title>
+        <title>Consultar Servicio</title>
     </head>
+
+        <table cellspacing='0'>
 
     <body>
     <body>
-        <div class="titulo_formulario">Consultar Empleados</div>
+        <div class="titulo_formulario">Consultar Servicio</div>
 
         <div  class="ex_highlight_row">
             <table cellpadding='0'  cellspacing='0' border='0' class="display" id="example">
             <!--ENCABEZADO-->
                 <thead>
                     <tr>
-                        <th>Perfil</th>
+                        <th>Código</th>
                         <th>Nombre</th>
-                        <th>Correo</th>
-                        <th>Cargo</th>
-                        <th>Área laboral</th>
-                        <th>Extensión</th>
                         <th>Laboratorio</th>
+                        <th>Modificar</th>                        
                     </tr>
                 </thead>
 
                 <tbody>
-                    <!-- Usuarios visibles -->
-                    <logic:iterate name="user" id="Empleado">                               
+                    <!-- DATOS DE LOS SERVICIOS-->
+                    <logic:iterate name="ser" id="Servicio">
                         <tr>
                             <td>
-                                <html:link action="perfilPersonalL" paramId="usbid" paramName="Empleado" paramProperty="usbid">
-                                    <img src="<bean:write name="Empleado" property="imagen"/>" width="36"/>
+                                <html:link action="perfilServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
+                                    <bean:write name="Servicio" property="codigo"/>
                                 </html:link>
-                            </td>                   
-                            <td><bean:write name="Empleado" property="nombres"/> <bean:write name="Empleado" property="apellidos"/></td>
-                            <td><bean:write name="Empleado" property="correo"/></td>
-                            <td><bean:write name="Empleado" property="cargo"/></td>
-                            <td><bean:write name="Empleado" property="area_laboral"/></td>
-                            <td><bean:write name="Empleado" property="extension"/></td>
-                            <td><bean:write name="Empleado" property="laboratorio"/></td>                    
-                        </tr>  
-                    </logic:iterate>                                                
+                            </td>
+                            <td><bean:write name="Servicio" property="nombre"/></td>
+                            <td><bean:write name="Servicio" property="laboratorio"/></td>
+                            <td>
+                                <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
+                                    <img src="images/modificar.png"/>
+                            </html:link>
+                            </td>                            
+                        </tr>
+                    </logic:iterate>                                                                       
                 </tbody>
             </table>
         </div>
+
         
         <html:link action="back">
             <h2>

@@ -57,8 +57,13 @@
             <div id="container" class="container-16">                
                 <!-- PARTE CENTRAL -->
                 <div id="content" class="column grid-10 push-3">
-                    <!--IMAGEN DEL USUARIO-->
-                    <figure class="img-border left marg_right1"><img src="images/user.png" width="60"/></figure>
+                    <!--IMAGEN DEL USUARIO-->                    
+                    <figure class="img-border left marg_right1">
+                        <logic:iterate name="user" id="Empleado">
+                            <img src="<bean:write name="Empleado" property="imagen"/>" width="60"/>
+                        </logic:iterate>
+                    </figure>
+                    
                     <!--USBID-->
                     Usuario:<b style="color:#126598;font-weight:bold" align="left">
                         <bean:write name="LoginForm" property="usbid"/>
@@ -112,7 +117,7 @@
                                         <p>Consultar Personal</p>
                                     </html:link>
                                 </li>
-                            </ul></br>
+                            </ul><br></br>
                         </div>
                         <h5 style="cursor: pointer;">Gestionar Laboratorios</h5>
                         <div>
@@ -127,23 +132,23 @@
                                         <p>Consultar Laboratorios</p>
                                     </html:link>
                                 </li>
-                            </ul> </br>
-                        </div>  
+                            </ul><br></br>
+                        </div>
                         <h5 style="cursor: pointer;">Gestionar Servicios</h5>
                         <div>
-                            <ul class="menu">
+                            <ul class="menu">    
                                 <li class="first leaf">
                                     <html:link action="formularioServicio" target="centro">
                                         <p>Agregar Servicio</p>
                                     </html:link>
-                                </li>                      
+                                </li>              
                                 <li class="leaf">
-                                    <html:link action="" target="centro">
+                                    <html:link action="consultarServicio" target="centro">
                                         <p>Consultar Servicios</p>
                                     </html:link>
                                 </li>
-                            </ul> </br>
-                        </div>
+                            </ul><br></br>
+                        </div>                      
                     </div>
                 </div>
 

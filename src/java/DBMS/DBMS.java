@@ -234,7 +234,7 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1;";
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio, E.imagen FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1;";
             ps = conexion.prepareStatement(consulta);
                     
 
@@ -250,6 +250,7 @@ public class DBMS {
                 u.setArea_laboral(rs.getString("area_laboral"));
                 u.setExtension(rs.getString("extension"));
                 u.setLaboratorio(rs.getString("laboratorio"));
+                u.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(u);
             }
@@ -265,7 +266,7 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=0;";
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio, E.imagen FROM USUARIO AS U,EMPLEADO AS E WHERE E.USBID=U.USBID AND E.VISIBILIDAD=0;";
             ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
             while (rs.next()){
@@ -279,6 +280,7 @@ public class DBMS {
                 u.setArea_laboral(rs.getString("area_laboral"));
                 u.setExtension(rs.getString("extension"));
                 u.setLaboratorio(rs.getString("laboratorio"));
+                u.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(u);
             }
@@ -314,7 +316,8 @@ public class DBMS {
                 e.setStatus(rs.getString("status"));
                 e.setExtension(rs.getString("extension"));
                 e.setArea_laboral(rs.getString("area_laboral"));
-                e.setLaboratorio(rs.getString("laboratorio")); 
+                e.setLaboratorio(rs.getString("laboratorio"));
+                e.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(e);
             }
@@ -330,7 +333,7 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E " 
+            String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio, E.imagen FROM USUARIO AS U,EMPLEADO AS E " 
                                 + "WHERE E.USBID=U.USBID AND E.VISIBILIDAD=1 AND U.apellidos LIKE '" + letra + "%';";
             ps = conexion.prepareStatement(consulta);
 
@@ -345,7 +348,8 @@ public class DBMS {
                 u.setCargo(rs.getString("cargo"));
                 u.setArea_laboral(rs.getString("area_laboral"));
                 u.setExtension(rs.getString("extension"));
-                u.setLaboratorio(rs.getString("laboratorio")); 
+                u.setLaboratorio(rs.getString("laboratorio"));
+                u.setImagen(rs.getString("imagen"));
                 
                 Empleados.add(u);
             }
@@ -361,7 +365,7 @@ public class DBMS {
         ArrayList<Empleado> Empleados = new ArrayList<Empleado>();
         PreparedStatement ps = null;
         try{
-             String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio FROM USUARIO AS U,EMPLEADO AS E " 
+             String consulta = "SELECT U.usbid, U.nombres, U.apellidos, E.correo, E.cargo, E.area_laboral, E.extension, E.laboratorio, E.imagen FROM USUARIO AS U,EMPLEADO AS E " 
                                 + "WHERE E.USBID = U.USBID AND E.VISIBILIDAD = 0 AND U.apellidos LIKE '" + letra + "%';";
             ps = conexion.prepareStatement(consulta);
             ResultSet rs = ps.executeQuery();
@@ -999,14 +1003,12 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE servicio SET nombre=? , imagen=? , laboratorio=? , caracteristicas=? where codigo=?;"
+                    "UPDATE servicio SET nombre=? , laboratorio=? where codigo=?;"
             );
 
             psAgregar.setString(1, s.getNombre());
-            psAgregar.setString(2, s.getImagen());
-            psAgregar.setString(3, s.getLaboratorio());
-            psAgregar.setString(4, s.getCaracteristicas());
-            psAgregar.setString(5, s.getCodigo());
+            psAgregar.setString(2, s.getLaboratorio());
+            psAgregar.setString(3, s.getCodigo());
             
             Integer i = psAgregar.executeUpdate();
             
@@ -1045,7 +1047,7 @@ public class DBMS {
         PreparedStatement ps = null;
         try{
 
-            ps = conexion.prepareStatement("SELECT codigo, nombre, correo, pagweb FROM laboratorio WHERE visibilidad=1 ORDER BY codigo;");
+            ps = conexion.prepareStatement("SELECT codigo, nombre, imagen, laboratorio, caracteristicas FROM servicio ORDER BY codigo;");
 
             ResultSet rs = ps.executeQuery();
 

@@ -6,16 +6,12 @@
 
 package Actions.DB;
 
-import Clases.Empleado;
-import Clases.LoginForm;
-import java.util.ArrayList;
-import java.util.List;
+import Clases.Servicio;
 import DBMS.DBMS;
-
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
-import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
@@ -24,11 +20,10 @@ import org.apache.struts.action.ActionMapping;
  *
  * @author luismiranda
  */
-public class consultarL_letra_emp extends org.apache.struts.action.Action {
-    
+public class consultarServicio extends org.apache.struts.action.Action {
+    /* forward name="success" path="" */
     private static final String SUCCESS = "success";
-    private static final String FAILURE = "failure";
-    
+
     /**
      * This is the action called from the Struts framework.
      *
@@ -45,19 +40,11 @@ public class consultarL_letra_emp extends org.apache.struts.action.Action {
             throws Exception {
         
         HttpSession session = request.getSession(true);
-
-        String letra = request.getParameter("param");
-
-        List<String> letraLista = new ArrayList<String>();
-        letraLista.add(letra); 
-
-        ArrayList<Empleado> Usuarios = DBMS.getInstance().listarEmpleadosVisiblesLetra(letra);
+ 
+        ArrayList<Servicio> Servicios = DBMS.getInstance().listarServicio();
         
-        session.setAttribute("user", Usuarios);
-        session.setAttribute("letraLista", letraLista);
-                
+        session.setAttribute("ser", Servicios);
+        
         return mapping.findForward(SUCCESS);
     }
-        
-    
 }
