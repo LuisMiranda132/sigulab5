@@ -78,7 +78,7 @@
         <!-- LOGIC PRESENT </!-->
         <logic:present name="errorCredenciales">
             <center class="logic_failure" align="center">
-                Credenciales Invalidas.
+                <h1>Credenciales Invalidas.</h1>
             </center>
         </logic:present>
         <!-- LOGIC PRESENT </!-->

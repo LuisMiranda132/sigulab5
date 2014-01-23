@@ -49,7 +49,7 @@
 
         <logic:present name="lologreA">
             <center class="logic_success" align="center">
-                El laboratorio ha sido agregado exitosamente.
+                <h5>El laboratorio ha sido agregado exitosamente.</h5>
             </center>
         </logic:present>    
     

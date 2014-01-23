@@ -52,31 +52,31 @@
         <!-- LOGIC PRESENT </!-->
         <logic:present name="usuarioAgregado">
             <center class="logic_success" align="center">
-                El usuario ha sido agregado exitosamente.
+                <h5>El usuario ha sido agregado exitosamente.</h5>
             </center>
         </logic:present>
     
         <logic:present name="usuarioInexistente">
             <center class="logic_failure" align="center">
-                Usbid invalido.
+                <h5>Usbid invalido.</h5>
             </center>
         </logic:present>
     
         <logic:present name="usuarioExistente">
             <center class="logic_failure" align="center">
-                El usuario ya ha sido agregado como empleado.
+                <h5>El usuario ya ha sido agregado como empleado.</h5>
             </center>
         </logic:present>
     
         <logic:present name="tipoUsuarioInvalido">
             <center class="logic_failure" align="center">
-                El tipo de usuario es invalido.
+                <h5>El tipo de usuario es invalido.</h5>
             </center>
         </logic:present>
     
         <logic:present name="operacionFallida">
             <center class="logic_failure" align="center">
-                Ocurrio un error durante la operacion, intente de nuevo.
+                <h5>Ocurrio un error durante la operacion, intente de nuevo.</h5>
             </center>
         </logic:present>
         <!-- FIN LOGIC PRESENT </!-->
