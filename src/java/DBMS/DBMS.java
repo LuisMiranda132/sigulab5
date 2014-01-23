@@ -87,17 +87,18 @@ public class DBMS {
         PreparedStatement psAgregar = null;
         try {
             psAgregar = conexion.prepareStatement(
-                    "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , area_laboral=? , extension=? , laboratorio=?, imagen=? WHERE usbid=?;"
+                    "UPDATE EMPLEADO SET correo=? , direccion=? , telefono=? , ano_ingreso=? , area_laboral=? , extension=? , laboratorio=?, imagen=? WHERE usbid=?;"
             );
                         
             psAgregar.setString(1, e.getCorreo());
             psAgregar.setString(2, e.getDireccion());
             psAgregar.setString(3, e.getTelefono());
-            psAgregar.setString(4, e.getArea_laboral());
-            psAgregar.setString(5, e.getExtension());
-            psAgregar.setString(6, e.getLaboratorio());
-            psAgregar.setString(7, e.getImagen());
-            psAgregar.setString(8, e.getUsbid());
+            psAgregar.setString(4, e.getAno_ingreso());
+            psAgregar.setString(5, e.getArea_laboral());
+            psAgregar.setString(6, e.getExtension());
+            psAgregar.setString(7, e.getLaboratorio());
+            psAgregar.setString(8, e.getImagen());
+            psAgregar.setString(9, e.getUsbid());
             Integer i = psAgregar.executeUpdate();
             
             return i>0;
