@@ -69,6 +69,7 @@
                         <th>Área laboral</th>
                         <th>Extensión</th>
                         <th>Laboratorio</th>
+                        <th>Modificar</th>
                         <th>Visibilidad</th>
                     </tr>
                 </thead>
