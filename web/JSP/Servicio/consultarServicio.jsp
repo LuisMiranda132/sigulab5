@@ -53,6 +53,8 @@
         <title>Consultar Servicio</title>
     </head>
 
+        <table cellspacing='0'>
+
     <body>
     <body>
         <div class="titulo_formulario">Consultar Servicio</div>
@@ -65,6 +67,7 @@
                         <th>Código</th>
                         <th>Nombre</th>
                         <th>Laboratorio</th>
+                        <th>Modificar</th>                        
                     </tr>
                 </thead>
 
@@ -79,11 +82,17 @@
                             </td>
                             <td><bean:write name="Servicio" property="nombre"/></td>
                             <td><bean:write name="Servicio" property="laboratorio"/></td>
+                            <td>
+                                <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
+                                    <img src="images/modificar.png"/>
+                            </html:link>
+                            </td>                            
                         </tr>
                     </logic:iterate>                                                                       
                 </tbody>
             </table>
         </div>
+
         
         <html:link action="back">
             <h2>
