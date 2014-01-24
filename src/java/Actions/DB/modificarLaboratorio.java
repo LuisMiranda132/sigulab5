@@ -74,6 +74,18 @@ public class modificarLaboratorio extends org.apache.struts.action.Action {
 	    }
             
             if(!("").equals(imagen.getFileName())){
+                if(!imagen.getFileName().matches("[^\s]+(\.(?i)(jpg|png))$")){
+                    error.add("error",new ActionMessage("error.laboratorio.imagen"));
+                    saveErrors(request, error);
+                    session.removeAttribute("lologre");
+                    return mapping.findForward(FAILURE);
+                } else if(imagen.getFileSize()>524288){
+                    error.add("error",new ActionMessage("error.laboratorio.imagen"));
+                    saveErrors(request, error);
+                    session.removeAttribute("lologre");
+                    return mapping.findForward(FAILURE);
+                }
+                
                 String fileName = l.getCodigo();
             
                 File newFile = new File(path,fileName);

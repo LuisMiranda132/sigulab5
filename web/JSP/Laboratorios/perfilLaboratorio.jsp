@@ -102,7 +102,9 @@
 
                     <!--Segunda pestana-->
                     <div id="view2" class="perfil_cuerpo">
-                        <center><img src="images/construccion.png"/></center>
+                        <logic:iterate name="lab" id="Laboratorio">
+                        <center><img src="<bean:write name="Laboratorio" property="imagen"/>"/></center>
+                        </logic:iterate>
                     </div>
 
                     <!--Tercera pestana-->

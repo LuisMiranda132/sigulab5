@@ -63,7 +63,17 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
             FormFile imagen = u.getImagenfile();
             
             if(imagen.getFileSize()==0){
-                u.setImagen("images/user.png");
+                u.setImagen("images/construccion.png");
+            }else if(!imagen.getFileName().matches("[^\s]+(\.(?i)(jpg|png)$")){
+                error.add("error",new ActionMessage("error.laboratorio.imagen"));
+                saveErrors(request, error);
+                session.removeAttribute("lologreA");
+                return mapping.findForward(FAILURE);
+            } else if(imagen.getFileSize()>524288){
+                error.add("error",new ActionMessage("error.laboratorio.imagen"));
+                saveErrors(request, error);
+                session.removeAttribute("lologreA");
+                return mapping.findForward(FAILURE);
             }else{
                 String path = getServlet().getServletContext().getRealPath("/")+"images/perfiles";
                 File folder = new File(path);

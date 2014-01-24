@@ -19,6 +19,7 @@ import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.action.ActionMessage;
 import org.apache.struts.upload.FormFile;
 
 /**
@@ -132,6 +133,17 @@ public class modificar extends org.apache.struts.action.Action {
 	    }
             
             if(!("").equals(imagen.getFileName())){
+                if(!imagen.getFileName().matches("[^\s]+(\.(?i)(jpg|png))$")){
+                    error.add("error",new ActionMessage("error.laboratorio.imagen"));
+                    saveErrors(request, error);
+                    session.removeAttribute("lologreA");
+                    return mapping.findForward(FAILURE);
+                } else if(imagen.getFileSize()>524288){
+                    error.add("error",new ActionMessage("error.laboratorio.imagen"));
+                    saveErrors(request, error);
+                    session.removeAttribute("lologreA");
+                    return mapping.findForward(FAILURE);
+                }
                 String fileName = u.getUsbid();
             
                 File newFile = new File(path,fileName);
