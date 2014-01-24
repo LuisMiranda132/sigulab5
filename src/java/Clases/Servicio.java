@@ -27,6 +27,7 @@ public class Servicio extends org.apache.struts.action.ActionForm{
     private String imagen;
     private String laboratorio;
     private Integer visibilidad; 
+
     private List labs = new ArrayList<Laboratorio>();
         
     /**
@@ -82,14 +83,6 @@ public class Servicio extends org.apache.struts.action.ActionForm{
                 {
             errors.add("error",new ActionMessage("error.servicio.vacio"));
         }
-        else{
-        }
-
-        /*
-        if(!this.getPagweb().matches("/^(http\:\/\/[a-zA-Z0-9_\-]+(?:\.[a-zA-Z0-9_\-]+)*\.[a-zA-Z]{2,4}(?:\/[a-zA-Z0-9_]+)*(?:\/[a-zA-Z0-9_]+\.[a-zA-Z]{2,4}(?:\?[a-zA-Z0-9_]+\=[a-zA-Z0-9_]+)?)?(?:\&[a-zA-Z0-9_]+\=[a-zA-Z0-9_]+)*)$/")){
-            error.add("error",new ActionMessage("error.laboratorio.web"));
-        }
-        */
         
         return errors;
     }
@@ -173,7 +166,7 @@ public class Servicio extends org.apache.struts.action.ActionForm{
     public void limpiar() {
         this.codigo = null;
         this.nombre = null;
-        this.setImagen(null);
+//        this.setImagen(null);
         this.caracteristicas = null;
         this.setLaboratorio(null);
     }

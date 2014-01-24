@@ -47,6 +47,7 @@
     </center>
 
     <logic:present name="lologre">
+
             <center class="logic_success" align="center">
                 <h5>El perfil ha sido modificado exitosamente.</h5>
             </center>

@@ -69,6 +69,7 @@
                         <th>Área laboral</th>
                         <th>Extensión</th>
                         <th>Laboratorio</th>
+                        <th>Modificar</th>
                         <th>Visibilidad</th>
                     </tr>
                 </thead>
@@ -88,7 +89,12 @@
                             <td><bean:write name="Empleado" property="area_laboral"/></td>
                             <td><bean:write name="Empleado" property="extension"/></td>
                             <td><bean:write name="Empleado" property="laboratorio"/></td>                    
-                            <td>                        
+                            <td>                                           
+                                <html:link action="formulario_empleado" target="centro" paramName="Empleado" paramProperty="usbid" paramId="usbid">
+                                    <img src="images/modificar.png"/>
+                                </html:link>                                
+                            </td>        
+                            <td>              
                                 <html:link onclick="javascript: return confirm('¿Está seguro que desea ocultar la vista de este usuario?')" action="desactivar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                                     <img src="images/ocultar.png" width="36"/>
                                 </html:link>                        
@@ -110,6 +116,11 @@
                             <td><bean:write name="Empleado" property="area_laboral"/></td>
                             <td><bean:write name="Empleado" property="extension"/></td>
                             <td><bean:write name="Empleado" property="laboratorio"/></td>
+                            <td>
+                                <html:link action="formulario_empleado" target="centro" paramName="Empleado" paramProperty="usbid" paramId="usbid">
+                                    <img src="images/modificar.png"/>
+                                </html:link>                                
+                            </td>    
                             <td>
                                 <html:link onclick="javascript: return confirm('¿Está seguro que desea activar la vista de este usuario?')" action="activar" paramId="usbid" paramName="Empleado" paramProperty="usbid">
                                     <img src="images/activar.png" width="36"/>

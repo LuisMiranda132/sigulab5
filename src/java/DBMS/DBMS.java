@@ -54,7 +54,6 @@ public class DBMS {
         return false;
     }
 
-
 /**
  * USUARIO - EMPLEADO
  * 
@@ -107,6 +106,33 @@ public class DBMS {
             ex.printStackTrace();;
             return false;
         }
+    }
+    
+    public boolean modificarEmpleadoDesdeJefe(Empleado e){
+        
+        PreparedStatement psAgregar = null;
+        
+        try {
+            psAgregar = conexion.prepareStatement(
+                    "UPDATE EMPLEADO SET tipo_usuario=? , cargo=? , ano_ingreso=? , tipo_empleado=? , status=? WHERE usbid=?;"
+            );
+                        
+            psAgregar.setString(1, e.getTipo_usuario());
+            psAgregar.setString(2, e.getCargo());
+            psAgregar.setString(3, e.getAno_ingreso());
+            psAgregar.setString(4, e.getTipo_empleado());
+            psAgregar.setString(5, e.getStatus());
+            psAgregar.setString(6, e.getUsbid());
+            
+            Integer i = psAgregar.executeUpdate();
+            
+            return i > 0;
+            
+        }catch(SQLException ex){
+            ex.printStackTrace();;
+            return false;
+        }
+        
     }
     
     public boolean agregarFormacion(Empleado e){
@@ -957,17 +983,17 @@ public class DBMS {
     // Main para pruebas sobre la base de datos.
     public static void main(String args[]) {
         
-        Empleado emp = new Empleado();
+        Servicio srv = new Servicio();
         
-        emp.setCargo("Jefe");
-        emp.setAno_ingreso("1991");
-        emp.setTipo_empleado("Jefe");
-        emp.setUsbid("09-10278");
+        srv.setCodigo("r");
+        srv.setNombre("r");
+        srv.setLaboratorio("LAB-A");
+        srv.setCaracteristicas("r");
         
         try {
             
             DBMS db = DBMS.getInstance();
-            boolean agrego = db.agregarEmpleado(emp);  
+            boolean agrego = db.agregarServicio(srv);  
             
             System.out.println(agrego);
             
@@ -979,6 +1005,7 @@ public class DBMS {
     public boolean agregarServicio(Servicio s) {
         
         PreparedStatement psAgregar = null;
+        
         try {
             psAgregar = conexion.prepareStatement(
                     "INSERT INTO servicio VALUES (?,?,?,?,?,?);");
@@ -989,13 +1016,13 @@ public class DBMS {
             psAgregar.setString(4, s.getLaboratorio());
             psAgregar.setString(5, s.getCaracteristicas());
             psAgregar.setInt(6, 1);
-            
+
             Integer i = psAgregar.executeUpdate();
             
-            return i>0;
+            return i > 0;
             
-        }catch(SQLException ex){
-            ex.printStackTrace();;
+        } catch(SQLException ex) {
+            ex.printStackTrace();
             return false;
         }
 
@@ -1118,6 +1145,7 @@ public class DBMS {
         try{
 
             ps = conexion.prepareStatement("SELECT codigo, nombre, imagen, laboratorio, caracteristicas FROM servicio WHERE visibilidad=0 ORDER BY codigo;");
+
 
             ResultSet rs = ps.executeQuery();
 

@@ -75,7 +75,7 @@ CREATE TABLE LABORATORIO (
 CREATE TABLE SERVICIO (	
     codigo          varchar(10)     NOT NULL, 
     nombre          varchar(100)    NOT NULL, 
-    imagen 	    varchar(100)    NOT NULL,
+    imagen 	    varchar(100),
     laboratorio          varchar(10)     NOT NULL, -- De la forma LAB'X'
     caracteristicas	varchar(2000)   NOT NULL,  
     visibilidad     INTEGER         NOT NULL DEFAULT 1,

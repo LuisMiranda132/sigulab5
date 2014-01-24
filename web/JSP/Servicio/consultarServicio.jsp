@@ -86,7 +86,7 @@
                             <td>
                                 <html:link action="modificarServicioL" target="centro" paramName="Servicio" paramProperty="codigo" paramId="codigo">
                                     <img src="images/modificar.png"/>
-                            </html:link>
+                                </html:link>
                             </td>      
                             <td>
                                 <html:link onclick="javascript: return confirm('¿Está seguro desea desactivar la vista de este servicio?')" action="desactivarServicio" paramId="codigo" paramName="Servicio" paramProperty="codigo">
@@ -116,6 +116,7 @@
                             </td>  
                         </tr>
                     </logic:iterate>    
+
                 </tbody>
             </table>
         </div>

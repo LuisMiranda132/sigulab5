@@ -7,8 +7,7 @@
 package Actions.DB;
 
 import Clases.Servicio;
-import DBMS.DBMS;
-import java.util.ArrayList;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
@@ -18,9 +17,10 @@ import org.apache.struts.action.ActionMapping;
 
 /**
  *
- * @author luismiranda
+ * @author michelle
  */
-public class consultarServicio extends org.apache.struts.action.Action {
+public class formularioServicio extends org.apache.struts.action.Action {
+
     /* forward name="success" path="" */
     private static final String SUCCESS = "success";
 
@@ -39,14 +39,14 @@ public class consultarServicio extends org.apache.struts.action.Action {
             HttpServletRequest request, HttpServletResponse response)
             throws Exception {
         
+        Servicio s = (Servicio) form;
         HttpSession session = request.getSession(true);
- 
-        ArrayList<Servicio> Servicios = DBMS.getInstance().listarServicio();
-        ArrayList<Servicio> ServiciosNoVisibles = DBMS.getInstance().listarServicioNoVisible();
         
-        session.setAttribute("ser", Servicios);
-        session.setAttribute("sernov", ServiciosNoVisibles);
-
+        session.removeAttribute("servicioAgregado");
+        session.removeAttribute("operacionFallida");
+        session.removeAttribute("servicioExistente");
+        
+        s.limpiar();        
         
         return mapping.findForward(SUCCESS);
     }

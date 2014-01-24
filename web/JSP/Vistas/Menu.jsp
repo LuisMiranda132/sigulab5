@@ -138,7 +138,10 @@
                         <div>
                             <ul class="menu">    
                                 <li class="first leaf">
-                                    <p>Agregar Servicio</p>
+
+                                    <html:link action="formularioServicio" target="centro">
+                                        <p>Agregar Servicio</p>
+                                    </html:link>
                                 </li>              
                                 <li class="leaf">
                                     <html:link action="consultarServicio" target="centro">

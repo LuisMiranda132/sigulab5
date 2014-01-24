@@ -87,7 +87,8 @@
         <table border="0">
             <tbody>
                 <tr>
-                    <td> UsbId </td>
+                    <td> UsbId <span style='color:red'>*</span></td>
+
                     <td>
                         <html:text styleClass="input_formulario" name="Empleado" property="usbid"/>
                         <div class="descripcion">
@@ -114,7 +115,8 @@
                     </td>
                 </tr>   
                 <tr>
-                    <td> Cargo </td>
+                    <td> Cargo <span style='color:red'>*</span></td>
+
                     <td>
                         <html:text styleClass="input_formulario" name="Empleado" property="cargo"/>
                         <div class="descripcion"">
@@ -192,6 +194,9 @@
             </html:select>
         </td>
     </tr>
+
+    <center style="color: red"> * Campos Obligatorios </center>
+
 </tbody>
 </table>
 

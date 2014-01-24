@@ -91,7 +91,7 @@
                             <html:errors/>
                         </center>
                         
-                    </tr>                    
+                    </tr>           
                     <tr>
                         <td align="right">USBID</td>
                         <td><html:text property="usbid" /></td>
