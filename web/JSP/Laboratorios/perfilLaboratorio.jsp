@@ -65,9 +65,9 @@
             <div class="wrapper">
                 <div class="perfil_tamano">
                     <p></p>
-                    <p><b>Codigo:</b> <bean:write name="Laboratorio" property="codigo"/>.</p>
+                    <p><b>Código:</b> <bean:write name="Laboratorio" property="codigo"/>.</p>
                     <p><b>Nombre:</b> <bean:write name="Laboratorio" property="nombre"/>.</p>
-                    <p><b>Jefe:</b>
+                    <p><b>Jefe:</b>                            
                         <html:link styleId="jefe" action="perfilPersonalL" paramId="usbid" paramName="Laboratorio" paramProperty="jefe">
                             <bean:write name="Laboratorio" property="jefe"/>
                         </html:link>
@@ -114,7 +114,7 @@
         
         <html:link action="back">
             <h2>
-                << volver
+                << Volver
             </h2>
         </html:link>
     </body>

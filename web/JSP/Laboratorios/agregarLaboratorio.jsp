@@ -57,7 +57,7 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td>Imagen</td>
+                        <td>Organigrama</td>
                         <td>            
                             <br />
                             <html:file name="Laboratorio" property="imagenfile" size="50" />
@@ -65,7 +65,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Codigo </td>
+                        <td> Código </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="codigo"/>
                             <div class="descripcion">
@@ -94,11 +94,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Ubicacion </td>
+                        <td> Ubicación </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="ubicacion"/>
                             <div class="descripcion">
-                                Ubicacion del Laboratorio <br>
+                                Ubicación del Laboratorio <br>
                                 (i.e Edificio de MYS)
                             </div>                              
                         </td>
@@ -115,7 +115,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Pagina Web </td>
+                        <td> Página Web </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="pagweb"/>
                             <div class="descripcion">
@@ -125,11 +125,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Telefono </td>
+                        <td> Teléfono </td> 
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
                             <div class="descripcion">
-                                Telefono de Contacto <br>
+                                Teléfono de Contacto <br>
                                 [ XXXXXXXXXXX ]
                                 <!--<p style="color:red;">[ dddd ddd dd dd ]</p>-->
                             </div>                              
@@ -147,7 +147,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Descripcion </td>
+                        <td> Descripción </td>
                         <td>
                             <html:textarea styleId="textarea" name="Laboratorio" property="caracteristicas"/>
                         </td>
@@ -170,7 +170,7 @@
 
         <html:link action="back">
             <h2 style="margin: 0px;">
-                 << volver
+                 << Volver
             </h2>
         </html:link>
 

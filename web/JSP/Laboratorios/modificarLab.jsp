@@ -60,7 +60,7 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td>Imagen</td>
+                        <td>Organigrama</td>
                         <td>            
                             <br />
                             <html:file name="Laboratorio" property="imagenfile" size="50" />
@@ -93,7 +93,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Ubicacion </td>
+                        <td> Ubicación </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="ubicacion"/>
                             <div class="descripcion">
@@ -114,7 +114,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Pagina Web </td>
+                        <td> Página Web </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="pagweb"/>
                             <div class="descripcion">
@@ -124,11 +124,11 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Telefono </td>
+                        <td> Teléfono </td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
                             <div class="descripcion">
-                                Telefono de Contacto <br>
+                                Teléfono de Contacto <br>
                                 [ XXXXXXXXXXX ]
                                 <!--<p style="color:red;">[ dddd ddd dd dd ]</p>-->
                             </div>                              
@@ -169,7 +169,7 @@
             
             <html:link action="back">
                 <h2>
-                    << volver
+                    << Volver
                 </h2>
             </html:link>
     </body>

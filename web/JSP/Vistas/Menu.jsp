@@ -99,8 +99,8 @@
                 <div id="sidebar-first" class="sidebar grid-3 pull-10">                    
                     <!-- MENU ACORDEON -->
                     <div id="accordion">
-                        <h5 style="cursor: pointer;"> Gestionar Catalogo de Personal</h5>
-                        <div>
+                        <h5 style="cursor: pointer;"> Gestionar Catálogo de Personal</h5>
+                        <div> 
                             <ul class="menu">
                                 <li class="first leaf">
                                     <html:link action="agregarL" target="centro">
@@ -134,7 +134,7 @@
                                 </li>
                             </ul><br></br>
                         </div>
-                        <h5 style="cursor: pointer;">Gestionar Servicios</h5>
+                        <h5 style="cursor: pointer;">Gestionar Catálogo de Servicios</h5>
                         <div>
                             <ul class="menu">    
                                 <li class="first leaf">
