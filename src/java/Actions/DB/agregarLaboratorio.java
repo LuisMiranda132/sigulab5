@@ -64,7 +64,7 @@ public class agregarLaboratorio extends org.apache.struts.action.Action {
             
             if(imagen.getFileSize()==0){
                 u.setImagen("images/construccion.png");
-            }else if(!imagen.getFileName().matches("[^\s]+(\.(?i)(jpg|png)$")){
+            }else if(!(imagen.getContentType().contentEquals("image/jpeg") || imagen.getContentType().matches("image/png"))){
                 error.add("error",new ActionMessage("error.laboratorio.imagen"));
                 saveErrors(request, error);
                 session.removeAttribute("lologreA");

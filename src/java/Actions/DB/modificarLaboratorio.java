@@ -74,7 +74,7 @@ public class modificarLaboratorio extends org.apache.struts.action.Action {
 	    }
             
             if(!("").equals(imagen.getFileName())){
-                if(!imagen.getFileName().matches("[^\s]+(\.(?i)(jpg|png))$")){
+                if(!(imagen.getContentType().contentEquals("image/jpeg") || imagen.getContentType().matches("image/png"))){
                     error.add("error",new ActionMessage("error.laboratorio.imagen"));
                     saveErrors(request, error);
                     session.removeAttribute("lologre");
