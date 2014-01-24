@@ -90,7 +90,7 @@
 
                         </tr>
                     </table>
-                    <iframe name="centro" src="/modulo5/inicio.jsp" height="580" width="600" frameborder="0">
+                    <iframe name="centro" src="inicio.jsp" height="580" width="600" frameborder="0">
                     <p>Your browser does not support iframes.</p>
                     </iframe>
                 </div>
