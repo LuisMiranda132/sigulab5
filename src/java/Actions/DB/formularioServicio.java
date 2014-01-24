@@ -7,6 +7,7 @@
 package Actions.DB;
 
 import Clases.Servicio;
+import DBMS.DBMS;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -46,7 +47,8 @@ public class formularioServicio extends org.apache.struts.action.Action {
         session.removeAttribute("operacionFallida");
         session.removeAttribute("servicioExistente");
         
-        s.limpiar();        
+        s.limpiar();     
+        s.setLabs(DBMS.getInstance().listarLaboratoriosVisibles());        
         
         return mapping.findForward(SUCCESS);
     }

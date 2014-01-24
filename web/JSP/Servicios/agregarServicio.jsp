@@ -104,7 +104,9 @@
                              <%--<html:select name="Servicio" property="laboratorio" >--%>
                                  <%--<html:optionsCollection name="Empleado" property="usbid" />--%>
                              <%--</html:select>--%>
-                            <html:text styleClass="input_formulario" name="Servicio" property="laboratorio"/>
+                            <html:select name="Servicio" property="laboratorio">
+                                 <html:optionsCollection name="Servicio" property="labs" />
+                            </html:select>
                             <div class="descripcion">
                                 Nombre del Laboratorio <br>
                                 (i.e LAB A)
