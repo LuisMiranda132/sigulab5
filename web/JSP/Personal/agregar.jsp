@@ -59,7 +59,7 @@
     
         <logic:present name="usuarioInexistente">
             <center class="logic_failure" align="center">
-                <h5>Usbid invalido.</h5>
+                <h5>Usbid inválido.</h5>
             </center>
         </logic:present>
     
@@ -71,13 +71,13 @@
     
         <logic:present name="tipoUsuarioInvalido">
             <center class="logic_failure" align="center">
-                <h5>El tipo de usuario es invalido.</h5>
+                <h5>El tipo de usuario es inválido.</h5>
             </center>
         </logic:present>
     
         <logic:present name="operacionFallida">
             <center class="logic_failure" align="center">
-                <h5>Ocurrio un error durante la operacion, intente de nuevo.</h5>
+                <h5>Ocurrió un error durante la operación, intente de nuevo.</h5>
             </center>
         </logic:present>
         <!-- FIN LOGIC PRESENT </!-->
@@ -119,7 +119,7 @@
 
                     <td>
                         <html:text styleClass="input_formulario" name="Empleado" property="cargo"/>
-                        <div class="descripcion"">
+                        <div class="descripcion">
                             Cargo que desempeña el usuario <br> 
                             (i.e Jefe de Laboratorio)
                         </div>                            
@@ -208,7 +208,7 @@
 
 <html:link action="back">
     <h2 style="margin: 0px;">
-        << volver
+        << Volver
     </h2>
 </html:link>
 

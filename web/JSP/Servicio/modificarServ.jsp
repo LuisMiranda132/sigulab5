@@ -126,7 +126,7 @@
             
             <html:link action="back">
                 <h2>
-                    << volver
+                    << Volver
                 </h2>
             </html:link>
     </body>

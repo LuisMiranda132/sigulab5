@@ -57,7 +57,7 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td>Imagen</td>
+                        <td>Organigrama</td>
                         <td>            
                             <br />
                             <html:file name="Laboratorio" property="imagenfile" size="50" />
@@ -66,6 +66,7 @@
                     </tr>
                     <tr>
                         <td> Codigo <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="codigo"/>
                             <div class="descripcion">
@@ -94,11 +95,13 @@
                         </td>
                     </tr>
                     <tr>
+
                         <td> Ubicacion <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="ubicacion"/>
                             <div class="descripcion">
-                                Ubicacion del Laboratorio <br>
+                                Ubicación del Laboratorio <br>
                                 (i.e Edificio de MYS)
                             </div>                              
                         </td>
@@ -115,7 +118,9 @@
                         </td>
                     </tr>
                     <tr>
+
                         <td> Pagina Web <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="pagweb"/>
                             <div class="descripcion">
@@ -125,11 +130,13 @@
                         </td>
                     </tr>
                     <tr>
+
                         <td> Telefono <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
                             <div class="descripcion">
-                                Telefono de Contacto <br>
+                                Teléfono de Contacto <br>
                                 [ XXXXXXXXXXX ]
                                 <!--<p style="color:red;">[ dddd ddd dd dd ]</p>-->
                             </div>                              
@@ -147,7 +154,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Descripcion </td>
+                        <td> Descripción </td>
                         <td>
                             <html:textarea styleId="textarea" name="Laboratorio" property="caracteristicas"/>
                         </td>
@@ -171,7 +178,7 @@
 
         <html:link action="back">
             <h2 style="margin: 0px;">
-                 << volver
+                 << Volver
             </h2>
         </html:link>
     </body>

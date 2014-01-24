@@ -60,7 +60,7 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td>Imagen</td>
+                        <td>Organigrama</td>
                         <td>            
                             <br />
                             <html:file name="Laboratorio" property="imagenfile" size="50" />
@@ -94,6 +94,7 @@
                     </tr>
                     <tr>
                         <td> Ubicacion <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="ubicacion"/>
                             <div class="descripcion">
@@ -114,7 +115,9 @@
                         </td>
                     </tr>
                     <tr>
+
                         <td> Pagina Web <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="pagweb"/>
                             <div class="descripcion">
@@ -124,11 +127,13 @@
                         </td>
                     </tr>
                     <tr>
+
                         <td> Telefono <span style='color:red'>*</span></td>
+
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
                             <div class="descripcion">
-                                Telefono de Contacto <br>
+                                Teléfono de Contacto <br>
                                 [ XXXXXXXXXXX ]
                                 <!--<p style="color:red;">[ dddd ddd dd dd ]</p>-->
                             </div>                              
@@ -170,7 +175,7 @@
             
             <html:link action="back">
                 <h2>
-                    << volver
+                    << Volver
                 </h2>
             </html:link>
     </body>
