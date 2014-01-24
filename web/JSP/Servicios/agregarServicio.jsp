@@ -62,7 +62,7 @@
     
         <logic:present name="operacionFallida">
             <center class="logic_failure" align="center">
-                Ocurrio un error durante la operacion, intente de nuevo.
+                Ocurrió un error durante la operación, intente de nuevo.
             </center>
         </logic:present>
         <!-- FIN LOGIC PRESENT </!-->    
@@ -71,11 +71,11 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td> Codigo <span style='color:red'>*</span></td>
+                        <td> Código <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Servicio" property="codigo"/>
                             <div class="descripcion">
-                                Codigo del Servicio <br>
+                                Código del Servicio <br>
                                 (i.e 001)
                             </div>
                         </td>
@@ -104,7 +104,9 @@
                              <%--<html:select name="Servicio" property="laboratorio" >--%>
                                  <%--<html:optionsCollection name="Empleado" property="usbid" />--%>
                              <%--</html:select>--%>
-                            <html:text styleClass="input_formulario" name="Servicio" property="laboratorio"/>
+                            <html:select name="Servicio" property="laboratorio">
+                                 <html:optionsCollection name="Servicio" property="labs" />
+                            </html:select>
                             <div class="descripcion">
                                 Nombre del Laboratorio <br>
                                 (i.e LAB A)
@@ -128,7 +130,7 @@
 
         <html:link action="back">
             <h2 style="margin: 0px;">
-                 << volver
+                 << Volver
             </h2>
         </html:link>
 

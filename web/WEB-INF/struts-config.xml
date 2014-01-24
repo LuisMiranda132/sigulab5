@@ -65,18 +65,10 @@
             <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
         
-        <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
-            <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
-        </action>
-
         <action path="/consultarLaboratorioL"  type="Actions.DB.consultarLaboratorioL" validate="false">
             <forward name="success" path="/JSP/Laboratorios/consultarLaboratorio.jsp"/>
         </action>
-
-        <action path="/agregarLaboratorioL" name="Laboratorio" type="Actions.DB.agregarLaboratorioL" validate="false">
-            <forward name="success" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
-        </action>
-        
+       
         <action path="/modificarL" name="LoginForm"  type="Actions.DB.premodificar" validate="false">
             <forward name="success" path="/JSP/Personal/modificar.jsp"/>
             
@@ -124,6 +116,10 @@
             <forward name="failure" path="/JSP/Laboratorios/agregarLaboratorio.jsp"/>
         </action>
         
+        <action path="/agregarServicio" name="Servicio" type="Actions.DB.agregarServicio" scope="session" validate="false">
+            <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
+            <forward name="failure" path="/JSP/Servicios/agregarServicio.jsp"/>            
+        </action>        
 
         <action path="/modificar" name="Empleado" type="Actions.DB.modificar" validate="false">
             <forward name="success" path="/premodificar_modificado.do"/>
@@ -206,10 +202,7 @@
             <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
         </action>
         
-        <action path="/agregarServicio" name="Servicio" type="Actions.DB.agregarServicio" scope="session" validate="false">
-            <forward name="success" path="/JSP/Servicios/agregarServicio.jsp"/>
-            <forward name="failure" path="/JSP/Servicios/agregarServicio.jsp"/>            
-        </action>
+ 
 
     </action-mappings>
     
