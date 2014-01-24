@@ -65,7 +65,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Codigo </td>
+                        <td> Codigo <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="codigo"/>
                             <div class="descripcion">
@@ -75,7 +75,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Nombre </td>
+                        <td> Nombre <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="nombre"/>
                             <div class="descripcion">
@@ -94,7 +94,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Ubicacion </td>
+                        <td> Ubicacion <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="ubicacion"/>
                             <div class="descripcion">
@@ -104,7 +104,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Correo </td>
+                        <td> Correo <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="correo"/>
                             <div class="descripcion">
@@ -115,7 +115,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Pagina Web </td>
+                        <td> Pagina Web <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="pagweb"/>
                             <div class="descripcion">
@@ -125,7 +125,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Telefono </td>
+                        <td> Telefono <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="telefono"/>
                             <div class="descripcion">
@@ -136,7 +136,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Fax </td>
+                        <td> Fax <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Laboratorio" property="fax"/>
                             <div class="descripcion">
@@ -160,6 +160,7 @@
                              </html:select>
                         </td>
                     </tr>
+                    <center style="color: red"> * Campos Obligatorios </center>
                 </tbody>
             </table>
             <div id="submit">
@@ -173,6 +174,5 @@
                  << volver
             </h2>
         </html:link>
-
     </body>
 </html>

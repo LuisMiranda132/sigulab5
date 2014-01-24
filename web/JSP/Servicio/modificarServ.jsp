@@ -68,7 +68,7 @@
                 
 
                     <tr>
-                        <td> Nombre </td>
+                        <td> Nombre <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Servicio" property="nombre"/>
                             <div class="descripcion">
@@ -111,6 +111,7 @@
                             <html:text name="Laboratorio" property="caracteristicas"/>
                         </td>
                     </tr> --%>
+                   <center style="color: red"> * Campos Obligatorios </center>
                 </tbody>
             </table>
             <div id="submit">

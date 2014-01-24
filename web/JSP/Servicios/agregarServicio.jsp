@@ -71,7 +71,7 @@
             <table border="0">
                 <tbody>
                     <tr>
-                        <td> Codigo </td>
+                        <td> Codigo <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Servicio" property="codigo"/>
                             <div class="descripcion">
@@ -81,7 +81,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Nombre </td>
+                        <td> Nombre <span style='color:red'>*</span></td>
                         <td>
                             <html:text styleClass="input_formulario" name="Servicio" property="nombre"/>
                             <div class="descripcion">
@@ -99,7 +99,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Laboratorio </td>
+                        <td> Laboratorio <span style='color:red'>*</span></td>
                         <td>
                              <%--<html:select name="Servicio" property="laboratorio" >--%>
                                  <%--<html:optionsCollection name="Empleado" property="usbid" />--%>
@@ -112,11 +112,12 @@
                         </td>
                     </tr>
                     <tr>
-                        <td> Características </td>
+                        <td> Características <span style='color:red'>*</span></td>
                         <td>
                             <html:textarea styleId="textarea" name="Servicio" property="caracteristicas"/>
                         </td>
                     </tr>
+                    <center style="color: red"> * Campos Obligatorios </center>
                 </tbody>
             </table>
             <div id="submit">
